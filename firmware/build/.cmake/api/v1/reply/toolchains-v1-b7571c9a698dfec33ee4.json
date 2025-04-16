@@ -1,0 +1,94 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : {},
+				"path" : "G:/embedded_config/10 2021.10/bin/arm-none-eabi-gcc.exe",
+				"version" : ""
+			},
+			"language" : "ASM",
+			"sourceFileExtensions" : 
+			[
+				"s",
+				"S",
+				"asm"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"G:/embedded_config/10 2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+						"G:/embedded_config/10 2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+						"G:/embedded_config/10 2021.10/arm-none-eabi/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "G:/embedded_config/10 2021.10/bin/arm-none-eabi-gcc.exe",
+				"version" : "10.3.1"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"G:/embedded_config/10 2021.10/arm-none-eabi/include/c++/10.3.1",
+						"G:/embedded_config/10 2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi",
+						"G:/embedded_config/10 2021.10/arm-none-eabi/include/c++/10.3.1/backward",
+						"G:/embedded_config/10 2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+						"G:/embedded_config/10 2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+						"G:/embedded_config/10 2021.10/arm-none-eabi/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "G:/embedded_config/10 2021.10/bin/arm-none-eabi-g++.exe",
+				"version" : "10.3.1"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm",
+				"ccm",
+				"cxxm",
+				"c++m"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
