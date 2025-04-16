@@ -58,14 +58,14 @@ include_directories(Core/Inc USB_Device/App
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
         Drivers/CMSIS/Device/ST/STM32G4xx/Include
         Drivers/CMSIS/Include
-        FOC/driver/Inc
+        FOC/encoder/Inc
         FOC/utils/Inc
         FOC/core/Inc
         BSP/Inc)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx)
 
-file(GLOB_RECURSE SOURCES "USB_Device/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "BSP/*.*" "FOC/core/*.*" "FOC/utils/*.*" "FOC/driver/*.*")
+file(GLOB_RECURSE SOURCES "USB_Device/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "BSP/*.*" "FOC/core/*.*" "FOC/utils/*.*" "FOC/encoder/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32G474RBTX_FLASH.ld)
 

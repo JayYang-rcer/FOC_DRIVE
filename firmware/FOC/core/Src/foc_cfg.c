@@ -40,8 +40,8 @@ void MotorPidInit(void)
     iq_pid.i_term_max = (BATTERY_CELL*4)*ONE_BY_SQRT3;
     iq_pid.i_term_min = -(BATTERY_CELL*4)*ONE_BY_SQRT3;
 
-    speed_pid.kp = 0.0028f;
-    speed_pid.ki = 0.0002f;
+    speed_pid.kp = 0.0088f;
+    speed_pid.ki = 0.006f;
     speed_pid.out_max = 15.f;
     speed_pid.out_min = -15.f;
     speed_pid.i_term_max = 15.f;
@@ -63,7 +63,7 @@ void MotorPidInit(void)
     pos_pid.out_min = -300.f;
 #endif
 
-    pll_spd.loop_hz = 1000;
+    pll_spd.loop_hz = 10000;
     pll_spd.kp = 7800.f/60.f*M_2PI * 0.707f * 2.f;
 	//pll_spd.kp = 4200.f/60.f*M_2PI * 10.f * 2.f;
     pll_spd.ki = (7800.f/60.f*M_2PI) * (7800.f/60.f*M_2PI) / pll_spd.loop_hz;

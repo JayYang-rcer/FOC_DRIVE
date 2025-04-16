@@ -11,6 +11,9 @@ typedef struct pll_t
     float ref;
     float fbk;
     float out_value;
+    float angle_out;
+    float i_term;
+    float p_term;
 }pll_t;
 
 float MovingAverageCotrl(float ref, float fbk);

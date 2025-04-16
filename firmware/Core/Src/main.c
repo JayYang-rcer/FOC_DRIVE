@@ -31,7 +31,7 @@
 #include "vofa.h"
 #include "foc_cfg.h"
 #include "util.h"
-#include "as5047p.h"
+#include "encoder_proc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
