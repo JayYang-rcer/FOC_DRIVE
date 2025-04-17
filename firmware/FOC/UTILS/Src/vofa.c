@@ -3,6 +3,7 @@
 #include "tim.h"
 #include "util.h"
 #include "as5047p.h"
+#include "foc_ctrl.h"
 
 #define PWM_ARR() __HAL_TIM_GET_AUTORELOAD(&htim8)
 #define MAX_BUFFER_SIZE 128
@@ -18,41 +19,16 @@ volatile uint16_t cnt = 0;
 **/
 void VofaStart(void)
 {
-	// VofaSendData(1,foc.v_alpha);
-	// VofaSendData(2,foc.v_beta);
-	VofaSendData(1,foc.i_q);
-	VofaSendData(2,foc.i_d);
-//	VofaSendData(1,foc.i_a);
-//	VofaSendData(2,foc.i_b);
-//	VofaSendData(3,foc.i_c);
+//	 VofaSendData(1,foc.v_alpha);
+//	 VofaSendData(2,foc.v_beta);
+    VofaSendData(2,smo.Ebeta);
+    VofaSendData(2,smo.Ealpha);
+//	VofaSendData(1,ualpha);
+//	VofaSendData(2,smo.Ealpha);
+	VofaSendData(3,enc_para.pos_e);
+	VofaSendData(3,pll_angle);
 
-
-//    static float va_last= 0, vb_last= 0, vc_last= 0;
-//    foc.v_a = foc.v_a - va_last;
-//    foc.v_b = foc.v_b - vb_last;
-//    foc.v_c = foc.v_c - vc_last;
-//    foc.v_a = 0.9f*va_last + 0.1f*foc.v_a;
-//    foc.v_b = 0.9f*vb_last + 0.1f*foc.v_b;
-//    foc.v_c = 0.9f*vc_last + 0.1f*foc.v_c;
-//	VofaSendData(1,foc.v_a);
-//	VofaSendData(2,foc.v_b);
-//	VofaSendData(3,foc.v_c);
-//    va_last = foc.v_a;
-//    vb_last = foc.v_b;
-//    vc_last = foc.v_c;
-//
-//    static float valpha_last= 0;
-//    static float vbeta_last= 0;
-//    float valpha = (2*foc.v_a-foc.v_b-foc.v_c)/3.f;
-//    float vbeta = (foc.v_b - foc.v_c) * ONE_BY_SQRT3;
-//    valpha = 0.9f*valpha_last + 0.1f*valpha;
-//    vbeta = 0.9f*vbeta_last + 0.1f*vbeta;
-//    VofaSendData(1,valpha);
-//    VofaSendData(1,vbeta);
-//    valpha_last = valpha;
-//    vbeta_last = vbeta;
-
-	VofaSendData(1,enc_para.raw_data);
+//	VofaSendData(1,PWM_ARR());
 	VofaSendframetail();
 }
 

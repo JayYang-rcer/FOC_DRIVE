@@ -63,10 +63,11 @@ void MotorPidInit(void)
     pos_pid.out_min = -300.f;
 #endif
 
+    //u3最高最速，KV700 * 11.1/sqrt(3) = 5037
     pll_spd.loop_hz = 10000;
-    pll_spd.kp = 7800.f/60.f*M_2PI * 0.707f * 2.f;
+    pll_spd.kp = 5037.f/60.f*M_2PI * 0.707f * 2.f;
 	//pll_spd.kp = 4200.f/60.f*M_2PI * 10.f * 2.f;
-    pll_spd.ki = (7800.f/60.f*M_2PI) * (7800.f/60.f*M_2PI) / pll_spd.loop_hz;
+    pll_spd.ki = (5037.f/60.f*M_2PI) * (5037.f/60.f*M_2PI) / pll_spd.loop_hz;
 }
 
 

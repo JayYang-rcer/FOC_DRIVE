@@ -116,7 +116,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
             break;
     }   
 
-    //过调制处理,会导致电机无法达到最大理论转速
+    //过调制处理,会导致电机无法达到最大理论转速,后续如果需要进一步优化性能，考虑在互补PWM的死去上做处理，增大有效的电平时间
     if(tx + ty > TS)
     {
         temp = tx+ty;

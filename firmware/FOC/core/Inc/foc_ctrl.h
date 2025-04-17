@@ -24,6 +24,5 @@ void Encoder_Idle(void);
 void FocHandle(void);
 extern volatile int spd_set;
 extern smo_param_t smo;
-extern float ualpha;
-extern float ubeta;
+extern volatile float pll_angle;
 #endif

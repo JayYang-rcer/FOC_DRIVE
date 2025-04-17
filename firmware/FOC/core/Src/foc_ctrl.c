@@ -19,33 +19,41 @@ float speed_buffer[SPEED_WINDOW_SIZE] = {0};  // 存储窗口内的数据
 MovingAverage_t speed_maf = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
 
 smo_param_t smo;
+pll_t pll_smo;
+
+#define RC 1.f/(M_2PI * 50)
+#define DT 1.f/10000
+float alpha;
 
 void SmoParamInit(smo_param_t *smo)
 {
     smo->A = expf(-(motor_cfg.rs/1000)/(motor_cfg.ls/1000000)/10000);
     smo->B = (1 - smo->A)/(motor_cfg.rs/1000);
-    smo->ksw = 0.12f;
+    smo->ksw = 0.24f;
+    pll_smo.loop_hz = 10000;
+    pll_smo.kp = 7.f*3663.f/60.f*M_2PI * 0.707f * 2.f;
+    pll_smo.ki = (7.f*3663.f/60.f*M_2PI) * (7.f*3663.f/60.f*M_2PI);
+    alpha = DT / (RC + DT);  // 计算滤波系数
 }
 
-float ualpha;
-float ubeta;
-void SmoViewer(foc_param_t *foc, smo_param_t *smo)
+_RAM_FUNC void SmoViewer(foc_param_t *foc, smo_param_t *smo)
 {
     static float valpha_last, vbeta_last;
-    ualpha = (2*foc->v_a-foc->v_b-foc->v_c)/3.f;
-    ubeta = (foc->v_b - foc->v_c) * ONE_BY_SQRT3;
+    float ualpha = (2*foc->v_a-foc->v_b-foc->v_c)/3.f;
+    float ubeta  = (foc->v_b - foc->v_c) * ONE_BY_SQRT3;
     Clarke(foc);
 
     smo->valpah = smo->ksw*SIGN(smo->ialpha_view - foc->i_alpha);
     smo->vbeta = smo->ksw*SIGN(smo->ibeta_view - foc->i_beta);
 
-    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (ualpha - smo->valpah);
-    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (ubeta - smo->vbeta);
+    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
+    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
 
     //计算滤波后的拓展反电动势
-    smo->valpah = 0.1*smo->valpah + 0.9f*valpha_last;
-    smo->vbeta = 0.1*smo->vbeta + 0.9f*vbeta_last;
+    smo->valpah = alpha*smo->valpah + (1-alpha)*valpha_last;
+    smo->vbeta =  alpha*smo->vbeta +  (1-alpha)*vbeta_last;
 
+    //更新数据
     smo->ialpha_view_last = smo->ialpha_view;
     smo->ibeta_view_last = smo->ibeta_view;
     vbeta_last = smo->vbeta;
@@ -55,6 +63,24 @@ void SmoViewer(foc_param_t *foc, smo_param_t *smo)
     smo->Ebeta = smo->vbeta;
 }
 
+_RAM_FUNC float AnglePll(smo_param_t* param, pll_t* pll)
+{
+    pll->ref = -param->Ealpha * cos_f32(pll->angle_out);
+    pll->fbk = sin_f32(pll->angle_out) * param->Ebeta;
+
+    pll->p_term = (pll->ref - pll->fbk)*pll->kp;
+    pll->i_term += (pll->ref - pll->fbk)*pll->ki/pll->loop_hz;
+    pll->out_value = pll->p_term + pll->i_term;
+
+    pll->angle_out += pll->out_value/pll->loop_hz;
+    WRAP_0_2PI(pll->angle_out)
+
+    pll->out_value*=60.f/M_2PI;
+
+    float out = pll->angle_out + 1.4f;
+
+    return WRAP_0_2PI(out);
+}
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -95,7 +121,8 @@ volatile int spd_cnt = 0,pos_cnt=0;
 volatile int spd_set = 500,pos_set = 300;
 volatile float speed_hz = 10000;
 volatile float vbus;
-volatile float pll_lpf_hz = 0.01f;
+volatile float pll_lpf_hz = 0.01f,pll_angle;
+int change_flag=0;
 __RAM_FUNC void Encoder_Idle(void)
 {
     __HAL_TIM_CLEAR_FLAG(&htim2,TIM_FLAG_CC1);
@@ -121,6 +148,7 @@ __RAM_FUNC void Encoder_Idle(void)
     }
 
     SmoViewer(&foc,&smo);
+    pll_angle = AnglePll(&smo,&pll_smo);
     PosCalculate(&enc_para);
     if(++pos_cnt==10)
     {
@@ -197,8 +225,18 @@ _RAM_FUNC void FocHandle(void)
 		FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
 #endif
 #else
-//		FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
-		 FocCurrent(id,iq,enc_para.pos_e);
+        if(change_flag<20000)
+        {
+            FocCurrent(id,iq,enc_para.pos_e);
+            change_flag++;
+        }
+        else
+        {
+            FocCurrent(id,iq,pll_angle);
+
+        }
+
+//		 FocCurrent(id,iq,enc_para.pos_e);
 //        FocVolt(0,uq_set,enc_para.pos_e);
 #endif
 //        VofaStart();
