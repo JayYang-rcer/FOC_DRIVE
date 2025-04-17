@@ -12,7 +12,7 @@
 
 // Speed PID parameters
 #define SPEED_PID_TIME_HZ 5000
-#define CURRENT_LOOP_RATE 10000
+#define CURRENT_LOOP_RATE 20000
 
 typedef struct
 {
@@ -57,7 +57,7 @@ typedef struct
     float temp;         //温度
 }foc_adc_t;
 
-typedef struct
+typedef struct foc_param_t
 {
     float vbus;
 	float ibus;

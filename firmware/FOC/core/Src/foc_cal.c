@@ -45,9 +45,9 @@ _RAM_FUNC void InvClarke(foc_param_t *foc)
 // _RAM_FUNC int SvpwmSector(foc_para_t *foc)
 _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 {
-    float TS = 1.0f;
+    float TS = 1.f;
     float ta = 0.0f, tb = 0.0f, tc = 0.0f;
-    float k = (TS *SQRT3) * foc->inv_vbus;  
+    float k = (TS*SQRT3)/foc->vbus;
     float tx,ty;
     float temp=0;
 
@@ -116,7 +116,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
             break;
     }   
 
-    //过调制处理
+    //过调制处理,会导致电机无法达到最大理论转速
     if(tx + ty > TS)
     {
         temp = tx+ty;

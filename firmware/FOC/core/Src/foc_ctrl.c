@@ -18,6 +18,43 @@
 float speed_buffer[SPEED_WINDOW_SIZE] = {0};  // 存储窗口内的数据
 MovingAverage_t speed_maf = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
 
+smo_param_t smo;
+
+void SmoParamInit(smo_param_t *smo)
+{
+    smo->A = expf(-(motor_cfg.rs/1000)/(motor_cfg.ls/1000000)/10000);
+    smo->B = (1 - smo->A)/(motor_cfg.rs/1000);
+    smo->ksw = 0.12f;
+}
+
+float ualpha;
+float ubeta;
+void SmoViewer(foc_param_t *foc, smo_param_t *smo)
+{
+    static float valpha_last, vbeta_last;
+    ualpha = (2*foc->v_a-foc->v_b-foc->v_c)/3.f;
+    ubeta = (foc->v_b - foc->v_c) * ONE_BY_SQRT3;
+    Clarke(foc);
+
+    smo->valpah = smo->ksw*SIGN(smo->ialpha_view - foc->i_alpha);
+    smo->vbeta = smo->ksw*SIGN(smo->ibeta_view - foc->i_beta);
+
+    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (ualpha - smo->valpah);
+    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (ubeta - smo->vbeta);
+
+    //计算滤波后的拓展反电动势
+    smo->valpah = 0.1*smo->valpah + 0.9f*valpha_last;
+    smo->vbeta = 0.1*smo->vbeta + 0.9f*vbeta_last;
+
+    smo->ialpha_view_last = smo->ialpha_view;
+    smo->ibeta_view_last = smo->ibeta_view;
+    vbeta_last = smo->vbeta;
+    valpha_last = smo->valpah;
+
+    smo->Ealpha = smo->valpah;
+    smo->Ebeta = smo->vbeta;
+}
+
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -53,7 +90,7 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
 }
 
 
-volatile float id=0,iq=2;
+volatile float id=0,iq=2,uq_set=0.5f;
 volatile int spd_cnt = 0,pos_cnt=0;
 volatile int spd_set = 500,pos_set = 300;
 volatile float speed_hz = 10000;
@@ -79,9 +116,11 @@ __RAM_FUNC void Encoder_Idle(void)
         pos_pid.out_max = 300.f;
         pos_pid.out_min = -300.f;
 #endif
+        SmoParamInit(&smo);
         flag=1;
     }
 
+    SmoViewer(&foc,&smo);
     PosCalculate(&enc_para);
     if(++pos_cnt==10)
     {
@@ -123,10 +162,12 @@ __RAM_FUNC void Encoder_Idle(void)
 #endif
 }
 
+
+volatile int curr=0;
 _RAM_FUNC void FocHandle(void)
 {
     __HAL_TIM_CLEAR_FLAG(&htim1,TIM_FLAG_CC1);
-	// VofaStart();
+	 VofaStart();
 	mc_adc.ia = ADC1->JDR3;
 	mc_adc.ib = ADC1->JDR2;
 	mc_adc.ic = ADC1->JDR1;
@@ -144,9 +185,9 @@ _RAM_FUNC void FocHandle(void)
 	foc.i_c = ((float)mc_adc.ic - mc_adc.ic_offset)*IRATIO;
 	vbus = 	((float)mc_adc.vbus)* VBUS_RATIO;
 
-	foc.vbus = ((float)mc_adc.vbus)*VBUS_RATIO;
+//	foc.vbus = ((float)mc_adc.vbus)*VBUS_RATIO;
 
-//	foc.vbus = 11.1f;
+	foc.vbus = 11.1f;
 	foc.inv_vbus = 1.5f/(foc.vbus);
 
 #if USE_POS_PID
@@ -156,9 +197,9 @@ _RAM_FUNC void FocHandle(void)
 		FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
 #endif
 #else
-		FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
-//		 FocCurrent(id,iq,enc_para.pos_e);
-//        FocVolt(0,0.5f,enc_para.pos_e);
+//		FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
+		 FocCurrent(id,iq,enc_para.pos_e);
+//        FocVolt(0,uq_set,enc_para.pos_e);
 #endif
 //        VofaStart();
     //calibrate_mt_encoder(1.0f,0);

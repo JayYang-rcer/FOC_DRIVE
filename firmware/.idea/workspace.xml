@@ -30,18 +30,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="25 4-17修改滤波">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Src/moc_spd.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Src/moc_spd.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_cal.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_cal.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
@@ -190,8 +193,17 @@
       <workItem from="1744726397569" duration="9000" />
       <workItem from="1744782185922" duration="15279000" />
       <workItem from="1744811631102" duration="8112000" />
-      <workItem from="1744862463447" duration="2750000" />
+      <workItem from="1744862463447" duration="20247000" />
     </task>
+    <task id="LOCAL-00001" summary="25 4-17修改滤波">
+      <option name="closed" value="true" />
+      <created>1744867509111</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744867509111</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,10 +214,35 @@
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="25 4-17修改滤波" />
+    <option name="LAST_COMMIT_MESSAGE" value="25 4-17修改滤波" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
