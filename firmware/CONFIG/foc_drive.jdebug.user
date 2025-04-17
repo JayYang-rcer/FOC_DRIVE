@@ -1,14 +1,35 @@
 
 
-OpenDocument="foc_drive.user", FilePath="F:/FOC_DRIVE/firmware/CONFIG/foc_drive.user", Line=0
+GraphedExpression="spd_set", DisplayFormat=DISPLAY_FORMAT_DEC, Color=#e56a6f, Show=0
+GraphedExpression="(motor_cfg).rotor_vel", Color=#35792b, Show=0
+GraphedExpression="(foc).i_d", Color=#769dda
+GraphedExpression="(foc).i_q", Color=#b14f0d
+OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=50
+OpenDocument="as5047p.c", FilePath="F:/FOC_DRIVE/firmware/FOC/encoder/Src/as5047p.c", Line=17
+OpenDocument="pid.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/pid.c", Line=55
+OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c", Line=128
+OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=63
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=0, w=300, h=578, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
-OpenWindow="Memory 1", DockArea=BOTTOM, x=1, y=0, w=597, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x0
-OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=578, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=595, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=1, w=711, h=189, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
+OpenWindow="Source Files", DockArea=LEFT, x=0, y=0, w=347, h=353, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=164, TabPos=0, TopOfStack=1, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Memory 1", DockArea=BOTTOM, x=2, y=0, w=848, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x0
+OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=591, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Functions", DockArea=LEFT, x=0, y=1, w=347, h=321, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=2, w=711, h=320, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
+OpenWindow="Timeline", DockArea=FLOATING, x=2015, y=91, w=1336, h=659, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=1, DataPaneShown=1, PowerPaneShown=0, CodePaneShown=0, PinCursor="Cursor Movable", TimePerDiv="2 s / Div", TimeStampFormat="Time", DataGraphDrawAsPoints=0, DataGraphLegendShown=1, DataGraphUniformSampleSpacing=0, DataGraphLegendPosition="7;0", DataGraphShowNamesAtCursor=0, PowerGraphDrawAsPoints=0, PowerGraphLegendShown=0, PowerGraphAvgFilterTime=Off, PowerGraphAvgFilterLen=Off, PowerGraphUniformSampleSpacing=0, PowerGraphLegendPosition="952;144", CodeGraphLegendShown=0, CodeGraphLegendPosition="909;78"
+OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=479, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
 TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;200]
+TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[27;125;27;27;530]
+TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";" spd_set";" (motor_cfg).rotor_vel";" (foc).i_d";" (foc).i_q"], ColWidths=[100;100;100;100;100;100]
+TableHeader="Data Sampling Setup", SortCol="Type", SortOrder="DESCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[128;100;100;100;100;105;100;100;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[100;105;152]
+TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[100;105;489]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[100;100;374]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
 TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;359]
+WatchedExpression="spd_set", Window=Watched Data 1
+WatchedExpression="motor_cfg", Window=Watched Data 1
+WatchedExpression="foc", Window=Watched Data 1
+WatchedExpression="speed_pid", Window=Watched Data 1

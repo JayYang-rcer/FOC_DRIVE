@@ -16,8 +16,23 @@ typedef struct pll_t
     float p_term;
 }pll_t;
 
-float MovingAverageCotrl(float ref, float fbk);
+typedef struct lpf_t
+{
+    float in_last;
+    float trust;
+}lpf_t;
+
+
+typedef struct MovingAverage_t
+{
+    void *buffer;
+    uint8_t size;
+    uint8_t index;
+}MovingAverage_t;
+
+
 float PllSpeedCtrl(pll_t *pll, float angle);
-void LowPassFilter(float *in,float hz);
+void LowPassFilter(float *data, lpf_t* lpf);
+void MoveAverageFilter(MovingAverage_t* filter, float *data);
 
 #endif

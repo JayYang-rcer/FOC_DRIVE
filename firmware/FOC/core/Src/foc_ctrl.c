@@ -16,27 +16,7 @@
 #define USE_ENCODER 1
 
 float speed_buffer[SPEED_WINDOW_SIZE] = {0};  // 存储窗口内的数据
-volatile int speed_index = 0;    // 当前数据索引
-volatile int id_index = 0;
-volatile int iq_index = 0;
-_RAM_FUNC float speed_moving_average_filter(float input, float *buffer, int size) 
-{
-    float sum = 0;                           // 窗口内数据的和
-    static int speed_index;
-    // 将新数据存入缓冲区
-    buffer[speed_index] = input;
-
-    // 更新索引（循环缓冲区）
-    speed_index = (speed_index + 1) % size;
-
-    // 计算窗口内数据的和
-    for (int i = 0; i < size; i++) {
-        sum += buffer[i];
-    }
-
-    // 返回平均值
-    return sum / size;
-}
+MovingAverage_t speed_maf = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
 
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
@@ -118,19 +98,18 @@ __RAM_FUNC void Encoder_Idle(void)
         motor_cfg.rotor_vel = (pos_now - pos_last - 16383.f) / 16383.f * 60.f * speed_hz;
     else
         motor_cfg.rotor_vel = (pos_now - pos_last) / 16383.f * 60.f * speed_hz;
-    motor_cfg.rotor_vel = speed_moving_average_filter(motor_cfg.rotor_vel,speed_buffer,SPEED_WINDOW_SIZE);
-
     //一阶低通滤波
     motor_cfg.rotor_vel = (0.05f * motor_cfg.rotor_vel + 0.95f * rotor_vel_last);
     rotor_vel_last = motor_cfg.rotor_vel;
+    MoveAverageFilter(&speed_maf, &motor_cfg.rotor_vel);
 #endif
 
 #if USE_SPD_PLL
         PosCalculate(&enc_para);
 		motor_cfg.rotor_vel = PllSpeedCtrl(&pll_spd,enc_para.pos_s);
-		motor_cfg.rotor_vel = speed_moving_average_filter(motor_cfg.rotor_vel,speed_buffer,SPEED_WINDOW_SIZE);
 		motor_cfg.rotor_vel = (1-pll_lpf_hz)*rotor_vel_last+pll_lpf_hz*motor_cfg.rotor_vel;
 		rotor_vel_last = motor_cfg.rotor_vel;
+        MoveAverageFilter(&speed_maf, &motor_cfg.rotor_vel);
 #endif
 
 #if USE_POS_PID
@@ -184,6 +163,5 @@ _RAM_FUNC void FocHandle(void)
 //        VofaStart();
     //calibrate_mt_encoder(1.0f,0);
     FocPwmRun(&foc);
-
 }
 

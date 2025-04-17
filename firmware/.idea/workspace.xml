@@ -31,34 +31,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/FOC_Control_doubleLoop.slx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/FOC_Control_doubleLoop.slx.r2021b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/FOC_Control_doubleLoop.slxc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_jitprj/sQIGbnkZ1vssoylPytS37wD.l" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_jitprj/sQIGbnkZ1vssoylPytS37wD.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_sfprj/EMLReport/sQIGbnkZ1vssoylPytS37wD.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_sfprj/FOC_Control_doubleLoop/_self/sfun/info/binfo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_sfprj/FOC_Control_doubleLoop/amsi_serial.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/_sfprj/precompile/tcVGm3aA6Em407s9c3R4Q.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/sim/varcache/FOC_Control_doubleLoop/checksumOfCache.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/sim/varcache/FOC_Control_doubleLoop/tmwinternal/simulink_cache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/FOC_Control_doubleLoop/slprj/sim/varcache/FOC_Control_doubleLoop/varInfo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/PLL_get_speed/pll_speed.slx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMC/SMC.slx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/foc.slx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/foc.slx.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/foc.slxc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/modeladvisor/com_2emathworks_2eSimulink_2eModelReferenceAdvisor_2eMainGroup_/foc/ModelAdvisorData" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan/checksumOfCache.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan/tmwinternal/simulink_cache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan/varInfo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan_PLL/checksumOfCache.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan_PLL/tmwinternal/simulink_cache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/PMSM_SMO_atan_PLL/varInfo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/foc/checksumOfCache.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/foc/tmwinternal/simulink_cache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sim/varcache/foc/varInfo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../matlab/SMO_atan_pll/slprj/sl_proj.tmw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Src/moc_spd.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Src/moc_spd.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,19 +125,19 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true",
     "嵌入式 GDB 服务器.DRIVE_CMAKE.elf.executor": "Debug"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -201,7 +189,8 @@
       <workItem from="1744723052463" duration="2310000" />
       <workItem from="1744726397569" duration="9000" />
       <workItem from="1744782185922" duration="15279000" />
-      <workItem from="1744811631102" duration="7478000" />
+      <workItem from="1744811631102" duration="8112000" />
+      <workItem from="1744862463447" duration="2750000" />
     </task>
     <servers />
   </component>
@@ -212,6 +201,11 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

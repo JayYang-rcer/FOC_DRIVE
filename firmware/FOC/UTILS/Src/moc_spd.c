@@ -1,25 +1,6 @@
 #include "moc_spd.h"
 #include "util.h"
-
-//float speed_moving_average_filter(float input, float *buffer, int size)
-//{
-//    float sum = 0;                           // 窗口内数据的和
-//    static int speed_index;
-//    // 将新数据存入缓冲区
-//    buffer[speed_index] = input;
-//
-//    // 更新索引（循环缓冲区）
-//    speed_index = (speed_index + 1) % size;
-//
-//    // 计算窗口内数据的和
-//    for (int i = 0; i < size; i++) {
-//        sum += buffer[i];
-//    }
-//
-//    // 返回平均值
-//    return sum / size;
-//}
-
+#include "main.h"
 
 float PllSpeedCtrl(pll_t *pll, float angle)
 {
@@ -37,11 +18,34 @@ float PllSpeedCtrl(pll_t *pll, float angle)
 	return pll->out_value;
 }
 
-void PllLpf(float *in,float hz)
+
+void LowPassFilter(float *data, lpf_t* lpf)
 {
-    static float in_last;
-    *in = *in * hz + in_last * (1.f - hz);
-    in_last = *in;
+    *data = *data * lpf->trust + (1 - lpf->trust)*lpf->in_last;
+    lpf->in_last = *data;
 }
 
 
+/*
+ * @brief: 滑动均值滤波器
+ * @param: buffer: 滑动窗口缓冲区地址
+ * @param: data: 输入数据
+ * @param: size: 滑动窗口大小
+ */
+__RAM_FUNC void MoveAverageFilter(MovingAverage_t* filter, float *data)
+{
+    float sum = 0;                           // 窗口内数据的和
+    // 将新数据存入缓冲区
+    ((float*)filter->buffer)[filter->index] = *data;
+
+    // 更新索引（循环缓冲区）
+    filter->index = (filter->index + 1) % filter->size;
+
+    // 计算窗口内数据的和
+    for (int i = 0; i < filter->size; i++) {
+        sum += ((float*)filter->buffer)[i];
+    }
+
+    // 返回平均值
+    *data = sum / filter->size;
+}
