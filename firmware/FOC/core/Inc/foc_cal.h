@@ -10,5 +10,6 @@ void Park(foc_param_t *foc);
 void InvPark(foc_param_t *foc);
 void InvClarke(foc_param_t *foc);
 int SvpwmSector(foc_param_t *foc);
+int svpwm(foc_param_t *foc);
 
 #endif

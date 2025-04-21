@@ -5,8 +5,8 @@
 
 typedef struct pll_t
 {
-    uint16_t kp;
-    uint16_t ki;
+    float kp;
+    float ki;
     uint16_t loop_hz;
     float ref;
     float fbk;

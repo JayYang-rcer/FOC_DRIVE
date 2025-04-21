@@ -3,6 +3,13 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
+  </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
 }</component>
@@ -30,23 +37,40 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="25.4.17&#10;增加了SMO提取拓展反电动势的代码部分">
-      <change beforePath="$PROJECT_DIR$/../FOC_MATLAB/SMO_atan_pll/foc.slx" beforeDir="false" afterPath="$PROJECT_DIR$/../FOC_MATLAB/SMO_atan_pll/foc.slx" afterDir="false" />
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="25.4.17&#10;把SMO的定子电压输入改为设定的ID IQ变换得到，但是在低速频段效果一般。然而使用adc检测的貌似有点问题，还是有待考究，据说在低速度频段表现比给定的好">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRIVE_CMAKE.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/DRIVE_CMAKE.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/moc_spd.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_cal.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_cal.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_cal.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_cal.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/cmakeFiles-v1-4977080a654453a573fc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2025-04-16T14-42-15-0343.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +108,33 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Core/Inc/adc.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Inc/tim.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/adc.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/main.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/spi.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/tim.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_cal.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_cal.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/moc_spd.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/encoder/Inc/as5047p.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/encoder/Inc/encoder_proc.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/as5047p.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/calibration.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/encoder_proc.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Inc/moc_spd.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Inc/util.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/moc_spd.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/pid.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/util.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/vofa.c" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -110,6 +159,7 @@
   &quot;keyToString&quot;: {
     &quot;CMake 应用程序.DRIVE_CMAKE.elf.executor&quot;: &quot;Run&quot;,
     &quot;OpenOCD 下载并运行.DRIVE_CMAKE.elf.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -119,19 +169,24 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/28076/Desktop/Fskr/Seekfree_TC387_Total&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/FOC_DRIVE/firmware&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;嵌入式 GDB 服务器.DRIVE_CMAKE.elf.executor&quot;: &quot;Debug&quot;
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -186,7 +241,28 @@
       <workItem from="1744782185922" duration="15279000" />
       <workItem from="1744811631102" duration="8112000" />
       <workItem from="1744862463447" duration="24078000" />
-      <workItem from="1744911270063" duration="6903000" />
+      <workItem from="1744911270063" duration="7038000" />
+      <workItem from="1744947687399" duration="28463000" />
+      <workItem from="1745141612885" duration="421000" />
+      <workItem from="1745150677129" duration="6000" />
+      <workItem from="1745151172160" duration="88000" />
+      <workItem from="1745151274270" duration="22000" />
+      <workItem from="1745151307659" duration="482000" />
+      <workItem from="1745151803767" duration="194000" />
+      <workItem from="1745152011488" duration="179000" />
+      <workItem from="1745152202159" duration="25000" />
+      <workItem from="1745152237682" duration="444000" />
+      <workItem from="1745152779778" duration="38000" />
+      <workItem from="1745152826438" duration="132000" />
+      <workItem from="1745152968331" duration="107000" />
+      <workItem from="1745153085429" duration="203000" />
+      <workItem from="1745153422571" duration="157000" />
+      <workItem from="1745153604878" duration="67000" />
+      <workItem from="1745153680852" duration="729000" />
+      <workItem from="1745154428601" duration="741000" />
+      <workItem from="1745162420878" duration="254000" />
+      <workItem from="1745162712215" duration="148000" />
+      <workItem from="1745162899814" duration="6460000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -204,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744904322636</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="25.4.17&#10;把SMO的定子电压输入改为设定的ID IQ变换得到，但是在低速频段效果一般。然而使用adc检测的貌似有点问题，还是有待考究，据说在低速度频段表现比给定的好">
+      <option name="closed" value="true" />
+      <created>1744920099525</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744920099525</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +328,8 @@
     </ignored-roots>
     <MESSAGE value="25 4-17修改滤波" />
     <MESSAGE value="25.4.17&#10;增加了SMO提取拓展反电动势的代码部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="25.4.17&#10;增加了SMO提取拓展反电动势的代码部分" />
+    <MESSAGE value="25.4.17&#10;把SMO的定子电压输入改为设定的ID IQ变换得到，但是在低速频段效果一般。然而使用adc检测的貌似有点问题，还是有待考究，据说在低速度频段表现比给定的好" />
+    <option name="LAST_COMMIT_MESSAGE" value="25.4.17&#10;把SMO的定子电压输入改为设定的ID IQ变换得到，但是在低速频段效果一般。然而使用adc检测的貌似有点问题，还是有待考究，据说在低速度频段表现比给定的好" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

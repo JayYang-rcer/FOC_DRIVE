@@ -52,6 +52,9 @@ typedef struct
     float ia_offset;    //A相电流偏移
     float ib_offset;    //B相电流偏移
     float ic_offset;    //C相电流偏移
+    float va_offset;    //A相电压偏移
+    float vb_offset;    //B相电压偏移
+    float vc_offset;    //C相电压偏移
     float vbus;         //母线电压
 
     float temp;         //温度

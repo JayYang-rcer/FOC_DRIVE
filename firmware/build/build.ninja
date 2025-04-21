@@ -56,8 +56,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_iic.c.obj: C_COMPILER__DRIVE_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\BSP\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_tim.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/BSP/Src/drive_tim.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -66,8 +64,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_tim.c.obj: C_COMPILER__DRIVE_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\BSP\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_uart.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/BSP/Src/drive_uart.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -76,8 +72,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_uart.c.obj: C_COMPILER__DRIVE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\BSP\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/adc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -86,8 +80,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj: C_COMPILER__DRIVE_CMAKE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/fdcan.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -96,8 +88,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj: C_COMPILER__DRIVE_CMA
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/gpio.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -106,8 +96,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj: C_COMPILER__DRIVE_CMAK
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/main.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -116,8 +104,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj: C_COMPILER__DRIVE_CMAK
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/spi.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -126,8 +112,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj: C_COMPILER__DRIVE_CMAKE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_hal_msp.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -136,8 +120,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_hal_msp.c.obj: C_COMPILE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -146,8 +128,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj: C_COMPILER__DR
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/syscalls.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/syscalls.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -156,8 +136,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/syscalls.c.obj: C_COMPILER__DRIVE_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/sysmem.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/sysmem.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -166,8 +144,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/sysmem.c.obj: C_COMPILER__DRIVE_CM
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/system_stm32g4xx.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -176,8 +152,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj: C_COMPILER
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/tim.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -186,8 +160,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj: C_COMPILER__DRIVE_CMAKE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/usart.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Src/usart.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -196,8 +168,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/usart.c.obj: C_COMPILER__DRIVE_CMA
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Startup/startup_stm32g474rbtx.s.obj: ASM_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -206,8 +176,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Startup/startup_stm32g474rbtx.s.obj: A
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Core\Startup
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -216,8 +184,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -226,8 +192,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -236,8 +200,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -246,8 +208,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -256,8 +216,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -266,8 +224,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -276,8 +232,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -286,8 +240,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -296,8 +248,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -306,8 +256,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -316,8 +264,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -326,8 +272,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -336,8 +280,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -346,8 +288,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -356,8 +296,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -366,8 +304,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -376,8 +312,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -386,8 +320,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -396,8 +328,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -406,8 +336,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -416,8 +344,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -426,8 +352,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -436,8 +360,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -446,8 +368,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -456,8 +376,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -466,8 +384,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Drivers\STM32G4xx_HAL_Driver\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/core/Src/foc_cal.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -476,8 +392,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cal.c.obj: C_COMPILER__DRI
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/core/Src/foc_cfg.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -486,8 +400,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj: C_COMPILER__DRI
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -496,8 +408,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj: C_COMPILER__DR
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/encoder/Src/as5047p.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -506,8 +416,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj: C_COMPILER__
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\encoder\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/encoder/Src/calibration.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -516,8 +424,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj: C_COMPIL
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\encoder\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/encoder/Src/encoder_proc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -526,8 +432,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj: C_COMPI
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\encoder\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/utils/Src/moc_spd.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -536,8 +440,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/moc_spd.c.obj: C_COMPILER__DR
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\utils\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/utils/Src/pid.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -546,8 +448,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj: C_COMPILER__DRIVE_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\utils\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/utils/Src/util.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -556,8 +456,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj: C_COMPILER__DRIVE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\utils\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/FOC/utils/Src/vofa.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -566,8 +464,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj: C_COMPILER__DRIVE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\FOC\utils\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -576,8 +472,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Cla
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -586,8 +480,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Cor
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -596,8 +488,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Cor
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -606,8 +496,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Cor
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/USB_Device/App/usb_device.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -616,8 +504,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj: C_COMPILER
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\USB_Device\App
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/USB_Device/App/usbd_cdc_if.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -626,8 +512,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj: C_COMPILE
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\USB_Device\App
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/USB_Device/App/usbd_desc.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -636,8 +520,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj: C_COMPILER_
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\USB_Device\App
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj: C_COMPILER__DRIVE_CMAKE.2eelf_unscanned_RelWithDebInfo F$:/FOC_DRIVE/firmware/USB_Device/Target/usbd_conf.c || cmake_object_order_depends_target_DRIVE_CMAKE.elf
   DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32G474xx -DUSE_HAL_DRIVER
@@ -646,8 +528,6 @@ build CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj: C_COMPIL
   INCLUDES = -IF:/FOC_DRIVE/firmware/Core/Inc -IF:/FOC_DRIVE/firmware/USB_Device/App -IF:/FOC_DRIVE/firmware/USB_Device/Target -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc -IF:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Core/Inc -IF:/FOC_DRIVE/firmware/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Device/ST/STM32G4xx/Include -IF:/FOC_DRIVE/firmware/Drivers/CMSIS/Include -IF:/FOC_DRIVE/firmware/FOC/encoder/Inc -IF:/FOC_DRIVE/firmware/FOC/utils/Inc -IF:/FOC_DRIVE/firmware/FOC/core/Inc -IF:/FOC_DRIVE/firmware/BSP/Inc
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   OBJECT_FILE_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir\USB_Device\Target
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
 
 
 # =============================================================================
@@ -663,9 +543,8 @@ build DRIVE_CMAKE.elf: C_EXECUTABLE_LINKER__DRIVE_CMAKE.2eelf_RelWithDebInfo CMa
   OBJECT_DIR = CMakeFiles\DRIVE_CMAKE.elf.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D F:\FOC_DRIVE\firmware\build && arm-none-eabi-objcopy -Oihex F:/FOC_DRIVE/firmware/build/DRIVE_CMAKE.elf F:/FOC_DRIVE/firmware/build/DRIVE_CMAKE.hex && arm-none-eabi-objcopy -Obinary F:/FOC_DRIVE/firmware/build/DRIVE_CMAKE.elf F:/FOC_DRIVE/firmware/build/DRIVE_CMAKE.bin"
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\DRIVE_CMAKE.elf.dir\
   TARGET_FILE = DRIVE_CMAKE.elf
-  TARGET_PDB = DRIVE_CMAKE.elf.pdb
+  TARGET_PDB = DRIVE_CMAKE.elf.dbg
 
 
 #############################################
@@ -710,14 +589,14 @@ build all: phony DRIVE_CMAKE.elf
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.30.5/CMakeASMCompiler.cmake CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake F$:/FOC_DRIVE/firmware/CMakeLists.txt G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompilerABI.c G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestASMCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-ASM.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Generic.cmake
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.30.5/CMakeASMCompiler.cmake CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake F$:/FOC_DRIVE/firmware/CMakeLists.txt G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-ASM.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Generic.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles/3.30.5/CMakeASMCompiler.cmake CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake F$:/FOC_DRIVE/firmware/CMakeLists.txt G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompilerABI.c G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineASMCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestASMCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-ASM.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Generic.cmake: phony
+build CMakeCache.txt CMakeFiles/3.30.5/CMakeASMCompiler.cmake CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake F$:/FOC_DRIVE/firmware/CMakeLists.txt G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeASMInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-ASM.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake G$:/SoftWare/CLion$ 2024.3.3/CLion$ 2024.3.5/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Generic.cmake: phony
 
 
 #############################################

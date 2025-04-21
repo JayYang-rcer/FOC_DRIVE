@@ -25,4 +25,7 @@ void FocHandle(void);
 extern volatile int spd_set;
 extern smo_param_t smo;
 extern volatile float pll_angle;
+extern float ualpha;
+extern float ubeta;
+
 #endif

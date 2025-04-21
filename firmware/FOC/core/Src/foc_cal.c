@@ -42,12 +42,13 @@ _RAM_FUNC void InvClarke(foc_param_t *foc)
 * @retval:     void
 * @details:    SVPWM扇区判断
 */
-// _RAM_FUNC int SvpwmSector(foc_para_t *foc)
+uint8_t N,A,B,C;
 _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 {
     float TS = 1.f;
     float ta = 0.0f, tb = 0.0f, tc = 0.0f;
-    float k = (TS*SQRT3)/foc->vbus;
+    float k = (TS*SQRT3)/(foc->vbus);
+
     float tx,ty;
     float temp=0;
 
@@ -56,78 +57,47 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
     float U3 = -(SQRT3 *foc->v_alpha + foc->v_beta) * 0.5f;
     // InvClarke(foc);
 
-    int a = (U1 > 0.0f) ? 1 : 0;
-    int b = (U2 > 0.0f) ? 1 : 0;
-    int c = (U3 > 0.0f) ? 1 : 0;
-    int sextant = (int)((c << 2) + (b << 1) + a);
+    if(U1>0) A=1; else A=0;
+    if(U2>0) B=1; else B=0;
+    if(U3>0) C=1; else C=0;
+
+    N = A + B*2 + C*4;
     int sector=0;
 
-    switch (sextant)
+    switch (N)
     {
-        case 1:
-        {
-            sector = 2;
-            tx = -U2 * k; 
-            ty = -U3 * k;
-            break;
-        }
-        
-        case 2:
-        {
-            sector = 6;
-            tx = -U3*k;
-            ty = -U1*k;
-            break;
-        }
-        
-        case 3:
-        {
-            sector = 1;
-            tx = U2*k;
-            ty = U1*k;
-            break;
-        }        
-
-        case 4:
-        {
-            sector = 4;
-            tx = -U1*k;
-            ty = -U2*k;
-            break;
-        }        
-
-        case 5:
-        {
-            sector = 3;
-            tx = U1*k;
-            ty = U3*k;
-            break;
-        }       
-
-        case 6:
-        {
-            sector = 5;
-            tx = U3*k;
-            ty = U2*k;
-            break;
-        }
-
-        default:
-            break;
-    }   
-
-    //过调制处理,会导致电机无法达到最大理论转速,后续如果需要进一步优化性能，考虑在互补PWM的死去上做处理，增大有效的电平时间
-    if(tx + ty > TS)
-    {
-        temp = tx+ty;
-        tx=tx/temp*TS;
-        ty=ty/temp*TS;
+        case 1: sector=2; break;
+        case 2: sector=6; break;
+        case 3: sector=1; break;
+        case 4: sector=4; break;
+        case 5: sector=3; break;
+        case 6: sector=5; break;
+        default: break;
     }
+
+    switch (sector)
+    {
+        case 1: tx=U2*k; ty=U1*k; break;
+        case 2: tx=-U2*k; ty=-U3*k; break;
+        case 3: tx=U1*k; ty=U3*k; break;
+        case 4: tx=-U1*k; ty=-U2*k; break;
+        case 5: tx=U3*k; ty=U2*k; break;
+        case 6: tx=-U3*k; ty=-U1*k; break;
+
+    }
+
+    //过调制处理
+//    if(tx + ty > TS)
+//    {
+//        temp = tx+ty;
+//        tx=tx/temp*TS;
+//        ty=ty/temp*TS;
+//    }
 
     ta = (TS + tx + ty) * 0.25f;
     tb = ta - tx * 0.5f;
     tc = tb - ty * 0.5f;
-    
+
     switch (sector)
     {
         case 1: foc->dtc_a = ta; foc->dtc_b = tb; foc->dtc_c = tc; break;
@@ -136,10 +106,9 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
         case 4: foc->dtc_a = tc; foc->dtc_b = tb; foc->dtc_c = ta; break;
         case 5: foc->dtc_a = tb; foc->dtc_b = tc; foc->dtc_c = ta; break;
         case 6: foc->dtc_a = ta; foc->dtc_b = tc; foc->dtc_c = tb; break;
-        default:
-            break;
+        default: break;
     }
-	
+
 	// if any of the results becomes NaN, result_valid will evaluate to false
     int result_valid = foc->dtc_a >= 0.0f && foc->dtc_a <= 1.0f &&
                        foc->dtc_b >= 0.0f && foc->dtc_b <= 1.0f &&

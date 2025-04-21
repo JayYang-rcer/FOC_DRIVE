@@ -84,17 +84,24 @@ void MotorParaInit(void)
 void GetCurrentOffset(foc_adc_t *mc_adc)
 {
     float sum_ia=0,sum_ib=0, sum_ic=0,sum_vbus=0;
+    float sum_va=0,sum_vb=0, sum_vc=0;
     for(int i=0; i<1000; i++)
     {
         HAL_Delay(1);
 		sum_ia += (float)(ADC1->JDR3);
         sum_ib += (float)(ADC1->JDR2);
         sum_ic += (float)(ADC1->JDR1);
+        sum_va += (float)(ADC2->JDR3);
+        sum_vb += (float)(ADC2->JDR2);
+        sum_vc += (float)(ADC2->JDR1);
     }
 
 	mc_adc->ia_offset = sum_ia / 1000.0f;
     mc_adc->ib_offset = sum_ib / 1000.0f;
     mc_adc->ic_offset = sum_ic / 1000.0f;
+    mc_adc->va_offset = sum_va / 1000.0f;
+    mc_adc->vb_offset = sum_vb / 1000.0f;
+    mc_adc->vc_offset = sum_vc / 1000.0f;
 }
 
 void FocPwmStart(void)
