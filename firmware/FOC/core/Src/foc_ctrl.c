@@ -64,11 +64,14 @@ _RAM_FUNC float AnglePll(smo_param_t* param, pll_t* pll)
     pll->i_term += (pll->ref - pll->fbk)*pll->ki/pll->loop_hz;
     pll->out_value = pll->p_term + pll->i_term;
 
-    omega_out = pll->out_value*0.1f + omega_out*0.9f;
+    omega_out = pll->out_value*0.1f + omega_out*(1.f-0.1f);
+    omega_out = pll->out_value;
+
     pll->angle_out += pll->out_value/pll->loop_hz;
     WRAP_0_2PI(pll->angle_out)
 
-    float out = pll->angle_out + 1.4f;
+    float out = pll->angle_out + 0.7f;
+//    float out = pll->angle_out + sqrtf(param->Ealpha*param->Ealpha + param->Ebeta*param->Ebeta)/(motor_cfg.flux/1000);
     return WRAP_0_2PI(out);
 }
 
@@ -82,16 +85,31 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo)
     Clarke(foc);
 
     //计算预测电流
-//    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
-//    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
-    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (ualpha - smo->valpah);
-    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (ubeta - smo->vbeta);
+    if(motor_cfg.rotor_rev <1500)
+    {
+        smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
+        smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
+    }
+    else
+    {
+        if(motor_cfg.rotor_vel <500)
+        {
+            smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
+            smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
+        }
+        else
+        {
+            //貌似使用端电压采样在高速情况下比给定电压采样更好
+            smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (ualpha - smo->valpah);
+            smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (ubeta - smo->vbeta);
+        }
+    }
 
     //计算电动势观测值
-//    smo->valpah = smo->ksw*SIGN(smo->ialpha_view - foc->i_alpha);
-//    smo->vbeta = smo->ksw*SIGN(smo->ibeta_view - foc->i_beta);
-    smo->valpah = smo->ksw*Sat(smo->ialpha_view - foc->i_alpha, 0.5);
-    smo->vbeta = smo->ksw*Sat(smo->ibeta_view - foc->i_beta,0.5);
+    smo->valpah = smo->ksw*SIGN(smo->ialpha_view - foc->i_alpha);
+    smo->vbeta = smo->ksw*SIGN(smo->ibeta_view - foc->i_beta);
+//    smo->valpah = smo->ksw*Sat(smo->ialpha_view - foc->i_alpha, 0.5);
+//    smo->vbeta = smo->ksw*Sat(smo->ibeta_view - foc->i_beta,0.5);
 
     //计算滤波后的拓展反电动势
     smo->valpah = alpha*smo->valpah + (1-alpha)*valpha_last;
@@ -146,7 +164,7 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
 
 volatile float id=0,iq=2,uq_set=0.5f;
 volatile int spd_cnt = 0,pos_cnt=0;
-volatile int spd_set = 1000,pos_set = 300;
+volatile int spd_set = 500,pos_set = 300;
 volatile float speed_hz = 10000;
 volatile float vbus;
 volatile float pll_lpf_hz = 0.01f,pll_angle;
@@ -159,6 +177,7 @@ __RAM_FUNC void Encoder_Idle(void)
     static float flag=0;
     if(flag==0)
     {
+        motor_cfg.rotor_rev = 500;
 #if USE_VOLT_POS
         pos_pid.lpf_d = 0.1f;
 			pos_pid.kp = 0.035f;
@@ -200,8 +219,8 @@ __RAM_FUNC void Encoder_Idle(void)
 
 #if USE_SPD_PLL
         PosCalculate(&enc_para);
-//		motor_cfg.rotor_vel = PllSpeedCtrl(&pll_spd,enc_para.pos_s);
-		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;
+		motor_cfg.rotor_vel = PllSpeedCtrl(&pll_spd,enc_para.pos_s);
+//		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;
 		motor_cfg.rotor_vel = (1-pll_lpf_hz)*rotor_vel_last+pll_lpf_hz*motor_cfg.rotor_vel;
 		rotor_vel_last = motor_cfg.rotor_vel;
         MoveAverageFilter(&speed_maf, &motor_cfg.rotor_vel);
@@ -212,7 +231,7 @@ __RAM_FUNC void Encoder_Idle(void)
 #else
         if(++spd_cnt==10)
         {
-            IncreatParallePidCtrl(&speed_pid, spd_set, motor_cfg.rotor_vel);
+            IncreatParallePidCtrl(&speed_pid, motor_cfg.rotor_rev, motor_cfg.rotor_vel);
             spd_cnt=0;
         }
 #endif
@@ -240,7 +259,6 @@ _RAM_FUNC void FocHandle(void)
 	foc.i_b = ((float)mc_adc.ib - mc_adc.ib_offset)*IRATIO;
 	foc.i_c = ((float)mc_adc.ic - mc_adc.ic_offset)*IRATIO;
 	vbus = 	((float)mc_adc.vbus)* VBUS_RATIO;
-
 //	foc.vbus = ((float)mc_adc.vbus)*VBUS_RATIO;
 
 	foc.vbus = 3.7f*3.f;
@@ -262,9 +280,9 @@ _RAM_FUNC void FocHandle(void)
         else
         {
 //            FocCurrent(id,iq,pll_angle);
-            FocCurrent(id,speed_pid.out_value,pll_angle);
+//            FocCurrent(id,speed_pid.out_value,pll_angle);
         }
-//        FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
+        FocCurrent(id,speed_pid.out_value,enc_para.pos_e);
 
 //		 FocCurrent(1,iq,enc_para.pos_e);
 //        foc.theta+=0.003f;

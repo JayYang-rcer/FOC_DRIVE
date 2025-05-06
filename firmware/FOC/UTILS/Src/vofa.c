@@ -23,13 +23,13 @@ void VofaStart(void)
 	 VofaSendData(2,foc.v_beta);
     VofaSendData(2,ualpha);
     VofaSendData(2,ubeta);
-    VofaSendData(2,smo.Ealpha);
-    VofaSendData(2,smo.Ebeta);
+//    VofaSendData(2,smo.Ealpha);
+//    VofaSendData(2,smo.Ebeta);
 //	 VofaSendData(1,foc.v_a);
 //	 VofaSendData(2,foc.v_b);
 //    VofaSendData(2, foc.v_c);
-//	VofaSendData(3,enc_para.pos_e);
-//	VofaSendData(3,pll_angle);
+	VofaSendData(3,enc_para.pos_e);
+	VofaSendData(3,pll_angle);
 
 //	VofaSendData(1,PWM_ARR());
 	VofaSendframetail();
