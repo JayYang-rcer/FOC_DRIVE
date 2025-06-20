@@ -45,7 +45,7 @@ void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.GainCompensation = 0;
@@ -75,7 +75,7 @@ void MX_ADC1_Init(void)
   */
   sConfigInjected.InjectedChannel = ADC_CHANNEL_1;
   sConfigInjected.InjectedRank = ADC_INJECTED_RANK_1;
-  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_47CYCLES_5;
+  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_247CYCLES_5;
   sConfigInjected.InjectedSingleDiff = ADC_SINGLE_ENDED;
   sConfigInjected.InjectedOffsetNumber = ADC_OFFSET_NONE;
   sConfigInjected.InjectedOffset = 0;
@@ -83,7 +83,7 @@ void MX_ADC1_Init(void)
   sConfigInjected.InjectedDiscontinuousConvMode = DISABLE;
   sConfigInjected.AutoInjectedConv = DISABLE;
   sConfigInjected.QueueInjectedContext = DISABLE;
-  sConfigInjected.ExternalTrigInjecConv = ADC_EXTERNALTRIGINJEC_T1_CC4;
+  sConfigInjected.ExternalTrigInjecConv = ADC_EXTERNALTRIGINJEC_T8_CC4;
   sConfigInjected.ExternalTrigInjecConvEdge = ADC_EXTERNALTRIGINJECCONV_EDGE_FALLING;
   sConfigInjected.InjecOversamplingMode = DISABLE;
   if (HAL_ADCEx_InjectedConfigChannel(&hadc1, &sConfigInjected) != HAL_OK)
@@ -113,6 +113,7 @@ void MX_ADC1_Init(void)
   */
   sConfigInjected.InjectedChannel = ADC_CHANNEL_4;
   sConfigInjected.InjectedRank = ADC_INJECTED_RANK_4;
+  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_47CYCLES_5;
   if (HAL_ADCEx_InjectedConfigChannel(&hadc1, &sConfigInjected) != HAL_OK)
   {
     Error_Handler();
@@ -139,7 +140,7 @@ void MX_ADC2_Init(void)
   /** Common config
   */
   hadc2.Instance = ADC2;
-  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
+  hadc2.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc2.Init.Resolution = ADC_RESOLUTION_12B;
   hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc2.Init.GainCompensation = 0;
@@ -169,7 +170,7 @@ void MX_ADC2_Init(void)
   sConfigInjected.InjectedDiscontinuousConvMode = DISABLE;
   sConfigInjected.AutoInjectedConv = DISABLE;
   sConfigInjected.QueueInjectedContext = DISABLE;
-  sConfigInjected.ExternalTrigInjecConv = ADC_EXTERNALTRIGINJEC_T1_CC4;
+  sConfigInjected.ExternalTrigInjecConv = ADC_EXTERNALTRIGINJEC_T8_CC4;
   sConfigInjected.ExternalTrigInjecConvEdge = ADC_EXTERNALTRIGINJECCONV_EDGE_FALLING;
   sConfigInjected.InjecOversamplingMode = DISABLE;
   if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
@@ -250,6 +251,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    /* ADC1 interrupt Init */
+    HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
   /* USER CODE BEGIN ADC1_MspInit 1 */
 
   /* USER CODE END ADC1_MspInit 1 */
@@ -287,6 +291,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+    /* ADC2 interrupt Init */
+    HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
   /* USER CODE BEGIN ADC2_MspInit 1 */
 
   /* USER CODE END ADC2_MspInit 1 */
@@ -315,6 +322,15 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     */
     HAL_GPIO_DeInit(GPIOA, IC_Pin|IB_Pin|IA_Pin|MOSTEMP_Pin);
 
+    /* ADC1 interrupt Deinit */
+  /* USER CODE BEGIN ADC1:ADC1_2_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
+  /* USER CODE END ADC1:ADC1_2_IRQn disable */
+
   /* USER CODE BEGIN ADC1_MspDeInit 1 */
 
   /* USER CODE END ADC1_MspDeInit 1 */
@@ -337,6 +353,15 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PC3     ------> ADC2_IN9
     */
     HAL_GPIO_DeInit(GPIOC, VC_Pin|VB_Pin|VA_Pin|VBAT_Pin);
+
+    /* ADC2 interrupt Deinit */
+  /* USER CODE BEGIN ADC2:ADC1_2_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
+  /* USER CODE END ADC2:ADC1_2_IRQn disable */
 
   /* USER CODE BEGIN ADC2_MspDeInit 1 */
 

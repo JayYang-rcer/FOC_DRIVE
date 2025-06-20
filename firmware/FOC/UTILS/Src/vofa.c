@@ -19,17 +19,25 @@ volatile uint16_t cnt = 0;
 **/
 void VofaStart(void)
 {
-	 VofaSendData(1,foc.v_alpha);
-	 VofaSendData(2,foc.v_beta);
-    VofaSendData(2,ualpha);
-    VofaSendData(2,ubeta);
+//	 VofaSendData(1,foc_param.v_alpha);
+//	 VofaSendData(2,foc_param.v_beta);
+//    VofaSendData(2,ualpha);
+//    VofaSendData(2,ubeta);
+
+    VofaSendData(1, foc_param.i_q);
+    VofaSendData(2, foc_param.i_d);
+
+    VofaSendData(2, foc_param.i_a);
+    VofaSendData(2, foc_param.i_b);
+    VofaSendData(2, foc_param.i_c);
+
 //    VofaSendData(2,smo.Ealpha);
 //    VofaSendData(2,smo.Ebeta);
-//	 VofaSendData(1,foc.v_a);
-//	 VofaSendData(2,foc.v_b);
-//    VofaSendData(2, foc.v_c);
-	VofaSendData(3,enc_para.pos_e);
-	VofaSendData(3,pll_angle);
+//    VofaSendData(1,foc_param.dtc_a);
+//    VofaSendData(2,foc_param.dtc_b);
+//    VofaSendData(2,foc_param.dtc_c);
+//	VofaSendData(3,enc_para.pos_e);
+//	VofaSendData(3,pll_angle);
 
 //	VofaSendData(1,PWM_ARR());
 	VofaSendframetail();

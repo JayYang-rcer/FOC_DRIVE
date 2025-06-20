@@ -2,17 +2,21 @@
 #define __FOC_CFG_H
 
 #include "pid.h"
+#include "stdbool.h"
 #include "moc_spd.h"
+
+#define SET_DTC_A(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, value)
+#define SET_DTC_B(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
+#define SET_DTC_C(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, value)
 
 #define R_SENSE 0.003f  //采样电阻阻值
 #define IOP 20.f //电流采样电阻放大倍数
-#define IRATIO (3.3f/4096.f) / R_SENSE / IOP //电流采样电10.1压转换为电流值的系数
+#define IRATIO (3.3f/4096.f) / R_SENSE / IOP //电流采样,电压转换为电流值的系数
 #define VBUS_RATIO (6.1f * 3.3f)/4096.0f //母线电压采样电压转换为电压值的系数
 //#define VBUS_RATIO 0.0084723f //母线电压采样电压转换为电压值的系数
 
 // Speed PID parameters
 #define SPEED_PID_TIME_HZ 5000
-#define CURRENT_LOOP_RATE 20000
 
 typedef struct
 {
@@ -49,6 +53,7 @@ typedef struct
 	float va;
 	float vb;
 	float vc;
+
     float ia_offset;    //A相电流偏移
     float ib_offset;    //B相电流偏移
     float ic_offset;    //C相电流偏移
@@ -63,9 +68,9 @@ typedef struct
 typedef struct foc_param_t
 {
     float vbus;
-	float ibus;
 	float inv_vbus; // 母线电压倒数
 
+    float ibus;
 	float i_abs;
 
 	float theta;   // 角度
@@ -100,7 +105,7 @@ typedef struct foc_param_t
 }foc_param_t;
 
 extern foc_adc_t mc_adc;
-extern foc_param_t foc;
+extern foc_param_t foc_param;
 extern motor_cfg_t motor_cfg;
 extern motor_ctrl_t motor_ctrl;
 extern pid_para_t id_pid, iq_pid;
@@ -109,9 +114,9 @@ extern pid_para_t pos_pid;
 extern pll_t pll_spd;
 
 void GetCurrentOffset(foc_adc_t *mc_adc);
-void FocPwmStart(void);
+void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
 void FocPwmStop(void);
 void FocPwmRun(foc_param_t *foc);
 void MotorParaInit(void);
-
+void MotorCtrlReset(motor_ctrl_t* motor);
 #endif

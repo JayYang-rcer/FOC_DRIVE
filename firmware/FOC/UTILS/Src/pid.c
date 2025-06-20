@@ -60,15 +60,16 @@ float ParallelPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 	
 	pid->p_term = pid->kp * pid->error;
 	pid->i_term += pid->ki * pid->error;
-	
-	if (pid->i_term > pid->i_term_max) pid->i_term = pid->i_term_max;
-	else if (pid->i_term < pid->i_term_min) pid->i_term = pid->i_term_min;
+    if(pid->error==0||pid->target_value==0)
+    {                                   /*积分退饱和处理*/
+        pid->i_term *= 0.99f;         /*清除累计误差*/
+    }
 	
 	if (pid->i_term > pid->i_term_max) pid->i_term = pid->i_term_max;
 	else if (pid->i_term < pid->i_term_min) pid->i_term = pid->i_term_min;
 	
 	pid->d_term = pid->d_error*pid->kd;
-	
+
 	pid->out_value = pid->p_term + pid->i_term + pid->d_term;
 
 	if (pid->out_value > pid->out_max) pid->out_value = pid->out_max;

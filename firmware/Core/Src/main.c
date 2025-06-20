@@ -103,21 +103,22 @@ int main(void)
   MX_TIM8_Init();
   MX_USART1_UART_Init();
   MX_USB_Device_Init();
-  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
     HAL_ADCEx_Calibration_Start(&hadc1,ADC_SINGLE_ENDED);
     HAL_ADCEx_Calibration_Start(&hadc2,ADC_SINGLE_ENDED);
     HAL_ADCEx_InjectedStart(&hadc1);
     HAL_ADCEx_InjectedStart(&hadc2);
-
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4, 3900);
+    HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 4250-10);
+    HAL_ADCEx_InjectedStart_IT(&hadc1);
+    __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
     GetCurrentOffset(&mc_adc);
+
     EncoderInit();
     MotorParaInit();
-    FocPwmStart();
-    HAL_TIM_Base_Start_IT(&htim1);
+    FocPwmStart(true,true,true,true,true,true);
     HAL_TIM_Base_Start_IT(&htim2);
+    HAL_TIM_Base_Start_IT(&htim8);
     hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
     HAL_SPI_Init(&hspi1);
   /* USER CODE END 2 */
@@ -155,7 +156,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV2;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV3;
   RCC_OscInitStruct.PLL.PLLN = 85;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV6;
@@ -178,6 +179,10 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
+  /** Enables the Clock Security System
+  */
+  HAL_RCC_EnableCSS();
 }
 
 /* USER CODE BEGIN 4 */

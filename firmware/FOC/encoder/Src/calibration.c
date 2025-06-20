@@ -88,9 +88,9 @@ void calibrate_mt_encoder(float vd_set, float pos)
 				dir = 1;
 			else 
 				dir = -1;
-			
-			foc.v_d = 2.5f;
-			foc.v_q = 0;
+
+            foc_param.v_d = 2.5f;
+            foc_param.v_q = 0;
 			cali_flag = 3;
 			break;
 		}
