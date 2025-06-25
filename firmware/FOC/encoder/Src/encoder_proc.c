@@ -4,7 +4,7 @@
 
 #include "encoder_proc.h"
 #include "util.h"
-#include "moc_spd.h"
+#include "filter.h"
 
 
 void EncoderInit(void)

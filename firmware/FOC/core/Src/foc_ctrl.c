@@ -6,7 +6,7 @@
 #include "adc.h"
 #include "encoder_proc.h"
 #include "calibration.h"
-#include "moc_spd.h"
+#include "filter.h"
 #include "foc_identify.h"
 
 #define SPEED_WINDOW_SIZE 16  // 窗口大小
@@ -15,7 +15,6 @@
 #define USE_SPD_PLL 1     // 使用PLL速度估算
 #define USE_SPD_DET 0     // 使用微分速度检测
 #define USE_POS_PID 0     // 使用位置环
-#define USE_VOLT_POS 0    // 使用电压位置环
 #define USE_ENCODER 1
 
 float speed_buffer[SPEED_WINDOW_SIZE] = {0};  // 存储窗口内的数据
@@ -49,23 +48,19 @@ float IqPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 
     pid->p_term = pid->kp * pid->error;
     pid->i_term += pid->ki * pid->error;
-
-    if (pid->i_term > pid->i_term_max) pid->i_term = pid->i_term_max;
-    else if (pid->i_term < pid->i_term_min) pid->i_term = pid->i_term_min;
+    AbsLimit(pid->i_term, pid->i_term_max);
 
     pid->d_term = pid->d_error*pid->kd;
 
     uq0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * (motor_cfg.ls / 1000 * foc_param.i_d + motor_cfg.flux) / 1000;
-    if(uq0>pid->i_term_max) uq0 = pid->i_term_max;
-    else if(uq0<pid->i_term_min) uq0 = pid->i_term_min;
+    AbsLimit(uq0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term + uq0;
-
-    if (pid->out_value > pid->out_max) pid->out_value = pid->out_max;
-    else if (pid->out_value < pid->out_min) pid->out_value = pid->out_min;
+    AbsLimit(pid->out_value, pid->out_max);
 
     return pid->out_value;
 }
+
 
 float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 {
@@ -77,23 +72,19 @@ float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 
     pid->p_term = pid->kp * pid->error;
     pid->i_term += pid->ki * pid->error;
-
-    if (pid->i_term > pid->i_term_max) pid->i_term = pid->i_term_max;
-    else if (pid->i_term < pid->i_term_min) pid->i_term = pid->i_term_min;
+    AbsLimit(pid->i_term, pid->i_term_max);
 
     pid->d_term = pid->d_error*pid->kd;
 
     ud0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * motor_cfg.ls / 1000000.f * foc_param.i_q;
-    if(ud0>pid->i_term_max) ud0 = pid->i_term_max;
-    else if(ud0<pid->i_term_min) ud0 = pid->i_term_min;
+    AbsLimit(ud0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term - ud0;
-
-    if (pid->out_value > pid->out_max) pid->out_value = pid->out_max;
-    else if (pid->out_value < pid->out_min) pid->out_value = pid->out_min;
+    AbsLimit(pid->out_value, pid->out_max);
 
     return pid->out_value;
 }
+
 
 _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
 {
@@ -115,6 +106,62 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
     foc_param.v_q = iq_pid.out_value;
 
 	InvPark(&foc_param);
+    SvpwmSector(&foc_param);
+}
+
+
+_RAM_FUNC void HfiVolt(float vd, float vq, float pos)
+{
+    foc_param.theta = pos;
+
+    SinCosVal(&foc_param);
+    Clarke(&foc_param);
+
+//    LowPassFilter(&foc_param.i_d, &lpf_id);
+//    LowPassFilter(&foc_param.i_q, &lpf_iq);
+
+    static int cnt = 0;
+    static float ud_inject;
+    if(++cnt == 4)
+    {
+        ud_inject = HfiInjectSign(hfi_param.inject_U);
+        hfi_param.sign = SIGN(ud_inject);
+        cnt=0;
+    }
+    foc_param.v_d = vd + ud_inject;
+    foc_param.v_q = vq;
+
+    InvPark(&foc_param);
+    SvpwmSector(&foc_param);
+}
+
+
+_RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
+{
+    foc_param.theta = pos;
+    SinCosVal(&foc_param);
+
+    Clarke(&foc_param);
+    Park(&foc_param);
+    IdqToIdqF(&foc_param, &hfi_param);
+
+    static int cnt = 0;
+    static float ud_inject;
+    if(++cnt == 4)
+    {
+        ud_inject = HfiInjectSign(hfi_param.inject_U);
+        hfi_param.sign = SIGN(ud_inject);
+        cnt=0;
+    }
+//    ParallelPidCtrl(&id_pid, id_set, hfi_param.idq_f.id);
+    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
+    foc_param.v_d = id_pid.out_value + ud_inject;
+
+//    ParallelPidCtrl(&iq_pid, iq_set, hfi_param.idq_f.iq);
+    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
+    foc_param.v_q = iq_pid.out_value;
+
+    InvPark(&foc_param);
     SvpwmSector(&foc_param);
 }
 
@@ -164,8 +211,12 @@ void EncoderDataCalc(enc_para_t* enc, motor_cfg_t* motor)
 #endif
 
 #if USE_SPD_PLL
-    motor->rotor_vel = PllSpeedCtrl(&pll_spd,enc->pos_s);
-//		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;
+
+//    if(motor_ctrl.ctrl_mode == FOC_SENSORLESS_CTRL)
+//		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;     //使用滑膜速度输出
+//    else
+        motor->rotor_vel = PllSpeedCtrl(&pll_spd,enc->pos_s);       //编码器速度输出
+
     motor->rotor_vel = (1-pll_lpf_hz)*rotor_vel_last+pll_lpf_hz*motor->rotor_vel;
     rotor_vel_last = motor->rotor_vel;
     MoveAverageFilter(&speed_maf, &motor->rotor_vel);
@@ -184,39 +235,119 @@ __RAM_FUNC void Encoder_Idle(void)
     {
         motor_ctrl.speed_set = 500;
         motor_ctrl.pos_set = 300;
-#if USE_VOLT_POS
-        pos_pid.lpf_d = 0.1f;
-			pos_pid.kp = 0.035f;
-			pos_pid.kd = 0.0002f;
-			pos_pid.out_max = 0.8f;
-			pos_pid.out_min = -0.8f;
-#else
-        pos_pid.kp = 3.5f;
-        pos_pid.kd = 0.005f;
-        pos_pid.out_max = 300.f;
-        pos_pid.out_min = -300.f;
-#endif
-        SmoParamInit(&smo);
+        SmoParamInit(&smo_param);
+//        pll_hfi.angle_out -= M_2PI;
         flag=1;
     }
 
     EncoderDataCalc(&enc_para, &motor_cfg);
-    pll_angle = SmoViewer(&foc_param, &smo);
-    if(++pos_cnt==10)
-    {
-        ParallelPidCtrl(&pos_pid, motor_ctrl.pos_set, enc_para.pos_m/M_2PI*360);
-        pos_cnt = 0;
-    }
+//    pll_angle = SmoViewer(&foc_param, &smo_param);
+}
 
-#if USE_POS_PID
-        IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, motor_cfg.rotor_vel);
-#else
-        if(++spd_cnt==10)
+
+void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
+{
+    switch (ctrl->ctrl_mode)
+    {
+        case FOC_VF_CTRL:
         {
-            IncreatParallePidCtrl(&speed_pid, motor_ctrl.speed_set, motor_cfg.rotor_vel);
-            spd_cnt=0;
+            foc->theta += 0.007f;
+            FocVolt(ctrl->vd_set, ctrl->vq_set, foc->theta);
+            break;
         }
-#endif
+
+        case FOC_VOLT_CTRL:
+        {
+            FocVolt(ctrl->vd_set, ctrl->vq_set, enc_para.pos_e);
+            break;
+        }
+
+        case FOC_CURRENT_CTRL:
+        {
+            FocCurrent(ctrl->id_set, ctrl->iq_set, enc_para.pos_e);
+            break;
+        }
+
+        case FOC_SPEED_CTRL:
+        {
+            if (++ctrl->spd_cnt == 20) // 20khz/20 = 1khz
+            {
+                IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, motor_cfg.rotor_vel);
+                ctrl->spd_cnt = 0;
+            }
+            FocCurrent(ctrl->id_set, speed_pid.out_value, enc_para.pos_e);
+            break;
+        }
+
+        case FOC_POSITION_CTRL:
+        {
+            if (++ctrl->pos_cnt == 20) // 20khz/20 = 1khz
+            {
+                ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+                IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, motor_cfg.rotor_vel);
+                ctrl->pos_cnt = 0;
+            }
+            FocCurrent(ctrl->id_set, speed_pid.out_value, enc_para.pos_e);
+            break;
+        }
+
+        case FOC_SENSORLESS_CTRL: 
+        {
+            if (++ctrl->spd_cnt == 10) // 20khz/20 = 1khz
+            {
+                IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, motor_cfg.rotor_vel);
+                ctrl->spd_cnt = 0;
+            }
+            FocCurrent(ctrl->id_set,speed_pid.out_value,pll_angle);
+            break;
+        }
+
+        case FOC_HFI_TEST:
+        {
+            HfiAngleCalc(foc, &hfi_param);
+            if(motor_ctrl.spd_cnt<5000)
+                motor_ctrl.spd_cnt++;
+            else
+            {
+                static bool hfi_init=false;
+                if(!hfi_init)
+                {
+                    hfi_init = HfiNsIdentify(&hfi_param,foc);
+                }
+                else
+                {
+                    if(motor_ctrl.spd_cnt<20000)
+                    {
+                        motor_ctrl.spd_cnt++;
+                        HfiVolt(0,0,hfi_param.theta_e);
+                    }
+                    else
+                    {
+                        static int test=0;
+
+//                        if(test <= 10000)
+//                        {
+//                            HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
+//                            test++;
+//                        }
+//                        else
+//                        {
+////                            HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
+//                            HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,hfi_param.theta_e);
+//                        }
+
+                        if(++test == 10)
+                        {
+                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, motor_cfg.rotor_vel);
+                            test=0;
+                        }
+                        HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
+                    }
+                }
+            }
+            break;
+        }
+    }
 }
 
 
@@ -225,7 +356,7 @@ _RAM_FUNC void FocHandle(void)
     VofaStart();
     CurrentUpdate(&mc_adc, &foc_param);
 //    foc_param.vbus = 3.7f * 3.f;
-    foc_param.vbus = 12.2f;
+//    foc_param.vbus = 12.2f;
 
 #if USE_POS_PID
 #if USE_VOLT_POS
@@ -235,27 +366,15 @@ _RAM_FUNC void FocHandle(void)
 #endif
 #else
     PosCalculate(&enc_para);
-    //        FocCurrent(motor_ctrl.id_set,speed_pid.out_value,enc_para.pos_e);
-        FocCurrent(motor_ctrl.id_set,motor_ctrl.iq_set,enc_para.pos_e);
-
-
-        if(++change_flag<60000)
-        {
-//            FocVolt(0,uq_set,enc_para.pos_e);
-        }
-        else
-        {
-//            FocCurrent(id,iq,pll_angle);
-//            FocCurrent(id,speed_pid.out_value,pll_angle);
-//            FocIdentifyRes(&identify_res,&foc_param,10.f);
-        }
-#endif
+    motor_ctrl.ctrl_mode = FOC_HFI_TEST;
+    MotorCtrl(&motor_ctrl, &foc_param);
     //calibrate_mt_encoder(1.0f,0);
     FocPwmRun(&foc_param);
-
+#endif
 }
 
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-    FocHandle();
+    if(motor_ctrl.foc_init)
+        FocHandle();
 }

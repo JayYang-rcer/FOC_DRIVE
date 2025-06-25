@@ -112,7 +112,7 @@ int main(void)
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 4250-10);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
     __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
-    GetCurrentOffset(&mc_adc);
+    motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);
 
     EncoderInit();
     MotorParaInit();

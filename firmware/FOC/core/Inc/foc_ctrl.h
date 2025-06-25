@@ -6,6 +6,8 @@
 void FocVolt(float vd_ref, float vq_ref, float pos);
 void Encoder_Idle(void);
 void FocHandle(void);
-extern volatile int spd_set;
+void FocCurrent(float id_set, float iq_set, float pos);
+_RAM_FUNC void HfiVolt(float vd, float vq, float pos);
+_RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos);
 
 #endif

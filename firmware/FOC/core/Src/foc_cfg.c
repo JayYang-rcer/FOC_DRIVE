@@ -18,10 +18,30 @@ pid_para_t speed_pid;
 pid_para_t pos_pid;
 pll_t pll_spd;
 
+/********************smo param********************/
+smo_param_t smo_param;
+pll_t pll_smo;
+/**********************************************************/
+
+/********************hfi param********************/
+hfi_param_t hfi_param = {
+        .inject_U = 0.8f,
+};
+
+pll_t pll_hfi = {
+        .loop_hz = 20000, //20khz
+        .kp = 4000,
+        .ki = 250000,
+        .i_term_limit = 500
+};
+/**********************************************************/
+
 void MotorPidInit(void)
 {
-    id_pid.kp = motor_cfg.ls/1000000*8000*motor_cfg.pn/60*M_2PI/4;    // kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
-    id_pid.ki = motor_cfg.rs/1000*8000*motor_cfg.pn/60*M_2PI/CURRENT_LOOP_RATE/4 ;      // ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
+//    id_pid.kp = motor_cfg.ls/1000000*8000*motor_cfg.pn/60*M_2PI/5;    // kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
+//    id_pid.ki = motor_cfg.rs/1000*8000*motor_cfg.pn/60*M_2PI/CURRENT_LOOP_RATE/5;      // ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
+    id_pid.kp = motor_cfg.ls/1000000*8000*motor_cfg.pn/60*M_2PI;    // kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
+    id_pid.ki = motor_cfg.rs/1000*8000*motor_cfg.pn/60*M_2PI/CURRENT_LOOP_RATE;      // ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
     iq_pid.kp = motor_cfg.ls/1000000*8000*motor_cfg.pn/60*M_2PI;    // kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
     iq_pid.ki = motor_cfg.rs/1000*8000*motor_cfg.pn/60*M_2PI/CURRENT_LOOP_RATE;      // ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
 
@@ -41,6 +61,13 @@ void MotorPidInit(void)
     iq_pid.i_term_max = (BATTERY_CELL*4)*ONE_BY_SQRT3;
     iq_pid.i_term_min = -(BATTERY_CELL*4)*ONE_BY_SQRT3;
 
+/******************使用电压环进行位置闭环的速度pid参数*********************
+    pos_pid.lpf_d = 0.1f;
+    pos_pid.kp = 0.035f;
+    pos_pid.kd = 0.0002f;
+    pos_pid.out_max = 0.8f;
+    pos_pid.out_min = -0.8f;
+*********************************************************************/
     speed_pid.kp = 0.0088f;
     speed_pid.ki = 0.006f;
     speed_pid.out_max = 15.f;
@@ -83,27 +110,22 @@ void MotorParaInit(void)
 }
 
 
-void GetCurrentOffset(foc_adc_t *_adc)
+bool GetCurrentOffset(foc_adc_t *_adc)
 {
     float sum_ia=0,sum_ib=0, sum_ic=0;
-    float sum_va=0,sum_vb=0, sum_vc=0;
     for(int i=0; i<1000; i++)
     {
         HAL_Delay(1);
 		sum_ia += (float)(ADC1->JDR3);
         sum_ib += (float)(ADC1->JDR2);
         sum_ic += (float)(ADC1->JDR1);
-        sum_va += (float)(ADC2->JDR3);
-        sum_vb += (float)(ADC2->JDR2);
-        sum_vc += (float)(ADC2->JDR1);
     }
 
 	_adc->ia_offset = sum_ia / 1000.0f;
     _adc->ib_offset = sum_ib / 1000.0f;
     _adc->ic_offset = sum_ic / 1000.0f;
-    _adc->va_offset = sum_va / 1000.0f;
-    _adc->vb_offset = sum_vb / 1000.0f;
-    _adc->vc_offset = sum_vc / 1000.0f;
+
+    return true;
 }
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN)

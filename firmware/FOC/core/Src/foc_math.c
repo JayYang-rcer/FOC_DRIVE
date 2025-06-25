@@ -1,7 +1,7 @@
 #include "foc_math.h"
-#include "adc.h"
 #include "main.h"
-#include "vofa.h"
+#include "util.h"
+#include "foc_ctrl.h"
 
 _RAM_FUNC void SinCosVal(foc_param_t *foc)
 {
@@ -115,13 +115,9 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 }
 
 
-smo_param_t smo;
-pll_t pll_smo;
-
 #define RC 1.f/(M_2PI * 50)
 #define DT 1.f/10000
 float alpha;
-
 void SmoParamInit(smo_param_t *smo)
 {
     smo->A = expf(-(motor_cfg.rs/1000)/(motor_cfg.ls/1000000)/10000);
@@ -133,7 +129,7 @@ void SmoParamInit(smo_param_t *smo)
     alpha = DT / (RC + DT);  // 计算滤波系数
 }
 
-_RAM_FUNC float AnglePll(smo_param_t* param, pll_t* pll)
+_RAM_FUNC float SmoPllAngle(smo_param_t* param, pll_t* pll)
 {
     static float omega_out;
     pll->ref = -param->Ealpha * cos_f32(pll->angle_out);
@@ -165,14 +161,14 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo)
     Clarke(foc);
 
     //计算预测电流
-    if(motor_cfg.rotor_rev <1500)
+    if(ABS(motor_ctrl.speed_set <800))
     {
         smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
         smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
     }
     else
     {
-        if(motor_cfg.rotor_vel <500)
+        if(ABS(motor_cfg.rotor_vel <500))
         {
             smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
             smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
@@ -188,8 +184,8 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo)
     //计算电动势观测值
     smo->valpah = smo->ksw*SIGN(smo->ialpha_view - foc->i_alpha);
     smo->vbeta = smo->ksw*SIGN(smo->ibeta_view - foc->i_beta);
-//    smo->valpah = smo->ksw*sat1_datf(smo->ialpha_view - foc_param->i_alpha, 0.5);
-//    smo->vbeta = smo->ksw*sat1_datf(smo->ibeta_view - foc_param->i_beta,0.5);
+//    smo_param->valpah = smo_param->ksw*sat1_datf(smo_param->ialpha_view - foc_param->i_alpha, 0.5);
+//    smo_param->vbeta = smo_param->ksw*sat1_datf(smo_param->ibeta_view - foc_param->i_beta,0.5);
 
     //计算滤波后的拓展反电动势
     smo->valpah = alpha*smo->valpah + (1-alpha)*valpha_last;
@@ -204,6 +200,167 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo)
     smo->Ealpha = smo->valpah;
     smo->Ebeta = smo->vbeta;
 
-    return AnglePll(smo,&pll_smo);
+    return SmoPllAngle(smo, &pll_smo);
 }
 
+
+/**
+ *
+ * @param inject_U 注入电压
+ * @return 定轴的高频注入值
+ */
+float HfiInjectSign(float inject_U)
+{
+    static float u = -1.f;
+    u*= -1.f;
+    return inject_U*u;
+}
+
+float B_a[3] = {1.0f , -0.98133f , 0.0f};
+float B_b[3] = {1.0f , 1.0f , 0.0f};
+float B_gain = 0.0009337f;
+float ButterWorth_LPF(float in)
+{
+    float temp;
+    static float in_Last , in_LLast , out;
+    temp = B_gain*in - B_a[0]*in_Last - B_a[1]*in_LLast;
+    out = B_b[0]*temp + B_b[1]*in_Last + B_b[2]*in_LLast;
+    in_LLast = in_Last;
+    in_Last = temp;
+    return out;
+}
+
+lpf_t lpf_omega = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
+float HfiPllAngle(pll_t* pll, hfi_param_t* hfi)
+{
+    //目前问题：
+    // 1.锁相环的积分比较鸡肋，考虑升级一下。
+    // 2.相位上具有一定的延时
+    pll->ref = cos_f32(pll->angle_out) * hfi->envelope.beta;
+    pll->fbk = hfi->envelope.alpha * sin_f32(pll->angle_out);
+
+    pll->error = pll->ref - pll->fbk;
+
+    pll->p_term = pll->error*pll->kp;
+    pll->i_term += pll->error*pll->ki/pll->loop_hz;
+    pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); //积分限幅
+
+    pll->out_value = pll->p_term + pll->i_term;
+    LowPassFilter(&pll->out_value,&lpf_omega);
+
+    pll->angle_out += pll->out_value/pll->loop_hz;
+    WRAP_0_2PI(pll->angle_out)
+
+    return WRAP_0_2PI(pll->angle_out);
+}
+
+float HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi)
+{
+    //更新数据
+//    Clarke(foc);
+    hfi->ab_laster.alpha = hfi->ab_last.alpha;
+    hfi->ab_laster.beta = hfi->ab_last.beta;
+    hfi->ab_last.alpha = hfi->ab.alpha;
+    hfi->ab_last.beta = hfi->ab.beta;
+    hfi->ab.alpha = foc->i_alpha;
+    hfi->ab.beta = foc->i_beta;
+    hfi->ab_h_last.alpha = hfi->ab_h.alpha;
+    hfi->ab_h_last.beta = hfi->ab_h.beta;
+
+    //提取高频电流
+    hfi->ab_h.alpha = (hfi->ab.alpha - 2.f*hfi->ab_last.alpha + hfi->ab_laster.alpha)*0.25f;
+    hfi->ab_h.beta = (hfi->ab.beta - 2.f*hfi->ab_last.beta + hfi->ab_laster.beta)*0.25f;
+//    hfi->ab_h.alpha = (hfi->ab.alpha - hfi->ab_last.alpha)*0.5f;
+//    hfi->ab_h.beta = (hfi->ab.beta - hfi->ab_last.beta)*0.5f;
+
+    hfi->envelope.alpha = (hfi->ab_h.alpha - hfi->ab_h_last.alpha)*hfi->sign;
+    hfi->envelope.beta = (hfi->ab_h.beta - hfi->ab_h_last.beta)*hfi->sign;
+
+    hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
+
+    return hfi->theta_e;
+}
+
+
+void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi)
+{
+//    hfi->idq_f.id = (foc->i_d + 2*hfi->idq_f_last.id + hfi->idq_f_laster.id)*0.25f;
+//    hfi->idq_f.iq = (foc->i_q + 2*hfi->idq_f_last.iq + hfi->idq_f_laster.iq)*0.25f;
+    hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
+    hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
+
+    //update
+    hfi->idq_f_laster.id = hfi->idq_f_last.id;
+    hfi->idq_f_laster.iq = hfi->idq_f_last.iq;
+    hfi->idq_f_last.id = foc->i_d;
+    hfi->idq_f_last.iq = foc->i_q;
+}
+
+
+void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi)
+{
+    hfi->idq_h.id = (foc->i_d - 2*hfi->idq_h_last.id + hfi->idq_h_laster.id)*0.25f;
+    hfi->idq_h.iq = (foc->i_q - 2*hfi->idq_h_last.iq + hfi->idq_h_laster.iq)*0.25f;
+//    hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
+//    hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
+
+    //update
+    hfi->idq_h_laster.id = hfi->idq_h_last.id;
+    hfi->idq_h_laster.iq = hfi->idq_h_last.iq;
+    hfi->idq_h_last.id = foc->i_d;
+    hfi->idq_h_last.iq = foc->i_q;
+}
+
+
+volatile int nsd_count=0;
+volatile float i_sum1=0, i_sum2=0;
+bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc)
+{
+    float gain=10.f; //放大增益
+    IdqToIdqH(foc,hfi); //提取d轴的高频电流
+
+    nsd_count++;
+    if(nsd_count<400)   //0
+    {
+        motor_ctrl.id_set = 0;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+    }
+    else if(nsd_count>=400 && nsd_count<600)
+    {
+        motor_ctrl.id_set = 2.f;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+    }
+    else if(nsd_count>=600 && nsd_count<620)
+    {
+        motor_ctrl.id_set = 2.f;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+        i_sum1 += fabsf(hfi->idq_h.id);
+    }
+    else if(nsd_count>=620 && nsd_count<820)
+    {
+        motor_ctrl.id_set = 0.f;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+    }
+    else if(nsd_count>=820 && nsd_count<1020)
+    {
+        motor_ctrl.id_set = -2.f;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+    }
+    else if(nsd_count>=1020 && nsd_count<1040)
+    {
+        motor_ctrl.id_set = -2.f;
+        HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
+        i_sum2 += fabsf(hfi->idq_h.id);
+    }
+    else
+    {
+        motor_ctrl.id_set = 0;
+        if(i_sum1<i_sum2)
+            pll_hfi.angle_out += M_PI;
+        if(pll_hfi.angle_out > M_2PI)
+            pll_hfi.angle_out -= M_2PI;
+        HfiVolt(0,0,hfi->theta_e);
+        return true;
+    }
+    return false;
+}

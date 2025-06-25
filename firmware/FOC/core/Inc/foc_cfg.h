@@ -3,7 +3,7 @@
 
 #include "pid.h"
 #include "stdbool.h"
-#include "moc_spd.h"
+#include "filter.h"
 
 #define SET_DTC_A(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, value)
 #define SET_DTC_B(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
@@ -17,6 +17,46 @@
 
 // Speed PID parameters
 #define SPEED_PID_TIME_HZ 5000
+
+typedef enum FOC_CTRL_MODE
+{
+    FOC_VF_CTRL = 0, //强拖
+    FOC_VOLT_CTRL = 1, //电压控制
+    FOC_CURRENT_CTRL = 2, //电流控制
+    FOC_SPEED_CTRL = 3, //速度控制
+    FOC_POSITION_CTRL = 4, //位置控制
+    FOC_SENSORLESS_CTRL = 5, //无传感器控制
+    FOC_HFI_TEST = 6, //高频注入测试
+}FOC_CTRL_MODE;
+
+
+typedef struct aplha_beta_t
+{
+    float alpha; //alpha轴
+    float beta;  //beta轴
+}aplha_beta_t;
+
+typedef struct dq_t
+{
+    float id; //d轴
+    float iq; //q轴
+}dq_t;
+
+typedef struct smo_param_t
+{
+    float A;
+    float B;
+    float ksw; //滑膜系数
+    float ialpha_view; //alpha轴电流观测值
+    float ibeta_view; //beta轴电流观测值
+    float ialpha_view_last; //上次观测值
+    float ibeta_view_last; //上次观测值
+    float valpah;   //观测值
+    float vbeta;
+
+    float Ealpha;   //alpha轴拓展反电动势
+    float Ebeta;    //beta轴拓展反电动势
+}smo_param_t;
 
 typedef struct
 {
@@ -36,6 +76,7 @@ typedef struct
 
 typedef struct
 {
+    bool foc_init;
     float epos_acc;     //电角加速度
     float vd_set;       //直轴电压设定值
     float vq_set;       //交轴电压设定值
@@ -43,6 +84,11 @@ typedef struct
     float iq_set;       //交轴电流设定值
     float speed_set;    //速度设定值
     float pos_set;	 	//位置设置
+
+    uint16_t spd_cnt;
+    uint16_t pos_cnt;
+
+    FOC_CTRL_MODE ctrl_mode; //控制模式
 }motor_ctrl_t;
 
 typedef struct 
@@ -50,18 +96,14 @@ typedef struct
     float ia;           //A相电流
     float ib;           //B相电流
     float ic;           //C相电流
-	float va;
-	float vb;
-	float vc;
+	float va;           //A相端电压
+	float vb;           //B相端电压
+	float vc;           //C相端电压
 
     float ia_offset;    //A相电流偏移
     float ib_offset;    //B相电流偏移
     float ic_offset;    //C相电流偏移
-    float va_offset;    //A相电压偏移
-    float vb_offset;    //B相电压偏移
-    float vc_offset;    //C相电压偏移
     float vbus;         //母线电压
-
     float temp;         //温度
 }foc_adc_t;
 
@@ -88,13 +130,11 @@ typedef struct foc_param_t
 	float i_d; // D 坐标系电流
 	float i_q; // Q 坐标系电流
 
-
 	float v_d; // D 坐标系电压
 	float v_q; // Q 坐标系电压
 
 	float i_alpha; // Alpha 坐标系电流
 	float i_beta;  // Beta 坐标系电流
-
 
 	float v_alpha; // Alpha 坐标系电压
 	float v_beta;  // Beta 坐标系电压
@@ -103,6 +143,32 @@ typedef struct foc_param_t
 	float dtc_b; // B 相 PWM 占空比
 	float dtc_c; // C 相 PWM 占空比
 }foc_param_t;
+
+
+typedef struct hfi_param_t
+{
+    float theta_e; //预测电角度
+    float inject_U;
+    int sign; //注入信号
+    uint16_t nsd_count;
+
+    aplha_beta_t ab;
+    aplha_beta_t ab_last;
+    aplha_beta_t ab_laster;
+
+    aplha_beta_t ab_h;
+    aplha_beta_t ab_h_last;
+    aplha_beta_t envelope;
+
+    dq_t idq_h;
+    dq_t idq_h_last; //上次的dq轴高频电流
+    dq_t idq_h_laster; //上次的dq轴高频电流
+
+    dq_t idq_f;
+    dq_t idq_f_last;
+    dq_t idq_f_laster; //上次的dq轴高频电流
+}hfi_param_t;
+
 
 extern foc_adc_t mc_adc;
 extern foc_param_t foc_param;
@@ -113,7 +179,17 @@ extern pid_para_t speed_pid;
 extern pid_para_t pos_pid;
 extern pll_t pll_spd;
 
-void GetCurrentOffset(foc_adc_t *mc_adc);
+/********************smo param********************/
+extern pll_t pll_smo;
+extern smo_param_t smo_param;
+/*************************************************/
+
+/******************** hfi param ********************/
+extern pll_t pll_hfi; //高频注入的PLL
+extern hfi_param_t hfi_param;
+/*************************************************/
+
+bool GetCurrentOffset(foc_adc_t *mc_adc);
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
 void FocPwmStop(void);
 void FocPwmRun(foc_param_t *foc);

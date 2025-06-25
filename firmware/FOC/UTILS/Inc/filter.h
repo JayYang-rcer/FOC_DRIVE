@@ -7,13 +7,16 @@ typedef struct pll_t
 {
     float kp;
     float ki;
-    uint16_t loop_hz;
+    float loop_hz;
     float ref;
     float fbk;
+    float error;
     float out_value;
     float angle_out;
+
     float i_term;
     float p_term;
+    float i_term_limit;
 }pll_t;
 
 typedef struct lpf_t

@@ -19,23 +19,25 @@ volatile uint16_t cnt = 0;
 **/
 void VofaStart(void)
 {
-//	 VofaSendData(1,foc_param.v_alpha);
-//	 VofaSendData(2,foc_param.v_beta);
-//    VofaSendData(2,ualpha);
-//    VofaSendData(2,ubeta);
+//	 VofaSendData(1,pll_hfi.error);
+//    VofaSendData(2,foc_param.i_alpha);
+//    VofaSendData(1,foc_param.i_beta);
+//	 VofaSendData(2,hfi_param.ab_h.alpha);
+//     VofaSendData(1,hfi_param.ab_h.beta);
 
-    VofaSendData(1, foc_param.i_q);
-    VofaSendData(2, foc_param.i_d);
+//    VofaSendData(1, foc_param.i_alpha);
+//    VofaSendData(2, foc_param.i_beta);
 
-    VofaSendData(2, foc_param.i_a);
-    VofaSendData(2, foc_param.i_b);
-    VofaSendData(2, foc_param.i_c);
+//    VofaSendData(2, foc_param.i_a);
+//    VofaSendData(2, foc_param.i_b);
+//    VofaSendData(2, foc_param.i_c);
+    VofaSendData(1, motor_cfg.rotor_vel);
+    VofaSendData(1, pll_hfi.out_value);
+    VofaSendData(2,enc_para.pos_e);
+    VofaSendData(2,hfi_param.theta_e);
 
-//    VofaSendData(2,smo.Ealpha);
-//    VofaSendData(2,smo.Ebeta);
-//    VofaSendData(1,foc_param.dtc_a);
-//    VofaSendData(2,foc_param.dtc_b);
-//    VofaSendData(2,foc_param.dtc_c);
+    VofaSendData(2,hfi_param.idq_f.iq);
+    VofaSendData(2,hfi_param.idq_f.id);
 //	VofaSendData(3,enc_para.pos_e);
 //	VofaSendData(3,pll_angle);
 
