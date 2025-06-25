@@ -228,7 +228,7 @@ cos\widehat{\theta_e}sin(\theta_e+\theta_s)
 \\
 由泰勒公式可知，当\theta_s->0时，sin(\theta_S) = \theta_s
 \\
-因此，令k=\frac{kU_{in}T_s(L_d-L_q)}{2L_dL_q},解耦的结果为f(\theta_s)=k\theta_s
+因此，令k=\frac{(-1)^kU_{in}T_s(L_d-L_q)}{2L_dL_q},解耦的结果为f(\theta_s)=k\theta_s
 $$
 
 ### PLL锁相环提取电角度以及电角速度信息
@@ -251,7 +251,7 @@ $$
 \frac{2\xi \omega_n s+\omega_n^2}{s^2+2\xi\omega_ns+\omega_n^2}\\
 该二阶系统的无阻尼自然频率\omega_n=\sqrt{kk_i},k_i=\frac{\omega_n^2}{k},
 k_p=\frac{2\xi\omega_n}{k}=\frac{2\xi\sqrt{kk_i}}{k}\\
-其增益带宽约为无阻尼自然频率，即\omega_c约等于\omega_n=\sqrt{kk_i}，其中k=\frac{kU_{in}T_s(L_d-L_q)}{2L_dL_q}\\
+其增益带宽约为无阻尼自然频率，即\omega_c约等于\omega_n=\sqrt{kk_i}，其中k=\frac{(-1)^kU_{in}T_s(L_d-L_q)}{2L_dL_q}\\
 带宽决定了系统的输出跟随输入信号的速度，同时为了避免超调量的产生，一般设计阻尼比\xi >=1
 $$
 
@@ -265,7 +265,6 @@ $$
 1. 相邻采样点处基频电流分量保持恒定
 2. 相邻采样点处高频电流分量幅值相等，极性相反 
 
-![701101f93960d4cadc4cf7b7027490d](C:\Users\28076\Documents\WeChat Files\wxid_ok7ts8hs26xo22\FileStorage\Temp\701101f93960d4cadc4cf7b7027490d.jpg)
 $$
 \begin{cases}
 i_{dq}(k-2) = i_{dqh}(k-2)+i_{dqf}(k-2)\\

@@ -2,13 +2,13 @@
 #include "util.h"
 #include "foc_cfg.h"
 
-float PID_Abs_Limit(float a, float ABS_MAX)
+float AbsLimit(float a, float abs_max)
 {
-    if(a > ABS_MAX)
-        a = ABS_MAX;
+    if(a > abs_max)
+        a = abs_max;
 		
-    if(a < -ABS_MAX)
-        a = -ABS_MAX;
+    if(a < -abs_max)
+        a = -abs_max;
 		return a;
 }
 
@@ -31,7 +31,7 @@ float IncreatParallePidCtrl(pid_para_t *pid, float target_value, float fdback_va
 	if(ABS(pid->error) < pid->deadband)
 		return 0;
 	pid->p_term = pid->kp*pid->d_error;
-	pid->i_term = PID_Abs_Limit(pid->ki*pid->d_error,pid->i_term_max);
+	pid->i_term = AbsLimit(pid->ki*pid->d_error,pid->i_term_max);
 
 	pid->d_term = pid->d_error*pid->kd * SPEED_PID_TIME_HZ;
 	
