@@ -26,6 +26,7 @@ pll_t pll_smo;
 /********************hfi param********************/
 hfi_param_t hfi_param = {
         .inject_U = 0.8f,
+        .omega_e = 0.1f
 };
 
 pll_t pll_hfi = {

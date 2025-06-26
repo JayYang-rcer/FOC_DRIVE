@@ -20,7 +20,7 @@ void SmoParamInit(smo_param_t *smo);
 /*********************************** hfi *******************************/
 float HfiInjectSign(float inject_U);
 float HfiPllAngle(pll_t* pll, hfi_param_t* hfi);
-float HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi);
+void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi);
 void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi);
 void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi);
 bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc);

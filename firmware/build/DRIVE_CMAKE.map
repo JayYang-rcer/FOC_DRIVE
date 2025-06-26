@@ -1690,17 +1690,8 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
  .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
  .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .text.ButterWorth_LPF
-                0x00000000       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
  .text.IdqToIdqH
                 0x00000000       0x5c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .bss.in_LLast.1
-                0x00000000        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .bss.in_Last.2
-                0x00000000        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .data.B_a      0x00000000        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .data.B_b      0x00000000        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .data.B_gain   0x00000000        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
  .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
  .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
@@ -2138,7 +2129,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x08000000                g_pfnVectors
                 0x080001d8                . = ALIGN (0x4)
 
-.text           0x080001d8     0x9c14
+.text           0x080001d8     0x9c84
                 0x080001d8                . = ALIGN (0x4)
  *(.text)
  .text          0x080001d8       0x40 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -2744,462 +2735,465 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x08007644       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
                 0x08007644                FocPwmStart
  .text.IqPidCtrl
-                0x080076e0      0x150 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x080076e0      0x148 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
                 0x080076e0                IqPidCtrl
  .text.IdPidCtrl
-                0x08007830      0x148 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x08007830                IdPidCtrl
+                0x08007828      0x140 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x08007828                IdPidCtrl
  .text.CurrentUpdate
-                0x08007978      0x118 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x08007978                CurrentUpdate
+                0x08007968      0x118 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x08007968                CurrentUpdate
  .text.MotorCtrl
-                0x08007a90      0x1f0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x08007a90                MotorCtrl
+                0x08007a80      0x1f0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x08007a80                MotorCtrl
  .text.HAL_ADCEx_InjectedConvCpltCallback
-                0x08007c80       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x08007c80                HAL_ADCEx_InjectedConvCpltCallback
+                0x08007c70       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x08007c70                HAL_ADCEx_InjectedConvCpltCallback
  .text.SmoParamInit
-                0x08007cc4       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007cc4                SmoParamInit
+                0x08007cb4       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007cb4                SmoParamInit
  .text.HfiInjectSign
-                0x08007d5c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007d5c                HfiInjectSign
+                0x08007d4c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007d4c                HfiInjectSign
+ .text.ButterWorthLpf
+                0x08007d64       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007d64                ButterWorthLpf
  .text.HfiPllAngle
-                0x08007d74       0xe8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007d74                HfiPllAngle
+                0x08007df0      0x100 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007df0                HfiPllAngle
  .text.HfiAngleCalc
-                0x08007e5c       0xa4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007e5c                HfiAngleCalc
+                0x08007ef0       0xa4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007ef0                HfiAngleCalc
  .text.IdqToIdqF
-                0x08007f00       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007f00                IdqToIdqF
+                0x08007f94       0x5c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007f94                IdqToIdqF
  .text.HfiNsIdentify
-                0x08007f40      0x1bc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x08007f40                HfiNsIdentify
+                0x08007ff0      0x184 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x08007ff0                HfiNsIdentify
  .text.EncoderInit
-                0x080080fc       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
-                0x080080fc                EncoderInit
+                0x08008174       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+                0x08008174                EncoderInit
  .text.PllSpeedCtrl
-                0x08008148       0xcc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
-                0x08008148                PllSpeedCtrl
+                0x080081c0       0xcc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+                0x080081c0                PllSpeedCtrl
  .text.LowPassFilter
-                0x08008214       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
-                0x08008214                LowPassFilter
+                0x0800828c       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+                0x0800828c                LowPassFilter
  .text.AbsLimit
-                0x0800823c       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
-                0x0800823c                AbsLimit
+                0x080082b4       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+                0x080082b4                AbsLimit
  .text.IncreatParallePidCtrl
-                0x08008260      0x164 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
-                0x08008260                IncreatParallePidCtrl
- *fill*         0x080083c4        0x4 
+                0x080082d8      0x164 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+                0x080082d8                IncreatParallePidCtrl
+ *fill*         0x0800843c        0x4 
  .text.ParallelPidCtrl
-                0x080083c8      0x1cc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
-                0x080083c8                ParallelPidCtrl
- .text.sin_f32  0x08008594       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
-                0x08008594                sin_f32
- .text.cos_f32  0x0800862c       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
-                0x0800862c                cos_f32
+                0x08008440      0x1cc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+                0x08008440                ParallelPidCtrl
+ .text.sin_f32  0x0800860c       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+                0x0800860c                sin_f32
+ .text.cos_f32  0x080086a4       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+                0x080086a4                cos_f32
  .text.VofaSendData
-                0x080086c8       0x78 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                0x080086c8                VofaSendData
+                0x08008740       0x78 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                0x08008740                VofaSendData
  .text.VofaSendframetail
-                0x08008740       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                0x08008740                VofaSendframetail
+                0x080087b8       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                0x080087b8                VofaSendframetail
  .text.VofaStart
-                0x08008790       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                0x08008790                VofaStart
+                0x08008808       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                0x08008808                VofaStart
  .text.USBD_CDC_EP0_RxReady
-                0x080087f0       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008860       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_GetFSCfgDesc
-                0x08008820        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008890        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_GetHSCfgDesc
-                0x0800882c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x0800889c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_GetOtherSpeedCfgDesc
-                0x08008838        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x080088a8        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_GetDeviceQualifierDescriptor
-                0x08008844        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008844                USBD_CDC_GetDeviceQualifierDescriptor
+                0x080088b4        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x080088b4                USBD_CDC_GetDeviceQualifierDescriptor
  .text.USBD_CDC_DataOut
-                0x08008850       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x080088c0       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_DataIn
-                0x0800887c       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x080088ec       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_Setup
-                0x080088e0      0x10c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008950      0x10c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_DeInit
-                0x080089ec       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008a5c       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_Init
-                0x08008a30       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008aa0       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  .text.USBD_CDC_RegisterInterface
-                0x08008ae8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008ae8                USBD_CDC_RegisterInterface
+                0x08008b58       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008b58                USBD_CDC_RegisterInterface
  .text.USBD_CDC_SetTxBuffer
-                0x08008af8       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008af8                USBD_CDC_SetTxBuffer
+                0x08008b68       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008b68                USBD_CDC_SetTxBuffer
  .text.USBD_CDC_SetRxBuffer
-                0x08008b10       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008b10                USBD_CDC_SetRxBuffer
+                0x08008b80       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008b80                USBD_CDC_SetRxBuffer
  .text.USBD_CDC_TransmitPacket
-                0x08008b24       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008b24                USBD_CDC_TransmitPacket
+                0x08008b94       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008b94                USBD_CDC_TransmitPacket
  .text.USBD_CDC_ReceivePacket
-                0x08008b54       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x08008b54                USBD_CDC_ReceivePacket
+                0x08008bc4       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x08008bc4                USBD_CDC_ReceivePacket
  .text.USBD_Init
-                0x08008b88       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008b88                USBD_Init
+                0x08008bf8       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008bf8                USBD_Init
  .text.USBD_RegisterClass
-                0x08008bb0       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008bb0                USBD_RegisterClass
+                0x08008c20       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008c20                USBD_RegisterClass
  .text.USBD_Start
-                0x08008be4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008be4                USBD_Start
+                0x08008c54        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008c54                USBD_Start
  .text.USBD_SetClassConfig
-                0x08008be8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008be8                USBD_SetClassConfig
+                0x08008c58       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008c58                USBD_SetClassConfig
  .text.USBD_ClrClassConfig
-                0x08008bf8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008bf8                USBD_ClrClassConfig
+                0x08008c68       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008c68                USBD_ClrClassConfig
  .text.USBD_LL_SetupStage
-                0x08008c08       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008c08                USBD_LL_SetupStage
+                0x08008c78       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008c78                USBD_LL_SetupStage
  .text.USBD_LL_DataOutStage
-                0x08008c68       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008c68                USBD_LL_DataOutStage
+                0x08008cd8       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008cd8                USBD_LL_DataOutStage
  .text.USBD_LL_DataInStage
-                0x08008cd0       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008cd0                USBD_LL_DataInStage
+                0x08008d40       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008d40                USBD_LL_DataInStage
  .text.USBD_LL_Reset
-                0x08008d7c       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008d7c                USBD_LL_Reset
+                0x08008dec       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008dec                USBD_LL_Reset
  .text.USBD_LL_SetSpeed
-                0x08008dd4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008dd4                USBD_LL_SetSpeed
+                0x08008e44        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008e44                USBD_LL_SetSpeed
  .text.USBD_LL_Suspend
-                0x08008ddc       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008ddc                USBD_LL_Suspend
+                0x08008e4c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008e4c                USBD_LL_Suspend
  .text.USBD_LL_Resume
-                0x08008df4       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008df4                USBD_LL_Resume
+                0x08008e64       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008e64                USBD_LL_Resume
  .text.USBD_LL_SOF
-                0x08008e0c       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
-                0x08008e0c                USBD_LL_SOF
+                0x08008e7c       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+                0x08008e7c                USBD_LL_SOF
  .text.USBD_StdDevReq
-                0x08008e34      0x350 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x08008e34                USBD_StdDevReq
+                0x08008ea4      0x350 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x08008ea4                USBD_StdDevReq
  .text.USBD_StdItfReq
-                0x08009184       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x08009184                USBD_StdItfReq
+                0x080091f4       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x080091f4                USBD_StdItfReq
  .text.USBD_StdEPReq
-                0x080091e4      0x134 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x080091e4                USBD_StdEPReq
+                0x08009254      0x134 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x08009254                USBD_StdEPReq
  .text.USBD_ParseSetupRequest
-                0x08009318       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x08009318                USBD_ParseSetupRequest
+                0x08009388       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x08009388                USBD_ParseSetupRequest
  .text.USBD_CtlError
-                0x08009330       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x08009330                USBD_CtlError
+                0x080093a0       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x080093a0                USBD_CtlError
  .text.USBD_GetString
-                0x08009348       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
-                0x08009348                USBD_GetString
+                0x080093b8       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+                0x080093b8                USBD_GetString
  .text.USBD_CtlSendData
-                0x0800939c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x0800939c                USBD_CtlSendData
+                0x0800940c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x0800940c                USBD_CtlSendData
  .text.USBD_CtlContinueSendData
-                0x080093b8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x080093b8                USBD_CtlContinueSendData
+                0x08009428       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x08009428                USBD_CtlContinueSendData
  .text.USBD_CtlPrepareRx
-                0x080093c8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x080093c8                USBD_CtlPrepareRx
+                0x08009438       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x08009438                USBD_CtlPrepareRx
  .text.USBD_CtlContinueRx
-                0x080093e4       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x080093e4                USBD_CtlContinueRx
+                0x08009454       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x08009454                USBD_CtlContinueRx
  .text.USBD_CtlSendStatus
-                0x080093f4       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x080093f4                USBD_CtlSendStatus
+                0x08009464       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x08009464                USBD_CtlSendStatus
  .text.USBD_CtlReceiveStatus
-                0x0800940c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
-                0x0800940c                USBD_CtlReceiveStatus
+                0x0800947c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+                0x0800947c                USBD_CtlReceiveStatus
  .text.MX_USB_Device_Init
-                0x08009424       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
-                0x08009424                MX_USB_Device_Init
+                0x08009494       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+                0x08009494                MX_USB_Device_Init
  .text.CDC_DeInit_FS
-                0x08009498        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x08009508        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Control_FS
-                0x0800949c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800950c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_TransmitCplt_FS
-                0x080094a0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x08009510        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Receive_FS
-                0x080094a4       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x08009514       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Init_FS
-                0x080094c0       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x08009530       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Transmit_FS
-                0x080094e8       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x080094e8                CDC_Transmit_FS
+                0x08009558       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x08009558                CDC_Transmit_FS
  .text.USBD_CDC_DeviceDescriptor
-                0x08009514        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x08009514                USBD_CDC_DeviceDescriptor
+                0x08009584        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x08009584                USBD_CDC_DeviceDescriptor
  .text.USBD_CDC_LangIDStrDescriptor
-                0x08009520        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x08009520                USBD_CDC_LangIDStrDescriptor
+                0x08009590        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x08009590                USBD_CDC_LangIDStrDescriptor
  .text.USBD_CDC_ManufacturerStrDescriptor
-                0x0800952c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800952c                USBD_CDC_ManufacturerStrDescriptor
+                0x0800959c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800959c                USBD_CDC_ManufacturerStrDescriptor
  .text.USBD_CDC_ProductStrDescriptor
-                0x08009548       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x08009548                USBD_CDC_ProductStrDescriptor
+                0x080095b8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x080095b8                USBD_CDC_ProductStrDescriptor
  .text.USBD_CDC_ConfigStrDescriptor
-                0x08009564       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x08009564                USBD_CDC_ConfigStrDescriptor
+                0x080095d4       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x080095d4                USBD_CDC_ConfigStrDescriptor
  .text.USBD_CDC_InterfaceStrDescriptor
-                0x08009580       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x08009580                USBD_CDC_InterfaceStrDescriptor
+                0x080095f0       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x080095f0                USBD_CDC_InterfaceStrDescriptor
  .text.USBD_CDC_SerialStrDescriptor
-                0x0800959c       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800959c                USBD_CDC_SerialStrDescriptor
+                0x0800960c       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800960c                USBD_CDC_SerialStrDescriptor
  .text.HAL_PCD_MspInit
-                0x08009628       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009628                HAL_PCD_MspInit
+                0x08009698       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009698                HAL_PCD_MspInit
  .text.HAL_PCD_SetupStageCallback
-                0x08009688        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009688                HAL_PCD_SetupStageCallback
+                0x080096f8        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x080096f8                HAL_PCD_SetupStageCallback
  .text.HAL_PCD_DataOutStageCallback
-                0x08009694       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009694                HAL_PCD_DataOutStageCallback
+                0x08009704       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009704                HAL_PCD_DataOutStageCallback
  .text.HAL_PCD_DataInStageCallback
-                0x080096a8       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080096a8                HAL_PCD_DataInStageCallback
+                0x08009718       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009718                HAL_PCD_DataInStageCallback
  .text.HAL_PCD_SOFCallback
-                0x080096bc        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080096bc                HAL_PCD_SOFCallback
+                0x0800972c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800972c                HAL_PCD_SOFCallback
  .text.HAL_PCD_ResetCallback
-                0x080096c4       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080096c4                HAL_PCD_ResetCallback
+                0x08009734       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009734                HAL_PCD_ResetCallback
  .text.HAL_PCD_SuspendCallback
-                0x080096e8       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080096e8                HAL_PCD_SuspendCallback
+                0x08009758       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009758                HAL_PCD_SuspendCallback
  .text.HAL_PCD_ResumeCallback
-                0x08009708       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009708                HAL_PCD_ResumeCallback
+                0x08009778       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009778                HAL_PCD_ResumeCallback
  .text.USBD_LL_Init
-                0x0800973c       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800973c                USBD_LL_Init
+                0x080097ac       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x080097ac                USBD_LL_Init
  .text.USBD_LL_Start
-                0x080097c0       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080097c0                USBD_LL_Start
+                0x08009830       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009830                USBD_LL_Start
  .text.USBD_LL_OpenEP
-                0x080097dc       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080097dc                USBD_LL_OpenEP
+                0x0800984c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800984c                USBD_LL_OpenEP
  .text.USBD_LL_CloseEP
-                0x080097fc       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080097fc                USBD_LL_CloseEP
+                0x0800986c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800986c                USBD_LL_CloseEP
  .text.USBD_LL_StallEP
-                0x08009818       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009818                USBD_LL_StallEP
+                0x08009888       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009888                USBD_LL_StallEP
  .text.USBD_LL_ClearStallEP
-                0x08009834       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009834                USBD_LL_ClearStallEP
+                0x080098a4       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x080098a4                USBD_LL_ClearStallEP
  .text.USBD_LL_IsStallEP
-                0x08009850       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009850                USBD_LL_IsStallEP
+                0x080098c0       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x080098c0                USBD_LL_IsStallEP
  .text.USBD_LL_SetUSBAddress
-                0x08009878       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009878                USBD_LL_SetUSBAddress
+                0x080098e8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x080098e8                USBD_LL_SetUSBAddress
  .text.USBD_LL_Transmit
-                0x08009894       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009894                USBD_LL_Transmit
+                0x08009904       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009904                USBD_LL_Transmit
  .text.USBD_LL_PrepareReceive
-                0x080098b0       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080098b0                USBD_LL_PrepareReceive
+                0x08009920       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009920                USBD_LL_PrepareReceive
  .text.USBD_LL_GetRxDataSize
-                0x080098cc        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080098cc                USBD_LL_GetRxDataSize
+                0x0800993c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800993c                USBD_LL_GetRxDataSize
  .text.HAL_PCDEx_LPM_Callback
-                0x080098d4       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x080098d4                HAL_PCDEx_LPM_Callback
+                0x08009944       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009944                HAL_PCDEx_LPM_Callback
  .text.USBD_static_malloc
-                0x08009924        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x08009924                USBD_static_malloc
+                0x08009994        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x08009994                USBD_static_malloc
  .text.USBD_static_free
-                0x0800992c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800992c                USBD_static_free
- .text.__errno  0x08009930        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
-                0x08009930                __errno
+                0x0800999c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800999c                USBD_static_free
+ .text.__errno  0x080099a0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+                0x080099a0                __errno
  .text.__libc_init_array
-                0x0800993c       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
-                0x0800993c                __libc_init_array
- .text.memset   0x08009984       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
-                0x08009984                memset
+                0x080099ac       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+                0x080099ac                __libc_init_array
+ .text.memset   0x080099f4       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x080099f4                memset
  .text.startup.register_fini
-                0x08009a28       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x08009a3c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
-                0x08009a3c                atexit
+                0x08009a98       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x08009aac        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+                0x08009aac                atexit
  .text.__libc_fini_array
-                0x08009a48       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
-                0x08009a48                __libc_fini_array
+                0x08009ab8       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+                0x08009ab8                __libc_fini_array
  .text.__retarget_lock_acquire_recursive
-                0x08009a74        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x08009a74                __retarget_lock_acquire_recursive
+                0x08009ae4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x08009ae4                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08009a78        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x08009a78                __retarget_lock_release_recursive
+                0x08009ae8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x08009ae8                __retarget_lock_release_recursive
  .text.__register_exitproc
-                0x08009a7c       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
-                0x08009a7c                __register_exitproc
- .text.expf     0x08009b08       0x78 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
-                0x08009b08                expf
+                0x08009aec       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+                0x08009aec                __register_exitproc
+ .text.expf     0x08009b78       0x78 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+                0x08009b78                expf
  .text.__ieee754_expf
-                0x08009b80      0x1e8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
-                0x08009b80                __ieee754_expf
+                0x08009bf0      0x1e8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                0x08009bf0                __ieee754_expf
  .text.with_errnof
-                0x08009d68       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .text.xflowf   0x08009d80       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x08009dd8       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .text.xflowf   0x08009df0       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
  .text.__math_uflowf
-                0x08009da0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
-                0x08009da0                __math_uflowf
+                0x08009e10        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x08009e10                __math_uflowf
  .text.__math_oflowf
-                0x08009dac        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
-                0x08009dac                __math_oflowf
- .text.finitef  0x08009db8       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
-                0x08009db8                finitef
+                0x08009e1c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x08009e1c                __math_oflowf
+ .text.finitef  0x08009e28       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+                0x08009e28                finitef
  *(.glue_7)
- .glue_7        0x08009dd4        0x0 linker stubs
+ .glue_7        0x08009e44        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08009dd4        0x0 linker stubs
+ .glue_7t       0x08009e44        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08009dd4        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08009e44        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08009dd4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08009dd4                _init
- .init          0x08009dd8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08009e44        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08009e44                _init
+ .init          0x08009e48        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08009de0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08009de0                _fini
- .fini          0x08009de4        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08009dec                . = ALIGN (0x4)
-                0x08009dec                _etext = .
+ .fini          0x08009e50        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08009e50                _fini
+ .fini          0x08009e54        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08009e5c                . = ALIGN (0x4)
+                0x08009e5c                _etext = .
 
-.vfp11_veneer   0x08009dec        0x0
- .vfp11_veneer  0x08009dec        0x0 linker stubs
+.vfp11_veneer   0x08009e5c        0x0
+ .vfp11_veneer  0x08009e5c        0x0 linker stubs
 
-.v4_bx          0x08009dec        0x0
- .v4_bx         0x08009dec        0x0 linker stubs
+.v4_bx          0x08009e5c        0x0
+ .v4_bx         0x08009e5c        0x0 linker stubs
 
-.iplt           0x08009dec        0x0
- .iplt          0x08009dec        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08009e5c        0x0
+ .iplt          0x08009e5c        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ramfunc        0x08009dec      0xc04
- .ramfunc       0x08009dec       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x08009dec                FocPwmRun
- .ramfunc       0x08009e5c      0x28c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x08009e5c                HfiVolt
-                0x08009ee8                FocVolt
-                0x08009f54                HfiCurrent
-                0x0800a018                FocCurrent
-                0x0800a0a8                FocHandle
- .ramfunc       0x0800a0e8      0x70c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x0800a0e8                SinCosVal
-                0x0800a10c                Clarke
-                0x0800a130                Park
-                0x0800a15c                InvPark
-                0x0800a188                InvClarke
-                0x0800a1bc                SvpwmSector
-                0x0800a568                SmoPllAngle
-                0x0800a638                SmoViewer
- .ramfunc       0x0800a7f4       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
-                0x0800a7f4                ParityBitCalculate
-                0x0800a804                SpiReadWriteOneByte
-                0x0800a854                As5047pRead
- .ramfunc       0x0800a89c      0x154 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
-                0x0800a89c                PosCalculate
+.ramfunc        0x08009e5c      0xc04
+ .ramfunc       0x08009e5c       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x08009e5c                FocPwmRun
+ .ramfunc       0x08009ecc      0x28c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x08009ecc                HfiVolt
+                0x08009f58                FocVolt
+                0x08009fc4                HfiCurrent
+                0x0800a088                FocCurrent
+                0x0800a118                FocHandle
+ .ramfunc       0x0800a158      0x70c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x0800a158                SinCosVal
+                0x0800a17c                Clarke
+                0x0800a1a0                Park
+                0x0800a1cc                InvPark
+                0x0800a1f8                InvClarke
+                0x0800a22c                SvpwmSector
+                0x0800a5d8                SmoPllAngle
+                0x0800a6a8                SmoViewer
+ .ramfunc       0x0800a864       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+                0x0800a864                ParityBitCalculate
+                0x0800a874                SpiReadWriteOneByte
+                0x0800a8c4                As5047pRead
+ .ramfunc       0x0800a90c      0x154 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+                0x0800a90c                PosCalculate
 
-.RamFunc        0x0800a9f0       0xf8
- .RamFunc       0x0800a9f0       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x0800a9f0                Encoder_Idle
- .RamFunc       0x0800aa98       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
-                0x0800aa98                MoveAverageFilter
+.RamFunc        0x0800aa60       0xf8
+ .RamFunc       0x0800aa60       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x0800aa60                Encoder_Idle
+ .RamFunc       0x0800ab08       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+                0x0800ab08                MoveAverageFilter
 
-.rodata         0x0800aae8      0x8c0
-                0x0800aae8                . = ALIGN (0x4)
+.rodata         0x0800ab58      0x8c0
+                0x0800ab58                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x0800aae8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800aae8                AHBPrescTable
+                0x0800ab58       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800ab58                AHBPrescTable
  .rodata.APBPrescTable
-                0x0800aaf8        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800aaf8                APBPrescTable
+                0x0800ab68        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800ab68                APBPrescTable
  .rodata.CSWTCH.60
-                0x0800ab00        0x3 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- *fill*         0x0800ab03        0x1 
+                0x0800ab70        0x3 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ *fill*         0x0800ab73        0x1 
  .rodata.CSWTCH.61
-                0x0800ab04        0xd CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
- *fill*         0x0800ab11        0x3 
+                0x0800ab74        0xd CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+ *fill*         0x0800ab81        0x3 
  .rodata.UARTPrescTable
-                0x0800ab14       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
-                0x0800ab14                UARTPrescTable
+                0x0800ab84       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
+                0x0800ab84                UARTPrescTable
  .rodata.denominator.0
-                0x0800ab2c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800ab9c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata.numerator.1
-                0x0800ab34        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
+                0x0800aba4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .rodata.sinTable_f32
-                0x0800ab3c      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+                0x0800abac      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
  .rodata.USBD_CDC_ManufacturerStrDescriptor.str1.4
-                0x0800b340       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800b353        0x1 
+                0x0800b3b0       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800b3c3        0x1 
  .rodata.USBD_CDC_ProductStrDescriptor.str1.4
-                0x0800b354       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800b36a        0x2 
+                0x0800b3c4       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800b3da        0x2 
  .rodata.USBD_CDC_ConfigStrDescriptor.str1.4
-                0x0800b36c        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800b377        0x1 
+                0x0800b3dc        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800b3e7        0x1 
  .rodata.USBD_CDC_InterfaceStrDescriptor.str1.4
-                0x0800b378        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800b386        0x2 
+                0x0800b3e8        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800b3f6        0x2 
  .rodata.CSWTCH.3
-                0x0800b388        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800b3f8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .rodata._global_impure_ptr
-                0x0800b38c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x0800b38c                _global_impure_ptr
- .rodata.halF   0x0800b390        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2HI  0x0800b398        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2LO  0x0800b3a0        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
-                0x0800b3a8                . = ALIGN (0x4)
+                0x0800b3fc        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x0800b3fc                _global_impure_ptr
+ .rodata.halF   0x0800b400        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2HI  0x0800b408        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2LO  0x0800b410        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                0x0800b418                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800b3a8        0x8
-                0x0800b3a8                __exidx_start = .
+.ARM            0x0800b418        0x8
+                0x0800b418                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0800b3a8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0800b3b0                __exidx_end = .
+ .ARM.exidx     0x0800b418        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0800b420                __exidx_end = .
 
-.rel.dyn        0x0800b3b0        0x0
- .rel.iplt      0x0800b3b0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0800b420        0x0
+ .rel.iplt      0x0800b420        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x0800b3b0        0x0
-                0x0800b3b0                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800b420        0x0
+                0x0800b420                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800b3b0                PROVIDE (__preinit_array_end = .)
+                0x0800b420                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0800b3b0        0x8
-                0x0800b3b0                PROVIDE (__init_array_start = .)
+.init_array     0x0800b420        0x8
+                0x0800b420                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x0800b3b0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x0800b420        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x0800b3b4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800b3b8                PROVIDE (__init_array_end = .)
+ .init_array    0x0800b424        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800b428                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0800b3b8        0x4
-                0x0800b3b8                PROVIDE (__fini_array_start = .)
+.fini_array     0x0800b428        0x4
+                0x0800b428                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800b3b8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800b3bc                PROVIDE (__fini_array_end = .)
-                0x0800b3bc                _sidata = LOADADDR (.data)
+ .fini_array    0x0800b428        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800b42c                PROVIDE (__fini_array_end = .)
+                0x0800b42c                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x67c load address 0x0800b3bc
+.data           0x20000000      0x6b4 load address 0x0800b42c
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -3214,204 +3208,210 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x20000008        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
                 0x20000008                uwTickPrio
  .data.hfi_param
-                0x2000000c       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x2000000c       0x7c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
                 0x2000000c                hfi_param
- .data.pll_hfi  0x2000007c       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x2000007c                pll_hfi
- .data.lpf_id   0x200000a8        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x200000a8                lpf_id
- .data.lpf_iq   0x200000b0        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x200000b0                lpf_iq
+ .data.pll_hfi  0x20000088       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000088                pll_hfi
+ .data.lpf_id   0x200000b4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x200000b4                lpf_id
+ .data.lpf_iq   0x200000bc        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x200000bc                lpf_iq
  .data.pll_lpf_hz
-                0x200000b8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x200000b8                pll_lpf_hz
+                0x200000c4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x200000c4                pll_lpf_hz
  .data.speed_maf
-                0x200000bc        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x200000bc                speed_maf
- .data.lpf_omega
-                0x200000c4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x200000c4                lpf_omega
- .data.u.3      0x200000cc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000c8        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x200000c8                speed_maf
+ .data.B_a      0x200000d0        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000d0                B_a
+ .data.B_b      0x200000dc        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000dc                B_b
+ .data.B_gain   0x200000e8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000e8                B_gain
+ .data.in_LLast
+                0x200000ec        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000ec                in_LLast
+ .data.in_Last  0x200000f0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000f0                in_Last
+ .data.lpf_hfi  0x200000f4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000f4                lpf_hfi
+ .data.out      0x200000fc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x200000fc                out
+ .data.temp     0x20000100        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x20000100                temp
+ .data.u.0      0x20000104        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
  .data.USBD_CDC
-                0x200000d0       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
-                0x200000d0                USBD_CDC
+                0x20000108       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+                0x20000108                USBD_CDC
  .data.USBD_CDC_CfgFSDesc
-                0x20000108       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- *fill*         0x2000014b        0x1 
+                0x20000140       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ *fill*         0x20000183        0x1 
  .data.USBD_CDC_CfgHSDesc
-                0x2000014c       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- *fill*         0x2000018f        0x1 
+                0x20000184       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ *fill*         0x200001c7        0x1 
  .data.USBD_CDC_DeviceQualifierDesc
-                0x20000190        0xa CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- *fill*         0x2000019a        0x2 
+                0x200001c8        0xa CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ *fill*         0x200001d2        0x2 
  .data.USBD_CDC_OtherSpeedCfgDesc
-                0x2000019c       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- *fill*         0x200001df        0x1 
+                0x200001d4       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ *fill*         0x20000217        0x1 
  .data.USBD_Interface_fops_FS
-                0x200001e0       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x200001e0                USBD_Interface_fops_FS
+                0x20000218       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x20000218                USBD_Interface_fops_FS
  .data.CDC_Desc
-                0x200001f4       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x200001f4                CDC_Desc
+                0x2000022c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x2000022c                CDC_Desc
  .data.USBD_CDC_DeviceDesc
-                0x20000214       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20000214                USBD_CDC_DeviceDesc
- *fill*         0x20000226        0x2 
+                0x2000024c       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x2000024c                USBD_CDC_DeviceDesc
+ *fill*         0x2000025e        0x2 
  .data.USBD_LangIDDesc
-                0x20000228        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20000228                USBD_LangIDDesc
+                0x20000260        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x20000260                USBD_LangIDDesc
  .data.USBD_StringSerial
-                0x2000022c       0x1a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x2000022c                USBD_StringSerial
- *fill*         0x20000246        0x2 
+                0x20000264       0x1a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x20000264                USBD_StringSerial
+ *fill*         0x2000027e        0x2 
  .data._impure_ptr
-                0x20000248        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x20000248                _impure_ptr
- *fill*         0x2000024c        0x4 
+                0x20000280        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x20000280                _impure_ptr
+ *fill*         0x20000284        0x4 
  .data.impure_data
-                0x20000250      0x428 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x20000288      0x428 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
  .data.__atexit_recursive_mutex
-                0x20000678        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
-                0x20000678                __atexit_recursive_mutex
-                0x2000067c                . = ALIGN (0x4)
-                0x2000067c                _edata = .
+                0x200006b0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x200006b0                __atexit_recursive_mutex
+                0x200006b4                . = ALIGN (0x4)
+                0x200006b4                _edata = .
 
-.igot.plt       0x2000067c        0x0 load address 0x0800ba38
- .igot.plt      0x2000067c        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x2000067c                . = ALIGN (0x4)
+.igot.plt       0x200006b4        0x0 load address 0x0800bae0
+ .igot.plt      0x200006b4        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x200006b4                . = ALIGN (0x4)
 
-.bss            0x20000680     0x20e8 load address 0x0800ba38
-                0x20000680                _sbss = .
-                0x20000680                __bss_start__ = _sbss
+.bss            0x200006b8     0x20d4 load address 0x0800bae0
+                0x200006b8                _sbss = .
+                0x200006b8                __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000680       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .bss           0x200006b8       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
  .bss.HAL_RCC_ADC12_CLK_ENABLED
-                0x2000069c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
- .bss.hadc1     0x200006a0       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
-                0x200006a0                hadc1
- .bss.hadc2     0x2000070c       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
-                0x2000070c                hadc2
- .bss.hfdcan2   0x20000778       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
-                0x20000778                hfdcan2
- .bss.hspi1     0x200007dc       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj
-                0x200007dc                hspi1
- .bss.htim2     0x20000840       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x20000840                htim2
- .bss.htim8     0x2000088c       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x2000088c                htim8
- .bss.huart1    0x200008d8       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/usart.c.obj
-                0x200008d8                huart1
- .bss.uwTick    0x2000096c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x2000096c                uwTick
+                0x200006d4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+ .bss.hadc1     0x200006d8       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+                0x200006d8                hadc1
+ .bss.hadc2     0x20000744       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+                0x20000744                hadc2
+ .bss.hfdcan2   0x200007b0       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
+                0x200007b0                hfdcan2
+ .bss.hspi1     0x20000814       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj
+                0x20000814                hspi1
+ .bss.htim2     0x20000878       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x20000878                htim2
+ .bss.htim8     0x200008c4       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x200008c4                htim8
+ .bss.huart1    0x20000910       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/usart.c.obj
+                0x20000910                huart1
+ .bss.uwTick    0x200009a4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x200009a4                uwTick
  .bss.foc_param
-                0x20000970       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000970                foc_param
- .bss.id_pid    0x200009d0       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x200009d0                id_pid
- .bss.iq_pid    0x20000a30       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000a30                iq_pid
- .bss.mc_adc    0x20000a90       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000a90                mc_adc
+                0x200009a8       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x200009a8                foc_param
+ .bss.id_pid    0x20000a08       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000a08                id_pid
+ .bss.iq_pid    0x20000a68       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000a68                iq_pid
+ .bss.mc_adc    0x20000ac8       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000ac8                mc_adc
  .bss.motor_cfg
-                0x20000abc       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000abc                motor_cfg
+                0x20000af4       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000af4                motor_cfg
  .bss.motor_ctrl
-                0x20000ae8       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000ae8                motor_ctrl
- .bss.pll_smo   0x20000b10       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000b10                pll_smo
- .bss.pll_spd   0x20000b3c       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000b3c                pll_spd
- .bss.pos_pid   0x20000b68       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000b68                pos_pid
+                0x20000b20       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000b20                motor_ctrl
+ .bss.pll_smo   0x20000b48       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000b48                pll_smo
+ .bss.pll_spd   0x20000b74       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000b74                pll_spd
+ .bss.pos_pid   0x20000ba0       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000ba0                pos_pid
  .bss.smo_param
-                0x20000bc8       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000bc8                smo_param
- *fill*         0x20000bf4        0x4 
+                0x20000c00       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000c00                smo_param
+ *fill*         0x20000c2c        0x4 
  .bss.speed_pid
-                0x20000bf8       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                0x20000bf8                speed_pid
- .bss.cnt.7     0x20000c58        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .bss.cnt.9     0x20000c5c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .bss.flag.2    0x20000c60        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000c30       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                0x20000c30                speed_pid
+ .bss.cnt.7     0x20000c90        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .bss.cnt.9     0x20000c94        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .bss.flag.2    0x20000c98        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
  .bss.hfi_init.1
-                0x20000c64        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- *fill*         0x20000c65        0x3 
+                0x20000c9c        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ *fill*         0x20000c9d        0x3 
  .bss.pll_angle
-                0x20000c68        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x20000c68                pll_angle
+                0x20000ca0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000ca0                pll_angle
  .bss.rotor_vel_last.3
-                0x20000c6c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000ca4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
  .bss.speed_buffer
-                0x20000c70       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x20000c70                speed_buffer
- .bss.test.0    0x20000cb0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .bss.ud0.4     0x20000cb4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000ca8       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000ca8                speed_buffer
+ .bss.test.0    0x20000ce8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
  .bss.ud_inject.6
-                0x20000cb8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000cec        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
  .bss.ud_inject.8
-                0x20000cbc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .bss.uq0.5     0x20000cc0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .bss.vbus      0x20000cc4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                0x20000cc4                vbus
- .bss.alpha     0x20000cc8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x20000cc8                alpha
- .bss.i_sum1    0x20000ccc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x20000ccc                i_sum1
- .bss.i_sum2    0x20000cd0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x20000cd0                i_sum2
- .bss.nsd_count
-                0x20000cd4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                0x20000cd4                nsd_count
- .bss.valpha_last.5
-                0x20000cd8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .bss.vbeta_last.4
-                0x20000cdc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .bss.enc_para  0x20000ce0       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
-                0x20000ce0                enc_para
- .bss.cnt       0x20000d10        0x2 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                0x20000d10                cnt
- *fill*         0x20000d12        0x2 
- .bss.send_buf  0x20000d14       0x80 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                0x20000d14                send_buf
- .bss.cfgidx.0  0x20000d94        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- *fill*         0x20000d95        0x3 
+                0x20000cf0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .bss.vbus      0x20000cf4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                0x20000cf4                vbus
+ .bss.alpha     0x20000cf8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                0x20000cf8                alpha
+ .bss.valpha_last.2
+                0x20000cfc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .bss.vbeta_last.1
+                0x20000d00        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .bss.enc_para  0x20000d04       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+                0x20000d04                enc_para
+ .bss.cnt       0x20000d34        0x2 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                0x20000d34                cnt
+ *fill*         0x20000d36        0x2 
+ .bss.send_buf  0x20000d38       0x80 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                0x20000d38                send_buf
+ .bss.cfgidx.0  0x20000db8        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ *fill*         0x20000db9        0x3 
  .bss.hUsbDeviceFS
-                0x20000d98      0x2d0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
-                0x20000d98                hUsbDeviceFS
+                0x20000dbc      0x2d0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+                0x20000dbc                hUsbDeviceFS
  .bss.UserRxBufferFS
-                0x20001068      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x20001068                UserRxBufferFS
+                0x2000108c      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x2000108c                UserRxBufferFS
  .bss.UserTxBufferFS
-                0x20001868      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x20001868                UserTxBufferFS
+                0x2000188c      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x2000188c                UserTxBufferFS
  .bss.USBD_StrDesc
-                0x20002068      0x200 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20002068                USBD_StrDesc
+                0x2000208c      0x200 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x2000208c                USBD_StrDesc
  .bss.hpcd_USB_FS
-                0x20002268      0x2dc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x20002268                hpcd_USB_FS
- .bss.mem.0     0x20002544      0x220 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x2000228c      0x2dc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x2000228c                hpcd_USB_FS
+ .bss.mem.0     0x20002568      0x220 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .bss.__lock___atexit_recursive_mutex
-                0x20002764        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x20002764                __lock___atexit_recursive_mutex
+                0x20002788        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x20002788                __lock___atexit_recursive_mutex
  *(COMMON)
-                0x20002768                . = ALIGN (0x4)
- *fill*         0x20002765        0x3 
-                0x20002768                _ebss = .
-                0x20002768                __bss_end__ = _ebss
+                0x2000278c                . = ALIGN (0x4)
+ *fill*         0x20002789        0x3 
+                0x2000278c                _ebss = .
+                0x2000278c                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20002768      0x600 load address 0x0800ba38
-                0x20002768                . = ALIGN (0x8)
+                0x2000278c      0x604 load address 0x0800bae0
+                0x20002790                . = ALIGN (0x8)
+ *fill*         0x2000278c        0x4 
                 [!provide]                PROVIDE (end = .)
-                0x20002768                PROVIDE (_end = .)
-                0x20002968                . = (. + _Min_Heap_Size)
- *fill*         0x20002768      0x200 
-                0x20002d68                . = (. + _Min_Stack_Size)
- *fill*         0x20002968      0x400 
-                0x20002d68                . = ALIGN (0x8)
+                0x20002790                PROVIDE (_end = .)
+                0x20002990                . = (. + _Min_Heap_Size)
+ *fill*         0x20002790      0x200 
+                0x20002d90                . = (. + _Min_Stack_Size)
+ *fill*         0x20002990      0x400 
+                0x20002d90                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -3555,7 +3555,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x39023
+.debug_info     0x00000000    0x38fd4
  .debug_info    0x00000000     0x15b3 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_info    0x000015b3      0xc0f CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_info    0x000021c2      0x536 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj
@@ -3584,25 +3584,25 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_info    0x0002186d     0x663e CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c.obj
  .debug_info    0x00027eab     0x136d CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .debug_info    0x00029218     0x1dce CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
- .debug_info    0x0002afe6     0x15b9 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
- .debug_info    0x0002c59f     0x20cc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_info    0x0002e66b      0xea9 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_info    0x0002f514      0xb00 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_info    0x00030014      0x346 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_info    0x0003035a      0x301 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_info    0x0003065b      0x506 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_info    0x00030b61      0x7a4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_info    0x00031305      0x6a4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_info    0x000319a9     0x142f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_info    0x00032dd8      0xe0b CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_info    0x00033be3     0x10c9 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_info    0x00034cac      0x87f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_info    0x0003552b      0x79a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_info    0x00035cc5      0x98e CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_info    0x00036653      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_info    0x00036cde     0x2345 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_info    0x0002afe6     0x15e0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+ .debug_info    0x0002c5c6     0x20e7 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .debug_info    0x0002e6ad      0xea4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_info    0x0002f551      0xb00 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_info    0x00030051      0x346 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_info    0x00030397      0x301 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_info    0x00030698      0x506 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_info    0x00030b9e      0x7a4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_info    0x00031342      0x618 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_info    0x0003195a     0x142f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_info    0x00032d89      0xe0b CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_info    0x00033b94     0x10c9 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_info    0x00034c5d      0x87f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_info    0x000354dc      0x79a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_info    0x00035c76      0x98e CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_info    0x00036604      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_info    0x00036c8f     0x2345 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_abbrev   0x00000000     0x710e
+.debug_abbrev   0x00000000     0x70fb
  .debug_abbrev  0x00000000      0x24a CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_abbrev  0x0000024a      0x1d6 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_abbrev  0x00000420      0x157 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj
@@ -3632,24 +3632,24 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_abbrev  0x0000410d      0x32e CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .debug_abbrev  0x0000443b      0x326 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .debug_abbrev  0x00004761      0x2b8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
- .debug_abbrev  0x00004a19      0x3a9 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_abbrev  0x00004dc2      0x370 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_abbrev  0x00005132      0x23c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_abbrev  0x0000536e      0x155 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_abbrev  0x000054c3      0x15f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_abbrev  0x00005622      0x15f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_abbrev  0x00005781      0x20c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_abbrev  0x0000598d      0x1c2 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_abbrev  0x00005b4f      0x2c3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_abbrev  0x00005e12      0x30b CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_abbrev  0x0000611d      0x3b3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_abbrev  0x000064d0      0x1a3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_abbrev  0x00006673      0x1b5 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_abbrev  0x00006828      0x2c1 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_abbrev  0x00006ae9      0x2a8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_abbrev  0x00006d91      0x37d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_abbrev  0x00004a19      0x3b8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .debug_abbrev  0x00004dd1      0x34e CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_abbrev  0x0000511f      0x23c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_abbrev  0x0000535b      0x155 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_abbrev  0x000054b0      0x15f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_abbrev  0x0000560f      0x15f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_abbrev  0x0000576e      0x20c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_abbrev  0x0000597a      0x1c2 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_abbrev  0x00005b3c      0x2c3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_abbrev  0x00005dff      0x30b CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_abbrev  0x0000610a      0x3b3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_abbrev  0x000064bd      0x1a3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_abbrev  0x00006660      0x1b5 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_abbrev  0x00006815      0x2c1 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_abbrev  0x00006ad6      0x2a8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_abbrev  0x00006d7e      0x37d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_loc      0x00000000    0x251e6
+.debug_loc      0x00000000    0x251c0
  .debug_loc     0x00000000       0x9e CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_loc     0x0000009e       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_loc     0x00000102       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj
@@ -3675,20 +3675,20 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_loc     0x0001c745     0x2540 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .debug_loc     0x0001ec85      0x28a CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
  .debug_loc     0x0001ef0f      0x6c5 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_loc     0x0001f5d4     0x17ca CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_loc     0x00020d9e      0x151 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_loc     0x00020eef       0x22 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_loc     0x00020f11       0xa6 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_loc     0x00020fb7      0x2c9 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_loc     0x00021280      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_loc     0x0002190b       0x9e CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_loc     0x000219a9      0x805 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_loc     0x000221ae      0xacf CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_loc     0x00022c7d     0x1002 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_loc     0x00023c7f      0x2b8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_loc     0x00023f37      0x139 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_loc     0x00024070      0x378 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_loc     0x000243e8      0xdfe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_loc     0x0001f5d4     0x17a4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_loc     0x00020d78      0x151 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_loc     0x00020ec9       0x22 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_loc     0x00020eeb       0xa6 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_loc     0x00020f91      0x2c9 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_loc     0x0002125a      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_loc     0x000218e5       0x9e CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_loc     0x00021983      0x805 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_loc     0x00022188      0xacf CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_loc     0x00022c57     0x1002 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_loc     0x00023c59      0x2b8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_loc     0x00023f11      0x139 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_loc     0x0002404a      0x378 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_loc     0x000243c2      0xdfe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
 .debug_aranges  0x00000000     0x1b20
  .debug_aranges
@@ -3782,7 +3782,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_aranges
                 0x00001a10      0x110 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_ranges   0x00000000     0x3f50
+.debug_ranges   0x00000000     0x3f40
  .debug_ranges  0x00000000       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_ranges  0x00000060       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_ranges  0x000000a0       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj
@@ -3813,23 +3813,23 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_ranges  0x00003058      0x580 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .debug_ranges  0x000035d8       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
  .debug_ranges  0x00003630       0xe0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_ranges  0x00003710      0x100 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_ranges  0x00003810       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_ranges  0x00003860       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_ranges  0x00003880       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_ranges  0x000038a0       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_ranges  0x000038d0       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_ranges  0x00003988       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_ranges  0x000039b0       0x80 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_ranges  0x00003a30       0xa0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_ranges  0x00003ad0      0x118 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_ranges  0x00003be8       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_ranges  0x00003c28       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_ranges  0x00003c38       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_ranges  0x00003c70       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_ranges  0x00003d20      0x230 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_ranges  0x00003710       0xf0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_ranges  0x00003800       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_ranges  0x00003850       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_ranges  0x00003870       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_ranges  0x00003890       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_ranges  0x000038c0       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_ranges  0x00003978       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_ranges  0x000039a0       0x80 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_ranges  0x00003a20       0xa0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_ranges  0x00003ac0      0x118 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_ranges  0x00003bd8       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_ranges  0x00003c18       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_ranges  0x00003c28       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_ranges  0x00003c60       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_ranges  0x00003d10      0x230 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_line     0x00000000    0x288bd
+.debug_line     0x00000000    0x28866
  .debug_line    0x00000000      0x771 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_line    0x00000771      0x36a CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_line    0x00000adb      0x207 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj
@@ -3859,24 +3859,24 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_line    0x0001fbba      0xdbc CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c.obj
  .debug_line    0x00020976     0x19f9 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .debug_line    0x0002236f      0x666 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
- .debug_line    0x000229d5      0xa96 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_line    0x0002346b      0xede CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_line    0x00024349      0x332 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_line    0x0002467b      0x2bd CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_line    0x00024938      0x285 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_line    0x00024bbd      0x4ef CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_line    0x000250ac      0x648 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_line    0x000256f4      0x2bd CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_line    0x000259b1      0x8cd CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_line    0x0002627e      0x833 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_line    0x00026ab1      0x9e6 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_line    0x00027497      0x2a7 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_line    0x0002773e      0x241 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_line    0x0002797f      0x288 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_line    0x00027c07      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_line    0x00027f58      0x965 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_line    0x000229d5      0xa82 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+ .debug_line    0x00023457      0xeca CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_line    0x00024321      0x332 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_line    0x00024653      0x2bd CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_line    0x00024910      0x287 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_line    0x00024b97      0x4ef CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_line    0x00025086      0x648 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_line    0x000256ce      0x28c CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_line    0x0002595a      0x8cd CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_line    0x00026227      0x833 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_line    0x00026a5a      0x9e6 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_line    0x00027440      0x2a7 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_line    0x000276e7      0x241 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_line    0x00027928      0x288 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_line    0x00027bb0      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_line    0x00027f01      0x965 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_str      0x00000000     0xa1b6
+.debug_str      0x00000000     0xa1c1
  .debug_str     0x00000000     0x1337 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
                                0x141a (size before relaxing)
  .debug_str     0x00001337      0x34c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -3933,39 +3933,39 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                                 0xb7c (size before relaxing)
  .debug_str     0x00008862       0xe6 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
                                 0x6a9 (size before relaxing)
- .debug_str     0x00008948      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
-                                0xdd8 (size before relaxing)
- .debug_str     0x00008c99      0x2e0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
-                               0x1227 (size before relaxing)
- .debug_str     0x00008f79       0xfb CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
-                                0x6ad (size before relaxing)
- .debug_str     0x00009074       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_str     0x00008948      0x36d CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
+                                0xdf4 (size before relaxing)
+ .debug_str     0x00008cb5      0x2e0 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
+                               0x1243 (size before relaxing)
+ .debug_str     0x00008f95       0xea CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+                                0x6b8 (size before relaxing)
+ .debug_str     0x0000907f       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
                                 0x85f (size before relaxing)
- .debug_str     0x000090e8       0x6f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_str     0x000090f3       0x6f CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
                                 0x335 (size before relaxing)
- .debug_str     0x00009157       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_str     0x00009162       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
                                 0x2a3 (size before relaxing)
- .debug_str     0x0000918b       0x72 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_str     0x00009196       0x72 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
                                 0x31b (size before relaxing)
- .debug_str     0x000091fd      0x12a CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_str     0x00009208      0x12a CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
                                 0x356 (size before relaxing)
- .debug_str     0x00009327       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
-                                0x428 (size before relaxing)
- .debug_str     0x00009397      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_str     0x00009332       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+                                0x3f9 (size before relaxing)
+ .debug_str     0x000093a2      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
                                 0xccf (size before relaxing)
- .debug_str     0x00009a36      0x2a7 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_str     0x00009a41      0x2a7 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
                                 0x8a3 (size before relaxing)
- .debug_str     0x00009cdd      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_str     0x00009ce8      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
                                 0x7f5 (size before relaxing)
- .debug_str     0x00009e37       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_str     0x00009e42       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
                                 0x6ea (size before relaxing)
- .debug_str     0x00009e9b       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_str     0x00009ea6       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
                                 0x6c6 (size before relaxing)
- .debug_str     0x00009efa       0x9d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_str     0x00009f05       0x9d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
                                 0x7a6 (size before relaxing)
- .debug_str     0x00009f97      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_str     0x00009fa2      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
                                 0x49d (size before relaxing)
- .debug_str     0x0000a122       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_str     0x0000a12d       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
                                0x1895 (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -4015,7 +4015,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_frame    0x00000000     0x56c0
+.debug_frame    0x00000000     0x56c8
  .debug_frame   0x00000000       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_frame   0x0000009c       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
  .debug_frame   0x00000104       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/gpio.c.obj
@@ -4045,32 +4045,32 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_frame   0x00003eb8      0x1b4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .debug_frame   0x0000406c       0xd8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj
  .debug_frame   0x00004144      0x254 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj
- .debug_frame   0x00004398      0x1bc CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
- .debug_frame   0x00004554       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
- .debug_frame   0x000045ac       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
- .debug_frame   0x000045fc       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
- .debug_frame   0x00004660       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
- .debug_frame   0x00004718      0x184 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
- .debug_frame   0x0000489c       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
- .debug_frame   0x0000490c      0x174 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
- .debug_frame   0x00004a80      0x23c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
- .debug_frame   0x00004cbc       0xe0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .debug_frame   0x00004d9c       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
- .debug_frame   0x00004e4c       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_frame   0x00004e78       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_frame   0x00004f04       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_frame   0x00004fb0      0x2b4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
- .debug_frame   0x00005264       0xac g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00005310       0x50 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00005360       0xc4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00005424       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00005448       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00005474       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000054a8       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
- .debug_frame   0x000054c8       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
- .debug_frame   0x000054f4       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
- .debug_frame   0x00005520       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x00005588       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
- .debug_frame   0x000055a8       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
- .debug_frame   0x000055dc       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
- .debug_frame   0x0000568c       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+ .debug_frame   0x00004398      0x1c4 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj
+ .debug_frame   0x0000455c       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/as5047p.c.obj
+ .debug_frame   0x000045b4       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj
+ .debug_frame   0x00004604       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj
+ .debug_frame   0x00004668       0xb8 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.c.obj
+ .debug_frame   0x00004720      0x184 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/util.c.obj
+ .debug_frame   0x000048a4       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj
+ .debug_frame   0x00004914      0x174 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_frame   0x00004a88      0x23c CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_frame   0x00004cc4       0xe0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_frame   0x00004da4       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_frame   0x00004e54       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_frame   0x00004e80       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_frame   0x00004f0c       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_frame   0x00004fb8      0x2b4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_frame   0x0000526c       0xac g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00005318       0x50 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00005368       0xc4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x0000542c       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00005450       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000547c       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000054b0       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+ .debug_frame   0x000054d0       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+ .debug_frame   0x000054fc       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+ .debug_frame   0x00005528       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00005590       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+ .debug_frame   0x000055b0       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+ .debug_frame   0x000055e4       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+ .debug_frame   0x00005694       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)

@@ -53,7 +53,7 @@ float IqPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
     pid->d_term = pid->d_error*pid->kd;
 
     uq0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * (motor_cfg.ls / 1000 * foc_param.i_d + motor_cfg.flux) / 1000;
-    AbsLimit(uq0, pid->i_term_max);
+    uq0 = AbsLimit(uq0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term + uq0;
     AbsLimit(pid->out_value, pid->out_max);
@@ -77,7 +77,7 @@ float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
     pid->d_term = pid->d_error*pid->kd;
 
     ud0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * motor_cfg.ls / 1000000.f * foc_param.i_q;
-    AbsLimit(ud0, pid->i_term_max);
+    ud0 = AbsLimit(ud0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term - ud0;
     AbsLimit(pid->out_value, pid->out_max);
@@ -291,7 +291,7 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
             break;
         }
 
-        case FOC_SENSORLESS_CTRL: 
+        case FOC_SENSORLESS_CTRL:
         {
             if (++ctrl->spd_cnt == 10) // 20khz/20 = 1khz
             {
