@@ -2,6 +2,13 @@
 #include "util.h"
 #include "main.h"
 
+
+/**
+ * @brief 通过转子位置计算速度
+ * @param pll
+ * @param angle
+ * @return
+ */
 float PllSpeedCtrl(pll_t *pll, float angle)
 {
 	pll->ref = sin_f32(angle)*cos_f32(pll->angle_out);
@@ -47,5 +54,5 @@ __RAM_FUNC void MoveAverageFilter(MovingAverage_t* filter, float *data)
     }
 
     // 返回平均值
-    *data = sum / filter->size;
+    *data = sum / (float )(filter->size);
 }

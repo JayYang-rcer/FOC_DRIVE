@@ -20,13 +20,14 @@
 
 typedef enum FOC_CTRL_MODE
 {
-    FOC_VF_CTRL = 0, //强拖
-    FOC_VOLT_CTRL = 1, //电压控制
-    FOC_CURRENT_CTRL = 2, //电流控制
-    FOC_SPEED_CTRL = 3, //速度控制
-    FOC_POSITION_CTRL = 4, //位置控制
-    FOC_SENSORLESS_CTRL = 5, //无传感器控制
-    FOC_HFI_TEST = 6, //高频注入测试
+    FOC_IDLE = 0, //空闲
+    FOC_VF_CTRL = 1, //强拖
+    FOC_VOLT_CTRL = 2, //电压控制
+    FOC_CURRENT_CTRL = 3, //电流控制
+    FOC_SPEED_CTRL = 4, //速度控制
+    FOC_POSITION_CTRL = 5, //位置控制
+    FOC_SENSORLESS_CTRL = 6, //无传感器控制
+    FOC_HFI_TEST = 7, //高频注入测试
 }FOC_CTRL_MODE;
 
 

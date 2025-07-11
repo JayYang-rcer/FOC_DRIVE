@@ -4,7 +4,7 @@ GraphedExpression="(mc_adc).ia", Color=#e56a6f, Show=0
 GraphedExpression="(mc_adc).ib", Color=#35792b, Show=0
 GraphedExpression="(mc_adc).ic", Color=#769dda, Show=0
 OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=71
-OpenDocument="foc_cfg.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_cfg.c", Line=130
+OpenDocument="foc_cfg.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_cfg.c", Line=129
 OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c", Line=338
 OpenDocument="foc_math.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_math.c", Line=228
 OpenDocument="stm32g4xx_hal_tim.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c", Line=3836
@@ -23,11 +23,11 @@ OpenDocument="util.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/util.c", Li
 OpenToolbar="Debug", Floating=0, x=0, y=0
 OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=1, w=711, h=218, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
 OpenWindow="Source Files", DockArea=LEFT, x=0, y=0, w=347, h=353, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=216, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=217, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Memory 1", DockArea=BOTTOM, x=2, y=0, w=848, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x200009E8
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=582, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Functions", DockArea=LEFT, x=0, y=1, w=347, h=321, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=2, w=711, h=239, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
+OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=2, w=711, h=238, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=488, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
 TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;200]
@@ -36,14 +36,14 @@ TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", Visibl
 TableHeader="Data Sampling Setup", SortCol="Type", SortOrder="DESCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[140;100;100;100;100;100;100;100;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
 TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[100;105;489]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[100;186;279]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[125;186;254]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
 TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;359]
 WatchedExpression="foc_param", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="speed_pid", DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="speed_maf", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="speed_buffer", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
-WatchedExpression="pll_angle", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
+WatchedExpression="pos_pid", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="enc_para", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="mc_adc", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="motor_cfg", RefreshRate=5, Window=Watched Data 1

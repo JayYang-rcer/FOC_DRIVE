@@ -230,18 +230,21 @@ float HfiInjectSign(float inject_U)
 }
 
 
-volatile float B_a[3] = {1.0f , -0.98133f , 0.0f};
-volatile float B_b[3] = {1.0f , 1.0f , 0.0f};
-volatile float B_gain = 0.001f;
-volatile float temp=0.1f;
-volatile float in_Last=0.1f, in_LLast=0.1f, out=0.1f;
-float ButterWorthLpf(float in)
-{
-    temp = B_gain*in - B_a[0]*in_Last - B_a[1]*in_LLast;
-    out = B_b[0]*temp + B_b[1]*in_Last + B_b[2]*in_LLast;
-    in_LLast = in_Last;
-    in_Last = temp;
-    return out;
+// 二阶巴特沃斯低通滤波器系数（采样频率1 kHz，截止频率100 Hz）
+float b0 = 0.0201f, b1 = 0.0402f, b2 = 0.0201f; // 分子系数
+float a1 = -1.5610f, a2 = 0.6414f;              // 分母系数
+float x1 = 0.0f, x2 = 0.0f;                     // 输入延迟状态
+float y3 = 0.0f, y2 = 0.0f;                     // 输出延迟状态
+
+// 滤波器函数
+float butterworth_lpf(float input) {
+    float output = b0 * input + b1 * x1 + b2 * x2 - a1 * y3 - a2 * y2;
+    // 更新状态变量
+    x2 = x1;
+    x1 = input;
+    y2 = y3;
+    y3 = output;
+    return output;
 }
 
 
@@ -267,7 +270,7 @@ float HfiPllAngle(pll_t* pll, hfi_param_t* hfi)
     pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); //积分限幅
 
     pll->out_value = pll->p_term + pll->i_term;
-//    hfi->omega_e = ButterWorthLpf(pll->out_value*1.3648f);
+    hfi->omega_e = butterworth_lpf(pll->out_value*1.3648f);
     LowPassFilter(&pll->out_value,&lpf_hfi);
 
     pll->angle_out += pll->out_value/pll->loop_hz;

@@ -32,7 +32,8 @@ void VofaStart(void)
 //    VofaSendData(2, foc_param.i_b);
 //    VofaSendData(2, foc_param.i_c);
     VofaSendData(1, motor_cfg.rotor_vel);
-    VofaSendData(1, pll_hfi.out_value);
+//    VofaSendData(1, pll_hfi.out_value);
+    VofaSendData(1, hfi_param.omega_e);
     VofaSendData(2,enc_para.pos_e);
     VofaSendData(2,hfi_param.theta_e);
 

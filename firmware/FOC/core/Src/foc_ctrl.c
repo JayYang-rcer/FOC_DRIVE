@@ -249,6 +249,11 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 {
     switch (ctrl->ctrl_mode)
     {
+        case FOC_IDLE:
+        {
+            break;
+        }
+
         case FOC_VF_CTRL:
         {
             foc->theta += 0.007f;
@@ -328,7 +333,7 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 //                        if(test <= 10000)
 //                        {
 //                            HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
-//                            test++;
+////                            test++;
 //                        }
 //                        else
 //                        {
@@ -338,7 +343,14 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 
                         if(++test == 10)
                         {
-                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, motor_cfg.rotor_vel);
+//                            static int pos = 0;
+//                            if(++pos==2)
+//                            {
+//                                ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+//                                pos=0;
+//                            }
+                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
+//                            IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
                             test=0;
                         }
                         HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
@@ -366,7 +378,7 @@ _RAM_FUNC void FocHandle(void)
 #endif
 #else
     PosCalculate(&enc_para);
-    motor_ctrl.ctrl_mode = FOC_HFI_TEST;
+    motor_ctrl.ctrl_mode = FOC_IDLE;
     MotorCtrl(&motor_ctrl, &foc_param);
     //calibrate_mt_encoder(1.0f,0);
     FocPwmRun(&foc_param);

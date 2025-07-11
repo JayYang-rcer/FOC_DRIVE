@@ -31,7 +31,7 @@ hfi_param_t hfi_param = {
 
 pll_t pll_hfi = {
         .loop_hz = 20000, //20khz
-        .kp = 4000,
+        .kp = 1200,
         .ki = 250000,
         .i_term_limit = 500
 };
