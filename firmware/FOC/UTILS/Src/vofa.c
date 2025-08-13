@@ -40,7 +40,7 @@ void VofaStart(void)
     VofaSendData(2,hfi_param.idq_f.iq);
     VofaSendData(2,hfi_param.idq_f.id);
 //	VofaSendData(3,enc_para.pos_e);
-//	VofaSendData(3,pll_angle);
+//	VofaSendData(3,smo_angle);
 
 //	VofaSendData(1,PWM_ARR());
 	VofaSendframetail();

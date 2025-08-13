@@ -117,9 +117,6 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     SinCosVal(&foc_param);
     Clarke(&foc_param);
 
-//    LowPassFilter(&foc_param.i_d, &lpf_id);
-//    LowPassFilter(&foc_param.i_q, &lpf_iq);
-
     static int cnt = 0;
     static float ud_inject;
     if(++cnt == 4)
@@ -190,7 +187,8 @@ void CurrentUpdate(foc_adc_t* adc, foc_param_t* foc)
 }
 
 
-volatile float pll_lpf_hz = 0.01f,pll_angle;
+volatile float smo_angle;
+lpf_t lpf_spdpll = {.in_last = 0.0f, .trust = 0.01f}; // PLL低通滤波器
 volatile float speed_hz = 10000;
 void EncoderDataCalc(enc_para_t* enc, motor_cfg_t* motor)
 {
@@ -212,13 +210,12 @@ void EncoderDataCalc(enc_para_t* enc, motor_cfg_t* motor)
 
 #if USE_SPD_PLL
 
-//    if(motor_ctrl.ctrl_mode == FOC_SENSORLESS_CTRL)
+//    if(motor_ctrl.mode == FOC_SENSORLESS_CTRL)
 //		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;     //使用滑膜速度输出
 //    else
-        motor->rotor_vel = PllSpeedCtrl(&pll_spd,enc->pos_s);       //编码器速度输出
+    motor->rotor_vel = PllSpeedCtrl(&pll_spd,enc->pos_s);       //编码器速度输出
 
-    motor->rotor_vel = (1-pll_lpf_hz)*rotor_vel_last+pll_lpf_hz*motor->rotor_vel;
-    rotor_vel_last = motor->rotor_vel;
+    LowPassFilter(&motor->rotor_vel,&lpf_spdpll);
     MoveAverageFilter(&speed_maf, &motor->rotor_vel);
 #endif
 }
@@ -241,13 +238,13 @@ __RAM_FUNC void Encoder_Idle(void)
     }
 
     EncoderDataCalc(&enc_para, &motor_cfg);
-//    pll_angle = SmoViewer(&foc_param, &smo_param);
+//    smo_angle = SmoViewer(&foc_param, &smo_param);
 }
 
 
 void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 {
-    switch (ctrl->ctrl_mode)
+    switch (ctrl->mode)
     {
         case FOC_IDLE:
         {
@@ -303,7 +300,7 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
                 IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, motor_cfg.rotor_vel);
                 ctrl->spd_cnt = 0;
             }
-            FocCurrent(ctrl->id_set,speed_pid.out_value,pll_angle);
+            FocCurrent(ctrl->id_set, speed_pid.out_value, smo_angle);
             break;
         }
 
@@ -343,16 +340,17 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 
                         if(++test == 10)
                         {
-//                            static int pos = 0;
-//                            if(++pos==2)
-//                            {
-//                                ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
-//                                pos=0;
-//                            }
-                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
-//                            IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
+                            static int pos = 0;
+                            if(++pos==2)
+                            {
+                                ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+                                pos=0;
+                            }
+//                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
+                            IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
                             test=0;
                         }
+                        //高频注入Id偏置，防止电机在速度为0时的观测角度发散
                         HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
                     }
                 }
@@ -378,7 +376,7 @@ _RAM_FUNC void FocHandle(void)
 #endif
 #else
     PosCalculate(&enc_para);
-    motor_ctrl.ctrl_mode = FOC_IDLE;
+    motor_ctrl.mode = FOC_IDLE;
     MotorCtrl(&motor_ctrl, &foc_param);
     //calibrate_mt_encoder(1.0f,0);
     FocPwmRun(&foc_param);

@@ -377,7 +377,7 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc)
     {
         motor_ctrl.id_set = 2.f;
         HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
-        hfi->i_sum_pos += fabsf(hfi->idq_h.id);
+        hfi->isum_positive += fabsf(hfi->idq_h.id);
     }
     else if(hfi->nsd_count>=620 && hfi->nsd_count<820)
     {
@@ -393,12 +393,12 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc)
     {
         motor_ctrl.id_set = -2.f;
         HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
-        hfi->i_sum_neg += fabsf(hfi->idq_h.id);
+        hfi->isum_negetive += fabsf(hfi->idq_h.id);
     }
     else
     {
         motor_ctrl.id_set = 0;
-        if(hfi->i_sum_pos<hfi->i_sum_neg)
+        if(hfi->isum_positive < hfi->isum_negetive)
             hfi->theta_e += M_PI;
         if(hfi->theta_e > M_2PI)
             hfi->theta_e -= M_2PI;

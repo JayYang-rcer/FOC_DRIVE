@@ -89,7 +89,7 @@ typedef struct
     uint16_t spd_cnt;
     uint16_t pos_cnt;
 
-    FOC_CTRL_MODE ctrl_mode; //控制模式
+    FOC_CTRL_MODE mode; //控制模式
 }motor_ctrl_t;
 
 typedef struct 
@@ -151,11 +151,11 @@ typedef struct hfi_param_t
     float theta_e; //预测电角度
     float omega_e; //预测电角速度
     float inject_U; //注入电压
-    int sign; //注入信号
+    int sign;
 
     uint16_t nsd_count;
-    float i_sum_pos; //正向电流和
-    float i_sum_neg; //反向电流和
+    float isum_positive;
+    float isum_negetive;
 
     aplha_beta_t ab;
     aplha_beta_t ab_last;

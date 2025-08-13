@@ -27,7 +27,7 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc);
 /*********************************** hfi *******************************/
 
 extern smo_param_t smo_param;
-extern volatile float pll_angle;
+extern volatile float smo_angle;
 extern float ualpha;
 extern float ubeta;
 
