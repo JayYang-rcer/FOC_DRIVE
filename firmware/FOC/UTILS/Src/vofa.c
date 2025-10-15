@@ -9,6 +9,7 @@
 #define MAX_BUFFER_SIZE 128
 volatile uint8_t send_buf[MAX_BUFFER_SIZE];
 volatile uint16_t cnt = 0;
+
 /**
 ***********************************************************************
 * @brief:      vofa_start(void)
@@ -17,8 +18,7 @@ volatile uint16_t cnt = 0;
 * @details:    发送数据给上位机
 ***********************************************************************
 **/
-void VofaStart(void)
-{
+void VofaStart(void) {
 //	 VofaSendData(1,pll_hfi.error);
 //    VofaSendData(2,foc_param.i_alpha);
 //    VofaSendData(1,foc_param.i_beta);
@@ -34,16 +34,16 @@ void VofaStart(void)
     VofaSendData(1, motor_cfg.rotor_vel);
 //    VofaSendData(1, pll_hfi.out_value);
     VofaSendData(1, hfi_param.omega_e);
-    VofaSendData(2,enc_para.pos_e);
-    VofaSendData(2,hfi_param.theta_e);
+    VofaSendData(2, enc_para.pos_e);
+    VofaSendData(2, hfi_param.theta_e);
 
-    VofaSendData(2,hfi_param.idq_f.iq);
-    VofaSendData(2,hfi_param.idq_f.id);
+    VofaSendData(2, hfi_param.idq_f.iq);
+    VofaSendData(2, hfi_param.idq_f.id);
 //	VofaSendData(3,enc_para.pos_e);
 //	VofaSendData(3,smo_angle);
 
 //	VofaSendData(1,PWM_ARR());
-	VofaSendframetail();
+    VofaSendframetail();
 }
 
 
@@ -55,10 +55,9 @@ void VofaStart(void)
 * @details:    修改通信工具，USART或者USB
 ***********************************************************************
 **/
-void VofaTransmit(uint8_t* buf, uint16_t len)
-{
+void VofaTransmit(uint8_t *buf, uint16_t len) {
 //	HAL_UART_Transmit(&huart3, (uint8_t *)buf, len, 0xFFFF);
-	CDC_Transmit_FS((uint8_t *)buf, len);
+    CDC_Transmit_FS((uint8_t *) buf, len);
 }
 
 
@@ -70,13 +69,13 @@ void VofaTransmit(uint8_t* buf, uint16_t len)
 * @details:    将浮点数据拆分成单字节
 ***********************************************************************
 **/
-void VofaSendData(uint8_t num, float data) 
-{
-	send_buf[cnt++] = byte0(data);
-	send_buf[cnt++] = byte1(data);
-	send_buf[cnt++] = byte2(data);
-	send_buf[cnt++] = byte3(data);
+void VofaSendData(uint8_t num, float data) {
+    send_buf[cnt++] = byte0(data);
+    send_buf[cnt++] = byte1(data);
+    send_buf[cnt++] = byte2(data);
+    send_buf[cnt++] = byte3(data);
 }
+
 /**
 ***********************************************************************
 * @brief      vofa_sendframetail(void)
@@ -85,16 +84,15 @@ void VofaSendData(uint8_t num, float data)
 * @details:   给数据包发送帧尾
 ***********************************************************************
 **/
-void VofaSendframetail(void) 
-{
-	send_buf[cnt++] = 0x00;
-	send_buf[cnt++] = 0x00;
-	send_buf[cnt++] = 0x80;
-	send_buf[cnt++] = 0x7f;
-	
-	/* 将数据和帧尾打包发送 */
-	VofaTransmit((uint8_t *)send_buf, cnt);
-	cnt = 0;// 每次发送完帧尾都需要清零
+void VofaSendframetail(void) {
+    send_buf[cnt++] = 0x00;
+    send_buf[cnt++] = 0x00;
+    send_buf[cnt++] = 0x80;
+    send_buf[cnt++] = 0x7f;
+
+    /* 将数据和帧尾打包发送 */
+    VofaTransmit((uint8_t *) send_buf, cnt);
+    cnt = 0;// 每次发送完帧尾都需要清零
 }
 
 

@@ -8,7 +8,8 @@
 #include "as5047p.h"
 #include "foc_cfg.h"
 
-void PosCalculate(enc_para_t* enc);
+void PosCalculate(enc_para_t *enc);
+
 void EncoderInit(void);
 
 #endif //DRIVE_CMAKE_ENCODER_PROC_H

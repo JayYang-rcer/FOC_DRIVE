@@ -75,7 +75,7 @@ void MX_ADC1_Init(void)
   */
   sConfigInjected.InjectedChannel = ADC_CHANNEL_1;
   sConfigInjected.InjectedRank = ADC_INJECTED_RANK_1;
-  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_247CYCLES_5;
+  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_47CYCLES_5;
   sConfigInjected.InjectedSingleDiff = ADC_SINGLE_ENDED;
   sConfigInjected.InjectedOffsetNumber = ADC_OFFSET_NONE;
   sConfigInjected.InjectedOffset = 0;
@@ -111,9 +111,8 @@ void MX_ADC1_Init(void)
 
   /** Configure Injected Channel
   */
-  sConfigInjected.InjectedChannel = ADC_CHANNEL_4;
+  sConfigInjected.InjectedChannel = ADC_CHANNEL_5;
   sConfigInjected.InjectedRank = ADC_INJECTED_RANK_4;
-  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_47CYCLES_5;
   if (HAL_ADCEx_InjectedConfigChannel(&hadc1, &sConfigInjected) != HAL_OK)
   {
     Error_Handler();
@@ -198,7 +197,7 @@ void MX_ADC2_Init(void)
 
   /** Configure Injected Channel
   */
-  sConfigInjected.InjectedChannel = ADC_CHANNEL_9;
+  sConfigInjected.InjectedChannel = ADC_CHANNEL_15;
   sConfigInjected.InjectedRank = ADC_INJECTED_RANK_4;
   sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_47CYCLES_5;
   if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
@@ -240,16 +239,22 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     }
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     /**ADC1 GPIO Configuration
     PA0     ------> ADC1_IN1
     PA1     ------> ADC1_IN2
     PA2     ------> ADC1_IN3
-    PA3     ------> ADC1_IN4
+    PB14     ------> ADC1_IN5
     */
-    GPIO_InitStruct.Pin = IC_Pin|IB_Pin|IA_Pin|MOSTEMP_Pin;
+    GPIO_InitStruct.Pin = IA_Pin|IB_Pin|IC_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = TEMP_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(TEMP_GPIO_Port, &GPIO_InitStruct);
 
     /* ADC1 interrupt Init */
     HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
@@ -280,16 +285,22 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     }
 
     __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     /**ADC2 GPIO Configuration
     PC0     ------> ADC2_IN6
     PC1     ------> ADC2_IN7
     PC2     ------> ADC2_IN8
-    PC3     ------> ADC2_IN9
+    PB15     ------> ADC2_IN15
     */
-    GPIO_InitStruct.Pin = VC_Pin|VB_Pin|VA_Pin|VBAT_Pin;
+    GPIO_InitStruct.Pin = VC_Pin|VB_Pin|VA_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = VBAT_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(VBAT_GPIO_Port, &GPIO_InitStruct);
 
     /* ADC2 interrupt Init */
     HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
@@ -318,17 +329,19 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PA0     ------> ADC1_IN1
     PA1     ------> ADC1_IN2
     PA2     ------> ADC1_IN3
-    PA3     ------> ADC1_IN4
+    PB14     ------> ADC1_IN5
     */
-    HAL_GPIO_DeInit(GPIOA, IC_Pin|IB_Pin|IA_Pin|MOSTEMP_Pin);
+    HAL_GPIO_DeInit(GPIOA, IA_Pin|IB_Pin|IC_Pin);
+
+    HAL_GPIO_DeInit(TEMP_GPIO_Port, TEMP_Pin);
 
     /* ADC1 interrupt Deinit */
   /* USER CODE BEGIN ADC1:ADC1_2_IRQn disable */
-    /**
-    * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
-    * Be aware, disabling shared interrupt may affect other IPs
-    */
-    /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
+        /**
+        * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
+        * Be aware, disabling shared interrupt may affect other IPs
+        */
+        /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
   /* USER CODE END ADC1:ADC1_2_IRQn disable */
 
   /* USER CODE BEGIN ADC1_MspDeInit 1 */
@@ -350,17 +363,19 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PC0     ------> ADC2_IN6
     PC1     ------> ADC2_IN7
     PC2     ------> ADC2_IN8
-    PC3     ------> ADC2_IN9
+    PB15     ------> ADC2_IN15
     */
-    HAL_GPIO_DeInit(GPIOC, VC_Pin|VB_Pin|VA_Pin|VBAT_Pin);
+    HAL_GPIO_DeInit(GPIOC, VC_Pin|VB_Pin|VA_Pin);
+
+    HAL_GPIO_DeInit(VBAT_GPIO_Port, VBAT_Pin);
 
     /* ADC2 interrupt Deinit */
   /* USER CODE BEGIN ADC2:ADC1_2_IRQn disable */
-    /**
-    * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
-    * Be aware, disabling shared interrupt may affect other IPs
-    */
-    /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
+        /**
+        * Uncomment the line below to disable the "ADC1_2_IRQn" interrupt
+        * Be aware, disabling shared interrupt may affect other IPs
+        */
+        /* HAL_NVIC_DisableIRQ(ADC1_2_IRQn); */
   /* USER CODE END ADC2:ADC1_2_IRQn disable */
 
   /* USER CODE BEGIN ADC2_MspDeInit 1 */

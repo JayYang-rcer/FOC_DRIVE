@@ -20,25 +20,26 @@
  ******************************************************************************
 */
 #include "drive_iic.h"
+
 #define USE_TIM_DELAY 0
 #define IIC_DELAY_CNT 20
 
 #if USE_TIM_DELAY
 #define i2c_Delay delay_us_nos
 #else
+
 /**
  * @brief 软件IIC延时函数
  * @param nus 延时时间, nus = 1接近于延时1us
  */
-void i2c_Delay(uint8_t nus)
-{
+void i2c_Delay(uint8_t nus) {
     uint8_t i2c_delay_time = 0;
-    for(int i = 0; i < nus; i++)
-    {
+    for (int i = 0; i < nus; i++) {
         i2c_delay_time = IIC_DELAY_CNT;
-        for(int j = 0; j < i2c_delay_time; j++);
+        for (int j = 0; j < i2c_delay_time; j++);
     }
 }
+
 #endif
 
 /**
@@ -46,20 +47,19 @@ void i2c_Delay(uint8_t nus)
  * 
  * @param iic_pin IIC引脚结构体
  */
-void i2c_Start(IIC_PIN_Typedef *iic_pin)
-{
+void i2c_Start(IIC_PIN_Typedef *iic_pin) {
     /* SDA Output */
-	xSDA_OUT(iic_pin);   
-	xIIC_SDA(iic_pin, 1);  
-	xIIC_SCL(iic_pin, 1);
+    xSDA_OUT(iic_pin);
+    xIIC_SDA(iic_pin, 1);
+    xIIC_SCL(iic_pin, 1);
     i2c_Delay(1);
 
     /* 当SCL高电平时，SDA出现一个下跳沿表示I2C总线启动信号 */
-	xIIC_SDA(iic_pin, 0);  
-	i2c_Delay(1);
-	
-	/* 钳住IIC总线，准备收发数据 */
-	xIIC_SCL(iic_pin, 0);  
+    xIIC_SDA(iic_pin, 0);
+    i2c_Delay(1);
+
+    /* 钳住IIC总线，准备收发数据 */
+    xIIC_SCL(iic_pin, 0);
 }
 
 
@@ -68,8 +68,7 @@ void i2c_Start(IIC_PIN_Typedef *iic_pin)
  * 
  * @param iic_pin 
  */
-void i2c_Stop(IIC_PIN_Typedef *iic_pin)
-{
+void i2c_Stop(IIC_PIN_Typedef *iic_pin) {
     /* 当SCL高电平时，SDA出现一个上跳沿表示I2C总线停止信号 */
     xSDA_OUT(iic_pin);
     xIIC_SDA(iic_pin, 0);
@@ -85,13 +84,12 @@ void i2c_Stop(IIC_PIN_Typedef *iic_pin)
   * @param  hiic: iic handler
   * @retval void
   */
-void i2c_Init(IIC_PIN_Typedef *iic_pin)
-{ 
-	/* SCL High */
-	xIIC_SCL(iic_pin,1);
+void i2c_Init(IIC_PIN_Typedef *iic_pin) {
+    /* SCL High */
+    xIIC_SCL(iic_pin, 1);
 
-	/* SDA High */  
-	xIIC_SDA(iic_pin,1);
+    /* SDA High */
+    xIIC_SDA(iic_pin, 1);
 }
 
 /**
@@ -99,12 +97,11 @@ void i2c_Init(IIC_PIN_Typedef *iic_pin)
  * 
  * @param iic_pin 
  */
-void xSDA_IN(IIC_PIN_Typedef *iic_pin)              		    
-{
+void xSDA_IN(IIC_PIN_Typedef *iic_pin) {
     /*清除引脚的模式位*/
-	iic_pin->IIC_GPIO_PORT->MODER&=~(3<<(iic_pin->IIC_SDA_PIN_NUM*2));
+    iic_pin->IIC_GPIO_PORT->MODER &= ~(3 << (iic_pin->IIC_SDA_PIN_NUM * 2));
     /*设置引脚为输入模式*/
-	iic_pin->IIC_GPIO_PORT->MODER|= (0<<(iic_pin->IIC_SDA_PIN_NUM*2));	    
+    iic_pin->IIC_GPIO_PORT->MODER |= (0 << (iic_pin->IIC_SDA_PIN_NUM * 2));
 }
 
 
@@ -113,12 +110,11 @@ void xSDA_IN(IIC_PIN_Typedef *iic_pin)
  * 
  * @param iic_pin 
  */
-void xSDA_OUT(IIC_PIN_Typedef *iic_pin)             		    
-{
+void xSDA_OUT(IIC_PIN_Typedef *iic_pin) {
     /*清除引脚的模式位*/
-	iic_pin->IIC_GPIO_PORT->MODER&=~(3<<(iic_pin->IIC_SDA_PIN_NUM*2));
+    iic_pin->IIC_GPIO_PORT->MODER &= ~(3 << (iic_pin->IIC_SDA_PIN_NUM * 2));
     /*设置引脚为输入模式*/
-	iic_pin->IIC_GPIO_PORT->MODER|= (1<<(iic_pin->IIC_SDA_PIN_NUM*2)); 		
+    iic_pin->IIC_GPIO_PORT->MODER |= (1 << (iic_pin->IIC_SDA_PIN_NUM * 2));
 }
 
 
@@ -128,12 +124,11 @@ void xSDA_OUT(IIC_PIN_Typedef *iic_pin)
  * @param iic_pin 
  * @param x 0为低电平，1为高电平
  */
-void xIIC_SCL(IIC_PIN_Typedef *iic_pin,const char x)        
-{   
-    if(x!=0)
-        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT,iic_pin->IIC_SCL_PIN,GPIO_PIN_SET);
-	else
-        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT,iic_pin->IIC_SCL_PIN,GPIO_PIN_RESET);
+void xIIC_SCL(IIC_PIN_Typedef *iic_pin, const char x) {
+    if (x != 0)
+        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT, iic_pin->IIC_SCL_PIN, GPIO_PIN_SET);
+    else
+        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT, iic_pin->IIC_SCL_PIN, GPIO_PIN_RESET);
 }
 
 
@@ -143,12 +138,11 @@ void xIIC_SCL(IIC_PIN_Typedef *iic_pin,const char x)
  * @param iic_pin 
  * @param x 0为低电平，1为高电平
  */
-void xIIC_SDA(IIC_PIN_Typedef *iic_pin,const char x)        
-{
-    if(x!=0)
-        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT,iic_pin->IIC_SDA_PIN,GPIO_PIN_SET);
+void xIIC_SDA(IIC_PIN_Typedef *iic_pin, const char x) {
+    if (x != 0)
+        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT, iic_pin->IIC_SDA_PIN, GPIO_PIN_SET);
     else
-		HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT,iic_pin->IIC_SDA_PIN,GPIO_PIN_RESET);	
+        HAL_GPIO_WritePin(iic_pin->IIC_GPIO_PORT, iic_pin->IIC_SDA_PIN, GPIO_PIN_RESET);
 }
 
 
@@ -158,19 +152,15 @@ void xIIC_SDA(IIC_PIN_Typedef *iic_pin,const char x)
  * @param iic_pin 
  * @return GPIO_PinState 
  */
-GPIO_PinState xREAD_SDA(IIC_PIN_Typedef *iic_pin)
-{
+GPIO_PinState xREAD_SDA(IIC_PIN_Typedef *iic_pin) {
     GPIO_PinState bitstatus;
-	
-    if((iic_pin->IIC_GPIO_PORT->IDR & iic_pin->IIC_SDA_PIN) != (uint32_t)GPIO_PIN_RESET)
-    {
+
+    if ((iic_pin->IIC_GPIO_PORT->IDR & iic_pin->IIC_SDA_PIN) != (uint32_t) GPIO_PIN_RESET) {
         bitstatus = GPIO_PIN_SET;
-    }
-    else
-    {
+    } else {
         bitstatus = GPIO_PIN_RESET;
     }
-    return bitstatus;	
+    return bitstatus;
 }
 
 
@@ -179,24 +169,21 @@ GPIO_PinState xREAD_SDA(IIC_PIN_Typedef *iic_pin)
  * @note CPU向I2C总线设备发送8bit数据
  * @param iic_pin IIC引脚结构体
  */
-void i2c_SendByte(IIC_PIN_Typedef *iic_pin, uint8_t _ucByte)
-{
+void i2c_SendByte(IIC_PIN_Typedef *iic_pin, uint8_t _ucByte) {
     uint8_t i;
     xSDA_OUT(iic_pin); /* SDA Output */
-    xIIC_SCL(iic_pin, 0);   
+    xIIC_SCL(iic_pin, 0);
 
     /* 先发送字节的高位bit7 */
-    for (i = 0; i < 8; i++)
-    {
-        xIIC_SDA(iic_pin, (_ucByte&0x80)>>7);
+    for (i = 0; i < 8; i++) {
+        xIIC_SDA(iic_pin, (_ucByte & 0x80) >> 7);
         i2c_Delay(1);
-        xIIC_SCL(iic_pin,1);
+        xIIC_SCL(iic_pin, 1);
         i2c_Delay(1);
-        xIIC_SCL(iic_pin,0);
+        xIIC_SCL(iic_pin, 0);
 
-        if (i == 7)
-        {
-            xIIC_SDA(iic_pin,0); // 释放总线
+        if (i == 7) {
+            xIIC_SDA(iic_pin, 0); // 释放总线
         }
         _ucByte <<= 1; /* 左移一个bit */
         i2c_Delay(1);
@@ -211,38 +198,32 @@ void i2c_SendByte(IIC_PIN_Typedef *iic_pin, uint8_t _ucByte)
  * @param ack 0表示发送不应答，1表示发送应答
  * @return uint8_t 读到的数据
  */
-uint8_t i2c_ReadByte(IIC_PIN_Typedef *iic_pin, uint8_t ack)
-{
+uint8_t i2c_ReadByte(IIC_PIN_Typedef *iic_pin, uint8_t ack) {
     uint8_t i, value;
 
     /* 读到第1个bit为数据的bit7 */
     value = 0;
     xSDA_IN(iic_pin);
-    
-    for (i = 0; i < 8; i++)
-    {
+
+    for (i = 0; i < 8; i++) {
         xIIC_SCL(iic_pin, 0);
-		i2c_Delay(1);
-		xIIC_SCL(iic_pin, 1);
+        i2c_Delay(1);
+        xIIC_SCL(iic_pin, 1);
         value <<= 1;
 
-        if (xREAD_SDA(iic_pin))
-        {
+        if (xREAD_SDA(iic_pin)) {
             value++;
         }
         i2c_Delay(1);
     }
 
-    if(!ack)
-	{
-		/* 发送不应答信号 */
-		i2c_NAck(iic_pin);
-	}
-	else 
-	{
-		/* 发送应答信号 */
-		i2c_Ack(iic_pin);
-	}
+    if (!ack) {
+        /* 发送不应答信号 */
+        i2c_NAck(iic_pin);
+    } else {
+        /* 发送应答信号 */
+        i2c_Ack(iic_pin);
+    }
 
     return value;
 }
@@ -254,27 +235,25 @@ uint8_t i2c_ReadByte(IIC_PIN_Typedef *iic_pin, uint8_t ack)
  * @param iic_pin 
  * @return uint8_t 返回0表示正确应答，1表示无器件响应
  */
-uint8_t i2c_WaitAck(IIC_PIN_Typedef *iic_pin)
-{
-    uint8_t ucErrTime=0;
+uint8_t i2c_WaitAck(IIC_PIN_Typedef *iic_pin) {
+    uint8_t ucErrTime = 0;
 
     xSDA_IN(iic_pin);       /* SDA Input */
     xIIC_SDA(iic_pin, 1);   /* CPU释放SDA总线 */
     i2c_Delay(1);
-    
+
     xIIC_SCL(iic_pin, 1);   /* CPU驱动SCL = 1, 此时器件会返回ACK应答 */
     i2c_Delay(1);
 
-    while(xREAD_SDA(iic_pin))   /* CPU读取SDA口线状态 */
+    while (xREAD_SDA(iic_pin))   /* CPU读取SDA口线状态 */
     {
         ucErrTime++;
-        if(ucErrTime>250)
-        {
+        if (ucErrTime > 250) {
             i2c_Stop(iic_pin);
             return 1;
         }
     }
-    xIIC_SCL(iic_pin,0);   /* CPU驱动SCL = 0 */
+    xIIC_SCL(iic_pin, 0);   /* CPU驱动SCL = 0 */
     i2c_Delay(1);
     return 0;
 }
@@ -284,17 +263,16 @@ uint8_t i2c_WaitAck(IIC_PIN_Typedef *iic_pin)
  * 
  * @param iic_pin 
  */
-void i2c_Ack(IIC_PIN_Typedef *iic_pin)
-{
-    xIIC_SCL(iic_pin, 0);   
-	xSDA_OUT(iic_pin);   
-	xIIC_SDA(iic_pin, 0);  
-	i2c_Delay(1);
+void i2c_Ack(IIC_PIN_Typedef *iic_pin) {
+    xIIC_SCL(iic_pin, 0);
+    xSDA_OUT(iic_pin);
+    xIIC_SDA(iic_pin, 0);
+    i2c_Delay(1);
 
-	xIIC_SCL(iic_pin, 1);  
-	i2c_Delay(1);
-    
-	xIIC_SCL(iic_pin, 0);  
+    xIIC_SCL(iic_pin, 1);
+    i2c_Delay(1);
+
+    xIIC_SCL(iic_pin, 0);
 }
 
 
@@ -303,17 +281,16 @@ void i2c_Ack(IIC_PIN_Typedef *iic_pin)
  * 
  * @param iic_pin 
  */
-void i2c_NAck(IIC_PIN_Typedef *iic_pin)
-{
-    xIIC_SCL(iic_pin, 0); 
-	xSDA_OUT(iic_pin);   
-	xIIC_SDA(iic_pin, 1);  
-	i2c_Delay(1);
+void i2c_NAck(IIC_PIN_Typedef *iic_pin) {
+    xIIC_SCL(iic_pin, 0);
+    xSDA_OUT(iic_pin);
+    xIIC_SDA(iic_pin, 1);
+    i2c_Delay(1);
 
-	xIIC_SCL(iic_pin, 1);  
-	i2c_Delay(1);
+    xIIC_SCL(iic_pin, 1);
+    i2c_Delay(1);
 
-	xIIC_SCL(iic_pin, 0);  
+    xIIC_SCL(iic_pin, 0);
 }
 
 
@@ -326,35 +303,31 @@ void i2c_NAck(IIC_PIN_Typedef *iic_pin)
   * @retval 0,success
   *         1,fail
   */
-uint8_t i2c_Device_Write_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t reg, uint8_t data)
-{
+uint8_t i2c_Device_Write_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t reg, uint8_t data) {
     i2c_Start(iic_pin);
-	
-	/* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
-	i2c_SendByte(iic_pin, (addr<<1)|0);
+
+    /* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
+    i2c_SendByte(iic_pin, (addr << 1) | 0);
 
     /* 判读设备是否应答 */
-	if(i2c_WaitAck(iic_pin))	    
-	{
-		i2c_Stop(iic_pin);
-		return 1;
-	}
+    if (i2c_WaitAck(iic_pin)) {
+        i2c_Stop(iic_pin);
+        return 1;
+    }
 
-	/* 发送寄存器地址 */
-    i2c_SendByte(iic_pin,reg);	
-    i2c_WaitAck(iic_pin);		
-        
-    /* 发送数据到寄存器 */    
-	i2c_SendByte(iic_pin,data);    
-	if(i2c_WaitAck(iic_pin))	    
-	{
-		i2c_Stop(iic_pin);
-		return 1;
-	}
+    /* 发送寄存器地址 */
+    i2c_SendByte(iic_pin, reg);
+    i2c_WaitAck(iic_pin);
+
+    /* 发送数据到寄存器 */
+    i2c_SendByte(iic_pin, data);
+    if (i2c_WaitAck(iic_pin)) {
+        i2c_Stop(iic_pin);
+        return 1;
+    }
     i2c_Stop(iic_pin);
-	return 0;
+    return 0;
 }
-
 
 
 /**
@@ -364,30 +337,29 @@ uint8_t i2c_Device_Write_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t re
   * @param  reg: 设备寄存器地址
   * @retval 读到的数据      
   */
-uint8_t i2c_Device_Read_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr,uint8_t reg)
-{
-	uint8_t res;
+uint8_t i2c_Device_Read_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t reg) {
+    uint8_t res;
     i2c_Start(iic_pin);
-	
-	/* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
-	i2c_SendByte(iic_pin,(addr<<1)|0);
-	i2c_WaitAck(iic_pin);		
-  
-	/* 发送寄存器地址 */
-    i2c_SendByte(iic_pin,reg);	
-    i2c_WaitAck(iic_pin);		
+
+    /* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
+    i2c_SendByte(iic_pin, (addr << 1) | 0);
+    i2c_WaitAck(iic_pin);
+
+    /* 发送寄存器地址 */
+    i2c_SendByte(iic_pin, reg);
+    i2c_WaitAck(iic_pin);
     i2c_Start(iic_pin);
-	
-	/* 发送设备地址和读命令 */
-	i2c_SendByte(iic_pin,(addr<<1)|1);
-    i2c_WaitAck(iic_pin);		
-  
-	/* 读取数据并发送不应答信号 */
-	res = i2c_ReadByte(iic_pin,0);
-	
-	/* 停止信号 */
-    i2c_Stop(iic_pin);			
-	return res;
+
+    /* 发送设备地址和读命令 */
+    i2c_SendByte(iic_pin, (addr << 1) | 1);
+    i2c_WaitAck(iic_pin);
+
+    /* 读取数据并发送不应答信号 */
+    res = i2c_ReadByte(iic_pin, 0);
+
+    /* 停止信号 */
+    i2c_Stop(iic_pin);
+    return res;
 }
 
 /**
@@ -400,34 +372,30 @@ uint8_t i2c_Device_Read_Byte(IIC_PIN_Typedef *iic_pin, uint8_t addr,uint8_t reg)
   * @retval 0,success
   *         1,fail
   */
-uint8_t i2c_Device_Write_Len(IIC_PIN_Typedef *iic_pin, uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
-{
-	uint8_t i;
+uint8_t i2c_Device_Write_Len(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf) {
+    uint8_t i;
     i2c_Start(iic_pin);
-	
-	/* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
-	i2c_SendByte(iic_pin,(addr<<1)|0);
-	if(i2c_WaitAck(iic_pin))	
-	{
-		i2c_Stop(iic_pin);
-		return 1;
-	}
-	
-	/* 发送寄存器地址 */
-    i2c_SendByte(iic_pin,reg);	
-    i2c_WaitAck(iic_pin);		
-	for(i=0;i<len;i++)
-	{
-		/* 发送数据到寄存器 */ 
-		i2c_SendByte(iic_pin,buf[i]);	
-		if(i2c_WaitAck(iic_pin))		
-		{
-			i2c_Stop(iic_pin);
-			return 1;
-		}
-	}
+
+    /* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
+    i2c_SendByte(iic_pin, (addr << 1) | 0);
+    if (i2c_WaitAck(iic_pin)) {
+        i2c_Stop(iic_pin);
+        return 1;
+    }
+
+    /* 发送寄存器地址 */
+    i2c_SendByte(iic_pin, reg);
+    i2c_WaitAck(iic_pin);
+    for (i = 0; i < len; i++) {
+        /* 发送数据到寄存器 */
+        i2c_SendByte(iic_pin, buf[i]);
+        if (i2c_WaitAck(iic_pin)) {
+            i2c_Stop(iic_pin);
+            return 1;
+        }
+    }
     i2c_Stop(iic_pin);
-	return 0;
+    return 0;
 }
 
 /**
@@ -440,39 +408,36 @@ uint8_t i2c_Device_Write_Len(IIC_PIN_Typedef *iic_pin, uint8_t addr,uint8_t reg,
   * @retval 0,success
   *         1,fail
   */
-uint8_t i2c_Device_Read_Len(IIC_PIN_Typedef *iic_pin, uint8_t addr,uint8_t reg,uint8_t len,uint8_t *buf)
-{
- 	i2c_Start(iic_pin);
-	
-	/* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
-	i2c_SendByte(iic_pin,(addr<<1)|0);
-	if(i2c_WaitAck(iic_pin))	
-	{
-		i2c_Stop(iic_pin);
-		return 1;
-	}
-	
-	/* 发送寄存器地址 */
-    i2c_SendByte(iic_pin,reg);	
-    i2c_WaitAck(iic_pin);		
+uint8_t i2c_Device_Read_Len(IIC_PIN_Typedef *iic_pin, uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf) {
     i2c_Start(iic_pin);
-	
-	/* 发送设备地址和读命令 */
-	i2c_SendByte(iic_pin,(addr<<1)|1);
-    i2c_WaitAck(iic_pin);		
-	while(len)
-	{
-		/* 接收完最后一个字节数据后，发送不应答信号 */
-		if(len==1)
-            *buf=i2c_ReadByte(iic_pin,0);
-		else 
-            *buf=i2c_ReadByte(iic_pin,1);	
 
-		len--;
-		buf++;
-	}
+    /* 发送设备地址，将地址左移一位(IIC地址一般是7位，7位设备地址，后接1位读/写位) */
+    i2c_SendByte(iic_pin, (addr << 1) | 0);
+    if (i2c_WaitAck(iic_pin)) {
+        i2c_Stop(iic_pin);
+        return 1;
+    }
 
-	/* 停止信号 */
-    i2c_Stop(iic_pin);	
-	return 0;
+    /* 发送寄存器地址 */
+    i2c_SendByte(iic_pin, reg);
+    i2c_WaitAck(iic_pin);
+    i2c_Start(iic_pin);
+
+    /* 发送设备地址和读命令 */
+    i2c_SendByte(iic_pin, (addr << 1) | 1);
+    i2c_WaitAck(iic_pin);
+    while (len) {
+        /* 接收完最后一个字节数据后，发送不应答信号 */
+        if (len == 1)
+            *buf = i2c_ReadByte(iic_pin, 0);
+        else
+            *buf = i2c_ReadByte(iic_pin, 1);
+
+        len--;
+        buf++;
+    }
+
+    /* 停止信号 */
+    i2c_Stop(iic_pin);
+    return 0;
 }

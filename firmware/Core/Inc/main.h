@@ -63,18 +63,18 @@ void Error_Handler(void);
 #define VB_GPIO_Port GPIOC
 #define VA_Pin GPIO_PIN_2
 #define VA_GPIO_Port GPIOC
-#define VBAT_Pin GPIO_PIN_3
-#define VBAT_GPIO_Port GPIOC
-#define IC_Pin GPIO_PIN_0
-#define IC_GPIO_Port GPIOA
+#define IA_Pin GPIO_PIN_0
+#define IA_GPIO_Port GPIOA
 #define IB_Pin GPIO_PIN_1
 #define IB_GPIO_Port GPIOA
-#define IA_Pin GPIO_PIN_2
-#define IA_GPIO_Port GPIOA
-#define MOSTEMP_Pin GPIO_PIN_3
-#define MOSTEMP_GPIO_Port GPIOA
+#define IC_Pin GPIO_PIN_2
+#define IC_GPIO_Port GPIOA
 #define ENC_NSS_Pin GPIO_PIN_4
 #define ENC_NSS_GPIO_Port GPIOA
+#define TEMP_Pin GPIO_PIN_14
+#define TEMP_GPIO_Port GPIOB
+#define VBAT_Pin GPIO_PIN_15
+#define VBAT_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

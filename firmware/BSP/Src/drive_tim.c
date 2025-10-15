@@ -17,11 +17,10 @@
 
 volatile uint32_t SystemTimerCnt;
 
-struct timer_manager_t
-{
-	TIM_HandleTypeDef*	htim_x;
-	EDelay_src	delay_ms_src;
-}Timer_Manager;
+struct timer_manager_t {
+    TIM_HandleTypeDef *htim_x;
+    EDelay_src delay_ms_src;
+} Timer_Manager;
 
 
 /* function prototypes -------------------------------------------------------*/
@@ -31,17 +30,15 @@ struct timer_manager_t
 * @param  src : Choose the src for delay_ms().
 * @retval None
 */
-void Timer_Init(TIM_HandleTypeDef* htim, EDelay_src src)
-{
-	/* Check the parameters */
-	assert_param(htim != NULL);
-	Timer_Manager.htim_x = htim;
-	Timer_Manager.delay_ms_src = src;
-    
-  	if(HAL_TIM_Base_Start_IT(Timer_Manager.htim_x)!=HAL_OK)
-		{
-            Error_Handler();
-		}
+void Timer_Init(TIM_HandleTypeDef *htim, EDelay_src src) {
+    /* Check the parameters */
+    assert_param(htim != NULL);
+    Timer_Manager.htim_x = htim;
+    Timer_Manager.delay_ms_src = src;
+
+    if (HAL_TIM_Base_Start_IT(Timer_Manager.htim_x) != HAL_OK) {
+        Error_Handler();
+    }
 }
 
 
@@ -50,9 +47,8 @@ void Timer_Init(TIM_HandleTypeDef* htim, EDelay_src src)
 * @param  None
 * @retval current tick.
 */
-uint32_t Get_SystemTimer(void)
-{
-	return Timer_Manager.htim_x->Instance->CNT + SystemTimerCnt * 0xffff;
+uint32_t Get_SystemTimer(void) {
+    return Timer_Manager.htim_x->Instance->CNT + SystemTimerCnt * 0xffff;
 }
 
 
@@ -62,9 +58,8 @@ uint32_t Get_SystemTimer(void)
 * @param  None
 * @retval None
 */
-void Update_SystemTick(void)
-{
-	SystemTimerCnt++;
+void Update_SystemTick(void) {
+    SystemTimerCnt++;
 }
 
 
@@ -76,12 +71,11 @@ void Update_SystemTick(void)
  * @param htim 定时器句柄
  * @param channel PWM输出通道
  */
-void PWM_ReInit(uint16_t period, uint16_t prescaler, TIM_HandleTypeDef* htim, uint32_t channel)
-{
-	htim->Init.Period = period;
-	htim->Init.Prescaler = prescaler;
-	HAL_TIM_Base_Init(htim);
-	HAL_TIM_PWM_Start(htim, channel);
+void PWM_ReInit(uint16_t period, uint16_t prescaler, TIM_HandleTypeDef *htim, uint32_t channel) {
+    htim->Init.Period = period;
+    htim->Init.Prescaler = prescaler;
+    HAL_TIM_Base_Init(htim);
+    HAL_TIM_PWM_Start(htim, channel);
 }
 
 
@@ -93,14 +87,13 @@ void PWM_ReInit(uint16_t period, uint16_t prescaler, TIM_HandleTypeDef* htim, ui
  * @param duty 占空比，0~100
  * @return int 
  */
-void Set_PwmDuty(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t duty)
-{
-	uint32_t tim_cnt=0, cmp;
+void Set_PwmDuty(TIM_HandleTypeDef *htim, uint32_t channel, uint16_t duty) {
+    uint32_t tim_cnt = 0, cmp;
 
-	//获取定时器的重装载值
-	tim_cnt = htim->Instance->ARR;
-	cmp = (tim_cnt + 1) * duty / 100;
-	__HAL_TIM_SET_COMPARE(htim, channel, cmp);
+    //获取定时器的重装载值
+    tim_cnt = htim->Instance->ARR;
+    cmp = (tim_cnt + 1) * duty / 100;
+    __HAL_TIM_SET_COMPARE(htim, channel, cmp);
 }
 
 
@@ -109,13 +102,12 @@ void Set_PwmDuty(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t duty)
  * @param htim 定时器句柄
  * @param freq 输出频率
  */
-void Set_PwmFreq(TIM_HandleTypeDef* htim, uint32_t freq)
-{
-	htim->Init.Period = (htim->Instance->ARR/freq)-1;
-	//重新初始化定时器
-	HAL_TIM_Base_Init(htim);
-	
-	HAL_TIM_PWM_Init(htim);
+void Set_PwmFreq(TIM_HandleTypeDef *htim, uint32_t freq) {
+    htim->Init.Period = (htim->Instance->ARR / freq) - 1;
+    //重新初始化定时器
+    HAL_TIM_Base_Init(htim);
+
+    HAL_TIM_PWM_Init(htim);
 }
 
 
@@ -126,11 +118,10 @@ void Set_PwmFreq(TIM_HandleTypeDef* htim, uint32_t freq)
 * @note 阻塞式延时
 * @retval None
 */
-void delay_us_nos(uint32_t cnt)
-{
-	uint32_t temp = cnt  + microsecond();
+void delay_us_nos(uint32_t cnt) {
+    uint32_t temp = cnt + microsecond();
 
-	while(temp >= microsecond());
+    while (temp >= microsecond());
 }
 
 
@@ -140,14 +131,11 @@ void delay_us_nos(uint32_t cnt)
 * @note 阻塞式延时
 * @retval None
 */
-void delay_ms_nos(uint32_t cnt)
-{
-	if(Timer_Manager.htim_x != NULL && Timer_Manager.delay_ms_src == USE_MODULE_DELAY)
-	{
-		uint32_t temp = cnt * 1000 + microsecond();
-		while(temp >= microsecond());
-	}
-	else
-		HAL_Delay(cnt);
+void delay_ms_nos(uint32_t cnt) {
+    if (Timer_Manager.htim_x != NULL && Timer_Manager.delay_ms_src == USE_MODULE_DELAY) {
+        uint32_t temp = cnt * 1000 + microsecond();
+        while (temp >= microsecond());
+    } else
+        HAL_Delay(cnt);
 }
 

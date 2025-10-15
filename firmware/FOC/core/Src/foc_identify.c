@@ -10,44 +10,35 @@
 lpf_t identify_lpf_Is = {.in_last = 0.0f, .trust = 0.05f}; // 电流低通滤波器
 volatile float Is_sum;
 foc_identify_t identify_res = {
-    .vd_set = 0.0f,
-    .vq_set = 0.0f,
-    .ident_status_res = IDENT_SET
+        .vd_set = 0.0f,
+        .vq_set = 0.0f,
+        .ident_status_res = IDENT_SET
 };
 
 
-bool FocIdentifyRes(foc_identify_t* identify, foc_param_t* foc, float Is)
-{
-    switch (identify->ident_status_res)
-    {
-        case IDENT_SET:
-        {
+bool FocIdentifyRes(foc_identify_t *identify, foc_param_t *foc, float Is) {
+    switch (identify->ident_status_res) {
+        case IDENT_SET: {
             FocPwmStart(true, true, true, true, false, false);
             LowPassFilter(&foc->i_a, &identify_lpf_Is); // 低通滤波处理
-            if (foc->i_a > Is)
-            {
+            if (foc->i_a > Is) {
                 identify->ident_status_res = IDENT_GET;
-            }
-            else
-            {
+            } else {
                 identify->vd_set += 0.00001f; // 增加直轴电压
-                foc->dtc_a = identify->vd_set/12.2f+42.5f/4250.f; // 设置A相DTC
+                foc->dtc_a = identify->vd_set / 12.2f + 42.5f / 4250.f; // 设置A相DTC
                 foc->dtc_b = 0;
                 foc->dtc_c = 0;
             }
             break;
         }
 
-        case IDENT_GET:
-        {
-            static int cnt=0;
-            if(++cnt < 20000) //等待2000次采样
+        case IDENT_GET: {
+            static int cnt = 0;
+            if (++cnt < 20000) //等待2000次采样
             {
                 LowPassFilter(&foc->i_a, &identify_lpf_Is); // 低通滤波处理
                 Is_sum += fabsf(foc->i_a); // 累加电流值
-            }
-            else
-            {
+            } else {
                 identify->ident_status_res = IDENT_SUCCESS;
                 float i_value = Is_sum / 20000.0f; // 计算平均值
                 identify->res_a = (identify->vd_set) / i_value * 1000.f * 0.5f; // 计算相电阻
@@ -59,8 +50,7 @@ bool FocIdentifyRes(foc_identify_t* identify, foc_param_t* foc, float Is)
             }
         }
 
-        case IDENT_SUCCESS:
-        {
+        case IDENT_SUCCESS: {
             return true;
             break;
         }
