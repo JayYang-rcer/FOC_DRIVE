@@ -35,127 +35,93 @@ _RAM_FUNC void InvClarke(foc_param_t *foc) {
 * @retval:     void
 * @details:    SVPWM扇区判断
 */
-_RAM_FUNC int SvpwmSector(foc_param_t *foc) {
-    uint8_t N, A, B, C;
-    float TS = 1.f;
-    float ta = 0.0f, tb = 0.0f, tc = 0.0f;
-    float k = (TS * SQRT3) / (foc->vbus);
+_RAM_FUNC int SvpwmSector(foc_param_t *foc)
+{
+    float Ua = foc->v_alpha;
+    float Ub = foc->v_beta;
 
-    float tx, ty;
-    float temp = 0;
+    /* Clarke result → Space Vector base components */
+    float U1 = Ub;
+    float U2 = (SQRT3 * Ua - Ub) * 0.5f;
+    float U3 = -(SQRT3 * Ua + Ub) * 0.5f;
 
-    float U1 = foc->v_beta;
-    float U2 = (SQRT3 * foc->v_alpha - foc->v_beta) * 0.5f;
-    float U3 = -(SQRT3 * foc->v_alpha + foc->v_beta) * 0.5f;
-
-    if (U1 > 0) A = 1; else A = 0;
-    if (U2 > 0) B = 1; else B = 0;
-    if (U3 > 0) C = 1; else C = 0;
-
-    N = A + B * 2 + C * 4;
+    uint8_t A, B, C;
+    uint8_t N;
     int sector = 0;
+
+    /* sector decision */
+    // clang-format off
+    A = (U1 > 0.0f);
+    B = (U2 > 0.0f);
+    C = (U3 > 0.0f);
+
+    N = (A) | (B << 1) | (C << 2);
+
     switch (N) {
-        case 1:
-            sector = 2;
-            break;
-        case 2:
-            sector = 6;
-            break;
-        case 3:
-            sector = 1;
-            break;
-        case 4:
-            sector = 4;
-            break;
-        case 5:
-            sector = 3;
-            break;
-        case 6:
-            sector = 5;
-            break;
-        default:
-            break;
+        case 1: sector = 2; break;
+        case 2: sector = 6; break;
+        case 3: sector = 1; break;
+        case 4: sector = 4; break;
+        case 5: sector = 3; break;
+        case 6: sector = 5; break;
+        default: sector = 0; break;
+    }
+    // clang-format on
+
+    foc->sector = sector;
+
+    /* Modulation index scalar */
+    float Tn = 0.95f;     // 95% modulation depth
+    float k  = (Tn * SQRT3) / foc->vbus;
+
+    /* T1,T2 calculation */
+    float T1, T2;
+
+    switch (sector)
+    {
+    case 1: T1 = U2 * k;  T2 = U1 * k;  break;
+    case 2: T1 = -U2 * k; T2 = -U3 * k; break;
+    case 3: T1 = U1 * k;  T2 = U3 * k;  break;
+    case 4: T1 = -U1 * k; T2 = -U2 * k; break;
+    case 5: T1 = U3 * k;  T2 = U2 * k;  break;
+    case 6: T1 = -U3 * k; T2 = -U1 * k; break;
+    default:
+        foc->dtc_a = foc->dtc_b = foc->dtc_c = 0.5f;
+        return -1;
     }
 
-    switch (sector) {
-        case 1:
-            tx = U2 * k;
-            ty = U1 * k;
-            break;
-        case 2:
-            tx = -U2 * k;
-            ty = -U3 * k;
-            break;
-        case 3:
-            tx = U1 * k;
-            ty = U3 * k;
-            break;
-        case 4:
-            tx = -U1 * k;
-            ty = -U2 * k;
-            break;
-        case 5:
-            tx = U3 * k;
-            ty = U2 * k;
-            break;
-        case 6:
-            tx = -U3 * k;
-            ty = -U1 * k;
-            break;
+    /* Overmodulation clamp: T1+T2 不可超过 Tn */
+    float S = T1 + T2;
+    if (S > Tn)
+    {
+        T1 = T1 / S * Tn;
+        T2 = T2 / S * Tn;
     }
 
-    //过调制处理
-    if (tx + ty > TS) {
-        temp = tx + ty;
-        tx = tx / temp * TS;
-        ty = ty / temp * TS;
+    /* center-aligned PWM: Ta,Tb,Tc 通用计算式 */
+    float T0 = (Tn - T1 - T2) * 0.5f;
+
+    float Ta = T0 + T1 + T2;
+    float Tb = T0 + T2;
+    float Tc = T0;
+
+    /* 重排 3 相输出 */
+    switch (sector)
+    {
+    case 1: foc->dtc_a = Ta; foc->dtc_b = Tb; foc->dtc_c = Tc; break;
+    case 2: foc->dtc_a = Tb; foc->dtc_b = Ta; foc->dtc_c = Tc; break;
+    case 3: foc->dtc_a = Tc; foc->dtc_b = Ta; foc->dtc_c = Tb; break;
+    case 4: foc->dtc_a = Tc; foc->dtc_b = Tb; foc->dtc_c = Ta; break;
+    case 5: foc->dtc_a = Tb; foc->dtc_b = Tc; foc->dtc_c = Ta; break;
+    case 6: foc->dtc_a = Ta; foc->dtc_b = Tc; foc->dtc_c = Tb; break;
     }
 
-    ta = (TS + tx + ty) * 0.25f;
-    tb = ta - tx * 0.5f;
-    tc = tb - ty * 0.5f;
+    /* Valid check */
+    if (foc->dtc_a < 0 || foc->dtc_a > 1) return -1;
+    if (foc->dtc_b < 0 || foc->dtc_b > 1) return -1;
+    if (foc->dtc_c < 0 || foc->dtc_c > 1) return -1;
 
-    switch (sector) {
-        case 1:
-            foc->dtc_a = ta;
-            foc->dtc_b = tb;
-            foc->dtc_c = tc;
-            break;
-        case 2:
-            foc->dtc_a = tb;
-            foc->dtc_b = ta;
-            foc->dtc_c = tc;
-            break;
-        case 3:
-            foc->dtc_a = tc;
-            foc->dtc_b = ta;
-            foc->dtc_c = tb;
-            break;
-        case 4:
-            foc->dtc_a = tc;
-            foc->dtc_b = tb;
-            foc->dtc_c = ta;
-            break;
-        case 5:
-            foc->dtc_a = tb;
-            foc->dtc_b = tc;
-            foc->dtc_c = ta;
-            break;
-        case 6:
-            foc->dtc_a = ta;
-            foc->dtc_b = tc;
-            foc->dtc_c = tb;
-            break;
-        default:
-            break;
-    }
-
-    // if any of the results becomes NaN, result_valid will evaluate to false
-    int result_valid = foc->dtc_a >= 0.0f && foc->dtc_a <= 1.0f &&
-                       foc->dtc_b >= 0.0f && foc->dtc_b <= 1.0f &&
-                       foc->dtc_c >= 0.0f && foc->dtc_c <= 1.0f;
-
-    return result_valid ? 0 : -1;
+    return 0;
 }
 
 
@@ -259,9 +225,13 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo) {
  * @return 定轴的高频注入值
  */
 float HfiInjectSign(float inject_U) {
-    static float u = -1.f;
-    u *= -1.f;
-    return inject_U * u;
+//    static float u = -1.f;
+//    u *= -1.f;
+    static int data[4] = {0,1,0,-1}, i=0;
+    i++;
+    if(i==4)
+        i=0;
+    return inject_U * data[i];
 }
 
 
@@ -321,7 +291,7 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
  */
 void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
     //更新数据
-//    Clarke(foc);
+    Clarke(foc);
     hfi->ab_laster.alpha = hfi->ab_last.alpha;
     hfi->ab_laster.beta = hfi->ab_last.beta;
     hfi->ab_last.alpha = hfi->ab.alpha;
@@ -332,10 +302,10 @@ void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
     hfi->ab_h_last.beta = hfi->ab_h.beta;
 
     //提取高频电流
-    hfi->ab_h.alpha = (hfi->ab.alpha - 2.f * hfi->ab_last.alpha + hfi->ab_laster.alpha) * 0.25f;
-    hfi->ab_h.beta = (hfi->ab.beta - 2.f * hfi->ab_last.beta + hfi->ab_laster.beta) * 0.25f;
-//    hfi->ab_h.alpha = (hfi->ab.alpha - hfi->ab_last.alpha)*0.5f;
-//    hfi->ab_h.beta = (hfi->ab.beta - hfi->ab_last.beta)*0.5f;
+//    hfi->ab_h.alpha = (hfi->ab.alpha - 2.f * hfi->ab_last.alpha + hfi->ab_laster.alpha) * 0.25f;
+//    hfi->ab_h.beta = (hfi->ab.beta - 2.f * hfi->ab_last.beta + hfi->ab_laster.beta) * 0.25f;
+    hfi->ab_h.alpha = (hfi->ab.alpha - hfi->ab_last.alpha)*0.5f;
+    hfi->ab_h.beta = (hfi->ab.beta - hfi->ab_last.beta)*0.5f;
 
     hfi->envelope.alpha = (hfi->ab_h.alpha - hfi->ab_h_last.alpha) * hfi->sign;
     hfi->envelope.beta = (hfi->ab_h.beta - hfi->ab_h_last.beta) * hfi->sign;
@@ -350,10 +320,10 @@ void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
  * @param hfi
  */
 void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
-    hfi->idq_f.id = (foc->i_d + 2 * hfi->idq_f_last.id + hfi->idq_f_laster.id) * 0.25f;
-    hfi->idq_f.iq = (foc->i_q + 2 * hfi->idq_f_last.iq + hfi->idq_f_laster.iq) * 0.25f;
-//    hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
-//    hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
+//    hfi->idq_f.id = (foc->i_d + 2 * hfi->idq_f_last.id + hfi->idq_f_laster.id) * 0.25f;
+//    hfi->idq_f.iq = (foc->i_q + 2 * hfi->idq_f_last.iq + hfi->idq_f_laster.iq) * 0.25f;
+    hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
+    hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
 
     //update
     hfi->idq_f_laster.id = hfi->idq_f_last.id;
@@ -369,10 +339,10 @@ void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
  * @param hfi
  */
 void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi) {
-    hfi->idq_h.id = (foc->i_d - 2 * hfi->idq_h_last.id + hfi->idq_h_laster.id) * 0.25f;
-    hfi->idq_h.iq = (foc->i_q - 2 * hfi->idq_h_last.iq + hfi->idq_h_laster.iq) * 0.25f;
-//    hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
-//    hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
+//    hfi->idq_h.id = (foc->i_d - 2 * hfi->idq_h_last.id + hfi->idq_h_laster.id) * 0.25f;
+//    hfi->idq_h.iq = (foc->i_q - 2 * hfi->idq_h_last.iq + hfi->idq_h_laster.iq) * 0.25f;
+    hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
+    hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
 
     //update
     hfi->idq_h_laster.id = hfi->idq_h_last.id;
@@ -424,5 +394,10 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
         return true;
     }
     return false;
+}
+
+int16_t non_flux_observer()
+{
+    return 0;
 }
 

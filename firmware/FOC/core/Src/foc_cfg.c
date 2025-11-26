@@ -30,7 +30,7 @@ hfi_param_t hfi_param = {.inject_U = 0.8f, .omega_e = 0.1f};
 pll_t pll_hfi = {.loop_hz      = 20000,// 20khz
                  .kp           = 1200,
                  .ki           = 250000,
-                 .i_term_limit = 500};
+                 .i_term_limit = 1000};
 /**********************************************************/
 
 
@@ -111,9 +111,9 @@ void MotorPidInit(void) {
 
     // u3最高最速，KV700 * 11.1/sqrt(3) = 5037
     pll_spd.loop_hz = 10000;
-    pll_spd.kp      = 5037.f / 60.f * M_2PI * 0.707f * 2.f;
+    pll_spd.kp      = 10800.f / 60.f * M_2PI * 0.707f * 2.f;
     // pll_spd.kp = 4200.f/60.f*M_2PI * 10.f * 2.f;
-    pll_spd.ki = (5037.f / 60.f * M_2PI) * (5037.f / 60.f * M_2PI) / pll_spd.loop_hz;
+    pll_spd.ki = (10800.f / 60.f * M_2PI) * (10800.f / 60.f * M_2PI) / pll_spd.loop_hz;
 }
 
 
@@ -132,9 +132,10 @@ void CurrentSampInit(void) {
     HAL_ADCEx_InjectedStart(&hadc1);
     HAL_ADCEx_InjectedStart(&hadc2);
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 4100);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
     __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 3500);
+    motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);
 }
 
 

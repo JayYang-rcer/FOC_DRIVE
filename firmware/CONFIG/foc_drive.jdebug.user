@@ -1,41 +1,30 @@
 
 
-OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=60
+OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=53
 OpenDocument="foc_cfg.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_cfg.c", Line=129
 OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c", Line=338
 OpenDocument="foc_math.c", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_math.c", Line=228
 OpenDocument="stm32g4xx_hal_tim.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c", Line=3836
-OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=86
-OpenDocument="stm32g4xx_hal_tim_ex.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c", Line=2223
+OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=88
 OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/FOC/core/Inc/foc_cfg.h", Line=63
 OpenDocument="encoder_proc.c", FilePath="F:/FOC_DRIVE/firmware/FOC/encoder/Src/encoder_proc.c", Line=21
-OpenDocument="filter.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/filter.c", Line=14
-OpenDocument="stm32g4xx_hal_adc.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c", Line=2537
+OpenDocument="filter.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/filter.c", Line=11
+OpenDocument="stm32g4xx_hal_adc.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c", Line=2504
 OpenDocument="stm32g4xx_hal_spi.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c", Line=1399
 OpenDocument="as5047p.c", FilePath="F:/FOC_DRIVE/firmware/FOC/encoder/Src/as5047p.c", Line=0
 OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=50
 OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/vofa.c", Line=60
 OpenDocument="stm32g4xx_hal.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c", Line=323
-OpenDocument="util.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/util.c", Line=308
+OpenDocument="util.c", FilePath="F:/FOC_DRIVE/firmware/FOC/utils/Src/util.c", Line=277
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=1, w=711, h=223, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
-OpenWindow="Source Files", DockArea=LEFT, x=0, y=0, w=347, h=351, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=218, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Memory 1", DockArea=BOTTOM, x=2, y=0, w=848, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, EditorAddress=0x200009E8
-OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=712, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Functions", DockArea=LEFT, x=0, y=1, w=347, h=323, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Data Sampling", DockArea=RIGHT, x=0, y=2, w=711, h=232, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, VisibleTab=0, UniformSampleSpacing=0
-OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=358, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1268, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=665, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=651, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
-TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;200]
-TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[27;125;27;27;530]
-TableHeader="Data Sampling Table", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time"], ColWidths=[100;100]
-TableHeader="Data Sampling Setup", SortCol="Type", SortOrder="DESCENDING", VisibleCols=["Expression";"Type";"Value";"Min";"Max";"Average";"# Changes";"Min. Change";"Max. Change"], ColWidths=[140;100;100;100;100;100;100;100;100]
+TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;231]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[100;105;489]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[125;186;384]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[125;186;936]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
-TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;359]
 WatchedExpression="foc_param", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="speed_pid", DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="speed_maf", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1

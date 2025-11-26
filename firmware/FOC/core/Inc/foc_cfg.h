@@ -61,6 +61,7 @@ typedef struct {
     float rotor_rev;    //转子转向
     float rotor_epos;    //转子电角度
     float rotor_evel;    //转子电速度
+    int16_t fRefSlope;
 
     float rs;           //相电阻
     float ls;           //相电感
