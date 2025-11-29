@@ -396,8 +396,65 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
     return false;
 }
 
-int16_t non_flux_observer()
+pll_t pll_flux = {.loop_hz      = 20000,// 20khz
+                 .kp           = 2000,
+                 .ki           = 2800,
+                 .i_term_limit = 10000};
+
+float FluxPllAngle(pll_t *pll, float error) {
+
+    pll->error = error;
+
+    pll->p_term = pll->error * pll->kp;
+    pll->i_term += pll->error * pll->ki / pll->loop_hz;
+    pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); //积分限幅
+
+    pll->out_value = pll->p_term + pll->i_term;
+    LowPassFilter(&pll->out_value, &lpf_hfi);
+
+    pll->angle_out += pll->out_value / pll->loop_hz;
+    WRAP_0_2PI(pll->angle_out)
+
+    return WRAP_0_2PI(pll->angle_out);
+}
+
+
+int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor)
 {
+    flux->Vs.fab.alpha = foc->v_alpha;
+    flux->Vs.fab.beta = foc->v_beta;
+    flux->Is.fab.alpha = foc->i_alpha;
+    flux->Is.fab.beta = foc->i_beta;
+    float Vy = flux->Vs.fab.alpha - motor->rs * flux->Is.fab.alpha;
+    float Vb = flux->Vs.fab.beta - motor->rs * flux->Is.fab.beta;
+
+    /* ---- Step 2: Non-linear Flux Observer ---- */
+    float L = motor->ls/1000.f;
+    float Phi = motor->flux;
+    float Ts = flux->Ts;
+
+    float LI_a = L *  flux->Is.fab.alpha;
+    float LI_b = L * flux->Is.fab.beta;
+
+    float eta_a = flux->state.fab.alpha - LI_a;
+    float eta_b = flux->state.fab.beta - LI_b;
+
+    float eta_sq = Phi * Phi - eta_a * eta_a - eta_b * eta_b;
+
+    float gamma2 = flux->Gamma * 0.5f;
+
+    flux->state.fab.alpha += Ts * (Vy + gamma2 * eta_a * eta_sq);
+    flux->state.fab.beta  += Ts * (Vb + gamma2 * eta_b * eta_sq);
+
+    /* Recompute eta for PLL */
+    eta_a = flux->state.fab.alpha  - LI_a;
+    eta_b = flux->state.fab.beta  - LI_b;
+
+    /* ---- Step 3: PLL ---- */
+    float theta = flux->theta_e;
+    float x_theta = eta_a * sinf(theta) - eta_b * cosf(theta) ;
+
+    flux->theta_e = FluxPllAngle(&pll_flux,x_theta/Phi);
     return 0;
 }
 

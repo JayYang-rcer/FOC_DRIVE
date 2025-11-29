@@ -158,9 +158,9 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos) {
 volatile float vbus;
 
 void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc) {
-    adc->adc_ia = ADC1->JDR1;
+    adc->adc_ia = ADC1->JDR3;
     adc->adc_ib = ADC1->JDR2;
-    adc->adc_ic = ADC1->JDR3;
+    adc->adc_ic = ADC1->JDR1;
     adc->va     = ADC2->JDR3;
     adc->vb     = ADC2->JDR2;
     adc->vc     = ADC2->JDR1;
@@ -175,48 +175,51 @@ void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc) {
 }
 
 _RAM_FUNC void CurrentRefactor(foc_adc_t *adc, foc_param_t *foc) {
-    switch (foc->sector) {
-        case 4:// sector 4 5
-            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-            foc->i_c = -(foc->i_a + foc->i_b);
-            break;
-        case 5:
-            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-            foc->i_c = -(foc->i_a + foc->i_b);
-            break;
-
-        case 1:// sector 1 6
-            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-            foc->i_a = -(foc->i_c + foc->i_b);
-            break;
-
-        case 6:
-            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-            foc->i_a = -(foc->i_c + foc->i_b);
-            break;
-
-        case 2:// sector 2 3
-            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-            foc->i_b = -(foc->i_a + foc->i_c);
-            break;
-
-        case 3:
-            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-            foc->i_b = -(foc->i_a + foc->i_c);
-            break;
-
-        default:
-            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-            break;
-    }
+    foc->i_a = (adc->adc_ia - adc->ia_offset) * IRATIO;
+    foc->i_b = (adc->adc_ib - adc->ib_offset) * IRATIO;
+    foc->i_c = (adc->adc_ic - adc->ib_offset) * IRATIO;
+//    switch (foc->sector) {
+//        case 4:// sector 4 5
+//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+//            foc->i_c = -(foc->i_a + foc->i_b);
+//            break;
+//        case 5:
+//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+//            foc->i_c = -(foc->i_a + foc->i_b);
+//            break;
+//
+//        case 1:// sector 1 6
+//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+//            foc->i_a = -(foc->i_c + foc->i_b);
+//            break;
+//
+//        case 6:
+//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+//            foc->i_a = -(foc->i_c + foc->i_b);
+//            break;
+//
+//        case 2:// sector 2 3
+//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+//            foc->i_b = -(foc->i_a + foc->i_c);
+//            break;
+//
+//        case 3:
+//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+//            foc->i_b = -(foc->i_a + foc->i_c);
+//            break;
+//
+//        default:
+//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+//            break;
+//    }
 }
 
 volatile float smo_angle;
@@ -276,6 +279,10 @@ __RAM_FUNC void Encoder_Idle(void) {
 }
 
 
+non_flux_t nonFlux={
+    .Gamma = 200,
+    .Ts = 1/20000.f,
+};
 void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
     switch (ctrl->mode) {
         case FOC_IDLE: {
@@ -292,6 +299,7 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
         }
 
         case FOC_VOLT_CTRL: {
+//            FocVolt(ctrl->vd_set, ctrl->vq_set, nonFlux.theta_e);
             FocVolt(ctrl->vd_set, ctrl->vq_set, enc_para.pos_e);
             break;
         }
@@ -391,12 +399,14 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
     }
 }
 
+
 _RAM_FUNC void FocHandle(void) {
     //    motor_ctrl.mode = FOC_IDLE;
     CurrentUpdate(&mc_adc, &foc_param);
     PosCalculate(&enc_para);
     CurrentRefactor(&mc_adc, &foc_param);
     Clarke(&foc_param);
+    non_flux_observer(&nonFlux,&foc_param,&motor_cfg);
     foc_param.vbus = 3.7f * 3.f;
     //    foc_param.vbus = 16.2f;
 

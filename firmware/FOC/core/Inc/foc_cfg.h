@@ -9,7 +9,7 @@
 #define SET_DTC_B(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
 #define SET_DTC_C(value)     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, value)
 
-#define R_SENSE 0.002f  //采样电阻阻值
+#define R_SENSE 0.003f  //采样电阻阻值
 #define IOP 20.f //电流采样电阻放大倍数
 #define IRATIO (3.3f/4095.f) / R_SENSE / IOP //电流采样,电压转换为电流值的系数
 #define VBUS_RATIO (6.1f * 3.3f)/4095.0f //母线电压采样电压转换为电压值的系数
@@ -29,6 +29,32 @@ typedef enum FOC_CTRL_MODE {
     FOC_HFI_TEST = 7, //高频注入测试
 } FOC_CTRL_MODE;
 
+typedef union {
+    struct {
+        float x;
+        float y;
+    }fx;
+
+    struct {
+        float alpha;
+        float beta;
+    }fab;
+
+    struct {
+        float d;
+        float q;
+    }fdq;
+}Vector2D_t;
+
+typedef struct {
+    Vector2D_t Is;
+    Vector2D_t Vs;
+    Vector2D_t state;
+    float Gamma;       // Non-linear observer gain
+    float Ts;          // Sampling period
+    float theta_e;
+    float omega_e;
+}non_flux_t;
 
 typedef struct aplha_beta_t {
     float alpha; //alpha轴

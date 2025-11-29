@@ -28,17 +28,12 @@ void SmoParamInit(smo_param_t *smo);
 
 /*********************************** hfi *******************************/
 float HfiInjectSign(float inject_U);
-
 float HfiPllAngle(pll_t *pll, hfi_param_t *hfi);
-
 void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi);
-
 void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi);
-
 void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi);
-
 bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc);
-
+int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor);
 /*********************************** hfi *******************************/
 
 extern smo_param_t smo_param;

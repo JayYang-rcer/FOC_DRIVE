@@ -10,8 +10,8 @@
 
 void EncoderInit(void)
 {
-    enc_para.cpr = 4000 - 1;
-    enc_para.bit = 12;
+    enc_para.cpr = 16384;
+    enc_para.bit = 14;
     // enc_para.shift_bit = 2;
     enc_para.pn          = 7;
     enc_para.dir         = 1; // 当矢量角度和编码器角度方向相反时，需要设置为！1
@@ -21,7 +21,7 @@ void EncoderInit(void)
     enc_para.pos_s       = 0.0f;
     enc_para.pos_m       = 0.0f;
     enc_para.offset_mpos = 0.0f;
-    enc_para.offset_epos = 2.1242f;
+    enc_para.offset_epos = 0.11236f+2.1613f;
     //    enc_para.offset_epos = 2.5688f;
     enc_para.pos_last = 0.0f;
     enc_para.pos_diff = 0.0f;
@@ -33,12 +33,13 @@ _RAM_FUNC void PosCalculate(enc_para_t *enc)
 {
     // read the raw data
     /* get init enc data */
-    static uint8_t flag = 0;
-    if (flag < 20) {
-        TIM1->CNT = As5047pRead(ANGLECOM) / 16384.f * 4000.f;
-        flag++;
-    } else
-        enc->raw_data = TIM1->CNT;
+//    static uint8_t flag = 0;
+//    if (flag < 20) {
+//        TIM1->CNT = As5047pRead(ANGLECOM) / 16384.f * 4000.f;
+//        flag++;
+//    } else
+//        enc->raw_data = TIM1->CNT;
+    enc->raw_data = As5047pRead(ANGLECOM);
 
     if (enc->dir == 1)
         enc->pos = (float)enc->raw_data * enc->factor;
