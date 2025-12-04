@@ -397,8 +397,8 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
 }
 
 pll_t pll_flux = {.loop_hz      = 20000,// 20khz
-                 .kp           = 2000,
-                 .ki           = 2800,
+                 .kp           = 1000,
+                 .ki           = 80000,
                  .i_term_limit = 10000};
 
 float FluxPllAngle(pll_t *pll, float error) {
@@ -418,19 +418,36 @@ float FluxPllAngle(pll_t *pll, float error) {
     return WRAP_0_2PI(pll->angle_out);
 }
 
+#define PI      3.14159265358979f
+#define TWO_PI  (2.0f * PI)
+#define EPS     1e-8f
+static inline float Angle_Atan2_0To2Pi(float y, float x)
+{
+    if (fabsf(y) < EPS && fabsf(x) < EPS)
+        return 0.0f;
 
+    float angle = atan2f(y, x); // [-π, +π]
+
+    if (angle < 0.0f)
+        angle += TWO_PI;
+
+    return angle; // [0, 2π)
+}
+
+float DEBUG_eta,DEBUG_etb;
+float DEBUG_theta_e;
 int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor)
 {
     flux->Vs.fab.alpha = foc->v_alpha;
     flux->Vs.fab.beta = foc->v_beta;
     flux->Is.fab.alpha = foc->i_alpha;
     flux->Is.fab.beta = foc->i_beta;
-    float Vy = flux->Vs.fab.alpha - motor->rs * flux->Is.fab.alpha;
-    float Vb = flux->Vs.fab.beta - motor->rs * flux->Is.fab.beta;
+    float Vy = flux->Vs.fab.alpha - motor->rs/1000.f * flux->Is.fab.alpha;
+    float Vb = flux->Vs.fab.beta - motor->rs/1000.f * flux->Is.fab.beta;
 
     /* ---- Step 2: Non-linear Flux Observer ---- */
-    float L = motor->ls/1000.f;
-    float Phi = motor->flux;
+    float L = motor->ls/1000000.f;
+    float Phi = motor->flux/1000.f;
     float Ts = flux->Ts;
 
     float LI_a = L *  flux->Is.fab.alpha;
@@ -440,6 +457,8 @@ int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor
     float eta_b = flux->state.fab.beta - LI_b;
 
     float eta_sq = Phi * Phi - eta_a * eta_a - eta_b * eta_b;
+//    float eta_sq = Phi*Phi - eta_a*eta_a - eta_b*eta_b;
+//    if (eta_sq < 0.01f * Phi*Phi) eta_sq = 0.01f * Phi*Phi;  // 防止反向
 
     float gamma2 = flux->Gamma * 0.5f;
 
@@ -447,14 +466,19 @@ int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor
     flux->state.fab.beta  += Ts * (Vb + gamma2 * eta_b * eta_sq);
 
     /* Recompute eta for PLL */
-    eta_a = flux->state.fab.alpha  - LI_a;
-    eta_b = flux->state.fab.beta  - LI_b;
+    eta_a = flux->state.fab.alpha - LI_a;
+    eta_b = flux->state.fab.beta - LI_b;
 
     /* ---- Step 3: PLL ---- */
     float theta = flux->theta_e;
-    float x_theta = eta_a * sinf(theta) - eta_b * cosf(theta) ;
+    float x_theta = eta_b * cos_f32(theta) - eta_a * sin_f32(theta);
 
     flux->theta_e = FluxPllAngle(&pll_flux,x_theta/Phi);
+    flux->omega_e = pll_flux.out_value/7.f/M_2PI*60.f;
+//    flux->theta_e = Angle_Atan2_0To2Pi(eta_b, eta_a);
+    DEBUG_theta_e = Angle_Atan2_0To2Pi(eta_b, eta_a);
+    DEBUG_eta = eta_a*1000.f;
+    DEBUG_etb = eta_b*1000.f;
     return 0;
 }
 

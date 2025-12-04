@@ -16,6 +16,8 @@
 #define USE_SPD_DET 0// 使用微分速度检测
 #define USE_POS_PID 0// 使用位置环
 #define USE_ENCODER 1
+#define LINE_SAMPLE 1
+#define USE_SENSERLESS 1
 
 float speed_buffer[SPEED_WINDOW_SIZE] = {0};// 存储窗口内的数据
 MovingAverage_t speed_maf
@@ -175,51 +177,54 @@ void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc) {
 }
 
 _RAM_FUNC void CurrentRefactor(foc_adc_t *adc, foc_param_t *foc) {
+#if LINE_SAMPLE
     foc->i_a = (adc->adc_ia - adc->ia_offset) * IRATIO;
     foc->i_b = (adc->adc_ib - adc->ib_offset) * IRATIO;
     foc->i_c = (adc->adc_ic - adc->ib_offset) * IRATIO;
-//    switch (foc->sector) {
-//        case 4:// sector 4 5
-//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-//            foc->i_c = -(foc->i_a + foc->i_b);
-//            break;
-//        case 5:
-//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-//            foc->i_c = -(foc->i_a + foc->i_b);
-//            break;
-//
-//        case 1:// sector 1 6
-//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-//            foc->i_a = -(foc->i_c + foc->i_b);
-//            break;
-//
-//        case 6:
-//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-//            foc->i_a = -(foc->i_c + foc->i_b);
-//            break;
-//
-//        case 2:// sector 2 3
-//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-//            foc->i_b = -(foc->i_a + foc->i_c);
-//            break;
-//
-//        case 3:
-//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-//            foc->i_b = -(foc->i_a + foc->i_c);
-//            break;
-//
-//        default:
-//            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-//            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-//            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-//            break;
-//    }
+#else
+    switch (foc->sector) {
+        case 4:// sector 4 5
+            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+            foc->i_c = -(foc->i_a + foc->i_b);
+            break;
+        case 5:
+            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+            foc->i_c = -(foc->i_a + foc->i_b);
+            break;
+
+        case 1:// sector 1 6
+            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+            foc->i_a = -(foc->i_c + foc->i_b);
+            break;
+
+        case 6:
+            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+            foc->i_a = -(foc->i_c + foc->i_b);
+            break;
+
+        case 2:// sector 2 3
+            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+            foc->i_b = -(foc->i_a + foc->i_c);
+            break;
+
+        case 3:
+            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+            foc->i_b = -(foc->i_a + foc->i_c);
+            break;
+
+        default:
+            foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
+            foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
+            foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
+            break;
+    }
+#endif
 }
 
 volatile float smo_angle;
@@ -280,7 +285,7 @@ __RAM_FUNC void Encoder_Idle(void) {
 
 
 non_flux_t nonFlux={
-    .Gamma = 200,
+    .Gamma = 10000,
     .Ts = 1/20000.f,
 };
 void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
@@ -299,37 +304,62 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
         }
 
         case FOC_VOLT_CTRL: {
-//            FocVolt(ctrl->vd_set, ctrl->vq_set, nonFlux.theta_e);
-            FocVolt(ctrl->vd_set, ctrl->vq_set, enc_para.pos_e);
+            float fRefSlope = motor_cfg.fRefSlope;
+            if(fRefSlope > ctrl->vq_set)
+            {
+                fRefSlope -= 0.00001f;
+            }
+            else if(fRefSlope  < ctrl->vq_set)
+            {
+                fRefSlope += 0.00001f;
+            }
+            else
+            {
+                fRefSlope = ctrl->vq_set;
+            }
+#if USE_SENSERLESS
+            FocVolt(ctrl->vd_set, fRefSlope, nonFlux.theta_e);
+#else
+            FocVolt(ctrl->vd_set, fRefSlope, enc_para.pos_e);
+#endif
+            motor_cfg.fRefSlope = fRefSlope;
             break;
         }
 
         case FOC_CURRENT_CTRL: {
+#if USE_SENSERLESS
+            FocCurrent(ctrl->id_set, ctrl->iq_set, nonFlux.theta_e);
+#else
             FocCurrent(ctrl->id_set, ctrl->iq_set, enc_para.pos_e);
+#endif
             break;
         }
 
         case FOC_SPEED_CTRL: {
             if (++ctrl->spd_cnt == 20)// 20khz/20 = 1khz
             {
-                int16_t fRefSlope = motor_cfg.fRefSlope;
-                if(fRefSlope > ctrl->speed_set)
+                int16_t RefSlope = motor_cfg.RefSlope;
+                if(RefSlope > ctrl->speed_set)
                 {
-                    fRefSlope -= 2;
+                    RefSlope -= 2;
                 }
-                else if(fRefSlope  < ctrl->speed_set)
+                else if(RefSlope  < ctrl->speed_set)
                 {
-                    fRefSlope += 2;
+                    RefSlope += 2;
                 }
                 else
                 {
-                    fRefSlope = ctrl->speed_set;
+                    RefSlope = ctrl->speed_set;
                 }
-                IncreatParallePidCtrl(&speed_pid, fRefSlope, motor_cfg.rotor_vel);
-                motor_cfg.fRefSlope = fRefSlope;
+                IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega_e);
+                motor_cfg.RefSlope = RefSlope;
                 ctrl->spd_cnt = 0;
             }
+#if USE_SENSERLESS
+            FocCurrent(ctrl->id_set, speed_pid.out_value, nonFlux.theta_e);
+#else
             FocCurrent(ctrl->id_set, speed_pid.out_value, enc_para.pos_e);
+#endif
             break;
         }
 
@@ -407,7 +437,7 @@ _RAM_FUNC void FocHandle(void) {
     CurrentRefactor(&mc_adc, &foc_param);
     Clarke(&foc_param);
     non_flux_observer(&nonFlux,&foc_param,&motor_cfg);
-    foc_param.vbus = 3.7f * 3.f;
+    foc_param.vbus = 12.f;
     //    foc_param.vbus = 16.2f;
 
 #if USE_POS_PID

@@ -10,7 +10,7 @@
 
 void EncoderInit(void)
 {
-    enc_para.cpr = 16384;
+    enc_para.cpr = 1<<14;
     enc_para.bit = 14;
     // enc_para.shift_bit = 2;
     enc_para.pn          = 7;
@@ -21,7 +21,7 @@ void EncoderInit(void)
     enc_para.pos_s       = 0.0f;
     enc_para.pos_m       = 0.0f;
     enc_para.offset_mpos = 0.0f;
-    enc_para.offset_epos = 0.11236f+2.1613f;
+    enc_para.offset_epos = 2.10078f;
     //    enc_para.offset_epos = 2.5688f;
     enc_para.pos_last = 0.0f;
     enc_para.pos_diff = 0.0f;

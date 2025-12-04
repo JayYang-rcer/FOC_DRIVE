@@ -37,24 +37,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="25.7.11&#10;由于手头上没有电机，所以这个版本后仓库不再更新，以做保留">
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="25.11.30&#10;使用2代板完成非线性磁链观测器的demo，同步模式下已验证可用">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/spi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/spi.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/foc_math.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/foc_math.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_math.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/encoder/Src/encoder_proc.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/encoder/Src/encoder_proc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/utils/Src/vofa.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/utils/Src/vofa.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder_proc.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
@@ -330,6 +328,8 @@
       <workItem from="1763980581393" duration="2574000" />
       <workItem from="1764003851317" duration="1751000" />
       <workItem from="1764175837130" duration="606000" />
+      <workItem from="1764434786302" duration="5438000" />
+      <workItem from="1764522975151" duration="16021000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -411,7 +411,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752248566932</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="25.11.30&#10;使用2代板完成非线性磁链观测器的demo，同步模式下已验证可用">
+      <option name="closed" value="true" />
+      <created>1764433872390</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1764433872390</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +470,8 @@
     <MESSAGE value="25.6.25&#10;增加了高频注入算法双环,但是整体还需要进一步封装" />
     <MESSAGE value="25.6.27&#10;去除了一些比较杂碎的东西并增加了注释&#10;另外测试了巴特沃斯滤波器，发现貌似有一些bug导致无法正常使用。可能跟数据类型或者启动的时刻有关，temp一直出现inf超长度" />
     <MESSAGE value="25.7.11&#10;由于手头上没有电机，所以这个版本后仓库不再更新，以做保留" />
-    <option name="LAST_COMMIT_MESSAGE" value="25.7.11&#10;由于手头上没有电机，所以这个版本后仓库不再更新，以做保留" />
+    <MESSAGE value="25.11.30&#10;使用2代板完成非线性磁链观测器的demo，同步模式下已验证可用" />
+    <option name="LAST_COMMIT_MESSAGE" value="25.11.30&#10;使用2代板完成非线性磁链观测器的demo，同步模式下已验证可用" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

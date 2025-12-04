@@ -86,8 +86,8 @@ void MotorPidInit(void) {
     pos_pid.out_max = 0.8f;
     pos_pid.out_min = -0.8f;
     *********************************************************************/
-    speed_pid.kp         = 0.0088f;
-    speed_pid.ki         = 0.006f;
+    speed_pid.kp         = 0.001f;
+    speed_pid.ki         = 0.005f;
     speed_pid.out_max    = 15.f;
     speed_pid.out_min    = -15.f;
     speed_pid.i_term_max = 15.f;
@@ -120,7 +120,7 @@ void MotorPidInit(void) {
 void MotorParaInit(void) {
     motor_cfg.flux = 1.221f;// mWb
     motor_cfg.pn   = 7;
-    motor_cfg.rs   = 42.2333f;// mOhm
+    motor_cfg.rs   = 35.2333f;// mOhm
     motor_cfg.ls   = 6.3f;    // uH
 
     MotorPidInit();

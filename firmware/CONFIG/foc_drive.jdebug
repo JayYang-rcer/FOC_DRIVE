@@ -22,12 +22,12 @@ void OnProjectLoad (void) {
   //
   // Dialog-generated settings
   //
-  Project.AddPathSubstitute ("F:/FOC_DRIVE/firmware/CONFIG", "$(ProjectDir)");
-  Project.AddPathSubstitute ("f:/foc_drive/firmware/config", "$(ProjectDir)");
   Project.SetDevice ("STM32G474RB");
   Project.SetHostIF ("USB", "602717981");
   Project.SetTargetIF ("SWD");
   Project.SetTIFSpeed ("20 MHz");
+  Project.AddPathSubstitute ("F:/FOC_DRIVE/firmware/CONFIG", "$(ProjectDir)");
+  Project.AddPathSubstitute ("f:/foc_drive/firmware/config", "$(ProjectDir)");
   Project.AddSvdFile ("$(InstallDir)/Config/CPU/Cortex-M4F.svd");
   Project.AddSvdFile ("C:/Users/28076/Desktop/SEGGER/SVD/STM32G474xx.svd");
   //
