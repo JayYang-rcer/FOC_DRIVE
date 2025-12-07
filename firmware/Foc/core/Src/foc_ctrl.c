@@ -18,6 +18,9 @@
 #define USE_ENCODER 1
 #define LINE_SAMPLE 1
 #define USE_SENSERLESS 1
+#define SENSERLESS_MIN_SPEED 900
+#define SENSERLESS_MAX_SPEED 7000
+#define USE_SLAVE_MODE 0
 
 float speed_buffer[SPEED_WINDOW_SIZE] = {0};// 存储窗口内的数据
 MovingAverage_t speed_maf
@@ -163,14 +166,14 @@ void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc) {
     adc->adc_ia = ADC1->JDR3;
     adc->adc_ib = ADC1->JDR2;
     adc->adc_ic = ADC1->JDR1;
-    adc->va     = ADC2->JDR3;
-    adc->vb     = ADC2->JDR2;
-    adc->vc     = ADC2->JDR1;
-    adc->vbus   = ADC2->JDR4;
+//    adc->va     = ADC2->JDR3;
+//    adc->vb     = ADC2->JDR2;
+//    adc->vc     = ADC2->JDR1;
+    adc->vbus   = ADC2->JDR1;
 
-    foc->v_a = (adc->va) / 4095.f * 3.3f * 10.f;
-    foc->v_b = (adc->vb) / 4095.f * 3.3f * 10.f;
-    foc->v_c = (adc->vc) / 4095.f * 3.3f * 10.f;
+//    foc->v_a = (adc->va) / 4095.f * 3.3f * 10.f;
+//    foc->v_b = (adc->vb) / 4095.f * 3.3f * 10.f;
+//    foc->v_c = (adc->vc) / 4095.f * 3.3f * 10.f;
 
     vbus      = ((float) adc->vbus) * VBUS_RATIO;
     foc->vbus = ((float) adc->vbus) * VBUS_RATIO;
@@ -307,11 +310,11 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
             float fRefSlope = motor_cfg.fRefSlope;
             if(fRefSlope > ctrl->vq_set)
             {
-                fRefSlope -= 0.00001f;
+                fRefSlope -= 0.00005f;
             }
             else if(fRefSlope  < ctrl->vq_set)
             {
-                fRefSlope += 0.00001f;
+                fRefSlope += 0.00005f;
             }
             else
             {
@@ -338,6 +341,11 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
         case FOC_SPEED_CTRL: {
             if (++ctrl->spd_cnt == 20)// 20khz/20 = 1khz
             {
+#if USE_SENSERLESS
+                if(ABS(ctrl->speed_set) < SENSERLESS_MIN_SPEED)
+                    ctrl->speed_set = 0;
+                ctrl->speed_set = AbsLimit(ctrl->speed_set,SENSERLESS_MAX_SPEED);
+#endif
                 int16_t RefSlope = motor_cfg.RefSlope;
                 if(RefSlope > ctrl->speed_set)
                 {
@@ -351,6 +359,7 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc) {
                 {
                     RefSlope = ctrl->speed_set;
                 }
+
                 IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega_e);
                 motor_cfg.RefSlope = RefSlope;
                 ctrl->spd_cnt = 0;
