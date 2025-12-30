@@ -40,7 +40,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
     float Ua = foc->v_alpha;
     float Ub = foc->v_beta;
 
-    /* Clarke result → Space Vector base components */
+    /* Clarke */
     float U1 = Ub;
     float U2 = (SQRT3 * Ua - Ub) * 0.5f;
     float U3 = -(SQRT3 * Ua + Ub) * 0.5f;
@@ -49,7 +49,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
     uint8_t N;
     int sector = 0;
 
-    /* sector decision */
+    /* sector */
     // clang-format off
     A = (U1 > 0.0f);
     B = (U2 > 0.0f);
@@ -70,13 +70,9 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 
     foc->sector = sector;
 
-    /* Modulation index scalar */
-    float Tn = 0.95f;     // 95% modulation depth
+    float Tn = 0.95f;
     float k  = (Tn * SQRT3) / foc->vbus;
-
-    /* T1,T2 calculation */
     float T1, T2;
-
     switch (sector)
     {
     case 1: T1 = U2 * k;  T2 = U1 * k;  break;
@@ -90,7 +86,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
         return -1;
     }
 
-    /* Overmodulation clamp: T1+T2 不可超过 Tn */
+    /* Overmodulation clamp */
     float S = T1 + T2;
     if (S > Tn)
     {
@@ -98,14 +94,11 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
         T2 = T2 / S * Tn;
     }
 
-    /* center-aligned PWM: Ta,Tb,Tc 通用计算式 */
     float T0 = (Tn - T1 - T2) * 0.5f;
-
     float Ta = T0 + T1 + T2;
     float Tb = T0 + T2;
     float Tc = T0;
 
-    /* 重排 3 相输出 */
     switch (sector)
     {
     case 1: foc->dtc_a = Ta; foc->dtc_b = Tb; foc->dtc_c = Tc; break;
@@ -116,7 +109,6 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
     case 6: foc->dtc_a = Ta; foc->dtc_b = Tc; foc->dtc_c = Tb; break;
     }
 
-    /* Valid check */
     if (foc->dtc_a < 0 || foc->dtc_a > 1) return -1;
     if (foc->dtc_b < 0 || foc->dtc_b > 1) return -1;
     if (foc->dtc_c < 0 || foc->dtc_c > 1) return -1;
@@ -395,11 +387,6 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
     }
     return false;
 }
-
-pll_t pll_flux = {.loop_hz      = 20000,// 20khz
-                 .kp           = 1000,
-                 .ki           = 80000,
-                 .i_term_limit = 10000};
 
 float FluxPllAngle(pll_t *pll, float error) {
 

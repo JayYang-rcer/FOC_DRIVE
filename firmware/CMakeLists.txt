@@ -74,6 +74,11 @@ add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR
 add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
+set(FILES_TO_EXCLUDE
+        "${CMAKE_SOURCE_DIR}/BSP/Src/drive_uart.c"
+)
+
+list(REMOVE_ITEM SOURCES ${FILES_TO_EXCLUDE})
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)

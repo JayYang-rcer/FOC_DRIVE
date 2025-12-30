@@ -57,12 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define VC_Pin GPIO_PIN_0
-#define VC_GPIO_Port GPIOC
-#define VB_Pin GPIO_PIN_1
-#define VB_GPIO_Port GPIOC
-#define VA_Pin GPIO_PIN_2
-#define VA_GPIO_Port GPIOC
+#define TEPM_Pin GPIO_PIN_1
+#define TEPM_GPIO_Port GPIOC
+#define VBAT_Pin GPIO_PIN_2
+#define VBAT_GPIO_Port GPIOC
 #define IA_Pin GPIO_PIN_0
 #define IA_GPIO_Port GPIOA
 #define IB_Pin GPIO_PIN_1
@@ -71,10 +69,16 @@ void Error_Handler(void);
 #define IC_GPIO_Port GPIOA
 #define ENC_NSS_Pin GPIO_PIN_4
 #define ENC_NSS_GPIO_Port GPIOA
-#define TEMP_Pin GPIO_PIN_14
-#define TEMP_GPIO_Port GPIOB
-#define VBAT_Pin GPIO_PIN_15
-#define VBAT_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_4
+#define LED1_GPIO_Port GPIOC
+#define LED2_Pin GPIO_PIN_5
+#define LED2_GPIO_Port GPIOC
+#define KEY_ENTER_Pin GPIO_PIN_0
+#define KEY_ENTER_GPIO_Port GPIOB
+#define KEY_NEXT_Pin GPIO_PIN_1
+#define KEY_NEXT_GPIO_Port GPIOB
+#define KEY_MEAU_Pin GPIO_PIN_2
+#define KEY_MEAU_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

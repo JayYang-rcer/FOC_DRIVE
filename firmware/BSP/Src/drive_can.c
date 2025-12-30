@@ -23,41 +23,24 @@ static void (*pCAN2_RxCpltCallback)(CAN_RxBuffer *);
  * @param Id
  * @param MaskId ID掩码
  */
-void CAN_Filter_Init(FDCAN_HandleTypeDef *hfdcan, uint8_t object_para, uint32_t Id, uint32_t MaskId)
+void CAN_Filter_Init(FDCAN_HandleTypeDef *hfdcan, uint8_t filterIndex, uint32_t id, uint32_t mask, uint8_t fifo, uint8_t isExtended)
 {
-    FDCAN_FilterTypeDef sFilterConfig;
+    FDCAN_FilterTypeDef filter;
 
-    /* 过滤器编号 */
-    sFilterConfig.IdType       = (object_para & 0x02) ? FDCAN_EXTENDED_ID : FDCAN_STANDARD_ID;
-    sFilterConfig.FilterIndex  = object_para >> 3;  // 滤波器序号 (0~7)
-    sFilterConfig.FilterType   = FDCAN_FILTER_MASK; // IDMASK 模式
-    sFilterConfig.FilterConfig = ((object_para >> 2) & 0x01) ? FDCAN_FILTER_TO_RXFIFO1 : FDCAN_FILTER_TO_RXFIFO0;
+    filter.IdType      = isExtended ? FDCAN_EXTENDED_ID : FDCAN_STANDARD_ID;
+    filter.FilterIndex = filterIndex;
+    filter.FilterType  = FDCAN_FILTER_MASK; // ID & MASK 匹配模式
 
-    if (sFilterConfig.IdType == FDCAN_EXTENDED_ID) {
-        /* ----------- 扩展帧 EXID（29bit）----------- */
-        sFilterConfig.FilterID1 = (Id << 0);     // EXID
-        sFilterConfig.FilterID2 = (MaskId << 0); // Mask
-    } else {
-        /* ----------- 标准帧 STDID（11bit）----------- */
-        sFilterConfig.FilterID1 = (Id << 18);     // 标准帧 ID 11bit 左移至 bit[28:18]
-        sFilterConfig.FilterID2 = (MaskId << 18); // 标准帧 Mask
-    }
+    filter.FilterConfig = (fifo == 0) ? FDCAN_FILTER_TO_RXFIFO0 : FDCAN_FILTER_TO_RXFIFO1;
 
-    /* 配置过滤器 */
-    if (HAL_FDCAN_ConfigFilter(hfdcan, &sFilterConfig) != HAL_OK) {
+    filter.FilterID1 = id;   // 标准 11bit 或 扩展 29bit
+    filter.FilterID2 = mask; // 掩码（0x7FF 或 0x1FFFFFFF）
+
+    if (HAL_FDCAN_ConfigFilter(hfdcan, &filter) != HAL_OK)
         Error_Handler();
-    }
-
-    /* 激活过滤器（与 HAL_CAN 不同，FDCAN 必须显式开启） */
-    if (HAL_FDCAN_Start(hfdcan) != HAL_OK) {
-        Error_Handler();
-    }
-
-    /* 激活接收中断（根据需要开启） */
-    //    HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE | FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0);
 }
 
-uint8_t FDCAN_Init(FDCAN_HandleTypeDef *hfdcan, void (*pFunc)(CAN_RxBuffer *))
+uint8_t CAN_Init(FDCAN_HandleTypeDef *hfdcan, void (*pFunc)(CAN_RxBuffer *))
 {
     assert_param(hfdcan != NULL);
 
@@ -67,9 +50,8 @@ uint8_t FDCAN_Init(FDCAN_HandleTypeDef *hfdcan, void (*pFunc)(CAN_RxBuffer *))
     }
 
     /* 启动发送完成中断（FIFO 空） */
-    if (HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_TX_FIFO_EMPTY, 0) != HAL_OK) {
-        Error_Handler();
-    }
+    //    if (HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_TX_FIFO_EMPTY, 0) != HAL_OK) {
+    //        Error_Handler();
 
     /* FIFO0 收到消息中断 */
     if (HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK) {
@@ -95,7 +77,6 @@ uint8_t FDCAN_Init(FDCAN_HandleTypeDef *hfdcan, void (*pFunc)(CAN_RxBuffer *))
 
 /**
  * @brief FDCAN FIFO0 接收回调函数
- *       （FDCAN 专用，不是 HAL_CAN）
  */
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
@@ -105,15 +86,19 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
     if ((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) == 0)
         return;
 
-    /* 从 FIFO0 读取消息 */
-    if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &CAN_RxBuffer.header, CAN_RxBuffer.data) != HAL_OK) {
-        return;
+    /* FDCAN1 */
+    if (hfdcan->Instance == FDCAN1) {
+        if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &CAN_RxBuffer.header, CAN_RxBuffer.data) == HAL_ERROR) {
+            // 可加错误处理
+        }
+        pCAN1_RxCpltCallback(&CAN_RxBuffer);
     }
 
-    /* 调用用户回调 */
-    if (hfdcan->Instance == FDCAN1) {
-        pCAN1_RxCpltCallback(&CAN_RxBuffer);
-    } else if (hfdcan->Instance == FDCAN2) {
+    /* FDCAN2 */
+    if (hfdcan->Instance == FDCAN2) {
+        if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &CAN_RxBuffer.header, CAN_RxBuffer.data) == HAL_ERROR) {
+            // 可加错误处理
+        }
         pCAN2_RxCpltCallback(&CAN_RxBuffer);
     }
 }
@@ -121,9 +106,13 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 /**
  * @brief HAL FDCAN FIFO1 消息就绪回调
  */
-void HAL_FDCAN_RxFifo1MsgPendingCallback(FDCAN_HandleTypeDef *hfdcan)
+void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
 {
     static CAN_RxBuffer CAN_RxBuffer;
+
+    /* 接收到新消息标志 */
+    if ((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) == 0)
+        return;
 
     /* FDCAN1 */
     if (hfdcan->Instance == FDCAN1) {
@@ -152,7 +141,7 @@ void comm_can_transmit_extid(FDCAN_HandleTypeDef *hcan, uint32_t ExtId, uint8_t 
     TxHeader.Identifier          = ExtId;             // 扩展帧 ID
     TxHeader.IdType              = FDCAN_EXTENDED_ID; // 扩展帧
     TxHeader.TxFrameType         = FDCAN_DATA_FRAME;  // 数据帧
-    TxHeader.DataLength          = length << 16;      // DLC 字段（0..8 字节）
+    TxHeader.DataLength          = length;      // DLC 字段（0..8 字节）
     TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
     TxHeader.BitRateSwitch       = FDCAN_BRS_OFF;     // 不使用快速数据段
     TxHeader.FDFormat            = FDCAN_CLASSIC_CAN; // 经典 CAN，不用 CAN-FD
@@ -183,7 +172,7 @@ void comm_can_transmit_stdid(FDCAN_HandleTypeDef *hfdcan, uint16_t StdId, uint8_
     TxHeader.Identifier          = StdId;              // 标准帧 ID
     TxHeader.IdType              = FDCAN_STANDARD_ID;  // 标准帧
     TxHeader.TxFrameType         = FDCAN_DATA_FRAME;   // 数据帧
-    TxHeader.DataLength          = length << 16;       // DLC 字节长度
+    TxHeader.DataLength          = length;  // DLC 字节长度
     TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;   // 错误状态指示
     TxHeader.BitRateSwitch       = FDCAN_BRS_OFF;      // 不使用 CAN-FD BRS
     TxHeader.FDFormat            = FDCAN_CLASSIC_CAN;  // 经典 CAN

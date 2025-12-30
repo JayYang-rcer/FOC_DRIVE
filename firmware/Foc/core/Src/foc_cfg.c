@@ -33,7 +33,17 @@ pll_t pll_hfi = {.loop_hz      = 20000,// 20khz
                  .i_term_limit = 1000};
 /**********************************************************/
 
+/********************non linear flux param********************/
+non_flux_t nonFlux={
+    .Gamma = 10000,
+    .Ts = 1/20000.f,
+};
 
+pll_t pll_flux = {.loop_hz      = 20000,// 20khz
+                  .kp           = 1000,
+                  .ki           = 180000,
+                  .i_term_limit = 10000};
+/**********************************************************/
 /* kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
      * ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
  */
@@ -87,7 +97,7 @@ void MotorPidInit(void) {
     pos_pid.out_min = -0.8f;
     *********************************************************************/
     speed_pid.kp         = 0.001f;
-    speed_pid.ki         = 0.005f;
+    speed_pid.ki         = 0.001f;
     speed_pid.out_max    = 15.f;
     speed_pid.out_min    = -15.f;
     speed_pid.i_term_max = 15.f;
