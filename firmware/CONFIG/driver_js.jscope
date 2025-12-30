@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<JScopeProject>
+    <FileVersion major="1" minor="1" />
+    <Project>
+        <Configuration>
+            <JLink>
+                <Options Connection="1" IsRTTSession="0" IsRTTWithTimeStamp="0" IsRTTPlus="0" SamplingPeriod="100" SerialNo="0" JTAG_IRPre="0" JTAG_DRPre="0" IP="" TargetDevice="Cortex-M4" TargetInterface="SWD" InterfaceSpeed="1000" />
+            </JLink>
+            <ElfFile Name="F:\FOC_DRIVE\firmware\build\DRIVE_CMAKE.elf" />
+            <Scope>
+                <Options TimeResolutionUs="1000000" />
+            </Scope>
+            <Trigger>
+                <Options Level="0" Symbol="i_a" On="0" Auto="0" Rise="0" Fall="0" />
+            </Trigger>
+        </Configuration>
+        <Windows>
+            <Graph Show="1" />
+            <Watch Show="1" />
+        </Windows>
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="i_a" Address="0x20000AA0" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="-3.38689e+38" YMaxSampled="2.97827e+38" YAvgSampled="-nan" Offset="4" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_a" />
+            </Symbol>
+            <Symbol>
+                <Options Name="i_b" Address="0x20000AA4" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-3.35386e+38" YMaxSampled="3.21678e+38" YAvgSampled="-nan" Offset="8" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_b" />
+            </Symbol>
+            <Symbol>
+                <Options Name="i_c" Address="0x20000AA8" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-2.66848e+38" YMaxSampled="2.25725e+38" YAvgSampled="-nan" Offset="12" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_c" />
+            </Symbol>
+            <Symbol>
+                <Options Name="theta" Address="0x20000A94" Type="float" TypeID="1" Size="4" GraphColorRed="85" GraphColorGreen="255" GraphColorBlue="255" YMinSampled="-5.17862e+31" YMaxSampled="5.53852e+11" YAvgSampled="-nan" Offset="16" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="2" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.theta" />
+            </Symbol>
+        </SelectedSymbols>
+    </Project>
+</JScopeProject>

@@ -97,13 +97,11 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
     //    LowPassFilter(&foc_param.i_d, &lpf_id);
     //    LowPassFilter(&foc_param.i_q, &lpf_iq);
 
-    SerialPidCtrlTest(&id_pi, id_set, foc_param.i_d);
-    //    SerialPidCtrl(&id_pid, id_set, foc_param.i_d);
+    SerialPidCtrl(&id_pi, id_set, foc_param.i_d);
     //    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
     foc_param.v_d = id_pi.out_value;
 
-    SerialPidCtrlTest(&iq_pi, iq_set, foc_param.i_q);
-    //    SerialPidCtrl(&iq_pid, iq_set, foc_param.i_q);
+    SerialPidCtrl(&iq_pi, iq_set, foc_param.i_q);
     //    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
     foc_param.v_q = iq_pi.out_value;
 
@@ -145,12 +143,12 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     }
     //    ParallelPidCtrl(&id_pid, id_set, hfi_param.idq_f.id);
     //    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
-    SerialPidCtrlTest(&id_pi, id_set, hfi_param.idq_f.id);
+    SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.id);
     foc_param.v_d = id_pi.out_value + ud_inject;
 
     //    ParallelPidCtrl(&iq_pid, iq_set, hfi_param.idq_f.iq);
     //    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
-    SerialPidCtrlTest(&iq_pi, iq_set, hfi_param.idq_f.iq);
+    SerialPidCtrl(&iq_pi, iq_set, hfi_param.idq_f.iq);
     foc_param.v_q = iq_pi.out_value;
 
     InvPark(&foc_param);
@@ -398,24 +396,24 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
                     static int test = 0;
                     if (test <= 40000) {
                         HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, enc_para.pos_e);
-                        //                            test++;
+                        // test++;
                     } else {
-                        //                            HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
+                        // HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
                         HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
                     }
 
-                    //                        if (++test == 10) {
-                    //                            static int pos = 0;
-                    //                            if (++pos == 2) {
-                    //                                ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
-                    //                                pos = 0;
-                    //                            }
-                    //                            IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
-                    ////                            IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
-                    //                            test = 0;
-                    //                        }
-                    //                        // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
-                    //                        HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
+                    //   if (++test == 10) {
+                    //       static int pos = 0;
+                    //       if (++pos == 2) {
+                    //           ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+                    //           pos = 0;
+                    //       }
+                    //       IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
+                    ////       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
+                    //       test = 0;
+                    //   }
+                    //   // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
+                    //   HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
                 }
             }
         }
@@ -427,19 +425,16 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 extern uint16_t can_recieveFlag;
 _RAM_FUNC void  FocHandle(void)
 {
-    //    motor_ctrl.mode = FOC_IDLE;
     //    if(++can_recieveFlag>10000)
     //    {
     //        motor_ctrl.speed_set = 0;
     //    }
-
     CurrentUpdate(&mc_adc, &foc_param);
     PosCalculate(&enc_para);
     CurrentRefactor(&mc_adc, &foc_param);
     Clarke(&foc_param);
     non_flux_observer(&nonFlux, &foc_param, &motor_cfg);
     foc_param.vbus = 12.f;
-    //    foc_param.vbus = 16.2f;
 
 #if USE_POS_PID
 #if USE_VOLT_POS

@@ -70,28 +70,7 @@ float ParallelPidCtrl(pid_para_t *pid, float target_value, float fdback_value) {
     return pid->out_value;
 }
 
-float SerialPidCtrl(pid_para_t *pid, float target_value, float fdback_value) {
-    pid->target_value = target_value;
-    pid->fback_value  = fdback_value;
-    pid->error        = pid->target_value - pid->fback_value;
-
-    pid->p_term = pid->kp * pid->error;
-    pid->i_term += pid->ki * pid->p_term;
-
-    if (pid->i_term > pid->i_term_max) pid->i_term = pid->i_term_max;
-    else if (pid->i_term < pid->i_term_min)
-        pid->i_term = pid->i_term_min;
-
-    pid->out_value = pid->p_term + pid->i_term;
-
-    if (pid->out_value > pid->out_max) pid->out_value = pid->out_max;
-    else if (pid->out_value < pid->out_min)
-        pid->out_value = pid->out_min;
-
-    return pid->out_value;
-}
-
-float SerialPidCtrlTest(pi_para_t *pi, float target_value, float fdback_value) {
+float SerialPidCtrl(pi_para_t *pi, float target_value, float fdback_value) {
     pi->target_value = target_value;
     pi->fback_value  = fdback_value;
     pi->error        = pi->target_value - pi->fback_value;

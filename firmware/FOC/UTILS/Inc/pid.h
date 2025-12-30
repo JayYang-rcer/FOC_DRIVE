@@ -56,8 +56,7 @@ typedef struct pi_para_t {
 } pi_para_t;
 
 void pid_para_init(pid_para_t *pid_config);
-float SerialPidCtrl(pid_para_t *pid, float target_value, float fdback_value);
-float SerialPidCtrlTest(pi_para_t *pi, float target_value, float fdback_value);
+float SerialPidCtrl(pi_para_t *pi, float target_value, float fdback_value);
 float ParallelPidCtrl(pid_para_t *pid, float target_value, float fdback_value);
 float IncreatParallePidCtrl(pid_para_t *pid, float target_value, float fdback_value);
 float AbsLimit(float a, float abs_max);

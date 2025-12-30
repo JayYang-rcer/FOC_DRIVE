@@ -198,7 +198,6 @@ extern foc_param_t  foc_param;
 extern motor_cfg_t  motor_cfg;
 extern motor_ctrl_t motor_ctrl;
 extern pi_para_t    id_pi, iq_pi;
-extern pid_para_t   id_pid, iq_pid;
 extern pid_para_t   speed_pid;
 extern pid_para_t   pos_pid;
 extern pll_t        pll_spd;
