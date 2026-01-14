@@ -119,7 +119,7 @@ int main(void)
     hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
     HAL_SPI_Init(&hspi1);
     CanResourceInit();
-    OLED_Init();  //OLED初始化
+    OLED_Init();  //OLED Init
     OLED_ShowStr(0,0,"OLED-TEXT",1);
     OLED_ShowStr(0,16,"OLED-TEXT",2);
     //    HAL_TIM_Base_Start(&htim1);

@@ -9,7 +9,7 @@
 #define SET_DTC_B(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
 #define SET_DTC_C(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, value)
 
-#define R_SENSE           0.001f                          // 采样电阻阻值
+#define R_SENSE           0.001f                           // 采样电阻阻值
 #define IOP               20.f                            // 电流采样电阻放大倍数
 #define IRATIO            (3.3f / 4096.f) / R_SENSE / IOP // 电流采样,电压转换为电流值的系数
 #define VBUS_RATIO        (6.1f * 3.3f) / 4096.0f         // 母线电压采样电压转换为电压值的系数
@@ -20,13 +20,14 @@
 
 typedef enum FOC_CTRL_MODE {
     FOC_IDLE            = 0, // 空闲
-    FOC_VF_CTRL         = 1, // 强拖
+    FOC_VF_CTRL         = 1, // VF强拖
     FOC_VOLT_CTRL       = 2, // 电压控制
     FOC_CURRENT_CTRL    = 3, // 电流控制
     FOC_SPEED_CTRL      = 4, // 速度控制
     FOC_POSITION_CTRL   = 5, // 位置控制
     FOC_SENSORLESS_CTRL = 6, // 无传感器控制
     FOC_HFI_TEST        = 7, // 高频注入测试
+    FOC_IF_CTRL         = 8, // VF强拖
 } FOC_CTRL_MODE;
 
 typedef union {
@@ -187,6 +188,16 @@ typedef struct hfi_param_t {
     dq_t idq_h;
     dq_t idq_h_last;   // 上次的dq轴高频电流
     dq_t idq_h_laster; // 上次的dq轴高频电流
+
+    // 正 / 负脉冲采样
+    float i_alpha_p;
+    float i_beta_p;
+    float i_alpha_n;
+    float i_beta_n;
+
+    // 差分结果
+    float di_alpha;
+    float di_beta;
 
     dq_t idq_f;
     dq_t idq_f_last;

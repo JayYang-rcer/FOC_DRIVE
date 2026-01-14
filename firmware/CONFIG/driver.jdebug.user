@@ -2,26 +2,27 @@
 
 
 Breakpoint=F:/FOC_DRIVE/firmware/Drivers/CMSIS/Include/cmsis_gcc.h:209:3, State=BP_STATE_DISABLED
+OpenDocument="pid.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/pid.h", Line=0
 OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Src/vofa.c", Line=12
-OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=74
-OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=81
+OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=73
+OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=50
 OpenDocument="stm32g4xx_hal_fdcan.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c", Line=2966
 OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=87
 OpenDocument="drive_can.c", FilePath="F:/FOC_DRIVE/firmware/BSP/Src/drive_can.c", Line=108
-OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.c", Line=245
+OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.c", Line=381
 OpenDocument="McuDevicePort.c", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/McuDevicePort.c", Line=0
 OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=87
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=503, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=161, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=477, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=197, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1269, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=665, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=675, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=650, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
-TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;231]
+TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[744;100;100;100;194]
 TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[356;112;128;100;168;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[125;186;937]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh"], ColWidths=[125;186;941]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
 TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;359]
 WatchedExpression="motor_ctrl", RefreshRate=5, Window=Watched Data 1

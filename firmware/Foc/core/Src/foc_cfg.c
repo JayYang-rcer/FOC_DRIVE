@@ -25,11 +25,11 @@ pll_t pll_smo;
 /**********************************************************/
 
 /********************hfi param********************/
-hfi_param_t hfi_param = {.inject_U = 0.8f, .omega_e = 0.1f};
+hfi_param_t hfi_param = {.inject_U = 1.2f, .omega_e = 0.1f};
 
 pll_t pll_hfi = {.loop_hz      = 20000,// 20khz
-                 .kp           = 1200,
-                 .ki           = 250000,
+                 .kp           = 800,
+                 .ki           = 15000,
                  .i_term_limit = 1000};
 /**********************************************************/
 
@@ -142,7 +142,7 @@ void CurrentSampInit(void) {
     HAL_ADCEx_InjectedStart(&hadc1);
     HAL_ADCEx_InjectedStart(&hadc2);
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 4100);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 3999);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
     __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
     motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);

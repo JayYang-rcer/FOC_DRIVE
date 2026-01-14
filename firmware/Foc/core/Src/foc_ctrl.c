@@ -17,7 +17,6 @@
 #define USE_SPD_DET          0 // 使用微分速度检测
 #define USE_POS_PID          0 // 使用位置环
 #define USE_ENCODER          1
-#define LINE_SAMPLE          1
 #define USE_SENSERLESS       1
 #define SENSERLESS_MIN_SPEED 900
 #define SENSERLESS_MAX_SPEED 7000
@@ -38,6 +37,20 @@ _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 
     foc_param.v_d = vd_ref;
     foc_param.v_q = vq_ref;
+    InvPark(&foc_param);
+    SvpwmSector(&foc_param);
+}
+
+_RAM_FUNC void FocIFVolt(float id_ref, float pos)
+{
+    foc_param.theta = pos;
+    WRAP_0_2PI(foc_param.theta);
+    SinCosVal(&foc_param);
+    Park(&foc_param);
+
+    SerialPidCtrl(&id_pi, id_ref, foc_param.i_d);
+    foc_param.v_d = id_pi.out_value;
+    foc_param.v_q = 0;
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
 }
@@ -115,9 +128,8 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     SinCosVal(&foc_param);
 
     static float ud_inject;
-    static int   cnt = 0;
-    ud_inject        = HfiInjectSign(hfi_param.inject_U);
-    hfi_param.sign   = SIGN(ud_inject);
+    ud_inject = HfiInjectSign(hfi_param.inject_U);
+    //    hfi_param.sign   = SIGN(ud_inject);
 
     foc_param.v_d = vd + ud_inject;
     foc_param.v_q = vq;
@@ -130,24 +142,15 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
 {
     foc_param.theta = pos;
     SinCosVal(&foc_param);
-
     Park(&foc_param);
     IdqToIdqF(&foc_param, &hfi_param);
 
     static float ud_inject;
-    static int   cnt = 0;
-    if (++cnt == 2) {
-        ud_inject      = HfiInjectSign(hfi_param.inject_U);
-        hfi_param.sign = SIGN(ud_inject);
-        cnt            = 0;
-    }
-    //    ParallelPidCtrl(&id_pid, id_set, hfi_param.idq_f.id);
-    //    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
+    ud_inject      = HfiInjectSign(hfi_param.inject_U);
+    hfi_param.sign = SIGN(ud_inject);
     SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.id);
     foc_param.v_d = id_pi.out_value + ud_inject;
 
-    //    ParallelPidCtrl(&iq_pid, iq_set, hfi_param.idq_f.iq);
-    //    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
     SerialPidCtrl(&iq_pi, iq_set, hfi_param.idq_f.iq);
     foc_param.v_q = iq_pi.out_value;
 
@@ -177,54 +180,9 @@ void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc)
 
 _RAM_FUNC void CurrentRefactor(foc_adc_t *adc, foc_param_t *foc)
 {
-#if LINE_SAMPLE
     foc->i_a = (adc->adc_ia - adc->ia_offset) * IRATIO;
     foc->i_b = (adc->adc_ib - adc->ib_offset) * IRATIO;
     foc->i_c = (adc->adc_ic - adc->ib_offset) * IRATIO;
-#else
-    switch (foc->sector) {
-    case 4: // sector 4 5
-        foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-        foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-        foc->i_c = -(foc->i_a + foc->i_b);
-        break;
-    case 5:
-        foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-        foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-        foc->i_c = -(foc->i_a + foc->i_b);
-        break;
-
-    case 1: // sector 1 6
-        foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-        foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-        foc->i_a = -(foc->i_c + foc->i_b);
-        break;
-
-    case 6:
-        foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-        foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-        foc->i_a = -(foc->i_c + foc->i_b);
-        break;
-
-    case 2: // sector 2 3
-        foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-        foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-        foc->i_b = -(foc->i_a + foc->i_c);
-        break;
-
-    case 3:
-        foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-        foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-        foc->i_b = -(foc->i_a + foc->i_c);
-        break;
-
-    default:
-        foc->i_a = (adc->ia_offset - adc->adc_ia) * IRATIO;
-        foc->i_c = (adc->ic_offset - adc->adc_ic) * IRATIO;
-        foc->i_b = (adc->ib_offset - adc->adc_ib) * IRATIO;
-        break;
-    }
-#endif
 }
 
 volatile float smo_angle;
@@ -299,6 +257,12 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
     case FOC_VF_CTRL: {
         foc->theta += ctrl->epos_acc;
         FocVolt(ctrl->vd_set, ctrl->vq_set, foc->theta);
+        break;
+    }
+
+    case FOC_IF_CTRL: {
+        foc->theta += ctrl->epos_acc;
+        FocIFVolt(ctrl->id_set, foc->theta);
         break;
     }
 
@@ -394,31 +358,26 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
                     HfiVolt(0, 0, hfi_param.theta_e);
                 } else {
                     static int test = 0;
-                    if (test <= 40000) {
-                        HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, enc_para.pos_e);
-                        // test++;
-                    } else {
-                        // HfiVolt(motor_ctrl.vd_set,motor_ctrl.vq_set,enc_para.pos_e);
-                        HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
-                    }
 
-                    //   if (++test == 10) {
-                    //       static int pos = 0;
-                    //       if (++pos == 2) {
-                    //           ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
-                    //           pos = 0;
-                    //       }
-                    //       IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e);
-                    ////       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
-                    //       test = 0;
-                    //   }
-                    //   // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
-                    //   HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
+//                    foc->theta += ctrl->epos_acc;
+                    HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
+
+//                    if (++test == 10) {
+//                        static int pos = 0;
+//                        if (++pos == 2) {
+//                            ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+//                            pos = 0;
+//                        }
+//                        IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e*60.f/M_2PI/7.f);
+//                        //       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
+//                        test = 0;
+//                    }
+//                    // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
+//                    HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
                 }
             }
         }
-        break;
-    }
+    } break;
     }
 }
 

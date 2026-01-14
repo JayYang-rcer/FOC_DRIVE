@@ -70,7 +70,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 
     foc->sector = sector;
 
-    float Tn = 0.95f;
+    float Tn = 1.0f;
     float k  = (Tn * SQRT3) / foc->vbus;
     float T1, T2;
     switch (sector)
@@ -224,6 +224,8 @@ float HfiInjectSign(float inject_U) {
     if(i==4)
         i=0;
     return inject_U * data[i];
+    hfi_param.sign = data[i];
+//    return inject_U * u;
 }
 
 
@@ -256,19 +258,23 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
     //目前问题：
     // 1.锁相环的积分比较鸡肋，考虑升级一下。
     // 2.相位上具有一定的延时
-    pll->ref = cos_f32(pll->angle_out) * hfi->envelope.beta;
-    pll->fbk = hfi->envelope.alpha * sin_f32(pll->angle_out);
+//    pll->ref = cos_f32(pll->angle_out) * hfi->envelope.beta;
+//    pll->fbk = hfi->envelope.alpha * sin_f32(pll->angle_out);
+//
+//    pll->error = pll->ref - pll->fbk;
 
-    pll->error = pll->ref - pll->fbk;
+    pll->ref = hfi->di_alpha*sin_f32(hfi->theta_e);
+    pll->fbk = hfi->di_beta* cos_f32(hfi->theta_e);
+    pll->error = pll->fbk-pll->ref;
 
     pll->p_term = pll->error * pll->kp;
     pll->i_term += pll->error * pll->ki / pll->loop_hz;
     pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); //积分限幅
 
     pll->out_value = pll->p_term + pll->i_term;
-    hfi->omega_e = butterworth_lpf(pll->out_value * 1.3648f);
+//    hfi->omega_e = butterworth_lpf(pll->out_value * 1.3648f);
     LowPassFilter(&pll->out_value, &lpf_hfi);
-
+    hfi->omega_e = pll->out_value;
     pll->angle_out += pll->out_value / pll->loop_hz;
     WRAP_0_2PI(pll->angle_out)
 
@@ -284,25 +290,22 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
 void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
     //更新数据
     Clarke(foc);
-    hfi->ab_laster.alpha = hfi->ab_last.alpha;
-    hfi->ab_laster.beta = hfi->ab_last.beta;
-    hfi->ab_last.alpha = hfi->ab.alpha;
-    hfi->ab_last.beta = hfi->ab.beta;
-    hfi->ab.alpha = foc->i_alpha;
-    hfi->ab.beta = foc->i_beta;
-    hfi->ab_h_last.alpha = hfi->ab_h.alpha;
-    hfi->ab_h_last.beta = hfi->ab_h.beta;
 
-    //提取高频电流
-//    hfi->ab_h.alpha = (hfi->ab.alpha - 2.f * hfi->ab_last.alpha + hfi->ab_laster.alpha) * 0.25f;
-//    hfi->ab_h.beta = (hfi->ab.beta - 2.f * hfi->ab_last.beta + hfi->ab_laster.beta) * 0.25f;
-    hfi->ab_h.alpha = (hfi->ab.alpha - hfi->ab_last.alpha)*0.5f;
-    hfi->ab_h.beta = (hfi->ab.beta - hfi->ab_last.beta)*0.5f;
+    if (hfi->sign > 0) {
+        /* 正脉冲 */
+        hfi->i_alpha_p = foc->i_alpha;
+        hfi->i_beta_p  = foc->i_beta;
+    } else {
+        /* 负脉冲 */
+        hfi->i_alpha_n = foc->i_alpha;
+        hfi->i_beta_n  = foc->i_beta;
 
-    hfi->envelope.alpha = (hfi->ab_h.alpha - hfi->ab_h_last.alpha) * hfi->sign;
-    hfi->envelope.beta = (hfi->ab_h.beta - hfi->ab_h_last.beta) * hfi->sign;
+        // 在正负电流都采集完毕后计算
+        hfi->di_alpha = hfi->i_alpha_p - hfi->i_alpha_n;
+        hfi->di_beta  = hfi->i_beta_p - hfi->i_beta_n;
 
-    hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
+        hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
+    }
 }
 
 
@@ -379,9 +382,9 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
     } else {
         motor_ctrl.id_set = 0;
         if (hfi->isum_positive < hfi->isum_negetive)
-            hfi->theta_e += M_PI;
+            hfi->theta_e -= M_PI;
         if (hfi->theta_e > M_2PI)
-            hfi->theta_e -= M_2PI;
+            hfi->theta_e += M_2PI;
         HfiVolt(0, 0, hfi->theta_e);
         return true;
     }
