@@ -37,13 +37,10 @@ _RAM_FUNC void InvClarke(foc_param_t *foc) {
 */
 _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 {
-    float Ua = foc->v_alpha;
-    float Ub = foc->v_beta;
-
     /* Clarke */
-    float U1 = Ub;
-    float U2 = (SQRT3 * Ua - Ub) * 0.5f;
-    float U3 = -(SQRT3 * Ua + Ub) * 0.5f;
+    float U1 = foc->v_beta;
+    float U2 = (SQRT3 * foc->v_alpha - foc->v_beta) * 0.5f;
+    float U3 = -(SQRT3 * foc->v_alpha + foc->v_beta) * 0.5f;
 
     uint8_t A, B, C;
     uint8_t N;
@@ -167,26 +164,11 @@ _RAM_FUNC float SmoPllAngle(smo_param_t *param, pll_t *pll) {
  */
 _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo) {
     static float valpha_last, vbeta_last;
-    float ualpha, ubeta;
-
-    ualpha = (2 * foc->v_a - foc->v_b - foc->v_c) / 3.f;
-    ubeta = (foc->v_b - foc->v_c) * ONE_BY_SQRT3;
     Clarke(foc);
 
     //计算预测电流
-    if (ABS(motor_ctrl.speed_set < 800)) {
-        smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
-        smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
-    } else {
-        if (ABS(motor_cfg.rotor_vel < 500)) {
-            smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
-            smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
-        } else {
-            //貌似使用端电压采样在高速情况下比给定电压采样更好
-            smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (ualpha - smo->valpah);
-            smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (ubeta - smo->vbeta);
-        }
-    }
+    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
+    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
 
     //计算电动势观测值
     smo->valpah = smo->ksw * SIGN(smo->ialpha_view - foc->i_alpha);
@@ -217,15 +199,10 @@ _RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo) {
  * @return 定轴的高频注入值
  */
 float HfiInjectSign(float inject_U) {
-//    static float u = -1.f;
-//    u *= -1.f;
-    static int data[4] = {0,1,0,-1}, i=0;
-    i++;
-    if(i==4)
-        i=0;
-    return inject_U * data[i];
-    hfi_param.sign = data[i];
-//    return inject_U * u;
+    static float u = -1.f;
+    u *= -1.f;
+    hfi_param.sign = u;
+    return inject_U * u;
 }
 
 
@@ -258,14 +235,9 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
     //目前问题：
     // 1.锁相环的积分比较鸡肋，考虑升级一下。
     // 2.相位上具有一定的延时
-//    pll->ref = cos_f32(pll->angle_out) * hfi->envelope.beta;
-//    pll->fbk = hfi->envelope.alpha * sin_f32(pll->angle_out);
-//
-//    pll->error = pll->ref - pll->fbk;
-
-    pll->ref = hfi->di_alpha*sin_f32(hfi->theta_e);
-    pll->fbk = hfi->di_beta* cos_f32(hfi->theta_e);
-    pll->error = pll->fbk-pll->ref;
+    pll->ref = cos_f32(pll->angle_out) * hfi->ab_h.beta;
+    pll->fbk = hfi->ab_h.alpha * sin_f32(pll->angle_out);
+    pll->error = pll->ref - pll->fbk;
 
     pll->p_term = pll->error * pll->kp;
     pll->i_term += pll->error * pll->ki / pll->loop_hz;
@@ -273,14 +245,14 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
 
     pll->out_value = pll->p_term + pll->i_term;
 //    hfi->omega_e = butterworth_lpf(pll->out_value * 1.3648f);
+
+    pll->angle_out += pll->out_value / pll->loop_hz;
     LowPassFilter(&pll->out_value, &lpf_hfi);
     hfi->omega_e = pll->out_value;
-    pll->angle_out += pll->out_value / pll->loop_hz;
     WRAP_0_2PI(pll->angle_out)
 
     return WRAP_0_2PI(pll->angle_out);
 }
-
 
 /**
  * @brief 高频注入角度计算
@@ -290,24 +262,20 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
 void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
     //更新数据
     Clarke(foc);
+    if(hfi->sign!=0) {
+        hfi->ab_h.alpha = -(foc->i_alpha - hfi->ab_last.alpha) * 0.5f* hfi->sign;
+        hfi->ab_h.beta  = -(foc->i_beta - hfi->ab_last.beta) * 0.5f * hfi->sign;
 
-    if (hfi->sign > 0) {
-        /* 正脉冲 */
-        hfi->i_alpha_p = foc->i_alpha;
-        hfi->i_beta_p  = foc->i_beta;
-    } else {
-        /* 负脉冲 */
-        hfi->i_alpha_n = foc->i_alpha;
-        hfi->i_beta_n  = foc->i_beta;
-
-        // 在正负电流都采集完毕后计算
-        hfi->di_alpha = hfi->i_alpha_p - hfi->i_alpha_n;
-        hfi->di_beta  = hfi->i_beta_p - hfi->i_beta_n;
+        hfi->ab_last.alpha   = foc->i_alpha;
+        hfi->ab_last.beta    = foc->i_beta;
+        hfi->ab_laster.alpha = hfi->ab_last.alpha;
+        hfi->ab_laster.beta  = hfi->ab_last.beta;
+        hfi->ab_h_last.alpha = hfi->ab_h.alpha;
+        hfi->ab_h_last.beta  = hfi->ab_h.beta;
 
         hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
     }
 }
-
 
 /**
  * @brief 提取定轴和转轴的基频电流
@@ -315,8 +283,6 @@ void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
  * @param hfi
  */
 void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
-//    hfi->idq_f.id = (foc->i_d + 2 * hfi->idq_f_last.id + hfi->idq_f_laster.id) * 0.25f;
-//    hfi->idq_f.iq = (foc->i_q + 2 * hfi->idq_f_last.iq + hfi->idq_f_laster.iq) * 0.25f;
     hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
     hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
 
@@ -327,15 +293,12 @@ void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
     hfi->idq_f_last.iq = foc->i_q;
 }
 
-
 /**
  * @brief 提取定轴和转轴的高频电流
  * @param foc
  * @param hfi
  */
 void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi) {
-//    hfi->idq_h.id = (foc->i_d - 2 * hfi->idq_h_last.id + hfi->idq_h_laster.id) * 0.25f;
-//    hfi->idq_h.iq = (foc->i_q - 2 * hfi->idq_h_last.iq + hfi->idq_h_laster.iq) * 0.25f;
     hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
     hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
 
@@ -382,10 +345,10 @@ bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
     } else {
         motor_ctrl.id_set = 0;
         if (hfi->isum_positive < hfi->isum_negetive)
-            hfi->theta_e -= M_PI;
-        if (hfi->theta_e > M_2PI)
-            hfi->theta_e += M_2PI;
-        HfiVolt(0, 0, hfi->theta_e);
+            pll_hfi.angle_out += M_PI;
+        if (pll_hfi.angle_out > M_2PI)
+            pll_hfi.angle_out += M_2PI;
+//        HfiVolt(0, 0, hfi->theta_e);
         return true;
     }
     return false;

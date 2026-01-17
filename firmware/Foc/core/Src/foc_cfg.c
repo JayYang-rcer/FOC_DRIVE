@@ -28,8 +28,8 @@ pll_t pll_smo;
 hfi_param_t hfi_param = {.inject_U = 1.2f, .omega_e = 0.1f};
 
 pll_t pll_hfi = {.loop_hz      = 20000,// 20khz
-                 .kp           = 800,
-                 .ki           = 15000,
+                 .kp           = 1200,
+                 .ki           = 250000,
                  .i_term_limit = 1000};
 /**********************************************************/
 
@@ -96,8 +96,8 @@ void MotorPidInit(void) {
     pos_pid.out_max = 0.8f;
     pos_pid.out_min = -0.8f;
     *********************************************************************/
-    speed_pid.kp         = 0.001f;
-    speed_pid.ki         = 0.001f;
+    speed_pid.kp         = 0.005f;
+    speed_pid.ki         = 0.006f;
     speed_pid.out_max    = 15.f;
     speed_pid.out_min    = -15.f;
     speed_pid.i_term_max = 15.f;

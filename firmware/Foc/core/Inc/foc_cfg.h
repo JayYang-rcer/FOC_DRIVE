@@ -119,9 +119,6 @@ typedef struct {
     float adc_ia; // A相电流
     float adc_ib; // B相电流
     float adc_ic; // C相电流
-    float va;     // A相端电压
-    float vb;     // B相端电压
-    float vc;     // C相端电压
 
     float ia_offset; // A相电流偏移
     float ib_offset; // B相电流偏移
@@ -188,16 +185,6 @@ typedef struct hfi_param_t {
     dq_t idq_h;
     dq_t idq_h_last;   // 上次的dq轴高频电流
     dq_t idq_h_laster; // 上次的dq轴高频电流
-
-    // 正 / 负脉冲采样
-    float i_alpha_p;
-    float i_beta_p;
-    float i_alpha_n;
-    float i_beta_n;
-
-    // 差分结果
-    float di_alpha;
-    float di_beta;
 
     dq_t idq_f;
     dq_t idq_f_last;

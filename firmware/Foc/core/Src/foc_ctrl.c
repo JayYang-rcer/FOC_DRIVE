@@ -128,7 +128,16 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     SinCosVal(&foc_param);
 
     static float ud_inject;
-    ud_inject = HfiInjectSign(hfi_param.inject_U);
+    static int cnt = 0;
+    if(++cnt == 5)
+    {
+        ud_inject = HfiInjectSign(hfi_param.inject_U);
+        cnt=0;
+    }
+    else
+    {
+        hfi_param.sign = 0;
+    }
     //    hfi_param.sign   = SIGN(ud_inject);
 
     foc_param.v_d = vd + ud_inject;
@@ -146,8 +155,16 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     IdqToIdqF(&foc_param, &hfi_param);
 
     static float ud_inject;
-    ud_inject      = HfiInjectSign(hfi_param.inject_U);
-    hfi_param.sign = SIGN(ud_inject);
+    static int cnt = 0;
+    if(++cnt == 5)
+    {
+        ud_inject      = HfiInjectSign(hfi_param.inject_U);
+        cnt=0;
+    }
+    else
+    {
+        hfi_param.sign = 0;
+    }
     SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.id);
     foc_param.v_d = id_pi.out_value + ud_inject;
 
@@ -165,14 +182,7 @@ void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc)
     adc->adc_ia = ADC1->JDR1;
     adc->adc_ib = ADC1->JDR2;
     adc->adc_ic = ADC1->JDR3;
-    //    adc->va     = ADC2->JDR3;
-    //    adc->vb     = ADC2->JDR2;
-    //    adc->vc     = ADC2->JDR1;
     adc->vbus = ADC2->JDR1;
-
-    //    foc->v_a = (adc->va) / 4095.f * 3.3f * 10.f;
-    //    foc->v_b = (adc->vb) / 4095.f * 3.3f * 10.f;
-    //    foc->v_c = (adc->vc) / 4095.f * 3.3f * 10.f;
 
     vbus      = ((float)adc->vbus) * VBUS_RATIO;
     foc->vbus = ((float)adc->vbus) * VBUS_RATIO;
@@ -353,28 +363,26 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
             if (!hfi_init) {
                 hfi_init = HfiNsIdentify(&hfi_param, foc);
             } else {
-                if (motor_ctrl.spd_cnt < 20000) {
-                    motor_ctrl.spd_cnt++;
-                    HfiVolt(0, 0, hfi_param.theta_e);
-                } else {
-                    static int test = 0;
+                static int test = 0;
+//                foc->theta += ctrl->epos_acc;
+//                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, foc->theta);
+//                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
 
-//                    foc->theta += ctrl->epos_acc;
-                    HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
-
-//                    if (++test == 10) {
-//                        static int pos = 0;
-//                        if (++pos == 2) {
-//                            ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
-//                            pos = 0;
-//                        }
-//                        IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e*60.f/M_2PI/7.f);
-//                        //       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
-//                        test = 0;
-//                    }
-//                    // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
-//                    HfiCurrent(6, speed_pid.out_value, hfi_param.theta_e);
+                if (++test == 10) {
+                    static int pos = 0;
+                    if (++pos == 2) {
+                        ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+                        pos = 0;
+                    }
+                    IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e*60.f/M_2PI/7.f);
+                    //       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
+                    test = 0;
                 }
+                // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
+                if(motor_ctrl.speed_set != 0)
+                    HfiCurrent(5, speed_pid.out_value, hfi_param.theta_e);
+                else
+                    HfiCurrent(0, 0, hfi_param.theta_e);
             }
         }
     } break;

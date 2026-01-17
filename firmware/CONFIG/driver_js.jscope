@@ -11,7 +11,7 @@
                 <Options TimeResolutionUs="1000000" />
             </Scope>
             <Trigger>
-                <Options Level="0" Symbol="theta" On="0" Auto="0" Rise="0" Fall="0" />
+                <Options Level="0" Symbol="theta_e" On="0" Auto="0" Rise="0" Fall="0" />
             </Trigger>
         </Configuration>
         <Windows>
@@ -20,16 +20,25 @@
         </Windows>
         <SelectedSymbols>
             <Symbol>
-                <Options Name="theta" Address="0x20000A5C" Type="float" TypeID="1" Size="4" GraphColorRed="85" GraphColorGreen="255" GraphColorBlue="255" YMinSampled="-2.7204e+24" YMaxSampled="6.28282" YAvgSampled="-3.28471e+19" Offset="4" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="2000000000" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.theta" />
+                <Options Name="theta_e" Address="0x2000000C" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="0" YMaxSampled="6.2831" YAvgSampled="2.93605" Offset="4" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="2" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".hfi_param.theta_e" />
             </Symbol>
             <Symbol>
-                <Options Name="i_a" Address="0x20000A68" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="-1.80832e+38" YMaxSampled="3.06261e+24" YAvgSampled="-nan" Offset="8" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="5" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_a" />
+                <Options Name="omega_e" Address="0x20000010" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="255" GraphColorBlue="255" YMinSampled="-591.81" YMaxSampled="794.191" YAvgSampled="37.1421" Offset="8" ShowInGraph="0" YOffset="0" IsAutoConfig="0" YResolution="20" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".hfi_param.omega_e" />
             </Symbol>
             <Symbol>
-                <Options Name="i_b" Address="0x20000A6C" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-1.03551e+34" YMaxSampled="2.43839e+29" YAvgSampled="-nan" Offset="12" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="5" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_b" />
+                <Options Name="alpha" Address="0x20000050" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="-13.5754" YMaxSampled="549993" YAvgSampled="739.214" Offset="12" ShowInGraph="0" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".hfi_param.envelope.alpha" />
             </Symbol>
             <Symbol>
-                <Options Name="i_c" Address="0x20000A70" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-3.14177e+31" YMaxSampled="1.73825e+20" YAvgSampled="-4.0694e+26" Offset="16" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="5" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_c" />
+                <Options Name="beta" Address="0x20000054" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-14.4313" YMaxSampled="12.8033" YAvgSampled="0.0694549" Offset="16" ShowInGraph="0" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".hfi_param.envelope.beta" />
+            </Symbol>
+            <Symbol>
+                <Options Name="i_c" Address="0x20000A58" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-24.4967" YMaxSampled="22.6346" YAvgSampled="-0.108707" Offset="20" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="3" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_c" />
+            </Symbol>
+            <Symbol>
+                <Options Name="i_b" Address="0x20000A54" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-24.4162" YMaxSampled="25.1322" YAvgSampled="0.108194" Offset="24" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="3" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_b" />
+            </Symbol>
+            <Symbol>
+                <Options Name="i_a" Address="0x20000A50" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="255" YMinSampled="-19.0934" YMaxSampled="19.9815" YAvgSampled="0.0789616" Offset="28" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="3" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.c" DrawStyle="0" NameWithParents=".foc_param.i_a" />
             </Symbol>
         </SelectedSymbols>
     </Project>

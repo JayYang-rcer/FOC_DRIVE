@@ -38,8 +38,5 @@ int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor
 
 extern smo_param_t smo_param;
 extern volatile float smo_angle;
-extern float ualpha;
-extern float ubeta;
-
 
 #endif
