@@ -106,6 +106,7 @@ int main(void)
   MX_USB_Device_Init();
   MX_TIM1_Init();
   MX_I2C1_Init();
+  MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
     CurrentSampInit();
 
@@ -118,6 +119,7 @@ int main(void)
     HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
     hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
     HAL_SPI_Init(&hspi1);
+    HAL_TIM_Base_Start_IT(&htim16);
     CanResourceInit();
     OLED_Init();  //OLED Init
     OLED_ShowStr(0,0,"OLED-TEXT",1);

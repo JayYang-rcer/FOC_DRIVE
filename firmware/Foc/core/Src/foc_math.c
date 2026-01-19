@@ -3,27 +3,27 @@
 #include "util.h"
 #include "foc_ctrl.h"
 
-_RAM_FUNC void SinCosVal(foc_param_t *foc) {
+_RAM_FUNC void SinCosVal(FocParam_t *foc) {
     foc->sin_val = sin_f32(foc->theta);
     foc->cos_val = cos_f32(foc->theta);
 }
 
-_RAM_FUNC void Clarke(foc_param_t *foc) {
+_RAM_FUNC void Clarke(FocParam_t *foc) {
     foc->i_alpha = foc->i_a;
     foc->i_beta = (foc->i_b - foc->i_c) * ONE_BY_SQRT3;
 }
 
-_RAM_FUNC void Park(foc_param_t *foc) {
+_RAM_FUNC void Park(FocParam_t *foc) {
     foc->i_d = foc->i_alpha * foc->cos_val + foc->i_beta * foc->sin_val;
     foc->i_q = -foc->i_alpha * foc->sin_val + foc->i_beta * foc->cos_val;
 }
 
-_RAM_FUNC void InvPark(foc_param_t *foc) {
+_RAM_FUNC void InvPark(FocParam_t *foc) {
     foc->v_alpha = foc->v_d * foc->cos_val - foc->v_q * foc->sin_val;
     foc->v_beta = foc->v_q * foc->cos_val + foc->v_d * foc->sin_val;
 }
 
-_RAM_FUNC void InvClarke(foc_param_t *foc) {
+_RAM_FUNC void InvClarke(FocParam_t *foc) {
     foc->v_a = foc->v_alpha;
     foc->v_b = -0.5f * foc->v_alpha + SQRT3_BY_2 * foc->v_beta;
     foc->v_c = -0.5f * foc->v_alpha - SQRT3_BY_2 * foc->v_beta;
@@ -35,7 +35,7 @@ _RAM_FUNC void InvClarke(foc_param_t *foc) {
 * @retval:     void
 * @details:    SVPWM扇区判断
 */
-_RAM_FUNC int SvpwmSector(foc_param_t *foc)
+_RAM_FUNC int SvpwmSector(FocParam_t *foc)
 {
     /* Clarke */
     float U1 = foc->v_beta;
@@ -118,7 +118,7 @@ _RAM_FUNC int SvpwmSector(foc_param_t *foc)
 #define DT 1.f/10000
 float alpha;
 
-void SmoParamInit(smo_param_t *smo) {
+void SmoParamInit(SmoParam_t *smo) {
     smo->A = expf(-(motor_cfg.rs / 1000) / (motor_cfg.ls / 1000000) / 10000);
     smo->B = (1 - smo->A) / (motor_cfg.rs / 1000);
     smo->ksw = 0.13f;
@@ -135,7 +135,7 @@ void SmoParamInit(smo_param_t *smo) {
  * @param pll
  * @return
  */
-_RAM_FUNC float SmoPllAngle(smo_param_t *param, pll_t *pll) {
+_RAM_FUNC float SmoPllAngle(SmoParam_t *param, pll_t *pll) {
     static float omega_out;
     pll->ref = -param->Ealpha * cos_f32(pll->angle_out);
     pll->fbk = sin_f32(pll->angle_out) * param->Ebeta;
@@ -162,7 +162,7 @@ _RAM_FUNC float SmoPllAngle(smo_param_t *param, pll_t *pll) {
  * @param smo
  * @return
  */
-_RAM_FUNC float SmoViewer(foc_param_t *foc, smo_param_t *smo) {
+_RAM_FUNC float SmoViewer(FocParam_t *foc, SmoParam_t *smo) {
     static float valpha_last, vbeta_last;
     Clarke(foc);
 
@@ -231,7 +231,7 @@ lpf_t lpf_hfi = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
  * @param hfi
  * @return
  */
-float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
+float HfiPllAngle(pll_t *pll, HfiParam_t *hfi) {
     //目前问题：
     // 1.锁相环的积分比较鸡肋，考虑升级一下。
     // 2.相位上具有一定的延时
@@ -259,7 +259,7 @@ float HfiPllAngle(pll_t *pll, hfi_param_t *hfi) {
  * @param foc
  * @param hfi
  */
-void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
+void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi) {
     //更新数据
     Clarke(foc);
     if(hfi->sign!=0) {
@@ -270,8 +270,6 @@ void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
         hfi->ab_last.beta    = foc->i_beta;
         hfi->ab_laster.alpha = hfi->ab_last.alpha;
         hfi->ab_laster.beta  = hfi->ab_last.beta;
-        hfi->ab_h_last.alpha = hfi->ab_h.alpha;
-        hfi->ab_h_last.beta  = hfi->ab_h.beta;
 
         hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
     }
@@ -282,13 +280,11 @@ void HfiAngleCalc(foc_param_t *foc, hfi_param_t *hfi) {
  * @param foc
  * @param hfi
  */
-void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
+void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi) {
     hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
     hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
 
     //update
-    hfi->idq_f_laster.id = hfi->idq_f_last.id;
-    hfi->idq_f_laster.iq = hfi->idq_f_last.iq;
     hfi->idq_f_last.id = foc->i_d;
     hfi->idq_f_last.iq = foc->i_q;
 }
@@ -298,13 +294,11 @@ void IdqToIdqF(foc_param_t *foc, hfi_param_t *hfi) {
  * @param foc
  * @param hfi
  */
-void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi) {
+void IdqToIdqH(FocParam_t *foc, HfiParam_t *hfi) {
     hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
     hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
 
     //update
-    hfi->idq_h_laster.id = hfi->idq_h_last.id;
-    hfi->idq_h_laster.iq = hfi->idq_h_last.iq;
     hfi->idq_h_last.id = foc->i_d;
     hfi->idq_h_last.iq = foc->i_q;
 }
@@ -316,7 +310,7 @@ void IdqToIdqH(foc_param_t *foc, hfi_param_t *hfi) {
  * @param foc
  * @return
  */
-bool HfiNsIdentify(hfi_param_t *hfi, foc_param_t *foc) {
+bool HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc) {
     float gain = 10.f; //放大增益
     IdqToIdqH(foc, hfi); //提取d轴的高频电流
 
@@ -389,7 +383,7 @@ static inline float Angle_Atan2_0To2Pi(float y, float x)
 
 float DEBUG_eta,DEBUG_etb;
 float DEBUG_theta_e;
-int16_t non_flux_observer(non_flux_t* flux, foc_param_t* foc, motor_cfg_t *motor)
+int16_t non_flux_observer(NonFlux_t * flux, FocParam_t * foc, MotorCfg_t *motor)
 {
     flux->Vs.fab.alpha = foc->v_alpha;
     flux->Vs.fab.beta = foc->v_beta;

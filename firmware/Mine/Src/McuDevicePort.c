@@ -10,7 +10,7 @@
 // #define DEVICE_CAN_ID    0x101
 #define DEVICE_ENABLE_ID 0x100
 #define DEVICE_CAN_ID    0x101
-#define USE_CAN_MODE     0
+#define USE_CAN_MODE     1
 
 void CanResourceInit(void)
 {

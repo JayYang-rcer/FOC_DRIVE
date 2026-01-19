@@ -16,7 +16,7 @@ foc_identify_t identify_res = {
 };
 
 
-bool FocIdentifyRes(foc_identify_t *identify, foc_param_t *foc, float Is) {
+bool FocIdentifyRes(foc_identify_t *identify, FocParam_t *foc, float Is) {
     switch (identify->ident_status_res) {
         case IDENT_SET: {
             FocPwmStart(true, true, true, true, false, false);
@@ -70,7 +70,7 @@ bool FocIdentifyRes(foc_identify_t *identify, foc_param_t *foc, float Is) {
 // * @param U 注入dq轴的电压值
 // * @teturn 识别是否成功
 // */
-//bool FocIdentifyTest(foc_identify_t* identify, foc_param_t* foc, float Is)
+//bool FocIdentifyTest(foc_identify_t* identify, FocParam_t* foc, float Is)
 //{
 //    switch (identify->ident_status_R)
 //    {

@@ -1,5 +1,5 @@
 "G:\SoftWare\CLion 2024.3.3\CLion 2024.3.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=G:/SoftWare/CLion 2024.3.3/CLion 2024.3.5/bin/ninja/win/x64/ninja.exe" -G Ninja -S F:\FOC_DRIVE\firmware -B F:\FOC_DRIVE\firmware\build
 -- Maximum optimization for speed, debug info included
--- Configuring done (0.3s)
+-- Configuring done (0.2s)
 -- Generating done (0.1s)
 -- Build files have been written to: F:/FOC_DRIVE/firmware/build

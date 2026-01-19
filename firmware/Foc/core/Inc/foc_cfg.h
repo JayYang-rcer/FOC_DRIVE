@@ -9,7 +9,7 @@
 #define SET_DTC_B(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
 #define SET_DTC_C(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, value)
 
-#define R_SENSE           0.001f                           // 采样电阻阻值
+#define R_SENSE           0.001f                          // 采样电阻阻值
 #define IOP               20.f                            // 电流采样电阻放大倍数
 #define IRATIO            (3.3f / 4096.f) / R_SENSE / IOP // 电流采样,电压转换为电流值的系数
 #define VBUS_RATIO        (6.1f * 3.3f) / 4096.0f         // 母线电压采样电压转换为电压值的系数
@@ -18,7 +18,7 @@
 // Speed PID parameters
 #define SPEED_PID_TIME_HZ 5000
 
-typedef enum FOC_CTRL_MODE {
+typedef enum {
     FOC_IDLE            = 0, // 空闲
     FOC_VF_CTRL         = 1, // VF强拖
     FOC_VOLT_CTRL       = 2, // 电压控制
@@ -28,7 +28,7 @@ typedef enum FOC_CTRL_MODE {
     FOC_SENSORLESS_CTRL = 6, // 无传感器控制
     FOC_HFI_TEST        = 7, // 高频注入测试
     FOC_IF_CTRL         = 8, // VF强拖
-} FOC_CTRL_MODE;
+} FocCtrlMode_e;
 
 typedef union {
     struct {
@@ -55,7 +55,7 @@ typedef struct {
     float      Ts;    // Sampling period
     float      theta_e;
     float      omega_e;
-} non_flux_t;
+} NonFlux_t;
 
 typedef struct aplha_beta_t {
     float alpha; // alpha轴
@@ -67,7 +67,7 @@ typedef struct dq_t {
     float iq; // q轴
 } dq_t;
 
-typedef struct smo_param_t {
+typedef struct {
     float A;
     float B;
     float ksw;              // 滑膜系数
@@ -80,7 +80,7 @@ typedef struct smo_param_t {
 
     float Ealpha; // alpha轴拓展反电动势
     float Ebeta;  // beta轴拓展反电动势
-} smo_param_t;
+} SmoParam_t;
 
 typedef struct {
     float   rotor_pos;  // 转子位置
@@ -97,7 +97,7 @@ typedef struct {
     float jx;    // 转动惯量
     float pn;    // 极对数
     float delta; // 阻尼系数
-} motor_cfg_t;
+} MotorCfg_t;
 
 typedef struct {
     bool  foc_init;
@@ -112,8 +112,8 @@ typedef struct {
     uint16_t spd_cnt;
     uint16_t pos_cnt;
 
-    FOC_CTRL_MODE mode; // 控制模式
-} motor_ctrl_t;
+    FocCtrlMode_e mode; // 控制模式
+} MotorCtrl_t;
 
 typedef struct {
     float adc_ia; // A相电流
@@ -125,7 +125,7 @@ typedef struct {
     float ic_offset; // C相电流偏移
     float vbus;      // 母线电压
     float temp;      // 温度
-} foc_adc_t;
+} FocAdcValue_t;
 
 typedef struct foc_param_t {
     int8_t sector;
@@ -162,7 +162,7 @@ typedef struct foc_param_t {
     float dtc_a; // A 相 PWM 占空比
     float dtc_b; // B 相 PWM 占空比
     float dtc_c; // C 相 PWM 占空比
-} foc_param_t;
+} FocParam_t;
 
 typedef struct hfi_param_t {
     float theta_e;  // 预测电角度
@@ -174,55 +174,50 @@ typedef struct hfi_param_t {
     float    isum_positive;
     float    isum_negetive;
 
-    aplha_beta_t ab;
     aplha_beta_t ab_last;
     aplha_beta_t ab_laster;
 
     aplha_beta_t ab_h;
-    aplha_beta_t ab_h_last;
-    aplha_beta_t envelope;
 
     dq_t idq_h;
-    dq_t idq_h_last;   // 上次的dq轴高频电流
-    dq_t idq_h_laster; // 上次的dq轴高频电流
+    dq_t idq_h_last; // 上次的dq轴高频电流
 
     dq_t idq_f;
-    dq_t idq_f_last;
-    dq_t idq_f_laster; // 上次的dq轴高频电流
-} hfi_param_t;
+    dq_t idq_f_last; // 上次的dq轴高频电流
+} HfiParam_t;
 
-extern foc_adc_t    mc_adc;
-extern foc_param_t  foc_param;
-extern motor_cfg_t  motor_cfg;
-extern motor_ctrl_t motor_ctrl;
-extern pi_para_t    id_pi, iq_pi;
-extern pid_para_t   speed_pid;
-extern pid_para_t   pos_pid;
-extern pll_t        pll_spd;
-extern non_flux_t   nonFlux;
-extern pll_t        pll_flux;
+extern FocAdcValue_t mc_adc;
+extern FocParam_t    foc_param;
+extern MotorCfg_t    motor_cfg;
+extern MotorCtrl_t   motor_ctrl;
+extern pi_para_t     id_pi, iq_pi;
+extern pid_para_t    speed_pid, HfiSpeed_pid;
+extern pid_para_t    pos_pid;
+extern pll_t         pll_spd;
+extern NonFlux_t     nonFlux;
+extern pll_t         pll_flux;
 /********************smo param********************/
-extern pll_t       pll_smo;
-extern smo_param_t smo_param;
+extern pll_t      pll_smo;
+extern SmoParam_t smo_param;
 /*************************************************/
 
 /******************** hfi param ********************/
-extern pll_t       pll_hfi; // 高频注入的PLL
-extern hfi_param_t hfi_param;
+extern pll_t      pll_hfi; // 高频注入的PLL
+extern HfiParam_t hfi_param;
 /*************************************************/
 
-bool GetCurrentOffset(foc_adc_t *mc_adc);
+bool GetCurrentOffset(FocAdcValue_t *mc_adc);
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
 
 void FocPwmStop(void);
 
-void FocPwmRun(foc_param_t *foc);
+void FocPwmRun(FocParam_t *foc);
 
 void MotorParaInit(void);
 
 void CurrentSampInit(void);
 
-void MotorCtrlReset(motor_ctrl_t *motor);
+void MotorCtrlReset(MotorCtrl_t *motor);
 
 #endif

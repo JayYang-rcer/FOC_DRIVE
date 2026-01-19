@@ -1,5 +1,4 @@
 #include "foc_ctrl.h"
-#include "adc.h"
 #include "calibration.h"
 #include "drive_can.h"
 #include "encoder_proc.h"
@@ -20,7 +19,7 @@
 #define USE_SENSERLESS       1
 #define SENSERLESS_MIN_SPEED 900
 #define SENSERLESS_MAX_SPEED 7000
-#define USE_SLAVE_MODE       0
+#define USE_SLAVE_MODE       1
 
 float           speed_buffer[SPEED_WINDOW_SIZE] = {0}; // 存储窗口内的数据
 MovingAverage_t speed_maf                       = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
@@ -89,7 +88,6 @@ float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
     pid->p_term = pid->kp * pid->error;
     pid->i_term += pid->ki * pid->error;
     AbsLimit(pid->i_term, pid->i_term_max);
-
     pid->d_term = pid->d_error * pid->kd;
 
     ud0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * motor_cfg.ls / 1000000.f * foc_param.i_q;
@@ -128,14 +126,11 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     SinCosVal(&foc_param);
 
     static float ud_inject;
-    static int cnt = 0;
-    if(++cnt == 5)
-    {
+    static int   cnt = 0;
+    if (++cnt == 5) {
         ud_inject = HfiInjectSign(hfi_param.inject_U);
-        cnt=0;
-    }
-    else
-    {
+        cnt       = 0;
+    } else {
         hfi_param.sign = 0;
     }
     //    hfi_param.sign   = SIGN(ud_inject);
@@ -155,14 +150,11 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     IdqToIdqF(&foc_param, &hfi_param);
 
     static float ud_inject;
-    static int cnt = 0;
-    if(++cnt == 5)
-    {
-        ud_inject      = HfiInjectSign(hfi_param.inject_U);
-        cnt=0;
-    }
-    else
-    {
+    static int   cnt = 0;
+    if (++cnt == 5) {
+        ud_inject = HfiInjectSign(hfi_param.inject_U);
+        cnt       = 0;
+    } else {
         hfi_param.sign = 0;
     }
     SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.id);
@@ -177,18 +169,18 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
 
 volatile float vbus;
 
-void CurrentUpdate(foc_adc_t *adc, foc_param_t *foc)
+void CurrentUpdate(FocAdcValue_t *adc, FocParam_t *foc)
 {
     adc->adc_ia = ADC1->JDR1;
     adc->adc_ib = ADC1->JDR2;
     adc->adc_ic = ADC1->JDR3;
-    adc->vbus = ADC2->JDR1;
+    adc->vbus   = ADC2->JDR1;
 
     vbus      = ((float)adc->vbus) * VBUS_RATIO;
     foc->vbus = ((float)adc->vbus) * VBUS_RATIO;
 }
 
-_RAM_FUNC void CurrentRefactor(foc_adc_t *adc, foc_param_t *foc)
+_RAM_FUNC void CurrentRefactor(FocAdcValue_t *adc, FocParam_t *foc)
 {
     foc->i_a = (adc->adc_ia - adc->ia_offset) * IRATIO;
     foc->i_b = (adc->adc_ib - adc->ib_offset) * IRATIO;
@@ -199,7 +191,7 @@ volatile float smo_angle;
 lpf_t          lpf_spdpll = {.in_last = 0.0f, .trust = 0.01f}; // PLL低通滤波器
 volatile float speed_hz   = 10000;
 
-void EncoderDataCalc(enc_para_t *enc, motor_cfg_t *motor)
+void EncoderDataCalc(enc_para_t *enc, MotorCfg_t *motor)
 {
     static float rotor_vel_last = 0.0f;
 #if USE_SPD_DET
@@ -254,7 +246,7 @@ __RAM_FUNC void Encoder_Idle(void)
     //    smo_angle = SmoViewer(&foc_param, &smo_param);
 }
 
-void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
+void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
 {
     switch (ctrl->mode) {
     case FOC_IDLE: {
@@ -356,36 +348,32 @@ void MotorCtrl(motor_ctrl_t *ctrl, foc_param_t *foc)
 
     case FOC_HFI_TEST: {
         HfiAngleCalc(foc, &hfi_param);
-        if (motor_ctrl.spd_cnt < 5000)
-            motor_ctrl.spd_cnt++;
-        else {
-            static bool hfi_init = false;
-            if (!hfi_init) {
-                hfi_init = HfiNsIdentify(&hfi_param, foc);
-            } else {
-                static int test = 0;
-//                foc->theta += ctrl->epos_acc;
-//                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, foc->theta);
-//                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
+        static bool hfi_init = false;
+        if (!hfi_init) {
+            hfi_init = HfiNsIdentify(&hfi_param, foc);
+        } else {
+            //                foc->theta += ctrl->epos_acc;
+            //                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, foc->theta);
+            //                HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
 
-                if (++test == 10) {
-                    static int pos = 0;
-                    if (++pos == 2) {
-                        ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
-                        pos = 0;
-                    }
-                    IncreatParallePidCtrl(&speed_pid, ctrl->speed_set, hfi_param.omega_e*60.f/M_2PI/7.f);
-                    //       IncreatParallePidCtrl(&speed_pid, pos_pid.out_value, hfi_param.omega_e);
-                    test = 0;
+            if (++motor_ctrl.spd_cnt == 10) {
+                static int pos = 0;
+                if (++motor_ctrl.pos_cnt == 2) {
+                    ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
+                    motor_ctrl.pos_cnt = 0;
                 }
-                // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
-                if(motor_ctrl.speed_set != 0)
-                    HfiCurrent(5, speed_pid.out_value, hfi_param.theta_e);
-                else
-                    HfiCurrent(0, 0, hfi_param.theta_e);
+                IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfi_param.omega_e * 60.f / M_2PI / 7.f);
+                //       IncreatParallePidCtrl(&HfiSpeed_pid, pos_pid.out_value, hfi_param.omega_e);
+                motor_ctrl.spd_cnt = 0;
             }
+            // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
+            if (motor_ctrl.speed_set != 0)
+                HfiCurrent(5, HfiSpeed_pid.out_value, hfi_param.theta_e);
+            else
+                HfiCurrent(0, 0, hfi_param.theta_e);
         }
-    } break;
+        break;
+    }
     }
 }
 

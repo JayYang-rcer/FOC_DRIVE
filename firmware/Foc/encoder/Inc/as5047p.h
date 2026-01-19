@@ -48,6 +48,6 @@ uint16_t SpiReadWriteOneByte(uint16_t addr);
 
 uint16_t As5047pRead(uint16_t addr);
 
-void SpeedMeasure(enc_para_t *enc, motor_cfg_t *motor);
+void SpeedMeasure(enc_para_t *enc, MotorCfg_t *motor);
 
 #endif
