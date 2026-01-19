@@ -3,8 +3,7 @@
 
 #include "stdint.h"
 
-typedef struct pll_t
-{
+typedef struct pll_t {
     float kp;
     float ki;
     float loop_hz;
@@ -17,25 +16,25 @@ typedef struct pll_t
     float i_term;
     float p_term;
     float i_term_limit;
-}pll_t;
+} pll_t;
 
-typedef struct lpf_t
-{
+typedef struct lpf_t {
     float in_last;
     float trust;
-}lpf_t;
+} lpf_t;
 
 
-typedef struct MovingAverage_t
-{
+typedef struct MovingAverage_t {
     void *buffer;
     uint8_t size;
     uint8_t index;
-}MovingAverage_t;
+} MovingAverage_t;
 
 
 float PllSpeedCtrl(pll_t *pll, float angle);
-void LowPassFilter(float *data, lpf_t* lpf);
-void MoveAverageFilter(MovingAverage_t* filter, float *data);
+
+void LowPassFilter(float *data, lpf_t *lpf);
+
+void MoveAverageFilter(MovingAverage_t *filter, float *data);
 
 #endif

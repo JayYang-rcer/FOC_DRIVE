@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<JScopeProject>
+    <FileVersion major="1" minor="1" />
+    <Project>
+        <Configuration>
+            <JLink>
+                <Options Connection="1" IsRTTSession="0" IsRTTWithTimeStamp="0" IsRTTPlus="0" SamplingPeriod="100" SerialNo="0" JTAG_IRPre="0" JTAG_DRPre="0" IP="" TargetDevice="STM32G474CB" TargetInterface="SWD" InterfaceSpeed="1000" />
+            </JLink>
+            <ElfFile Name="F:\FOC_DRIVE\firmware\build\DRIVE_CMAKE.elf" />
+            <Scope>
+                <Options TimeResolutionUs="1000000" />
+            </Scope>
+            <Trigger>
+                <Options Level="0" Symbol="alpha" On="0" Auto="0" Rise="0" Fall="0" />
+            </Trigger>
+        </Configuration>
+        <Windows>
+            <Graph Show="1" />
+            <Watch Show="1" />
+        </Windows>
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="alpha" Address="0x200000CC" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="-2.86222e+35" YMaxSampled="8.97639e+34" YAvgSampled="-1.67669e+30" Offset="4" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c" DrawStyle="0" NameWithParents=".nonFlux.state.fab.alpha" />
+            </Symbol>
+            <Symbol>
+                <Options Name="beta" Address="0x200000D0" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-4.92463e+35" YMaxSampled="4.45763e+35" YAvgSampled="1.72055e+29" Offset="8" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c" DrawStyle="0" NameWithParents=".nonFlux.state.fab.beta" />
+            </Symbol>
+            <Symbol>
+                <Options Name="theta_e" Address="0x200000DC" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-4.48368" YMaxSampled="6.28317" YAvgSampled="3.17399" Offset="12" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="3" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/FOC/core/Src/foc_ctrl.c" DrawStyle="0" NameWithParents=".nonFlux.theta_e" />
+            </Symbol>
+            <Symbol>
+                <Options Name="pos_e" Address="0x20000DCC" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-3.18379" YMaxSampled="6.28281" YAvgSampled="3.10384" Offset="16" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="3" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/FOC/encoder/Src/as5047p.c" DrawStyle="0" NameWithParents=".enc_para.pos_e" />
+            </Symbol>
+        </SelectedSymbols>
+    </Project>
+</JScopeProject>

@@ -29,44 +29,36 @@ usart_manager_t usart3_manager = {.call_back_fun = NULL};
 
 static void Uart_Rx_Idle_Callback(usart_manager_t *manager);
 
-void Uart_Init(UART_HandleTypeDef *huart, uint8_t *Rxbuffer, uint16_t len, usart_call_back call_back_fun)
-{
-    if(huart == NULL)
+void Uart_Init(UART_HandleTypeDef *huart, uint8_t *Rxbuffer, uint16_t len, usart_call_back call_back_fun) {
+    if (huart == NULL)
         Error_Handler();
-    else{}
+    else {}
 
-    if(huart->Instance == USART1)
-    {
+    if (huart->Instance == USART1) {
         usart1_manager.uart_handle = huart;
         usart1_manager.rx_buffer = Rxbuffer;
         usart1_manager.rx_buffer_size = len;
         usart1_manager.call_back_fun = call_back_fun;
         __HAL_UART_CLEAR_IDLEFLAG(huart);
-				__HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
-				HAL_UART_Receive_DMA(huart, Rxbuffer, len);
-    }
-    else if(huart->Instance == USART2)
-    {
+        __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
+        HAL_UART_Receive_DMA(huart, Rxbuffer, len);
+    } else if (huart->Instance == USART2) {
         usart2_manager.uart_handle = huart;
         usart2_manager.rx_buffer = Rxbuffer;
         usart2_manager.rx_buffer_size = len;
         usart2_manager.call_back_fun = call_back_fun;
         __HAL_UART_CLEAR_IDLEFLAG(huart);
-				__HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
-				HAL_UART_Receive_DMA(huart, Rxbuffer, len);
-    }
-    else if(huart->Instance == USART3)
-    {
+        __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
+        HAL_UART_Receive_DMA(huart, Rxbuffer, len);
+    } else if (huart->Instance == USART3) {
         usart3_manager.uart_handle = huart;
         usart3_manager.rx_buffer = Rxbuffer;
         usart3_manager.rx_buffer_size = len;
         usart3_manager.call_back_fun = call_back_fun;
         __HAL_UART_CLEAR_IDLEFLAG(huart);
-				__HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
-				HAL_UART_Receive_DMA(huart, Rxbuffer, len);
-    }
-    else
-    {
+        __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE);
+        HAL_UART_Receive_DMA(huart, Rxbuffer, len);
+    } else {
         Error_Handler();
     }
 }
@@ -78,14 +70,13 @@ void Uart_Init(UART_HandleTypeDef *huart, uint8_t *Rxbuffer, uint16_t len, usart
  * @param   fun: user callback function
  * @retval  None
  */
-void Usart_Rx_Callback_Register(usart_manager_t *manager, usart_call_back fun)
-{
-  /* Check the parameters */
-	assert_param(fun != NULL);
-	assert_param(manager != NULL);
-	
-	manager->call_back_fun = fun;
-	return;
+void Usart_Rx_Callback_Register(usart_manager_t *manager, usart_call_back fun) {
+    /* Check the parameters */
+    assert_param(fun != NULL);
+    assert_param(manager != NULL);
+
+    manager->call_back_fun = fun;
+    return;
 }
 
 
@@ -94,12 +85,10 @@ void Usart_Rx_Callback_Register(usart_manager_t *manager, usart_call_back fun)
  * @param   manager: serial port handle
  * @retval  None
  */
-void Uart_Receive_Handler(usart_manager_t *manager)
-{
-	if(__HAL_UART_GET_FLAG(manager->uart_handle,UART_FLAG_IDLE)!=RESET)
-	{
-		Uart_Rx_Idle_Callback(manager);
-	}
+void Uart_Receive_Handler(usart_manager_t *manager) {
+    if (__HAL_UART_GET_FLAG(manager->uart_handle, UART_FLAG_IDLE) != RESET) {
+        Uart_Rx_Idle_Callback(manager);
+    }
 }
 
 
@@ -109,26 +98,25 @@ void Uart_Receive_Handler(usart_manager_t *manager)
  * @param   uart IRQHandler id
  * @retval  None
  */
-static void Uart_Rx_Idle_Callback(usart_manager_t *manager)
-{
+static void Uart_Rx_Idle_Callback(usart_manager_t *manager) {
     /* Check the parameters */
-	assert_param(manager != NULL);
-	
+    assert_param(manager != NULL);
+
     /* Private variables */
-	static uint16_t usart_rx_num;
+    static uint16_t usart_rx_num;
 
     /* clear idle it flag avoid idle interrupt all the time */
-	__HAL_UART_CLEAR_IDLEFLAG(manager->uart_handle);
+    __HAL_UART_CLEAR_IDLEFLAG(manager->uart_handle);
 
     /* clear DMA transfer complete flag */
-	HAL_UART_DMAStop(manager->uart_handle);
+    HAL_UART_DMAStop(manager->uart_handle);
 
     /* handle received data in idle interrupt */
-	usart_rx_num = manager->rx_buffer_size - ((DMA_Channel_TypeDef*)manager->uart_handle->hdmarx->Instance)->CNDTR;
-	if(manager->call_back_fun != NULL)
-		manager->call_back_fun(manager->rx_buffer, usart_rx_num);
-	
-	HAL_UART_Receive_DMA(manager->uart_handle, manager->rx_buffer, manager->rx_buffer_size);
+    usart_rx_num = manager->rx_buffer_size - ((DMA_Channel_TypeDef *) manager->uart_handle->hdmarx->Instance)->CNDTR;
+    if (manager->call_back_fun != NULL)
+        manager->call_back_fun(manager->rx_buffer, usart_rx_num);
+
+    HAL_UART_Receive_DMA(manager->uart_handle, manager->rx_buffer, manager->rx_buffer_size);
 }
 
 
@@ -138,17 +126,14 @@ static void Uart_Rx_Idle_Callback(usart_manager_t *manager)
  * @param 当前数组长度
  * @return 检验值
 */
-unsigned char serial_get_crc8_value(unsigned char *tem_array, unsigned char len)
-{
+unsigned char serial_get_crc8_value(unsigned char *tem_array, unsigned char len) {
     unsigned char crc = 0;
     unsigned char i;
-    while(len--)
-    {
+    while (len--) {
         crc ^= *tem_array++;
-        for(i = 0; i < 8; i++)
-        {
-            if(crc&0x01)
-                crc=(crc>>1)^0x8C;
+        for (i = 0; i < 8; i++) {
+            if (crc & 0x01)
+                crc = (crc >> 1) ^ 0x8C;
             else
                 crc >>= 1;
         }

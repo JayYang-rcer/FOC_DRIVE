@@ -3,6 +3,8 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 cmake_minimum_required(VERSION 3.30)
 
+add_compile_options(-MMD)
+
 # specify cross-compilers and tools
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
@@ -58,14 +60,15 @@ include_directories(Core/Inc USB_Device/App
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
         Drivers/CMSIS/Device/ST/STM32G4xx/Include
         Drivers/CMSIS/Include
-        FOC/encoder/Inc
-        FOC/utils/Inc
-        FOC/core/Inc
-        BSP/Inc)
+        Foc/encoder/Inc
+        Foc/utils/Inc
+        Foc/core/Inc
+        BSP/Inc
+        Mine/Inc)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx)
 
-file(GLOB_RECURSE SOURCES "USB_Device/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "BSP/*.*" "FOC/core/*.*" "FOC/utils/*.*" "FOC/encoder/*.*")
+file(GLOB_RECURSE SOURCES "USB_Device/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "BSP/*.*" "Foc/core/*.*" "Foc/utils/*.*" "Foc/encoder/*.*" "Mine/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32G474RBTX_FLASH.ld)
 
@@ -73,6 +76,11 @@ add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR
 add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
+set(FILES_TO_EXCLUDE
+        "${CMAKE_SOURCE_DIR}/BSP/Src/drive_uart.c"
+)
+
+list(REMOVE_ITEM SOURCES ${FILES_TO_EXCLUDE})
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)

@@ -11,8 +11,11 @@
 #define byte3(dw_temp)     (*((char*)(&dw_temp) + 3))
 
 void usb_printf(const char *format, ...);
+
 void VofaStart(void);
-void VofaSendData(uint8_t num, float data); 
+
+void VofaSendData(uint8_t num, float data);
+
 void VofaSendframetail(void);
 
 #endif /* __VOFA_H__ */

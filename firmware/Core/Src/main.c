@@ -1,37 +1,39 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
 #include "fdcan.h"
+#include "i2c.h"
 #include "spi.h"
 #include "tim.h"
-#include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "vofa.h"
+#include "encoder_proc.h"
 #include "foc_cfg.h"
 #include "util.h"
-#include "encoder_proc.h"
+#include "vofa.h"
+#include "McuDevicePort.h"
+#include "oled_iic_show.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,36 +103,36 @@ int main(void)
   MX_SPI1_Init();
   MX_TIM2_Init();
   MX_TIM8_Init();
-  MX_USART1_UART_Init();
   MX_USB_Device_Init();
+  MX_TIM1_Init();
+  MX_I2C1_Init();
+  MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
-    HAL_ADCEx_Calibration_Start(&hadc1,ADC_SINGLE_ENDED);
-    HAL_ADCEx_Calibration_Start(&hadc2,ADC_SINGLE_ENDED);
-    HAL_ADCEx_InjectedStart(&hadc1);
-    HAL_ADCEx_InjectedStart(&hadc2);
-    HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 4250-10);
-    HAL_ADCEx_InjectedStart_IT(&hadc1);
-    __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
-    motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);
+    CurrentSampInit();
 
     EncoderInit();
     MotorParaInit();
-    FocPwmStart(true,true,true,true,true,true);
+    FocPwmStart(true, true, true, true, true, true);
     HAL_TIM_Base_Start_IT(&htim2);
     HAL_TIM_Base_Start_IT(&htim8);
+
+    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
     hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
     HAL_SPI_Init(&hspi1);
+    HAL_TIM_Base_Start_IT(&htim16);
+    CanResourceInit();
+    OLED_Init();  //OLED Init
+    OLED_ShowStr(0,0,"OLED-TEXT",1);
+    OLED_ShowStr(0,16,"OLED-TEXT",2);
+    //    HAL_TIM_Base_Start(&htim1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    while (1)
-    {
+    while (1) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
     }
   /* USER CODE END 3 */
 }
@@ -156,10 +158,10 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV3;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV2;
   RCC_OscInitStruct.PLL.PLLN = 85;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV6;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -196,11 +198,10 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-    /* User can add his own implementation to report the HAL error return state */
+    /* User can add his own implementation to report the HAL error return state
+     */
     __disable_irq();
-    while (1)
-    {
-    }
+    while (1) {}
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -215,8 +216,9 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+    /* User can add his own implementation to report the file name and line
+       number, ex: printf("Wrong parameters value: file %s on line %d\r\n",
+       file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
