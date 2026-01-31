@@ -34,18 +34,24 @@ typedef union {
     struct {
         float x;
         float y;
-    } fx;
+    } xy;
 
     struct {
         float alpha;
         float beta;
-    } fab;
+    } s;
 
     struct {
         float d;
         float q;
-    } fdq;
+    } r;
 } Vector2D_t;
+
+typedef struct {
+    float fU;
+    float fV;
+    float fW;
+}Vector3S_t;
 
 typedef struct {
     Vector2D_t Is;
@@ -56,16 +62,6 @@ typedef struct {
     float      theta_e;
     float      omega_e;
 } NonFlux_t;
-
-typedef struct aplha_beta_t {
-    float alpha; // alpha轴
-    float beta;  // beta轴
-} aplha_beta_t;
-
-typedef struct dq_t {
-    float id; // d轴
-    float iq; // q轴
-} dq_t;
 
 typedef struct {
     float A;
@@ -116,19 +112,13 @@ typedef struct {
 } MotorCtrl_t;
 
 typedef struct {
-    float adc_ia; // A相电流
-    float adc_ib; // B相电流
-    float adc_ic; // C相电流
-
-    float ia_offset; // A相电流偏移
-    float ib_offset; // B相电流偏移
-    float ic_offset; // C相电流偏移
+    Vector3S_t current_raw;
+    Vector3S_t offset;
     float vbus;      // 母线电压
     float temp;      // 温度
 } FocAdcValue_t;
 
 typedef struct foc_param_t {
-    int8_t sector;
     float  vbus;
     float  inv_vbus; // 母线电压倒数
 
@@ -139,26 +129,16 @@ typedef struct foc_param_t {
     float sin_val; // 此角度对应的正弦值
     float cos_val; // 此角度对应的余弦值
 
-    float i_a; // A 相电流
-    float i_b; // B 相电流
-    float i_c; // C 相电流
+    Vector3S_t current;
+    Vector3S_t vphase;
 
-    float v_a; // A 相电压
-    float v_b; // B 相电压
-    float v_c; // C 相电压
+    Vector2D_t idq;
+    Vector2D_t vdq;
 
-    float i_d; // D 坐标系电流
-    float i_q; // Q 坐标系电流
+    Vector2D_t iab;
+    Vector2D_t vab;
 
-    float v_d; // D 坐标系电压
-    float v_q; // Q 坐标系电压
-
-    float i_alpha; // Alpha 坐标系电流
-    float i_beta;  // Beta 坐标系电流
-
-    float v_alpha; // Alpha 坐标系电压
-    float v_beta;  // Beta 坐标系电压
-
+    int8_t sector;
     float dtc_a; // A 相 PWM 占空比
     float dtc_b; // B 相 PWM 占空比
     float dtc_c; // C 相 PWM 占空比
@@ -174,16 +154,16 @@ typedef struct hfi_param_t {
     float    isum_positive;
     float    isum_negetive;
 
-    aplha_beta_t ab_last;
-    aplha_beta_t ab_laster;
+    Vector2D_t ab_last;
+    Vector2D_t ab_laster;
 
-    aplha_beta_t ab_h;
+    Vector2D_t ab_h;
 
-    dq_t idq_h;
-    dq_t idq_h_last; // 上次的dq轴高频电流
+    Vector2D_t idq_h;
+    Vector2D_t idq_h_last; // 上次的dq轴高频电流
 
-    dq_t idq_f;
-    dq_t idq_f_last; // 上次的dq轴高频电流
+    Vector2D_t idq_f;
+    Vector2D_t idq_f_last; // 上次的dq轴高频电流
 } HfiParam_t;
 
 extern FocAdcValue_t mc_adc;

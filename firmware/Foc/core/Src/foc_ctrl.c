@@ -34,8 +34,8 @@ _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
     SinCosVal(&foc_param);
     Park(&foc_param);
 
-    foc_param.v_d = vd_ref;
-    foc_param.v_q = vq_ref;
+    foc_param.vdq.r.d = vd_ref;
+    foc_param.vdq.r.q = vq_ref;
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
 }
@@ -47,9 +47,9 @@ _RAM_FUNC void FocIFVolt(float id_ref, float pos)
     SinCosVal(&foc_param);
     Park(&foc_param);
 
-    SerialPidCtrl(&id_pi, id_ref, foc_param.i_d);
-    foc_param.v_d = id_pi.out_value;
-    foc_param.v_q = 0;
+    SerialPidCtrl(&id_pi, id_ref, foc_param.idq.r.d);
+    foc_param.vdq.r.d = id_pi.out_value;
+    foc_param.vdq.r.q = 0;
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
 }
@@ -68,7 +68,7 @@ float IqPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 
     pid->d_term = pid->d_error * pid->kd;
 
-    uq0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * (motor_cfg.ls / 1000 * foc_param.i_d + motor_cfg.flux) / 1000;
+    uq0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * (motor_cfg.ls / 1000 * foc_param.idq.r.d + motor_cfg.flux) / 1000;
     uq0 = AbsLimit(uq0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term + uq0;
@@ -90,7 +90,7 @@ float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
     AbsLimit(pid->i_term, pid->i_term_max);
     pid->d_term = pid->d_error * pid->kd;
 
-    ud0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * motor_cfg.ls / 1000000.f * foc_param.i_q;
+    ud0 = motor_cfg.rotor_vel * motor_cfg.pn / 60.f * M_2PI * motor_cfg.ls / 1000000.f * foc_param.idq.r.q;
     ud0 = AbsLimit(ud0, pid->i_term_max);
 
     pid->out_value = pid->p_term + pid->i_term + pid->d_term - ud0;
@@ -108,13 +108,13 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
     //    LowPassFilter(&foc_param.i_d, &lpf_id);
     //    LowPassFilter(&foc_param.i_q, &lpf_iq);
 
-    SerialPidCtrl(&id_pi, id_set, foc_param.i_d);
+    SerialPidCtrl(&id_pi, id_set, foc_param.idq.r.d);
     //    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
-    foc_param.v_d = id_pi.out_value;
+    foc_param.vdq.r.d = id_pi.out_value;
 
-    SerialPidCtrl(&iq_pi, iq_set, foc_param.i_q);
+    SerialPidCtrl(&iq_pi, iq_set, foc_param.idq.r.q);
     //    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
-    foc_param.v_q = iq_pi.out_value;
+    foc_param.vdq.r.q = iq_pi.out_value;
 
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
@@ -135,8 +135,8 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     }
     //    hfi_param.sign   = SIGN(ud_inject);
 
-    foc_param.v_d = vd + ud_inject;
-    foc_param.v_q = vq;
+    foc_param.vdq.r.d = vd + ud_inject;
+    foc_param.vdq.r.q = vq;
 
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
@@ -157,11 +157,11 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     } else {
         hfi_param.sign = 0;
     }
-    SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.id);
-    foc_param.v_d = id_pi.out_value + ud_inject;
+    SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.r.d);
+    foc_param.vdq.r.d = id_pi.out_value + ud_inject;
 
-    SerialPidCtrl(&iq_pi, iq_set, hfi_param.idq_f.iq);
-    foc_param.v_q = iq_pi.out_value;
+    SerialPidCtrl(&iq_pi, iq_set, hfi_param.idq_f.r.q);
+    foc_param.vdq.r.q = iq_pi.out_value;
 
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
@@ -171,9 +171,9 @@ volatile float vbus;
 
 void CurrentUpdate(FocAdcValue_t *adc, FocParam_t *foc)
 {
-    adc->adc_ia = ADC1->JDR1;
-    adc->adc_ib = ADC1->JDR2;
-    adc->adc_ic = ADC1->JDR3;
+    adc->current_raw.fU = ADC1->JDR1;
+    adc->current_raw.fV = ADC1->JDR2;
+    adc->current_raw.fW = ADC1->JDR3;
     adc->vbus   = ADC2->JDR1;
 
     vbus      = ((float)adc->vbus) * VBUS_RATIO;
@@ -182,9 +182,9 @@ void CurrentUpdate(FocAdcValue_t *adc, FocParam_t *foc)
 
 _RAM_FUNC void CurrentRefactor(FocAdcValue_t *adc, FocParam_t *foc)
 {
-    foc->i_a = (adc->adc_ia - adc->ia_offset) * IRATIO;
-    foc->i_b = (adc->adc_ib - adc->ib_offset) * IRATIO;
-    foc->i_c = (adc->adc_ic - adc->ib_offset) * IRATIO;
+    foc->current.fU = (adc->current_raw.fU - adc->offset.fU) * IRATIO;
+    foc->current.fV = (adc->current_raw.fV - adc->offset.fV) * IRATIO;
+    foc->current.fW = (adc->current_raw.fW - adc->offset.fW) * IRATIO;
 }
 
 volatile float smo_angle;

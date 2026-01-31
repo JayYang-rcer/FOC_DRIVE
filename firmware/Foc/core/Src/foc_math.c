@@ -9,24 +9,24 @@ _RAM_FUNC void SinCosVal(FocParam_t *foc) {
 }
 
 _RAM_FUNC void Clarke(FocParam_t *foc) {
-    foc->i_alpha = foc->i_a;
-    foc->i_beta = (foc->i_b - foc->i_c) * ONE_BY_SQRT3;
+    foc->iab.s.alpha = foc->current.fU;
+    foc->iab.s.beta = (foc->current.fV - foc->current.fW) * ONE_BY_SQRT3;
 }
 
 _RAM_FUNC void Park(FocParam_t *foc) {
-    foc->i_d = foc->i_alpha * foc->cos_val + foc->i_beta * foc->sin_val;
-    foc->i_q = -foc->i_alpha * foc->sin_val + foc->i_beta * foc->cos_val;
+    foc->idq.r.d = foc->iab.s.alpha * foc->cos_val + foc->iab.s.beta * foc->sin_val;
+    foc->idq.r.q = -foc->iab.s.alpha * foc->sin_val + foc->iab.s.beta * foc->cos_val;
 }
 
 _RAM_FUNC void InvPark(FocParam_t *foc) {
-    foc->v_alpha = foc->v_d * foc->cos_val - foc->v_q * foc->sin_val;
-    foc->v_beta = foc->v_q * foc->cos_val + foc->v_d * foc->sin_val;
+    foc->vab.s.alpha = foc->vdq.r.d * foc->cos_val - foc->vdq.r.q * foc->sin_val;
+    foc->vab.s.beta = foc->vdq.r.q * foc->cos_val + foc->vdq.r.d * foc->sin_val;
 }
 
 _RAM_FUNC void InvClarke(FocParam_t *foc) {
-    foc->v_a = foc->v_alpha;
-    foc->v_b = -0.5f * foc->v_alpha + SQRT3_BY_2 * foc->v_beta;
-    foc->v_c = -0.5f * foc->v_alpha - SQRT3_BY_2 * foc->v_beta;
+    foc->vphase.fU = foc->vab.s.alpha;
+    foc->vphase.fV = -0.5f * foc->vab.s.alpha + SQRT3_BY_2 * foc->vab.s.beta;
+    foc->vphase.fW = -0.5f * foc->vab.s.alpha - SQRT3_BY_2 * foc->vab.s.beta;
 }
 
 /**
@@ -38,9 +38,9 @@ _RAM_FUNC void InvClarke(FocParam_t *foc) {
 _RAM_FUNC int SvpwmSector(FocParam_t *foc)
 {
     /* Clarke */
-    float U1 = foc->v_beta;
-    float U2 = (SQRT3 * foc->v_alpha - foc->v_beta) * 0.5f;
-    float U3 = -(SQRT3 * foc->v_alpha + foc->v_beta) * 0.5f;
+    float U1 = foc->vab.s.beta;
+    float U2 = (SQRT3 * foc->vab.s.alpha - foc->vab.s.beta) * 0.5f;
+    float U3 = -(SQRT3 * foc->vab.s.alpha + foc->vab.s.beta) * 0.5f;
 
     uint8_t A, B, C;
     uint8_t N;
@@ -167,12 +167,12 @@ _RAM_FUNC float SmoViewer(FocParam_t *foc, SmoParam_t *smo) {
     Clarke(foc);
 
     //计算预测电流
-    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->v_alpha - smo->valpah);
-    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->v_beta - smo->vbeta);
+    smo->ialpha_view = smo->A * smo->ialpha_view_last + smo->B * (foc->vab.s.alpha - smo->valpah);
+    smo->ibeta_view = smo->A * smo->ibeta_view_last + smo->B * (foc->vab.s.beta - smo->vbeta);
 
     //计算电动势观测值
-    smo->valpah = smo->ksw * SIGN(smo->ialpha_view - foc->i_alpha);
-    smo->vbeta = smo->ksw * SIGN(smo->ibeta_view - foc->i_beta);
+    smo->valpah = smo->ksw * SIGN(smo->ialpha_view - foc->iab.s.alpha);
+    smo->vbeta = smo->ksw * SIGN(smo->ibeta_view - foc->iab.s.beta);
 //    smo_param->valpah = smo_param->ksw*sat1_datf(smo_param->ialpha_view - foc_param->i_alpha, 0.5);
 //    smo_param->vbeta = smo_param->ksw*sat1_datf(smo_param->ibeta_view - foc_param->i_beta,0.5);
 
@@ -235,8 +235,8 @@ float HfiPllAngle(pll_t *pll, HfiParam_t *hfi) {
     //目前问题：
     // 1.锁相环的积分比较鸡肋，考虑升级一下。
     // 2.相位上具有一定的延时
-    pll->ref = cos_f32(pll->angle_out) * hfi->ab_h.beta;
-    pll->fbk = hfi->ab_h.alpha * sin_f32(pll->angle_out);
+    pll->ref = cos_f32(pll->angle_out) * hfi->ab_h.s.beta;
+    pll->fbk = hfi->ab_h.s.alpha * sin_f32(pll->angle_out);
     pll->error = pll->ref - pll->fbk;
 
     pll->p_term = pll->error * pll->kp;
@@ -263,13 +263,13 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi) {
     //更新数据
     Clarke(foc);
     if(hfi->sign!=0) {
-        hfi->ab_h.alpha = -(foc->i_alpha - hfi->ab_last.alpha) * 0.5f* hfi->sign;
-        hfi->ab_h.beta  = -(foc->i_beta - hfi->ab_last.beta) * 0.5f * hfi->sign;
+        hfi->ab_h.s.alpha = -(foc->iab.s.alpha - hfi->ab_last.s.alpha) * 0.5f* hfi->sign;
+        hfi->ab_h.s.beta  = -(foc->iab.s.beta - hfi->ab_last.s.beta) * 0.5f * hfi->sign;
 
-        hfi->ab_last.alpha   = foc->i_alpha;
-        hfi->ab_last.beta    = foc->i_beta;
-        hfi->ab_laster.alpha = hfi->ab_last.alpha;
-        hfi->ab_laster.beta  = hfi->ab_last.beta;
+        hfi->ab_last.s.alpha   = foc->iab.s.alpha;
+        hfi->ab_last.s.beta    = foc->iab.s.beta;
+        hfi->ab_laster.s.alpha = hfi->ab_last.s.alpha;
+        hfi->ab_laster.s.beta  = hfi->ab_last.s.beta;
 
         hfi->theta_e = HfiPllAngle(&pll_hfi, hfi);
     }
@@ -281,12 +281,12 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi) {
  * @param hfi
  */
 void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi) {
-    hfi->idq_f.id = (foc->i_d + hfi->idq_f_last.id)*0.5f;
-    hfi->idq_f.iq = (foc->i_q + hfi->idq_f_last.iq)*0.5f;
+    hfi->idq_f.r.d = (foc->idq.r.d + hfi->idq_f_last.r.d)*0.5f;
+    hfi->idq_f.r.q = (foc->idq.r.q + hfi->idq_f_last.r.q)*0.5f;
 
     //update
-    hfi->idq_f_last.id = foc->i_d;
-    hfi->idq_f_last.iq = foc->i_q;
+    hfi->idq_f_last.r.d = foc->idq.r.d;
+    hfi->idq_f_last.r.q = foc->idq.r.q;
 }
 
 /**
@@ -295,12 +295,12 @@ void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi) {
  * @param hfi
  */
 void IdqToIdqH(FocParam_t *foc, HfiParam_t *hfi) {
-    hfi->idq_h.id = (foc->i_d - hfi->idq_h_last.id)*0.5f;
-    hfi->idq_h.iq = (foc->i_q - hfi->idq_h_last.iq)*0.5f;
+    hfi->idq_h.r.d = (foc->idq.r.d - hfi->idq_h_last.r.d)*0.5f;
+    hfi->idq_h.r.q = (foc->idq.r.q - hfi->idq_h_last.r.q)*0.5f;
 
     //update
-    hfi->idq_h_last.id = foc->i_d;
-    hfi->idq_h_last.iq = foc->i_q;
+    hfi->idq_h_last.r.d = foc->idq.r.d;
+    hfi->idq_h_last.r.q = foc->idq.r.q;
 }
 
 
@@ -325,7 +325,7 @@ bool HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc) {
     } else if (hfi->nsd_count >= 600 && hfi->nsd_count < 620) {
         motor_ctrl.id_set = 2.f;
         HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
-        hfi->isum_positive += fabsf(hfi->idq_h.id);
+        hfi->isum_positive += fabsf(hfi->idq_h.r.d);
     } else if (hfi->nsd_count >= 620 && hfi->nsd_count < 820) {
         motor_ctrl.id_set = 0.f;
         HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
@@ -335,7 +335,7 @@ bool HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc) {
     } else if (hfi->nsd_count >= 1020 && hfi->nsd_count < 1040) {
         motor_ctrl.id_set = -2.f;
         HfiCurrent(motor_ctrl.id_set, motor_ctrl.iq_set, hfi->theta_e);
-        hfi->isum_negetive += fabsf(hfi->idq_h.id);
+        hfi->isum_negetive += fabsf(hfi->idq_h.r.d);
     } else {
         motor_ctrl.id_set = 0;
         if (hfi->isum_positive < hfi->isum_negetive)
@@ -385,23 +385,23 @@ float DEBUG_eta,DEBUG_etb;
 float DEBUG_theta_e;
 int16_t non_flux_observer(NonFlux_t * flux, FocParam_t * foc, MotorCfg_t *motor)
 {
-    flux->Vs.fab.alpha = foc->v_alpha;
-    flux->Vs.fab.beta = foc->v_beta;
-    flux->Is.fab.alpha = foc->i_alpha;
-    flux->Is.fab.beta = foc->i_beta;
-    float Vy = flux->Vs.fab.alpha - motor->rs/1000.f * flux->Is.fab.alpha;
-    float Vb = flux->Vs.fab.beta - motor->rs/1000.f * flux->Is.fab.beta;
+    flux->Vs.s.alpha = foc->vab.s.alpha;
+    flux->Vs.s.beta = foc->vab.s.beta;
+    flux->Is.s.alpha = foc->iab.s.alpha;
+    flux->Is.s.beta = foc->iab.s.beta;
+    float Vy = flux->Vs.s.alpha - motor->rs/1000.f * flux->Is.s.alpha;
+    float Vb = flux->Vs.s.beta - motor->rs/1000.f * flux->Is.s.beta;
 
     /* ---- Step 2: Non-linear Flux Observer ---- */
     float L = motor->ls/1000000.f;
     float Phi = motor->flux/1000.f;
     float Ts = flux->Ts;
 
-    float LI_a = L *  flux->Is.fab.alpha;
-    float LI_b = L * flux->Is.fab.beta;
+    float LI_a = L *  flux->Is.s.alpha;
+    float LI_b = L * flux->Is.s.beta;
 
-    float eta_a = flux->state.fab.alpha - LI_a;
-    float eta_b = flux->state.fab.beta - LI_b;
+    float eta_a = flux->state.s.alpha - LI_a;
+    float eta_b = flux->state.s.beta - LI_b;
 
     float eta_sq = Phi * Phi - eta_a * eta_a - eta_b * eta_b;
 //    float eta_sq = Phi*Phi - eta_a*eta_a - eta_b*eta_b;
@@ -409,12 +409,12 @@ int16_t non_flux_observer(NonFlux_t * flux, FocParam_t * foc, MotorCfg_t *motor)
 
     float gamma2 = flux->Gamma * 0.5f;
 
-    flux->state.fab.alpha += Ts * (Vy + gamma2 * eta_a * eta_sq);
-    flux->state.fab.beta  += Ts * (Vb + gamma2 * eta_b * eta_sq);
+    flux->state.s.alpha += Ts * (Vy + gamma2 * eta_a * eta_sq);
+    flux->state.s.beta  += Ts * (Vb + gamma2 * eta_b * eta_sq);
 
     /* Recompute eta for PLL */
-    eta_a = flux->state.fab.alpha - LI_a;
-    eta_b = flux->state.fab.beta - LI_b;
+    eta_a = flux->state.s.alpha - LI_a;
+    eta_b = flux->state.s.beta - LI_b;
 
     /* ---- Step 3: PLL ---- */
     float theta = flux->theta_e;

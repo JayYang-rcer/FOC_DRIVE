@@ -138,17 +138,17 @@ void CurrentSampInit(void) {
 
 
 bool GetCurrentOffset(FocAdcValue_t *adc) {
-    float sum_ia = 0, sum_ib = 0, sum_ic = 0;
+    float sum_iu = 0, sum_iv = 0, sum_iw = 0;
     for (int i = 0; i < 1000; i++) {
         HAL_Delay(1);
-        sum_ia += (float) (ADC1->JDR1);
-        sum_ib += (float) (ADC1->JDR2);
-        sum_ic += (float) (ADC1->JDR3);
+        sum_iu += (float) (ADC1->JDR1);
+        sum_iv += (float) (ADC1->JDR2);
+        sum_iw += (float) (ADC1->JDR3);
     }
 
-    adc->ia_offset = sum_ia / 1000.0f;
-    adc->ib_offset = sum_ib / 1000.0f;
-    adc->ic_offset = sum_ic / 1000.0f;
+    adc->offset.fU = sum_iu / 1000.0f;
+    adc->offset.fV = sum_iv / 1000.0f;
+    adc->offset.fW = sum_iw / 1000.0f;
 
     return true;
 }
