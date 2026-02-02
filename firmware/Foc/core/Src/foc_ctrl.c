@@ -392,7 +392,7 @@ _RAM_FUNC void  FocHandle(void)
     CurrentRefactor(&mc_adc, &foc_param);
     Clarke(&foc_param);
     non_flux_observer(&nonFlux, &foc_param, &motor_cfg);
-    foc_param.vbus = 16.f;
+    foc_param.vbus = 4.0f * BATTERY_CELL;
 
 #if USE_POS_PID
 #if USE_VOLT_POS

@@ -6,7 +6,6 @@
 #define Dead_Time         0
 #define PWM_ARR()         __HAL_TIM_GET_AUTORELOAD(&htim8)
 
-#define BATTERY_CELL      4.0f
 #define CURRENT_LOOP_RATE 20000.0f // 电流环频率
 
 FocAdcValue_t mc_adc;
