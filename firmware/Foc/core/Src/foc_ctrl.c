@@ -18,14 +18,15 @@
 #define USE_ENCODER          1
 #define USE_SENSERLESS       1
 #define SENSERLESS_MIN_SPEED 900
-#define SENSERLESS_MAX_SPEED 7000
+#define SENSERLESS_MAX_SPEED 10000
 #define USE_SLAVE_MODE       1
 
 float           speed_buffer[SPEED_WINDOW_SIZE] = {0}; // 存储窗口内的数据
 MovingAverage_t speed_maf                       = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
 
-lpf_t lpf_iq = {.in_last = 0.0f, .trust = 0.1f}; // iq低通滤波器
-lpf_t lpf_id = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
+lpf_t lpf_iq    = {.in_last = 0.0f, .trust = 0.1f}; // iq低通滤波器
+lpf_t lpf_id    = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
+lpf_t lpf_speed = {.in_last = 0.0f, .trust = 0.05f};
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -157,11 +158,11 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     } else {
         hfi_param.sign = 0;
     }
-    SerialPidCtrl(&id_pi, id_set, hfi_param.idq_f.r.d);
-    foc_param.vdq.r.d = id_pi.out_value + ud_inject;
+    SerialPidCtrl(&hfi_id_pi, id_set, hfi_param.idq_f.r.d);
+    foc_param.vdq.r.d = hfi_id_pi.out_value + ud_inject;
 
-    SerialPidCtrl(&iq_pi, iq_set, hfi_param.idq_f.r.q);
-    foc_param.vdq.r.q = iq_pi.out_value;
+    SerialPidCtrl(&hfi_iq_pi, iq_set, hfi_param.idq_f.r.q);
+    foc_param.vdq.r.q = hfi_iq_pi.out_value;
 
     InvPark(&foc_param);
     SvpwmSector(&foc_param);
@@ -174,7 +175,7 @@ void CurrentUpdate(FocAdcValue_t *adc, FocParam_t *foc)
     adc->current_raw.fU = ADC1->JDR1;
     adc->current_raw.fV = ADC1->JDR2;
     adc->current_raw.fW = ADC1->JDR3;
-    adc->vbus   = ADC2->JDR1;
+    adc->vbus           = ADC2->JDR1;
 
     vbus      = ((float)adc->vbus) * VBUS_RATIO;
     foc->vbus = ((float)adc->vbus) * VBUS_RATIO;
@@ -296,7 +297,8 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
     }
 
     case FOC_SPEED_CTRL: {
-        if (++ctrl->spd_cnt == 20) // 20khz/20 = 1khz
+
+        if (++ctrl->spd_cnt == 10) // 20khz/10 = 2khz
         {
 #if USE_SENSERLESS
             if (ABS(ctrl->speed_set) < SENSERLESS_MIN_SPEED)
@@ -312,6 +314,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                 RefSlope = ctrl->speed_set;
             }
 
+            LowPassFilter(&nonFlux.omega_e, &lpf_speed);
             IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega_e);
             motor_cfg.RefSlope = RefSlope;
             ctrl->spd_cnt      = 0;
@@ -346,7 +349,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
         break;
     }
 
-    case FOC_HFI_TEST: {
+    case FOC_HFI: {
         HfiAngleCalc(foc, &hfi_param);
         static bool hfi_init = false;
         if (!hfi_init) {
@@ -389,7 +392,7 @@ _RAM_FUNC void  FocHandle(void)
     CurrentRefactor(&mc_adc, &foc_param);
     Clarke(&foc_param);
     non_flux_observer(&nonFlux, &foc_param, &motor_cfg);
-    foc_param.vbus = 12.f;
+    foc_param.vbus = 16.f;
 
 #if USE_POS_PID
 #if USE_VOLT_POS

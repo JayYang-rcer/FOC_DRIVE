@@ -16,7 +16,7 @@
 // #define VBUS_RATIO 0.0084723f //母线电压采样电压转换为电压值的系数
 
 // Speed PID parameters
-#define SPEED_PID_TIME_HZ 5000
+#define SPEED_PID_TIME_HZ 2000
 
 typedef enum {
     FOC_IDLE            = 0, // 空闲
@@ -26,8 +26,8 @@ typedef enum {
     FOC_SPEED_CTRL      = 4, // 速度控制
     FOC_POSITION_CTRL   = 5, // 位置控制
     FOC_SENSORLESS_CTRL = 6, // 无传感器控制
-    FOC_HFI_TEST        = 7, // 高频注入测试
-    FOC_IF_CTRL         = 8, // VF强拖
+    FOC_HFI             = 7, // 高频注入测试
+    FOC_IF_CTRL         = 8, // IF强拖
 } FocCtrlMode_e;
 
 typedef union {
@@ -164,6 +164,7 @@ typedef struct hfi_param_t {
 
     Vector2D_t idq_f;
     Vector2D_t idq_f_last; // 上次的dq轴高频电流
+    Vector2D_t idq_f_laster; // 上次的dq轴高频电流
 } HfiParam_t;
 
 extern FocAdcValue_t mc_adc;
@@ -171,6 +172,7 @@ extern FocParam_t    foc_param;
 extern MotorCfg_t    motor_cfg;
 extern MotorCtrl_t   motor_ctrl;
 extern pi_para_t     id_pi, iq_pi;
+extern pi_para_t     hfi_id_pi, hfi_iq_pi;
 extern pid_para_t    speed_pid, HfiSpeed_pid;
 extern pid_para_t    pos_pid;
 extern pll_t         pll_spd;

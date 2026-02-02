@@ -37,8 +37,8 @@ void VofaStart(void) {
     VofaSendData(2, enc_para.pos_e);
     VofaSendData(2, hfi_param.theta_e);
 
-    VofaSendData(2, hfi_param.idq_f.iq);
-    VofaSendData(2, hfi_param.idq_f.id);
+    VofaSendData(2, hfi_param.idq_f.r.q);
+    VofaSendData(2, hfi_param.idq_f.r.d);
 //	VofaSendData(3,enc_para.pos_e);
 //	VofaSendData(3,smo_angle);
 

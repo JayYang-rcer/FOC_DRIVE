@@ -37,20 +37,23 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.1.17&#10;1.更新高频注入的角度计算，以及注入频率。现已可以实现纯高频注入速度环闭环&#10;2.去掉SMO算法中一些无用的东西，去除了foc和adc结构体中的端电压相关变量">
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.1&#10;更改了结构体变量的名称和格式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_cfg.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_cfg.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_ctrl.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_ctrl.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_identify.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_identify.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/encoder/Src/calibration.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Src/calibration.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
@@ -166,7 +169,7 @@
     &quot;cf.advertisement.text.overridden&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;driver__v3&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;cpp__update&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;F:/FOC_DRIVE/firmware/BSP/Inc&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -191,12 +194,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -359,6 +362,7 @@
       <workItem from="1768322413972" duration="20610000" />
       <workItem from="1768635152551" duration="27938000" />
       <workItem from="1768757954496" duration="2210000" />
+      <workItem from="1770034810929" duration="5728000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />

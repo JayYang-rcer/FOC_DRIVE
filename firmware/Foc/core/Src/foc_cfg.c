@@ -3,69 +3,88 @@
 #include "tim.h"
 #include "util.h"
 
-#define Dead_Time 0
-#define PWM_ARR() __HAL_TIM_GET_AUTORELOAD(&htim8)
+#define Dead_Time         0
+#define PWM_ARR()         __HAL_TIM_GET_AUTORELOAD(&htim8)
 
-#define BATTERY_CELL 3
-#define CURRENT_LOOP_RATE 20000// 电流环频率
+#define BATTERY_CELL      4.0f
+#define CURRENT_LOOP_RATE 20000.0f // 电流环频率
 
 FocAdcValue_t mc_adc;
 FocParam_t    foc_param;
-MotorCfg_t   motor_cfg;
-MotorCtrl_t  motor_ctrl = {0};
-pi_para_t id_pi, iq_pi;
-pid_para_t speed_pid,HfiSpeed_pid;
-pid_para_t pos_pid;
-pll_t pll_spd;
+MotorCfg_t    motor_cfg;
+MotorCtrl_t   motor_ctrl = {0};
+pi_para_t     id_pi, iq_pi;
+pi_para_t     hfi_id_pi, hfi_iq_pi;
+pid_para_t    speed_pid, HfiSpeed_pid;
+pid_para_t    pos_pid;
+pll_t         pll_spd;
 
 /********************smo param********************/
 SmoParam_t smo_param;
-pll_t pll_smo;
+pll_t      pll_smo;
 /**********************************************************/
 
 /********************hfi param********************/
 HfiParam_t hfi_param = {.inject_U = 1.2f, .omega_e = 0.1f};
 
-pll_t pll_hfi = {.loop_hz      = 20000,// 20khz
+pll_t pll_hfi = {.loop_hz      = 20000, // 20khz
                  .kp           = 1200,
                  .ki           = 250000,
                  .i_term_limit = 1000};
 /**********************************************************/
 
 /********************non linear flux param********************/
-NonFlux_t nonFlux={
+NonFlux_t nonFlux = {
     .Gamma = 10000,
-    .Ts = 1/20000.f,
+    .Ts    = 1 / 20000.f,
 };
 
-pll_t pll_flux = {.loop_hz      = 20000,// 20khz
+pll_t pll_flux = {.loop_hz      = 20000, // 20khz
                   .kp           = 1000,
                   .ki           = 180000,
                   .i_term_limit = 10000};
 /**********************************************************/
 /* kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
-     * ki = 0.03765 * 5000*7 / 60 * 2PI / 32000(电流环频率)
+ * ki = 0.03765 * 5000*7 / 60 * 2PI / 20000(电流环频率)
  */
-void MotorPidInit(void) {
+void MotorPidInit(void)
+{
     // id_pid.kp = motor_cfg.ls/1000000*8000*motor_cfg.pn/60*M_2PI/5;
     // id_pid.ki = motor_cfg.rs/1000*8000*motor_cfg.pn/60*M_2PI/CURRENT_LOOP_RATE/5;
 
-    id_pi.kp = motor_cfg.ls / 1000000 * 20000 * motor_cfg.pn / 60 * M_2PI;
-    id_pi.ki = motor_cfg.rs / 1000 * 20000 * motor_cfg.pn / 60 * M_2PI / CURRENT_LOOP_RATE;
+    id_pi.kp    = motor_cfg.ls / 1000000.0f * 11000.0f * motor_cfg.pn * RPM_TO_RADS * 3.f;
+    id_pi.ki    = motor_cfg.rs / 1000.0f * 11000.0f * motor_cfg.pn * RPM_TO_RADS / CURRENT_LOOP_RATE;
     id_pi.kAnti = 0.5f;
-    iq_pi.kp = motor_cfg.ls / 1000000 * 20000 * motor_cfg.pn / 60 * M_2PI;
-    iq_pi.ki = motor_cfg.rs / 1000 * 20000 * motor_cfg.pn / 60 * M_2PI / CURRENT_LOOP_RATE;
+    iq_pi.kp    = motor_cfg.ls / 1000000.0f * 11000.0f * motor_cfg.pn * RPM_TO_RADS * 3.f;
+    iq_pi.ki    = motor_cfg.rs / 1000.0f * 11000.0f * motor_cfg.pn * RPM_TO_RADS / CURRENT_LOOP_RATE;
     iq_pi.kAnti = 0.5f;
 
-    id_pi.out_max    = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    id_pi.out_min    = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    id_pi.i_term_max = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    id_pi.i_term_min = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    id_pi.out_max    = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    id_pi.out_min    = -(BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    id_pi.i_term_max = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    id_pi.i_term_min = -(BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
 
-    iq_pi.out_max    = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    iq_pi.out_min    = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    iq_pi.i_term_max = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
-    iq_pi.i_term_min = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    iq_pi.out_max    = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    iq_pi.out_min    = -(BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    iq_pi.i_term_max = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+    iq_pi.i_term_min = -(BATTERY_CELL * 4.0f) * ONE_BY_SQRT3;
+
+    hfi_id_pi.kp    = motor_cfg.ls / 1000000 * 10000 * motor_cfg.pn / 60 * M_2PI;
+    hfi_id_pi.ki    = motor_cfg.rs / 1000 * 10000 * motor_cfg.pn / 60 * M_2PI / CURRENT_LOOP_RATE;
+    hfi_id_pi.kAnti = 0.5f;
+    hfi_iq_pi.kp    = motor_cfg.ls / 1000000 * 10000 * motor_cfg.pn / 60 * M_2PI;
+    hfi_iq_pi.ki    = motor_cfg.rs / 1000 * 10000 * motor_cfg.pn / 60 * M_2PI / CURRENT_LOOP_RATE;
+    hfi_iq_pi.kAnti = 0.5f;
+
+    hfi_id_pi.out_max    = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_id_pi.out_min    = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_id_pi.i_term_max = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_id_pi.i_term_min = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
+
+    hfi_iq_pi.out_max    = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_iq_pi.out_min    = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_iq_pi.i_term_max = (BATTERY_CELL * 4) * ONE_BY_SQRT3;
+    hfi_iq_pi.i_term_min = -(BATTERY_CELL * 4) * ONE_BY_SQRT3;
 
     /******************使用电压环进行位置闭环的速度pid参数*********************
     pos_pid.lpf_d = 0.1f;
@@ -114,17 +133,18 @@ void MotorPidInit(void) {
     pll_spd.ki = (10800.f / 60.f * M_2PI) * (10800.f / 60.f * M_2PI) / pll_spd.loop_hz;
 }
 
-
-void MotorParaInit(void) {
-    motor_cfg.flux = 1.221f;// mWb
+void MotorParaInit(void)
+{
+    motor_cfg.flux = 1.221f; // mWb
     motor_cfg.pn   = 7;
-    motor_cfg.rs   = 35.2333f;// mOhm
-    motor_cfg.ls   = 6.3f;    // uH
+    motor_cfg.rs   = 37.5333f; // mOhm
+    motor_cfg.ls   = 6.3f;     // uH
 
     MotorPidInit();
 }
 
-void CurrentSampInit(void) {
+void CurrentSampInit(void)
+{
     HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
     HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
     HAL_ADCEx_InjectedStart(&hadc1);
@@ -136,14 +156,14 @@ void CurrentSampInit(void) {
     motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);
 }
 
-
-bool GetCurrentOffset(FocAdcValue_t *adc) {
+bool GetCurrentOffset(FocAdcValue_t *adc)
+{
     float sum_iu = 0, sum_iv = 0, sum_iw = 0;
     for (int i = 0; i < 1000; i++) {
         HAL_Delay(1);
-        sum_iu += (float) (ADC1->JDR1);
-        sum_iv += (float) (ADC1->JDR2);
-        sum_iw += (float) (ADC1->JDR3);
+        sum_iu += (float)(ADC1->JDR1);
+        sum_iv += (float)(ADC1->JDR2);
+        sum_iw += (float)(ADC1->JDR3);
     }
 
     adc->offset.fU = sum_iu / 1000.0f;
@@ -153,35 +173,43 @@ bool GetCurrentOffset(FocAdcValue_t *adc) {
     return true;
 }
 
-void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN) {
-    if (A) HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
+void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN)
+{
+    if (A)
+        HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
     else
         HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_3);
-    if (AN) HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_3);
+    if (AN)
+        HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_3);
     else
         HAL_TIMEx_PWMN_Stop(&htim8, TIM_CHANNEL_3);
-    if (B) HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_2);
+    if (B)
+        HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_2);
     else
         HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_2);
-    if (BN) HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_2);
+    if (BN)
+        HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_2);
     else
         HAL_TIMEx_PWMN_Stop(&htim8, TIM_CHANNEL_2);
-    if (C) HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+    if (C)
+        HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
     else
         HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_1);
-    if (CN) HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_1);
+    if (CN)
+        HAL_TIMEx_PWMN_Start(&htim8, TIM_CHANNEL_1);
     else
         HAL_TIMEx_PWMN_Stop(&htim8, TIM_CHANNEL_1);
 }
 
-void FocPwmStop(void) {
+void FocPwmStop(void)
+{
     SET_DTC_A(0);
     SET_DTC_B(0);
     SET_DTC_C(0);
 }
 
-
-void MotorCtrlReset(MotorCtrl_t *motor) {
+void MotorCtrlReset(MotorCtrl_t *motor)
+{
     motor->iq_set    = 0;
     motor->id_set    = 0;
     motor->vd_set    = 0;
@@ -191,8 +219,9 @@ void MotorCtrlReset(MotorCtrl_t *motor) {
     motor->epos_acc  = 0;
 }
 
-_RAM_FUNC void FocPwmRun(FocParam_t *foc) {
-    SET_DTC_A((uint16_t) (foc->dtc_a * PWM_ARR() + Dead_Time));
-    SET_DTC_B((uint16_t) (foc->dtc_b * PWM_ARR() + Dead_Time));
-    SET_DTC_C((uint16_t) (foc->dtc_c * PWM_ARR() + Dead_Time));
+_RAM_FUNC void FocPwmRun(FocParam_t *foc)
+{
+    SET_DTC_A((uint16_t)(foc->dtc_a * PWM_ARR() + Dead_Time));
+    SET_DTC_B((uint16_t)(foc->dtc_b * PWM_ARR() + Dead_Time));
+    SET_DTC_C((uint16_t)(foc->dtc_c * PWM_ARR() + Dead_Time));
 }
