@@ -3,7 +3,7 @@
 
 Breakpoint=F:/FOC_DRIVE/firmware/Drivers/CMSIS/Include/cmsis_gcc.h:209:3, Permitted Impl.=BP_TYPE_MIXED, State=BP_STATE_DISABLED
 OpenDocument="filter.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/filter.h", Line=0
-OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=62
+OpenDocument="main.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.c", Line=73
 OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=151
 OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Src/vofa.c", Line=12
 OpenDocument="pid.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/pid.h", Line=0
@@ -15,8 +15,8 @@ OpenDocument="foc_ctrl.c", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl
 OpenDocument="McuDevicePort.c", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/McuDevicePort.c", Line=0
 OpenDocument="stm32g4xx_hal.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c", Line=325
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=464, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=210, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=459, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=215, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1269, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=675, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=650, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0

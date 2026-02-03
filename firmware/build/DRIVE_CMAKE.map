@@ -1,5 +1,31 @@
 Archive member included to satisfy reference by file (symbol)
 
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj (fmaxf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj (fminf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o) (__fpclassifyf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj (atan2f)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj (expf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj (fmodf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o) (__ieee754_atan2f)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o) (__ieee754_expf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o) (__ieee754_fmodf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o) (__math_uflowf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o) (atanf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o) (fabsf)
+g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o) (finitef)
 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                               CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj (__aeabi_dsub)
 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
@@ -30,32 +56,6 @@ g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../ar
                               g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o) (__retarget_lock_acquire_recursive)
 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
                               g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o) (__register_exitproc)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
-                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj (fmaxf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
-                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj (fminf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o) (__fpclassifyf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
-                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj (atan2f)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
-                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj (expf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
-                              CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj (fmodf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o) (__ieee754_atan2f)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o) (__ieee754_expf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o) (__ieee754_fmodf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o) (__math_uflowf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o) (atanf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o) (fabsf)
-g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
-                              g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o) (finitef)
 
 Discarded input sections
 
@@ -1584,6 +1584,18 @@ Discarded input sections
                 0x00000000       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
  .text.USB_DeActivateRemoteWakeup
                 0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
+ .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_info    0x00000000       0x72 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_abbrev  0x00000000       0x26 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_aranges
+                0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_line    0x00000000       0x1d CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_str     0x00000000      0x1c2 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .comment       0x00000000       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .ARM.attributes
+                0x00000000       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
  .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
  .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
@@ -1628,7 +1640,7 @@ Discarded input sections
                 0x00000000       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
  .debug_ranges  0x00000000       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
  .debug_line    0x00000000      0x282 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
- .debug_str     0x00000000      0x36b CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
+ .debug_str     0x00000000      0x36c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
  .comment       0x00000000       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
  .debug_frame   0x00000000       0x78 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
  .ARM.attributes
@@ -1702,7 +1714,7 @@ Discarded input sections
                 0x00000000       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
  .debug_ranges  0x00000000       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
  .debug_line    0x00000000      0x789 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
- .debug_str     0x00000000      0x49b CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
+ .debug_str     0x00000000      0x49c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
  .comment       0x00000000       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
  .debug_frame   0x00000000       0x78 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/calibration.c.obj
  .ARM.attributes
@@ -1850,6 +1862,72 @@ Discarded input sections
                 0x00000000       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .text.USBD_LL_Delay
                 0x00000000        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .text.fmaxf    0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .ARM.attributes
+                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .text.fminf    0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .ARM.attributes
+                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .text.__fpclassifyf
+                0x00000000       0x38 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .debug_frame   0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .ARM.attributes
+                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .text.fmodf    0x00000000       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .ARM.attributes
+                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .text.__ieee754_fmodf
+                0x00000000      0x120 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .rodata.Zero   0x00000000        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .debug_frame   0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .ARM.attributes
+                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .text.__math_divzerof
+                0x00000000       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .text.__math_invalidf
+                0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+ .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+ .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+ .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
  .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .text          0x00000000      0x424 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
@@ -1950,96 +2028,6 @@ Discarded input sections
  .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
  .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
  .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .text.fmaxf    0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmax.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .text.fminf    0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fmin.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .text.__fpclassifyf
-                0x00000000       0x38 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .debug_frame   0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fpclassify.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .debug_frame   0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
- .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .text.fmodf    0x00000000       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_fmod.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .debug_frame   0x00000000       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .debug_frame   0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .text.__ieee754_fmodf
-                0x00000000      0x120 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .rodata.Zero   0x00000000        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .debug_frame   0x00000000       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_fmod.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .text.__math_divzerof
-                0x00000000       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .text.__math_invalidf
-                0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .debug_frame   0x00000000       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .debug_frame   0x00000000       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .debug_frame   0x00000000       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .text          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
- .data          0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
- .bss           0x00000000        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
- .debug_frame   0x00000000       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
- .ARM.attributes
-                0x00000000       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
 
 Memory Configuration
 
@@ -2095,6 +2083,7 @@ LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_h
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
+LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_identify.c.obj
@@ -2118,6 +2107,8 @@ LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
 LOAD CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a
+LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 START GROUP
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a
@@ -3087,54 +3078,54 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .text.USBD_static_free
                 0x0800a100        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
                 0x0800a100                USBD_static_free
- .text.__errno  0x0800a104        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
-                0x0800a104                __errno
- .text.__libc_init_array
-                0x0800a110       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
-                0x0800a110                __libc_init_array
- .text.memset   0x0800a158       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
-                0x0800a158                memset
- .text.startup.register_fini
-                0x0800a1fc       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x0800a210        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
-                0x0800a210                atexit
- .text.__libc_fini_array
-                0x0800a21c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
-                0x0800a21c                __libc_fini_array
- .text.__retarget_lock_acquire_recursive
-                0x0800a248        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x0800a248                __retarget_lock_acquire_recursive
- .text.__retarget_lock_release_recursive
-                0x0800a24c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x0800a24c                __retarget_lock_release_recursive
- .text.__register_exitproc
-                0x0800a250       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
-                0x0800a250                __register_exitproc
- .text.atan2f   0x0800a2dc        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
-                0x0800a2dc                atan2f
- .text.expf     0x0800a2e0       0x78 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
-                0x0800a2e0                expf
+ .text.atan2f   0x0800a104        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+                0x0800a104                atan2f
+ .text.expf     0x0800a108       0x78 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+                0x0800a108                expf
  .text.__ieee754_atan2f
-                0x0800a358      0x150 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
-                0x0800a358                __ieee754_atan2f
+                0x0800a180      0x150 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800a180                __ieee754_atan2f
  .text.__ieee754_expf
-                0x0800a4a8      0x1e8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
-                0x0800a4a8                __ieee754_expf
+                0x0800a2d0      0x1e8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                0x0800a2d0                __ieee754_expf
  .text.with_errnof
-                0x0800a690       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
- .text.xflowf   0x0800a6a8       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x0800a4b8       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .text.xflowf   0x0800a4d0       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
  .text.__math_uflowf
-                0x0800a6c8        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
-                0x0800a6c8                __math_uflowf
+                0x0800a4f0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x0800a4f0                __math_uflowf
  .text.__math_oflowf
-                0x0800a6d4        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
-                0x0800a6d4                __math_oflowf
- .text.atanf    0x0800a6e0      0x1b4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
-                0x0800a6e0                atanf
- .text.fabsf    0x0800a894       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
-                0x0800a894                fabsf
- .text.finitef  0x0800a8a4       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
-                0x0800a8a4                finitef
+                0x0800a4fc        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+                0x0800a4fc                __math_oflowf
+ .text.atanf    0x0800a508      0x1b4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800a508                atanf
+ .text.fabsf    0x0800a6bc       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+                0x0800a6bc                fabsf
+ .text.finitef  0x0800a6cc       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+                0x0800a6cc                finitef
+ .text.__errno  0x0800a6e8        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+                0x0800a6e8                __errno
+ .text.__libc_init_array
+                0x0800a6f4       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+                0x0800a6f4                __libc_init_array
+ .text.memset   0x0800a73c       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x0800a73c                memset
+ .text.startup.register_fini
+                0x0800a7e0       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0800a7f4        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+                0x0800a7f4                atexit
+ .text.__libc_fini_array
+                0x0800a800       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+                0x0800a800                __libc_fini_array
+ .text.__retarget_lock_acquire_recursive
+                0x0800a82c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x0800a82c                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_release_recursive
+                0x0800a830        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x0800a830                __retarget_lock_release_recursive
+ .text.__register_exitproc
+                0x0800a834       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+                0x0800a834                __register_exitproc
  *(.glue_7)
  .glue_7        0x0800a8c0        0x0 linker stubs
  *(.glue_7t)
@@ -3229,20 +3220,20 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  *fill*         0x0800c74e        0x2 
  .rodata.CSWTCH.3
                 0x0800c750        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
- .rodata._global_impure_ptr
-                0x0800c754        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x0800c754                _global_impure_ptr
  .rodata.CSWTCH.8
-                0x0800c758        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800c754        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
  .rodata.CSWTCH.9
-                0x0800c764        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .rodata.halF   0x0800c770        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2HI  0x0800c778        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2LO  0x0800c780        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                0x0800c760        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .rodata.halF   0x0800c76c        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2HI  0x0800c774        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2LO  0x0800c77c        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
  .rodata.atanhi
-                0x0800c788       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800c784       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .rodata.atanlo
-                0x0800c798       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800c794       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .rodata._global_impure_ptr
+                0x0800c7a4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x0800c7a4                _global_impure_ptr
                 0x0800c7a8                . = ALIGN (0x4)
 
 .rel.dyn        0x0800c7a8        0x0
@@ -3638,29 +3629,45 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .ARM.attributes
                 0x00000a33       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .ARM.attributes
-                0x00000a67       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+                0x00000a67       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
  .ARM.attributes
-                0x00000a85       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+                0x00000a9b       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
  .ARM.attributes
-                0x00000aa3       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+                0x00000acf       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
  .ARM.attributes
-                0x00000ad7       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x00000b03       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
  .ARM.attributes
-                0x00000b0b       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+                0x00000b37       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
  .ARM.attributes
-                0x00000b3f       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x00000b6b       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .ARM.attributes
-                0x00000b73       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x00000b9f       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
  .ARM.attributes
-                0x00000ba7       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+                0x00000bd3       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
  .ARM.attributes
-                0x00000bdb       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+                0x00000c07       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000c0f       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x00000c25       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x00000c43       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+                0x00000c43       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000c77       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x00000c77       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000cab       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000cdf       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000d13       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000d47       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x00000d7b       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+ .ARM.attributes
+                0x00000daf       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+ .ARM.attributes
+                0x00000de3       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00000e17       0x1e g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
 OUTPUT(DRIVE_CMAKE.elf elf32-littlearm)
 LOAD linker stubs
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
@@ -4023,7 +4030,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_line    0x00029a64      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
  .debug_line    0x00029db5      0x965 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_str      0x00000000     0xa5c0
+.debug_str      0x00000000     0xa5c1
  .debug_str     0x00000000      0x7db CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
                                 0x879 (size before relaxing)
  .debug_str     0x000007db     0x1106 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
@@ -4082,47 +4089,47 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                                0x14f0 (size before relaxing)
  .debug_str     0x000087c3       0xe6 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c.obj
                                 0x6a9 (size before relaxing)
- .debug_str     0x000088a9      0x4e1 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
-                               0x10ef (size before relaxing)
- .debug_str     0x00008d8a      0x2f6 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
-                               0x15d5 (size before relaxing)
- .debug_str     0x00009080      0x15e CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
-                                0x773 (size before relaxing)
- .debug_str     0x000091de       0x7c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
+ .debug_str     0x000088a9      0x4e2 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
+                               0x10f0 (size before relaxing)
+ .debug_str     0x00008d8b      0x2f6 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
+                               0x15d6 (size before relaxing)
+ .debug_str     0x00009081      0x15e CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
+                                0x774 (size before relaxing)
+ .debug_str     0x000091df       0x7c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
                                 0x868 (size before relaxing)
- .debug_str     0x0000925a       0x66 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder_proc.c.obj
+ .debug_str     0x0000925b       0x66 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder_proc.c.obj
                                 0x2e4 (size before relaxing)
- .debug_str     0x000092c0       0x2d CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/filter.c.obj
+ .debug_str     0x000092c1       0x2d CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/filter.c.obj
                                 0x2a3 (size before relaxing)
- .debug_str     0x000092ed       0x39 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.c.obj
+ .debug_str     0x000092ee       0x39 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.c.obj
                                 0x2ed (size before relaxing)
- .debug_str     0x00009326      0x120 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
+ .debug_str     0x00009327      0x120 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
                                 0x356 (size before relaxing)
- .debug_str     0x00009446       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/vofa.c.obj
-                                0x412 (size before relaxing)
- .debug_str     0x000094b6      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_str     0x00009447       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/vofa.c.obj
+                                0x413 (size before relaxing)
+ .debug_str     0x000094b7      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
                                 0xccf (size before relaxing)
- .debug_str     0x00009b55      0x2a1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_str     0x00009b56      0x2a1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
                                 0x8a3 (size before relaxing)
- .debug_str     0x00009df6      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_str     0x00009df7      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
                                 0x7f5 (size before relaxing)
- .debug_str     0x00009f50       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_str     0x00009f51       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
                                 0x6ea (size before relaxing)
- .debug_str     0x00009fb4       0x5a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj
+ .debug_str     0x00009fb5       0x5a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj
                                 0x796 (size before relaxing)
- .debug_str     0x0000a00e       0x88 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.c.obj
+ .debug_str     0x0000a00f       0x88 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.c.obj
                                 0x8f6 (size before relaxing)
- .debug_str     0x0000a096      0x11a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_cfg.c.obj
+ .debug_str     0x0000a097      0x11a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_cfg.c.obj
                                 0x8d4 (size before relaxing)
- .debug_str     0x0000a1b0       0xf5 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
+ .debug_str     0x0000a1b1       0xf5 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
                                 0x2ce (size before relaxing)
- .debug_str     0x0000a2a5       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_str     0x0000a2a6       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
                                 0x6c6 (size before relaxing)
- .debug_str     0x0000a304       0x9d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_str     0x0000a305       0x9d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
                                 0x7a6 (size before relaxing)
- .debug_str     0x0000a3a1      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_str     0x0000a3a2      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
                                 0x49d (size before relaxing)
- .debug_str     0x0000a52c       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_str     0x0000a52d       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
                                0x1895 (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -4177,7 +4184,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_frame    0x00000000     0x5bcc
+.debug_frame    0x00000000     0x5d88
  .debug_frame   0x00000000       0xf4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_frame   0x000000f4       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_frame   0x00000190       0x7c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4227,13 +4234,21 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_frame   0x000054f8       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .debug_frame   0x00005584       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
  .debug_frame   0x00005630      0x2b4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
- .debug_frame   0x000058e4       0xac g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00005990       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x000059b4       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
- .debug_frame   0x000059d4       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
- .debug_frame   0x00005a00       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
- .debug_frame   0x00005a2c       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x00005a94       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
- .debug_frame   0x00005ab4       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
- .debug_frame   0x00005ae8       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
- .debug_frame   0x00005b98       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+ .debug_frame   0x000058e4       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+ .debug_frame   0x00005904       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_exp.o)
+ .debug_frame   0x00005948       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .debug_frame   0x0000598c       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .debug_frame   0x000059ac       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-math_errf.o)
+ .debug_frame   0x00005a2c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .debug_frame   0x00005a58       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+ .debug_frame   0x00005a78       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_finite.o)
+ .debug_frame   0x00005aa0       0xac g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00005b4c       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00005b70       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+ .debug_frame   0x00005b90       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+ .debug_frame   0x00005bbc       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+ .debug_frame   0x00005be8       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00005c50       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+ .debug_frame   0x00005c70       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+ .debug_frame   0x00005ca4       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+ .debug_frame   0x00005d54       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)

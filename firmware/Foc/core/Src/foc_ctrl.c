@@ -17,7 +17,7 @@
 #define USE_POS_PID          0 // 使用位置环
 #define USE_ENCODER          1
 #define USE_SENSERLESS       1
-#define SENSERLESS_MIN_SPEED 900
+#define SENSERLESS_MIN_SPEED 500
 #define SENSERLESS_MAX_SPEED 10000
 #define USE_SLAVE_MODE       1
 
@@ -408,7 +408,7 @@ _RAM_FUNC void  FocHandle(void)
 #endif
 }
 
-void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
+void     HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
     if (hadc->Instance == ADC1) {
         if (motor_ctrl.foc_init)

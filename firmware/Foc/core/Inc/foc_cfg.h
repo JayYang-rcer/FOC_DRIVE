@@ -47,7 +47,13 @@ typedef union {
         float d;
         float q;
     } r;
-} Vector2D_t;
+} Vector2Df_t;
+
+typedef struct {
+    uint16_t uhU;
+    uint16_t uhV;
+    uint16_t uhW;
+}Vector3D_t;
 
 typedef struct {
     float fU;
@@ -56,9 +62,9 @@ typedef struct {
 }Vector3S_t;
 
 typedef struct {
-    Vector2D_t Is;
-    Vector2D_t Vs;
-    Vector2D_t state;
+    Vector2Df_t Is;
+    Vector2Df_t Vs;
+    Vector2Df_t state;
     float      Gamma; // Non-linear observer gain
     float      Ts;    // Sampling period
     float      theta_e;
@@ -134,11 +140,11 @@ typedef struct foc_param_t {
     Vector3S_t current;
     Vector3S_t vphase;
 
-    Vector2D_t idq;
-    Vector2D_t vdq;
+    Vector2Df_t idq;
+    Vector2Df_t vdq;
 
-    Vector2D_t iab;
-    Vector2D_t vab;
+    Vector2Df_t iab;
+    Vector2Df_t vab;
 
     int8_t sector;
     float dtc_a; // A 相 PWM 占空比
@@ -156,17 +162,17 @@ typedef struct hfi_param_t {
     float    isum_positive;
     float    isum_negetive;
 
-    Vector2D_t ab_last;
-    Vector2D_t ab_laster;
+    Vector2Df_t ab_last;
+    Vector2Df_t ab_laster;
 
-    Vector2D_t ab_h;
+    Vector2Df_t ab_h;
 
-    Vector2D_t idq_h;
-    Vector2D_t idq_h_last; // 上次的dq轴高频电流
+    Vector2Df_t idq_h;
+    Vector2Df_t idq_h_last; // 上次的dq轴高频电流
 
-    Vector2D_t idq_f;
-    Vector2D_t idq_f_last; // 上次的dq轴高频电流
-    Vector2D_t idq_f_laster; // 上次的dq轴高频电流
+    Vector2Df_t idq_f;
+    Vector2Df_t idq_f_last; // 上次的dq轴高频电流
+    Vector2Df_t idq_f_laster; // 上次的dq轴高频电流
 } HfiParam_t;
 
 extern FocAdcValue_t mc_adc;
