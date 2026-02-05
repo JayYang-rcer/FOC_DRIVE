@@ -1587,13 +1587,28 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
- .debug_info    0x00000000       0x72 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
- .debug_abbrev  0x00000000       0x26 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .text._ZN12CurrentSense4InitEv
+                0x00000000       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .ARM.extab.text._ZN12CurrentSense4InitEv
+                0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .ARM.exidx.text._ZN12CurrentSense4InitEv
+                0x00000000        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .text._ZN12CurrentSense15OffsetCalibrateEv
+                0x00000000       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .ARM.extab.text._ZN12CurrentSense15OffsetCalibrateEv
+                0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .ARM.exidx.text._ZN12CurrentSense15OffsetCalibrateEv
+                0x00000000        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_info    0x00000000     0x1b08 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_abbrev  0x00000000      0x25d CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_loc     0x00000000       0xc7 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .debug_aranges
-                0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
- .debug_line    0x00000000       0x1d CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
- .debug_str     0x00000000      0x1c2 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+                0x00000000       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_ranges  0x00000000       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_line    0x00000000      0x446 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_str     0x00000000      0xe20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .comment       0x00000000       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
+ .debug_frame   0x00000000       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .ARM.attributes
                 0x00000000       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/current_sense.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
@@ -3152,10 +3167,10 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
 .iplt           0x0800a8d8        0x0
  .iplt          0x0800a8d8        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ramfunc        0x0800a8d8      0xcb4
+.ramfunc        0x0800a8d8      0xcb0
  .ramfunc       0x0800a8d8       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.c.obj
                 0x0800a8d8                FocPwmRun
- .ramfunc       0x0800a948      0x404 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
+ .ramfunc       0x0800a948      0x400 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
                 0x0800a948                HfiVolt
                 0x0800a9c0                HfiCurrent
                 0x0800aa78                FocVolt
@@ -3163,113 +3178,113 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x0800ab58                FocCurrent
                 0x0800abc4                CurrentRefactor
                 0x0800ac30                FocHandle
- .ramfunc       0x0800ad4c      0x63c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
-                0x0800ad4c                SinCosVal
-                0x0800ad70                Clarke
-                0x0800ad94                Park
-                0x0800adc0                InvPark
-                0x0800adec                InvClarke
-                0x0800ae20                SvpwmSector
-                0x0800b194                SmoPllAngle
-                0x0800b264                SmoViewer
- .ramfunc       0x0800b388       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
-                0x0800b388                ParityBitCalculate
-                0x0800b398                SpiReadWriteOneByte
-                0x0800b3e8                As5047pRead
- .ramfunc       0x0800b430      0x15c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder_proc.c.obj
-                0x0800b430                PosCalculate
+ .ramfunc       0x0800ad48      0x63c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
+                0x0800ad48                SinCosVal
+                0x0800ad6c                Clarke
+                0x0800ad90                Park
+                0x0800adbc                InvPark
+                0x0800ade8                InvClarke
+                0x0800ae1c                SvpwmSector
+                0x0800b190                SmoPllAngle
+                0x0800b260                SmoViewer
+ .ramfunc       0x0800b384       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
+                0x0800b384                ParityBitCalculate
+                0x0800b394                SpiReadWriteOneByte
+                0x0800b3e4                As5047pRead
+ .ramfunc       0x0800b42c      0x15c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder_proc.c.obj
+                0x0800b42c                PosCalculate
 
-.RamFunc        0x0800b58c      0x110
- .RamFunc       0x0800b58c       0xc0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
-                0x0800b58c                Encoder_Idle
- .RamFunc       0x0800b64c       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/filter.c.obj
-                0x0800b64c                MoveAverageFilter
+.RamFunc        0x0800b588      0x110
+ .RamFunc       0x0800b588       0xc0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
+                0x0800b588                Encoder_Idle
+ .RamFunc       0x0800b648       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/filter.c.obj
+                0x0800b648                MoveAverageFilter
 
-.rodata         0x0800b69c     0x110c
-                0x0800b69c                . = ALIGN (0x4)
+.rodata         0x0800b698     0x110c
+                0x0800b698                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.main.str1.4
-                0x0800b69c        0xa CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj
- *fill*         0x0800b6a6        0x2 
+                0x0800b698        0xa CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj
+ *fill*         0x0800b6a2        0x2 
  .rodata.AHBPrescTable
-                0x0800b6a8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800b6a8                AHBPrescTable
+                0x0800b6a4       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800b6a4                AHBPrescTable
  .rodata.DLCtoBytes
-                0x0800b6b8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c.obj
+                0x0800b6b4       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c.obj
  .rodata.str1.4
-                0x0800b6c8        0x9 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
- *fill*         0x0800b6d1        0x3 
+                0x0800b6c4        0x9 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.c.obj
+ *fill*         0x0800b6cd        0x3 
  .rodata.CSWTCH.43
-                0x0800b6d4       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
+                0x0800b6d0       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.c.obj
  .rodata.sinTable_f32
-                0x0800b6ec      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
- .rodata.F6x8   0x0800bef0      0x228 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
- .rodata.F8X16  0x0800c118      0x5f0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
+                0x0800b6e8      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
+ .rodata.F6x8   0x0800beec      0x228 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
+ .rodata.F8X16  0x0800c114      0x5f0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj
  .rodata.USBD_CDC_ManufacturerStrDescriptor.str1.4
-                0x0800c708       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800c71b        0x1 
+                0x0800c704       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800c717        0x1 
  .rodata.USBD_CDC_ProductStrDescriptor.str1.4
-                0x0800c71c       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800c732        0x2 
+                0x0800c718       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800c72e        0x2 
  .rodata.USBD_CDC_ConfigStrDescriptor.str1.4
-                0x0800c734        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800c73f        0x1 
+                0x0800c730        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800c73b        0x1 
  .rodata.USBD_CDC_InterfaceStrDescriptor.str1.4
-                0x0800c740        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800c74e        0x2 
+                0x0800c73c        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800c74a        0x2 
  .rodata.CSWTCH.3
-                0x0800c750        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c74c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .rodata.CSWTCH.8
-                0x0800c754        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800c750        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
  .rodata.CSWTCH.9
-                0x0800c760        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .rodata.halF   0x0800c76c        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2HI  0x0800c774        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
- .rodata.ln2LO  0x0800c77c        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+                0x0800c75c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .rodata.halF   0x0800c768        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2HI  0x0800c770        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
+ .rodata.ln2LO  0x0800c778        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_exp.o)
  .rodata.atanhi
-                0x0800c784       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800c780       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .rodata.atanlo
-                0x0800c794       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800c790       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .rodata._global_impure_ptr
-                0x0800c7a4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x0800c7a4                _global_impure_ptr
-                0x0800c7a8                . = ALIGN (0x4)
+                0x0800c7a0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x0800c7a0                _global_impure_ptr
+                0x0800c7a4                . = ALIGN (0x4)
 
-.rel.dyn        0x0800c7a8        0x0
- .rel.iplt      0x0800c7a8        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0800c7a4        0x0
+ .rel.iplt      0x0800c7a4        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800c7a8        0x0
-                0x0800c7a8                __exidx_start = .
+.ARM            0x0800c7a4        0x0
+                0x0800c7a4                __exidx_start = .
  *(.ARM.exidx*)
-                0x0800c7a8                __exidx_end = .
+                0x0800c7a4                __exidx_end = .
 
-.preinit_array  0x0800c7a8        0x0
-                0x0800c7a8                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800c7a4        0x0
+                0x0800c7a4                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800c7a8                PROVIDE (__preinit_array_end = .)
+                0x0800c7a4                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0800c7a8        0x8
-                0x0800c7a8                PROVIDE (__init_array_start = .)
+.init_array     0x0800c7a4        0x8
+                0x0800c7a4                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x0800c7a8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x0800c7a4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x0800c7ac        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800c7b0                PROVIDE (__init_array_end = .)
+ .init_array    0x0800c7a8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800c7ac                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0800c7b0        0x4
-                0x0800c7b0                PROVIDE (__fini_array_start = .)
+.fini_array     0x0800c7ac        0x4
+                0x0800c7ac                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800c7b0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800c7b4                PROVIDE (__fini_array_end = .)
-                0x0800c7b4                _sidata = LOADADDR (.data)
+ .fini_array    0x0800c7ac        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800c7b0                PROVIDE (__fini_array_end = .)
+                0x0800c7b0                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x6dc load address 0x0800c7b4
+.data           0x20000000      0x6dc load address 0x0800c7b0
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -3351,11 +3366,11 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x200006dc                . = ALIGN (0x4)
                 0x200006dc                _edata = .
 
-.igot.plt       0x200006dc        0x0 load address 0x0800ce90
+.igot.plt       0x200006dc        0x0 load address 0x0800ce8c
  .igot.plt      0x200006dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x200006dc                . = ALIGN (0x4)
 
-.bss            0x200006dc     0x2614 load address 0x0800ce90
+.bss            0x200006dc     0x2614 load address 0x0800ce8c
                 0x200006dc                _sbss = .
                 0x200006dc                __bss_start__ = _sbss
  *(.bss)
@@ -3506,7 +3521,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x20002cf0                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20002cf0      0x600 load address 0x0800ce90
+                0x20002cf0      0x600 load address 0x0800ce8c
                 0x20002cf0                . = ALIGN (0x8)
                 [!provide]                PROVIDE (end = .)
                 0x20002cf0                PROVIDE (_end = .)

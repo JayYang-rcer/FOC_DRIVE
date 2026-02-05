@@ -13,7 +13,7 @@
 #define IOP               20.f                            // 电流采样电阻放大倍数
 #define IRATIO            (3.3f / 4096.f) / R_SENSE / IOP // 电流采样,电压转换为电流值的系数
 #define VBUS_RATIO        (6.1f * 3.3f) / 4096.0f         // 母线电压采样电压转换为电压值的系数
-#define BATTERY_CELL      3.0f
+#define BATTERY_CELL      4.0f
 
 // #define VBUS_RATIO 0.0084723f //母线电压采样电压转换为电压值的系数
 

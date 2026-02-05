@@ -4,6 +4,7 @@
 #include "util.h"
 #include "foc_cfg.h"
 
+
 void SinCosVal(FocParam_t *foc);
 
 void Clarke(FocParam_t *foc);
