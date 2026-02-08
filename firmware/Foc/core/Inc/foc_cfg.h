@@ -59,7 +59,7 @@ typedef struct {
     float fU;
     float fV;
     float fW;
-}Vector3S_t;
+} Vector3S_t;
 
 typedef struct {
     Vector2Df_t Is;
@@ -196,6 +196,9 @@ extern pll_t      pll_hfi; // 高频注入的PLL
 extern HfiParam_t hfi_param;
 /*************************************************/
 
+#ifdef __cplusplus
+extern "C"{
+#endif
 bool GetCurrentOffset(FocAdcValue_t *mc_adc);
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
@@ -209,5 +212,8 @@ void MotorParaInit(void);
 void CurrentSampInit(void);
 
 void MotorCtrlReset(MotorCtrl_t *motor);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

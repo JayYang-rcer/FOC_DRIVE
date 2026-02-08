@@ -4,7 +4,9 @@
 #include "util.h"
 #include "foc_cfg.h"
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 void SinCosVal(FocParam_t *foc);
 
 void Clarke(FocParam_t *foc);
@@ -28,14 +30,17 @@ void SmoParamInit(SmoParam_t *smo);
 /*********************************** smo *******************************/
 
 /*********************************** hfi *******************************/
-float HfiInjectSign(float inject_U);
-float HfiPllAngle(pll_t *pll, HfiParam_t *hfi);
-void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi);
-void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi);
-void IdqToIdqH(FocParam_t *foc, HfiParam_t *hfi);
-bool HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc);
-int16_t non_flux_observer(NonFlux_t * flux, FocParam_t * foc, MotorCfg_t *motor);
+float   HfiInjectSign(float inject_U);
+float   HfiPllAngle(pll_t *pll, HfiParam_t *hfi);
+void    HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi);
+void    IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi);
+void    IdqToIdqH(FocParam_t *foc, HfiParam_t *hfi);
+bool    HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc);
+int16_t non_flux_observer(NonFlux_t *flux, FocParam_t *foc, MotorCfg_t *motor);
 /*********************************** hfi *******************************/
+#ifdef __cplusplus
+}
+#endif
 
 extern SmoParam_t     smo_param;
 extern volatile float smo_angle;

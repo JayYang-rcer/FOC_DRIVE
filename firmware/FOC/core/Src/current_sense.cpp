@@ -5,41 +5,37 @@
 #include "current_sense.h"
 #include "util.h"
 
-/**
- * @brief current sample init
- * @return
- */
-bool CurrentSense::Init()
+bool PhaseSenseBase::OffsetCalibrate()
 {
-    if (InitTypedef.addr_current_u != nullptr &&
-        InitTypedef.addr_current_v != nullptr &&
-        InitTypedef.addr_current_w != nullptr) {
-        addr_current_u_ = InitTypedef.addr_current_u;
-        addr_current_v_ = InitTypedef.addr_current_v;
-        addr_current_w_ = InitTypedef.addr_current_w;
-        float adc_rate = InitTypedef.adc_ref_volt / (float)(1<<InitTypedef.adc_bits);
-        fcc_            = adc_rate / InitTypedef.resistance / InitTypedef.gain;
+    if (count_ < 4096) {
+        offset_.fU += (float)(*addr_current_u_) * fcc_;
+        offset_.fV += (float)(*addr_current_v_) * fcc_;
+        offset_.fW += (float)(*addr_current_w_) * fcc_;
+        count_++;
+    } else if (count_ == 4096) {
+        offset_.fU /= 4096.0f;
+        offset_.fV /= 4096.0f;
+        offset_.fW /= 4096.0f;
+        count_++;
+    } else {
         return true;
     }
     return false;
 }
 
-
-bool CurrentSense::OffsetCalibrate()
+bool PhaseSenseBase::Init()
 {
-    if (count_ < 256) {
-        offset_.fU += (float)(*addr_current_u_) * fcc_;
-        offset_.fV += (float)(*addr_current_v_) * fcc_;
-        offset_.fW += (float)(*addr_current_w_) * fcc_;
-        count_++;
-    } else if (count_ == 256) {
-        offset_.fU /= 256.0f;
-        offset_.fV /= 256.0f;
-        offset_.fW /= 256.0f;
-        count_++;
-    } else {
+    if (InitTypedef.addr_current_u_ != nullptr &&
+        InitTypedef.addr_current_v_ != nullptr &&
+        InitTypedef.addr_current_w_ != nullptr) {
+        float adc_rate  = InitTypedef.adc_ref_volt / (float)(1 << InitTypedef.adc_bits);
+        fcc_            = adc_rate / InitTypedef.resistance / InitTypedef.gain;
+        addr_current_u_ = InitTypedef.addr_current_u_;
+        addr_current_v_ = InitTypedef.addr_current_v_;
+        addr_current_w_ = InitTypedef.addr_current_w_;
         return true;
     }
+
     return false;
 }
 

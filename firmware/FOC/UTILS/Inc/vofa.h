@@ -10,6 +10,9 @@
 #define byte2(dw_temp)     (*((char*)(&dw_temp) + 2))
 #define byte3(dw_temp)     (*((char*)(&dw_temp) + 3))
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void usb_printf(const char *format, ...);
 
 void VofaStart(void);
@@ -17,7 +20,9 @@ void VofaStart(void);
 void VofaSendData(uint8_t num, float data);
 
 void VofaSendframetail(void);
-
+#ifdef __cplusplus
+}
+#endif
 #endif /* __VOFA_H__ */
 
 

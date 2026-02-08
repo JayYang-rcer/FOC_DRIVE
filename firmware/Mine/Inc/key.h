@@ -25,6 +25,14 @@ typedef struct
     KeyState_e status;
 }KeyFifo_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
 void KEY_FifoScan(void);
 void KEY_ProcessHandle(void);
 

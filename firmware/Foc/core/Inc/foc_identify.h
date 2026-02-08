@@ -26,9 +26,14 @@ typedef struct foc_identify_t {
     /******************电阻识别参数**********************/
 } foc_identify_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 bool FocIdentifyRes(foc_identify_t *identify, FocParam_t *foc, float Is);
-
 bool FocIdentifyTest(foc_identify_t *identify, FocParam_t *foc, float Is);
+#ifdef __cplusplus
+}
+#endif
 
 extern foc_identify_t identify_res;
 #endif

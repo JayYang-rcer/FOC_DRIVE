@@ -37,24 +37,49 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.4&#10;（1）初步增加了电流基类">
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类">
+      <change afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BSP/Inc/drive_can.h" beforeDir="false" afterPath="$PROJECT_DIR$/BSP/Inc/drive_can.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/filter.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/filter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/util.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/vofa.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/vofa.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Inc/current_sense.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/current_sense.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/current_sense.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/current_sense.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_ctrl.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/encoder_proc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/encoder_proc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mine/Inc/McuDevicePort.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/McuDevicePort.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mine/Inc/key.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/key.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mine/Inc/oled_iic_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/oled_iic_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mine/Inc/oled_iic_show.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/oled_iic_show.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/current_sense.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/current_sense.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,32 +130,34 @@
     <setting file="file://$PROJECT_DIR$/Core/Inc/adc.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Core/Inc/tim.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Core/Src/adc.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Core/Src/main.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Core/Src/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Core/Src/spi.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Core/Src/stm32g4xx_it.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Core/Src/tim.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_cfg.h" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_ctrl.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Inc/foc_math.h" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_cfg.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_ctrl.c" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_identify.c" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/core/Src/foc_math.c" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/encoder/Inc/as5047p.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/encoder/Inc/encoder_proc.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/as5047p.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/calibration.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/encoder/Src/encoder_proc.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Inc/filter.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Inc/pid.h" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Inc/util.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/filter.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/pid.c" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/util.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/FOC/utils/Src/vofa.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Inc/current_sense.h" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Inc/foc_math.h" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Src/current_sense.cpp" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Src/foc_cfg.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Src/foc_ctrl.cpp" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Src/foc_identify.c" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/core/Src/foc_math.c" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/encoder/Inc/as5047p.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/encoder/Inc/encoder_proc.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/encoder/Src/as5047p.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/encoder/Src/calibration.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/encoder/Src/encoder_proc.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Inc/filter.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Inc/pid.h" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Inc/util.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Src/filter.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Src/pid.c" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Src/util.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Foc/utils/Src/vofa.c" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -191,9 +218,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
@@ -360,7 +387,9 @@
       <workItem from="1768635152551" duration="27938000" />
       <workItem from="1768757954496" duration="2210000" />
       <workItem from="1770034810929" duration="8513000" />
-      <workItem from="1770129786938" duration="10294000" />
+      <workItem from="1770129786938" duration="28113000" />
+      <workItem from="1770570703160" duration="512000" />
+      <workItem from="1770572993845" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -514,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770136801277</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类">
+      <option name="closed" value="true" />
+      <created>1770300430166</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1770300430166</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +610,8 @@
     <MESSAGE value="26.1.17&#10;1.更新高频注入的角度计算，以及注入频率。现已可以实现纯高频注入速度环闭环&#10;2.去掉SMO算法中一些无用的东西，去除了foc和adc结构体中的端电压相关变量" />
     <MESSAGE value="26.2.2&#10;(1)将高频注入的PI参数独立出来&#10;(2)增加了非线性磁链速度环的速度滤波，10000目标值，稳态在9650rpm左右" />
     <MESSAGE value="26.2.4&#10;（1）初步增加了电流基类" />
-    <option name="LAST_COMMIT_MESSAGE" value="26.2.4&#10;（1）初步增加了电流基类" />
+    <MESSAGE value="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类" />
+    <option name="LAST_COMMIT_MESSAGE" value="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类" />
     <option name="LAST_CHUNK_COMMIT_MESSAGE" value="26.1.15&#10;1.更改了ADC的采样时钟频率&#10;2.更改高频注入的方式，有原先的高频脉振-1 +1 变化改为+1 -&gt; 0 -&gt; -1 -&gt; 0。角度计算函数改为正负电流都采集完毕后才计算。&#10;3.更改了注入函数，和高频sign符号更改的地方&#10;4.目前角度是能解算出来，但是貌似急性不对，给Vq总是反转。还有待解决" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

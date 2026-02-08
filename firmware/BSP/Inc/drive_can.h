@@ -43,10 +43,15 @@ typedef struct CAN_RxMessage {
     uint8_t               data[8];
 } CAN_RxBuffer;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 uint8_t CAN_Init(FDCAN_HandleTypeDef *hfdcan, void (*pFunc)(CAN_RxBuffer *));
 void    CAN_Filter_Init(FDCAN_HandleTypeDef *hfdcan, uint8_t filterIndex, uint32_t id, uint32_t mask, uint8_t fifo, uint8_t isExtended);
 void    comm_can_transmit_extid(FDCAN_HandleTypeDef *hcan, uint32_t ExtId, uint8_t *pdata, uint8_t length); // 拓展帧发送函数
 void    comm_can_transmit_stdid(FDCAN_HandleTypeDef *hcan, uint16_t StdId, uint8_t *pdata, uint8_t length); // 标准帧发送函数
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif

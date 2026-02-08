@@ -34,6 +34,7 @@
 #include "vofa.h"
 #include "McuDevicePort.h"
 #include "oled_iic_show.h"
+#include "foc_ctrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,7 +59,13 @@
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
+#ifdef __cplusplus
+extern "C"{
+#endif
 void SystemClock_Config(void);
+#ifdef __cplusplus
+}
+#endif
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -108,11 +115,12 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
+    McInit();
     CurrentSampInit();
 
     EncoderInit();
     MotorParaInit();
-    FocPwmStart(true, true, true, true, true, true);
+//    FocPwmStart(true, true, true, true, true, true);
     HAL_TIM_Base_Start_IT(&htim2);
     HAL_TIM_Base_Start_IT(&htim8);
 
@@ -122,8 +130,8 @@ int main(void)
     HAL_TIM_Base_Start_IT(&htim16);
     CanResourceInit();
     OLED_Init();  //OLED Init
-    OLED_ShowStr(0,0,"OLED-TEXT",1);
-    OLED_ShowStr(0,16,"OLED-TEXT",2);
+//    OLED_ShowStr(0,0,"OLED-TEXT",1);
+//    OLED_ShowStr(0,16,"OLED-TEXT",2);
     //    HAL_TIM_Base_Start(&htim1);
   /* USER CODE END 2 */
 

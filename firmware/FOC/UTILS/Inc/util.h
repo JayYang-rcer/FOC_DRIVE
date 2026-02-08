@@ -32,6 +32,10 @@
     theta = (theta > M_2PI) ? theta - M_2PI : theta; \
     theta = (theta < 0.0f) ? theta + M_2PI : theta; // Wrap theta to [0, 2pi)
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 float sat1_datf(float val, float up, float low);
 
 float fast_atan2(float y, float x);
@@ -63,5 +67,7 @@ uint16_t data_to_uint16(uint8_t *data);
 int16_t data_to_int16(uint8_t *data);
 
 float data_to_float(uint8_t *data);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

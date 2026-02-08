@@ -30,11 +30,14 @@ typedef struct MovingAverage_t {
     uint8_t index;
 } MovingAverage_t;
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 float PllSpeedCtrl(pll_t *pll, float angle);
-
 void LowPassFilter(float *data, lpf_t *lpf);
-
 void MoveAverageFilter(MovingAverage_t *filter, float *data);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
