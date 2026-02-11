@@ -32,13 +32,12 @@ public:
         volatile uint32_t const *addr_current_u_;
         volatile uint32_t const *addr_current_v_;
         volatile uint32_t const *addr_current_w_;
-        uint8_t                  adc_bits;
-        float                    adc_ref_volt; // the ref volt of adc
-        float                    resistance;   // power resistance
-        float                    gain;         // the gain of IOP
+        float                    adc_trans_volt_;
+        float                    resistance; // power resistance
+        float                    gain;       // the gain of IOP
     };
 
-    [[nodiscard]] bool               OffsetCalibrate();
+    [[nodiscard]] virtual bool       OffsetCalibrate();
     [[nodiscard]] const Vector2Df_t &GetAlphaBeta() const { return alpha_beta_; }
     [[nodiscard]] const Vector3S_t  &GetCurrents() const { return currents_; }
 
@@ -70,10 +69,28 @@ public:
     void Update(Sector sector_);
 };
 
-// class PhaseVoltSense : public PhaseSenseBase
-//{
-//
-// };
+class PhaseVoltSense
+{
+public:
+    struct SenseConfig {
+        volatile uint32_t const *addr_phase_u_;
+        volatile uint32_t const *addr_phase_v_;
+        volatile uint32_t const *addr_phase_w_;
+        float                    adc_trans_volt_;
+        float                    fcc_;
+    };
+    void Update()
+    {
+    }
+
+    bool OffsetCalibrate();
+
+    [[nodiscard]] const Vector3S_t &GetPhaseVolts() const { return volts; }
+
+private:
+    Vector3S_t volts{0};
+    Vector3S_t offset_{0};
+};
 
 class TempSense
 {
@@ -92,7 +109,7 @@ public:
         pwm_count_ = _pwm_cnt;
     }
 
-    [[nodiscard]] inline const Sector     &GetSvpwmSector() const { return sector_; }
+    [[nodiscard]] inline const Sector &GetSvpwmSector() const { return sector_; }
 
     /**
      * @brief:      Get the pwm out duty of Svpwm

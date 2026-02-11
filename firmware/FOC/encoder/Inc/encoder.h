@@ -4,9 +4,9 @@
 
 #ifndef DRIVE_CMAKE_ENCODER_H
 #define DRIVE_CMAKE_ENCODER_H
+#include "foc_cfg.h"
 #include "stdint-gcc.h"
 #include "util.h"
-#include "foc_cfg.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -54,6 +54,8 @@ protected:
     float offset_elect_;
 
     void EncoderDataProc(uint16_t raw_data);
+
+    virtual void ElectAngleWriting(float offset) { offset_elect_ = offset; }
 };
 
 class AbiEncoder : public AngleGetBase

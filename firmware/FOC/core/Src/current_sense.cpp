@@ -29,7 +29,7 @@ InlineCurrentSense::InlineCurrentSense(const InlineCurrentSense::SenseConfig &cf
     if (cfg.addr_current_u_ != nullptr &&
         cfg.addr_current_v_ != nullptr &&
         cfg.addr_current_w_ != nullptr) {
-        float adc_rate  = cfg.adc_ref_volt / (float)(1 << cfg.adc_bits);
+        float adc_rate  = cfg.adc_trans_volt_;
         fcc_            = adc_rate / cfg.resistance / cfg.gain;
         addr_current_u_ = cfg.addr_current_u_;
         addr_current_v_ = cfg.addr_current_v_;
@@ -50,13 +50,12 @@ void InlineCurrentSense::Update()
     }
 }
 
-LowsideCurrentSense::LowsideCurrentSense(const InlineCurrentSense::SenseConfig &cfg)
+LowsideCurrentSense::LowsideCurrentSense(const LowsideCurrentSense::SenseConfig &cfg)
 {
     if (cfg.addr_current_u_ != nullptr &&
         cfg.addr_current_v_ != nullptr &&
         cfg.addr_current_w_ != nullptr) {
-        float adc_rate  = cfg.adc_ref_volt / (float)(1 << cfg.adc_bits);
-        fcc_            = adc_rate / cfg.resistance / cfg.gain;
+        fcc_            = cfg.adc_trans_volt_ / cfg.resistance / cfg.gain;
         addr_current_u_ = cfg.addr_current_u_;
         addr_current_v_ = cfg.addr_current_v_;
         addr_current_w_ = cfg.addr_current_w_;
