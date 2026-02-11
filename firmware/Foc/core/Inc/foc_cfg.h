@@ -68,7 +68,7 @@ typedef struct {
     float      Gamma; // Non-linear observer gain
     float      Ts;    // Sampling period
     float      theta_e;
-    float      omega_e;
+    float       omega;
 } NonFlux_t;
 
 typedef struct {

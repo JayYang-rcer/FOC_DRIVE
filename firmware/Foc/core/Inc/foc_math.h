@@ -36,7 +36,7 @@ void    HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi);
 void    IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi);
 void    IdqToIdqH(FocParam_t *foc, HfiParam_t *hfi);
 bool    HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc);
-int16_t non_flux_observer(NonFlux_t *flux, FocParam_t *foc, MotorCfg_t *motor);
+int16_t non_flux_observer(void);
 /*********************************** hfi *******************************/
 #ifdef __cplusplus
 }

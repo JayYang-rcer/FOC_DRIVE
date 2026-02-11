@@ -37,41 +37,31 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类">
-      <change afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.5&#10;（1）增加了SVPWM类">
+      <change afterPath="$PROJECT_DIR$/FOC/encoder/Inc/encoder.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FOC/encoder/Src/encoder.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BSP/Inc/drive_can.h" beforeDir="false" afterPath="$PROJECT_DIR$/BSP/Inc/drive_can.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/filter.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/filter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/util.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/vofa.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/vofa.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/current_sense.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/current_sense.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOC/core/Src/current_sense.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/current_sense.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/driver_js.jscope" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver_js.jscope" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/encoder_proc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/encoder_proc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Inc/McuDevicePort.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/McuDevicePort.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Inc/key.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/key.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Inc/oled_iic_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/oled_iic_cfg.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Inc/oled_iic_show.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/oled_iic_show.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/as5047p.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/as5047p.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/calibration.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/calibration.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/encoder/Src/as5047p.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Src/as5047p.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-deb706174fac063a62f6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2026-02-08T17-13-24-0681.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-DRIVE_CMAKE.elf-RelWithDebInfo-5ce17b4a44edd76c3534.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/stm32g4xx_it.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/current_sense.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/current_sense.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_identify.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/calibration.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/filter.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic_show.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
@@ -79,7 +69,6 @@
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +201,7 @@
       <recent name="F:\FOC_DRIVE\firmware\BSP\Src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\FOC_DRIVE\firmware\Foc\encoder\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Foc\core\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Mine\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Mine\Src" />
@@ -224,6 +214,11 @@
       </method>
     </configuration>
     <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -389,7 +384,8 @@
       <workItem from="1770034810929" duration="8513000" />
       <workItem from="1770129786938" duration="28113000" />
       <workItem from="1770570703160" duration="512000" />
-      <workItem from="1770572993845" duration="3000" />
+      <workItem from="1770572993845" duration="1139000" />
+      <workItem from="1770650526695" duration="19992000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -551,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770300430166</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="26.2.5&#10;（1）增加了SVPWM类">
+      <option name="closed" value="true" />
+      <created>1770573304007</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1770573304007</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +615,8 @@
     <MESSAGE value="26.2.2&#10;(1)将高频注入的PI参数独立出来&#10;(2)增加了非线性磁链速度环的速度滤波，10000目标值，稳态在9650rpm左右" />
     <MESSAGE value="26.2.4&#10;（1）初步增加了电流基类" />
     <MESSAGE value="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类" />
-    <option name="LAST_COMMIT_MESSAGE" value="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类" />
+    <MESSAGE value="26.2.5&#10;（1）增加了SVPWM类" />
+    <option name="LAST_COMMIT_MESSAGE" value="26.2.5&#10;（1）增加了SVPWM类" />
     <option name="LAST_CHUNK_COMMIT_MESSAGE" value="26.1.15&#10;1.更改了ADC的采样时钟频率&#10;2.更改高频注入的方式，有原先的高频脉振-1 +1 变化改为+1 -&gt; 0 -&gt; -1 -&gt; 0。角度计算函数改为正负电流都采集完毕后才计算。&#10;3.更改了注入函数，和高频sign符号更改的地方&#10;4.目前角度是能解算出来，但是貌似急性不对，给Vq总是反转。还有待解决" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

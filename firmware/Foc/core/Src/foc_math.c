@@ -291,7 +291,7 @@ float HfiPllAngle(pll_t *pll, HfiParam_t *hfi)
     pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); // 积分限幅
 
     pll->out_value = pll->p_term + pll->i_term;
-    //    hfi->omega_e = butterworth_lpf(pll->out_value * 1.3648f);
+    //    hfi->omega = butterworth_lpf(pll->out_value * 1.3648f);
 
     pll->angle_out += pll->out_value / pll->loop_hz;
     LowPassFilter(&pll->out_value, &lpf_hfi);
@@ -434,10 +434,12 @@ static inline float Angle_Atan2_0To2Pi(float y, float x)
     return angle; // [0, 2π)
 }
 
-float   DEBUG_eta, DEBUG_etb;
-float   DEBUG_theta_e;
-int16_t non_flux_observer(NonFlux_t *flux, FocParam_t *foc, MotorCfg_t *motor)
+int16_t non_flux_observer(void)
 {
+    MotorCfg_t *motor = &motor_cfg;
+    FocParam_t *foc = &foc_param;
+    NonFlux_t *flux = &nonFlux;
+
     flux->Vs.s.alpha = foc->vab.s.alpha;
     flux->Vs.s.beta  = foc->vab.s.beta;
     flux->Is.s.alpha = foc->iab.s.alpha;
@@ -457,9 +459,6 @@ int16_t non_flux_observer(NonFlux_t *flux, FocParam_t *foc, MotorCfg_t *motor)
     float eta_b = flux->state.s.beta - LI_b;
 
     float eta_sq = Phi * Phi - eta_a * eta_a - eta_b * eta_b;
-    //    float eta_sq = Phi*Phi - eta_a*eta_a - eta_b*eta_b;
-    //    if (eta_sq < 0.01f * Phi*Phi) eta_sq = 0.01f * Phi*Phi;  // 防止反向
-
     float gamma2 = flux->Gamma * 0.5f;
 
     flux->state.s.alpha += Ts * (Vy + gamma2 * eta_a * eta_sq);
@@ -474,10 +473,7 @@ int16_t non_flux_observer(NonFlux_t *flux, FocParam_t *foc, MotorCfg_t *motor)
     float x_theta = eta_b * cos_f32(theta) - eta_a * sin_f32(theta);
 
     flux->theta_e = FluxPllAngle(&pll_flux, x_theta / Phi);
-    flux->omega_e = pll_flux.out_value / 7.f / M_2PI * 60.f;
-    //    flux->theta_e = Angle_Atan2_0To2Pi(eta_b, eta_a);
-    DEBUG_theta_e = Angle_Atan2_0To2Pi(eta_b, eta_a);
-    DEBUG_eta     = eta_a * 1000.f;
-    DEBUG_etb     = eta_b * 1000.f;
+    flux->omega   = pll_flux.out_value / motor->pn * RADS_TO_RPM;
+
     return 0;
 }

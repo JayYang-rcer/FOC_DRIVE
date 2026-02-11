@@ -65,6 +65,6 @@ _RAM_FUNC uint16_t As5047pRead(uint16_t addr) {
     if ((data >> 15) == ParityBitCalculate(data & 0x7FFF)) {
         return (data & 0x3FFF);
     } else {
-        return 0;
+        return 0xFFFF;
     }
 }

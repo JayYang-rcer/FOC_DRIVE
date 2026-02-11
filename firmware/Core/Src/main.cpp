@@ -115,7 +115,6 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
-    McInit();
     CurrentSampInit();
 
     EncoderInit();

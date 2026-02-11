@@ -13,9 +13,9 @@ void FocVolt(float vd_ref, float vq_ref, float pos);
 void Encoder_Idle(void);
 void FocHandle(void);
 void FocCurrent(float id_set, float iq_set, float pos);
-void McInit(void);
 
 #ifdef __cplusplus
 }
 #endif
+
 #endif

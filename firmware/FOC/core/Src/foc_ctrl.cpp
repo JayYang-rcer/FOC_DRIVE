@@ -1,7 +1,9 @@
 #include "foc_ctrl.h"
+#include "as5047p.h"
 #include "calibration.h"
 #include "current_sense.h"
 #include "drive_can.h"
+#include "encoder.h"
 #include "encoder_proc.h"
 #include "filter.h"
 #include "foc_cfg.h"
@@ -21,28 +23,38 @@
 #define SENSERLESS_MIN_SPEED 500
 #define SENSERLESS_MAX_SPEED 10000
 #define USE_SLAVE_MODE       1
+// #define USE_CURRENTLOOP_FEEDBACK
 
 float           speed_buffer[SPEED_WINDOW_SIZE] = {0}; // 存储窗口内的数据
 MovingAverage_t speed_maf                       = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
 
-InlineCurrentSense current_sense;
-Svpwm svm(16.0f,4250);
+InlineCurrentSense::SenseConfig sense_cfg = {
+    .addr_current_u_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR1),
+    .addr_current_v_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR2),
+    .addr_current_w_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR3),
+    .adc_bits        = 12,
+    .adc_ref_volt    = 3.3f,
+    .resistance      = 0.001f,
+    .gain            = 20.0f,
+};
+
+InlineCurrentSense current_sense(sense_cfg);
+Svpwm              svm(16.0f, 4250);
+AbiEncoder::Config abi_cfg = {
+    .cpr        = 4000,
+    .pole_pairs = 7,
+};
+AbiEncoder abiEncoder(abi_cfg);
+
+As5407Encoder::Config as5047_cfg = {
+    .cpr                     = 16384,
+    .pole_pairs              = 7,
+    .As5047RawDataGettingFun = As5047pRead};
+As5407Encoder as5047p(as5047_cfg);
 
 lpf_t lpf_iq    = {.in_last = 0.0f, .trust = 0.1f}; // iq低通滤波器
 lpf_t lpf_id    = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
 lpf_t lpf_speed = {.in_last = 0.0f, .trust = 0.05f};
-
-void McInit(void)
-{
-    current_sense.InitTypedef.addr_current_u_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR1);
-    current_sense.InitTypedef.addr_current_v_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR2);
-    current_sense.InitTypedef.addr_current_w_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR3);
-    current_sense.InitTypedef.adc_ref_volt    = 3.3f;
-    current_sense.InitTypedef.gain            = 20.0f;
-    current_sense.InitTypedef.resistance      = 0.001f;
-    current_sense.InitTypedef.adc_bits        = 12;
-    current_sense.Init();
-}
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -71,6 +83,7 @@ _RAM_FUNC void FocIFVolt(float id_ref, float pos)
     SvpwmSector(&foc_param);
 }
 
+#ifdef USE_CURRENTLOOP_FEEDBACK
 float IqPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 {
     static float uq0;
@@ -115,6 +128,7 @@ float IdPidCtrl(pid_para_t *pid, float target_value, float fdback_value)
 
     return pid->out_value;
 }
+#endif
 
 _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
 {
@@ -122,15 +136,18 @@ _RAM_FUNC void FocCurrent(float id_set, float iq_set, float pos)
     SinCosVal(&foc_param);
     Park(&foc_param);
 
-    //    LowPassFilter(&foc_param.i_d, &lpf_id);
-    //    LowPassFilter(&foc_param.i_q, &lpf_iq);
+#ifdef USE_CURRENTLOOP_FEEDBACK
+    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
+    foc_param.vdq.r.d = id_pi.out_value;
+
+    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
+    foc_param.vdq.r.q = iq_pi.out_value;
+#endif
 
     SerialPidCtrl(&id_pi, id_set, foc_param.idq.r.d);
-    //    IdPidCtrl(&id_pid, id_set, foc_param.i_d);
     foc_param.vdq.r.d = id_pi.out_value;
 
     SerialPidCtrl(&iq_pi, iq_set, foc_param.idq.r.q);
-    //    IqPidCtrl(&iq_pid, iq_set, foc_param.i_q);
     foc_param.vdq.r.q = iq_pi.out_value;
 
     InvPark(&foc_param);
@@ -186,22 +203,11 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
 
 volatile float vbus;
 
-void CurrentUpdate(FocAdcValue_t *adc, FocParam_t *foc)
+void AnalogSampleUpdate(FocAdcValue_t *adc, FocParam_t *foc)
 {
-    adc->current_raw.fU = ADC1->JDR1;
-    adc->current_raw.fV = ADC1->JDR2;
-    adc->current_raw.fW = ADC1->JDR3;
-    adc->vbus           = ADC2->JDR1;
-
+    adc->vbus = ADC2->JDR1;
     vbus      = ((float)adc->vbus) * VBUS_RATIO;
     foc->vbus = ((float)adc->vbus) * VBUS_RATIO;
-}
-
-_RAM_FUNC void CurrentRefactor(FocAdcValue_t *adc, FocParam_t *foc)
-{
-    foc->current.fU = (adc->current_raw.fU - adc->offset.fU) * IRATIO;
-    foc->current.fV = (adc->current_raw.fV - adc->offset.fV) * IRATIO;
-    foc->current.fW = (adc->current_raw.fW - adc->offset.fW) * IRATIO;
 }
 
 volatile float smo_angle;
@@ -330,8 +336,8 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                 RefSlope = ctrl->speed_set;
             }
 
-            LowPassFilter(&nonFlux.omega_e, &lpf_speed);
-            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega_e);
+            LowPassFilter(&nonFlux.omega, &lpf_speed);
+            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
             motor_cfg.RefSlope = RefSlope;
             ctrl->spd_cnt      = 0;
         }
@@ -382,7 +388,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                     motor_ctrl.pos_cnt = 0;
                 }
                 IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfi_param.omega_e * 60.f / M_2PI / 7.f);
-                //       IncreatParallePidCtrl(&HfiSpeed_pid, pos_pid.out_value, hfi_param.omega_e);
+                //       IncreatParallePidCtrl(&HfiSpeed_pid, pos_pid.out_value, hfi_param.omega);
                 motor_ctrl.spd_cnt = 0;
             }
             // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
@@ -393,10 +399,19 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
         }
         break;
     }
+    default:
+        ctrl->id_set    = 0.0f;
+        ctrl->iq_set    = 0.0f;
+        ctrl->vd_set    = 0.0f;
+        ctrl->vq_set    = 0.0f;
+        ctrl->speed_set = 0.0f;
+        ctrl->pos_set   = 0.0f;
+        FocVolt(ctrl->vd_set, ctrl->vq_set, foc->theta);
+        break;
     }
 }
 
-Vector3D_t debug_duty;
+Vector3D_t      debug_duty;
 extern uint16_t can_recieveFlag;
 _RAM_FUNC void  FocHandle(void)
 {
@@ -404,11 +419,12 @@ _RAM_FUNC void  FocHandle(void)
     //    {
     //        motor_ctrl.speed_set = 0;
     //    }
-    CurrentUpdate(&mc_adc, &foc_param);
+    AnalogSampleUpdate(&mc_adc, &foc_param);
+#if (USE_SENSERLESS == 0)
     PosCalculate(&enc_para);
-    CurrentRefactor(&mc_adc, &foc_param);
+#endif
     Clarke(&foc_param);
-    non_flux_observer(&nonFlux, &foc_param, &motor_cfg);
+    non_flux_observer();
     foc_param.vbus = 4.0f * BATTERY_CELL;
 
 #if USE_POS_PID
@@ -420,30 +436,29 @@ _RAM_FUNC void  FocHandle(void)
 #else
     MotorCtrl(&motor_ctrl, &foc_param);
     // calibrate_mt_encoder(1.0f,0);
-    FocPwmRun(&foc_param);
-//    debug_duty = svm.GetSvpwmDuty(foc_param.vab);
-//    SET_DTC_A((uint16_t)(debug_duty.uhU));
-//    SET_DTC_B((uint16_t)(debug_duty.uhV));
-//    SET_DTC_C((uint16_t)(debug_duty.uhW));
+    Vector3D_t pwm = svm.GetSvpwmDuty(foc_param.vab);
+    SET_DTC_A((uint16_t)pwm.uhU);
+    SET_DTC_B((uint16_t)pwm.uhV);
+    SET_DTC_C((uint16_t)pwm.uhW);
 #endif
 }
 
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
     if (hadc->Instance == ADC1) {
-        if (motor_ctrl.foc_init)
-            FocHandle();
         static bool off_init = false, pwm_start = false;
         if (!off_init)
             off_init = current_sense.OffsetCalibrate();
-        else
-        {
-            if(!pwm_start)
-            {
+        else {
+            if (!pwm_start) {
                 FocPwmStart(true, true, true, true, true, true);
                 pwm_start = true;
             }
+            // as5047p.Update();
             current_sense.Update();
+            foc_param.current = current_sense.GetCurrents();
+            if (motor_ctrl.foc_init)
+                FocHandle();
         }
     }
 }

@@ -41,7 +41,9 @@ typedef struct enc_para_t {
 } enc_para_t;
 
 extern enc_para_t enc_para;
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 uint16_t ParityBitCalculate(uint16_t data);
 
 uint16_t SpiReadWriteOneByte(uint16_t addr);
@@ -49,5 +51,7 @@ uint16_t SpiReadWriteOneByte(uint16_t addr);
 uint16_t As5047pRead(uint16_t addr);
 
 void SpeedMeasure(enc_para_t *enc, MotorCfg_t *motor);
-
+#ifdef __cplusplus
+}
+#endif
 #endif
