@@ -3,9 +3,6 @@
 #include "tim.h"
 #include "util.h"
 
-#define Dead_Time         0
-#define PWM_ARR()         __HAL_TIM_GET_AUTORELOAD(&htim8)
-
 #define CURRENT_LOOP_RATE 20000.0f // 电流环频率
 
 FocAdcValue_t mc_adc;
@@ -152,24 +149,6 @@ void CurrentSampInit(void)
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 3999);
     HAL_ADCEx_InjectedStart_IT(&hadc1);
     __HAL_ADC_ENABLE_IT(&hadc1, ADC_IT_JEOC);
-    motor_ctrl.foc_init = GetCurrentOffset(&mc_adc);
-}
-
-bool GetCurrentOffset(FocAdcValue_t *adc)
-{
-    float sum_iu = 0, sum_iv = 0, sum_iw = 0;
-    for (int i = 0; i < 1000; i++) {
-        HAL_Delay(1);
-        sum_iu += (float)(ADC1->JDR1);
-        sum_iv += (float)(ADC1->JDR2);
-        sum_iw += (float)(ADC1->JDR3);
-    }
-
-    adc->offset.fU = sum_iu / 1000.0f;
-    adc->offset.fV = sum_iv / 1000.0f;
-    adc->offset.fW = sum_iw / 1000.0f;
-
-    return true;
 }
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN)
@@ -216,11 +195,4 @@ void MotorCtrlReset(MotorCtrl_t *motor)
     motor->speed_set = 0;
     motor->pos_set   = 0;
     motor->epos_acc  = 0;
-}
-
-_RAM_FUNC void FocPwmRun(FocParam_t *foc)
-{
-    SET_DTC_A((uint16_t)(foc->dtc_a * PWM_ARR() + Dead_Time));
-    SET_DTC_B((uint16_t)(foc->dtc_b * PWM_ARR() + Dead_Time));
-    SET_DTC_C((uint16_t)(foc->dtc_c * PWM_ARR() + Dead_Time));
 }

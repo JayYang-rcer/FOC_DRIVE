@@ -37,38 +37,27 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.5&#10;（1）增加了SVPWM类">
-      <change afterPath="$PROJECT_DIR$/FOC/encoder/Inc/encoder.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FOC/encoder/Src/encoder.cpp" afterDir="false" />
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.2.12&#10;补充提交">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONFIG/driver_js.jscope" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver_js.jscope" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/current_sense.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/current_sense.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_math.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_cfg.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_cfg.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Src/foc_math.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/as5047p.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/as5047p.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/encoder/Inc/calibration.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Inc/calibration.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foc/encoder/Src/as5047p.c" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/encoder/Src/as5047p.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-deb706174fac063a62f6.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2026-02-08T17-13-24-0681.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-DRIVE_CMAKE.elf-RelWithDebInfo-5ce17b4a44edd76c3534.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +374,7 @@
       <workItem from="1770129786938" duration="28113000" />
       <workItem from="1770570703160" duration="512000" />
       <workItem from="1770572993845" duration="1139000" />
-      <workItem from="1770650526695" duration="19992000" />
+      <workItem from="1770650526695" duration="23378000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -555,7 +544,23 @@
       <option name="project" value="LOCAL" />
       <updated>1770573304007</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="26.2.12&#10;(1)增加了编码器类,包含了ABI和AS5047P,但是还没彻底完善,可以简单进行读值操作&#10;(2)使用电流采样类和SVPWM类对原有结构进行部分替换,删减了foc_ctrl中一些没用的东西">
+      <option name="closed" value="true" />
+      <created>1770827006591</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1770827006591</updated>
+    </task>
+    <task id="LOCAL-00023" summary="26.2.12&#10;补充提交">
+      <option name="closed" value="true" />
+      <created>1770827043468</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1770827043468</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +621,9 @@
     <MESSAGE value="26.2.4&#10;（1）初步增加了电流基类" />
     <MESSAGE value="26.2.5&#10;（1）增加了电流采样的基类和在线采样类、低侧三电阻采样类" />
     <MESSAGE value="26.2.5&#10;（1）增加了SVPWM类" />
-    <option name="LAST_COMMIT_MESSAGE" value="26.2.5&#10;（1）增加了SVPWM类" />
+    <MESSAGE value="26.2.12&#10;(1)增加了编码器类,包含了ABI和AS5047P,但是还没彻底完善,可以简单进行读值操作&#10;(2)使用电流采样类和SVPWM类对原有结构进行部分替换,删减了foc_ctrl中一些没用的东西" />
+    <MESSAGE value="26.2.12&#10;补充提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="26.2.12&#10;补充提交" />
     <option name="LAST_CHUNK_COMMIT_MESSAGE" value="26.1.15&#10;1.更改了ADC的采样时钟频率&#10;2.更改高频注入的方式，有原先的高频脉振-1 +1 变化改为+1 -&gt; 0 -&gt; -1 -&gt; 0。角度计算函数改为正负电流都采集完毕后才计算。&#10;3.更改了注入函数，和高频sign符号更改的地方&#10;4.目前角度是能解算出来，但是貌似急性不对，给Vq总是反转。还有待解决" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

@@ -34,132 +34,6 @@ _RAM_FUNC void InvClarke(FocParam_t *foc)
     foc->vphase.fW = -0.5f * foc->vab.s.alpha - SQRT3_BY_2 * foc->vab.s.beta;
 }
 
-/**
- * @brief:      svpwm_sector(foc_para_t *foc_param)
- * @param[in]:  foc  FOC参数结构体指针
- * @retval:     void
- * @details:    SVPWM扇区判断
- */
-_RAM_FUNC int SvpwmSector(FocParam_t *foc)
-{
-    /* Clarke */
-    float U1 = foc->vab.s.beta;
-    float U2 = (SQRT3 * foc->vab.s.alpha - foc->vab.s.beta) * 0.5f;
-    float U3 = -(SQRT3 * foc->vab.s.alpha + foc->vab.s.beta) * 0.5f;
-
-    uint8_t A, B, C;
-    uint8_t N;
-    int     sector = 0;
-
-    /* sector */
-    // clang-format off
-    A = (U1 > 0.0f);
-    B = (U2 > 0.0f);
-    C = (U3 > 0.0f);
-
-    N = (A) | (B << 1) | (C << 2);
-
-    switch (N) {
-        case 1: sector = 2; break;
-        case 2: sector = 6; break;
-        case 3: sector = 1; break;
-        case 4: sector = 4; break;
-        case 5: sector = 3; break;
-        case 6: sector = 5; break;
-        default: sector = 0; break;
-    }
-    // clang-format on
-
-    foc->sector = sector;
-
-    float Tn = 1.0f;
-    float k  = (Tn * SQRT3) / foc->vbus;
-    float T1, T2;
-    switch (sector) {
-    case 1:
-        T1 = U2 * k;
-        T2 = U1 * k;
-        break;
-    case 2:
-        T1 = -U2 * k;
-        T2 = -U3 * k;
-        break;
-    case 3:
-        T1 = U1 * k;
-        T2 = U3 * k;
-        break;
-    case 4:
-        T1 = -U1 * k;
-        T2 = -U2 * k;
-        break;
-    case 5:
-        T1 = U3 * k;
-        T2 = U2 * k;
-        break;
-    case 6:
-        T1 = -U3 * k;
-        T2 = -U1 * k;
-        break;
-    default:
-        foc->dtc_a = foc->dtc_b = foc->dtc_c = 0.5f;
-        return -1;
-    }
-
-    /* Overmodulation clamp */
-    float S = T1 + T2;
-    if (S > Tn) {
-        T1 = T1 / S * Tn;
-        T2 = T2 / S * Tn;
-    }
-
-    float T0 = (Tn - T1 - T2) * 0.5f;
-    float Ta = T0 + T1 + T2;
-    float Tb = T0 + T2;
-    float Tc = T0;
-
-    switch (sector) {
-    case 1:
-        foc->dtc_a = Ta;
-        foc->dtc_b = Tb;
-        foc->dtc_c = Tc;
-        break;
-    case 2:
-        foc->dtc_a = Tb;
-        foc->dtc_b = Ta;
-        foc->dtc_c = Tc;
-        break;
-    case 3:
-        foc->dtc_a = Tc;
-        foc->dtc_b = Ta;
-        foc->dtc_c = Tb;
-        break;
-    case 4:
-        foc->dtc_a = Tc;
-        foc->dtc_b = Tb;
-        foc->dtc_c = Ta;
-        break;
-    case 5:
-        foc->dtc_a = Tb;
-        foc->dtc_b = Tc;
-        foc->dtc_c = Ta;
-        break;
-    case 6:
-        foc->dtc_a = Ta;
-        foc->dtc_b = Tc;
-        foc->dtc_c = Tb;
-        break;
-    }
-
-    if (foc->dtc_a < 0 || foc->dtc_a > 1)
-        return -1;
-    if (foc->dtc_b < 0 || foc->dtc_b > 1)
-        return -1;
-    if (foc->dtc_c < 0 || foc->dtc_c > 1)
-        return -1;
-
-    return 0;
-}
-
 #define RC 1.f / (M_2PI * 50)
 #define DT 1.f / 10000
 float alpha;
@@ -437,8 +311,8 @@ static inline float Angle_Atan2_0To2Pi(float y, float x)
 int16_t non_flux_observer(void)
 {
     MotorCfg_t *motor = &motor_cfg;
-    FocParam_t *foc = &foc_param;
-    NonFlux_t *flux = &nonFlux;
+    FocParam_t *foc   = &foc_param;
+    NonFlux_t  *flux  = &nonFlux;
 
     flux->Vs.s.alpha = foc->vab.s.alpha;
     flux->Vs.s.beta  = foc->vab.s.beta;

@@ -128,11 +128,8 @@ typedef struct {
 
 typedef struct foc_param_t {
     float  vbus;
-    float  inv_vbus; // 母线电压倒数
 
-    float ibus;
-    float i_abs;
-
+    float i_bus;
     float theta;   // 角度
     float sin_val; // 此角度对应的正弦值
     float cos_val; // 此角度对应的余弦值
@@ -146,7 +143,6 @@ typedef struct foc_param_t {
     Vector2Df_t iab;
     Vector2Df_t vab;
 
-    int8_t sector;
     float dtc_a; // A 相 PWM 占空比
     float dtc_b; // B 相 PWM 占空比
     float dtc_c; // C 相 PWM 占空比
@@ -199,18 +195,11 @@ extern HfiParam_t hfi_param;
 #ifdef __cplusplus
 extern "C"{
 #endif
-bool GetCurrentOffset(FocAdcValue_t *mc_adc);
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
-
 void FocPwmStop(void);
-
-void FocPwmRun(FocParam_t *foc);
-
 void MotorParaInit(void);
-
 void CurrentSampInit(void);
-
 void MotorCtrlReset(MotorCtrl_t *motor);
 #ifdef __cplusplus
 }

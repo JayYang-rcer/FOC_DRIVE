@@ -1,8 +1,8 @@
 #ifndef __FOC_CTRL_H
 #define __FOC_CTRL_H
-
 #include "adc.h"
 #include "foc_cfg.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
