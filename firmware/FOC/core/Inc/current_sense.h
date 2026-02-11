@@ -25,25 +25,22 @@ enum class Sector : uint8_t {
     Invalid
 };
 
-typedef struct {
-    volatile uint32_t const *addr_current_u_;
-    volatile uint32_t const *addr_current_v_;
-    volatile uint32_t const *addr_current_w_;
-    uint8_t                  adc_bits;
-    float                    adc_ref_volt;
-    float                    resistance;
-    float                    gain;
-} InitTypedef_t;
-
 class PhaseSenseBase
 {
 public:
+    struct SenseConfig {
+        volatile uint32_t const *addr_current_u_;
+        volatile uint32_t const *addr_current_v_;
+        volatile uint32_t const *addr_current_w_;
+        uint8_t                  adc_bits;
+        float                    adc_ref_volt; // the ref volt of adc
+        float                    resistance;   // power resistance
+        float                    gain;         // the gain of IOP
+    };
+
     [[nodiscard]] bool               OffsetCalibrate();
-    bool                             Init();
     [[nodiscard]] const Vector2Df_t &GetAlphaBeta() const { return alpha_beta_; }
     [[nodiscard]] const Vector3S_t  &GetCurrents() const { return currents_; }
-
-    InitTypedef_t InitTypedef;
 
 protected:
     Vector2Df_t alpha_beta_{0};
@@ -55,33 +52,35 @@ protected:
     volatile uint32_t const *addr_current_w_{nullptr};
     float                    fcc_   = 0.0f;
     uint16_t                 count_ = 0;
+    bool                     offset_init_{false};
+    bool                     resource_init_{false};
 };
 
 class InlineCurrentSense : public PhaseSenseBase
 {
 public:
+    InlineCurrentSense(const SenseConfig &cfg);
     void Update();
 };
 
 class LowsideCurrentSense : public PhaseSenseBase
 {
 public:
+    LowsideCurrentSense(const SenseConfig &cfg);
     void Update(Sector sector_);
 };
 
-//class PhaseVoltSense : public PhaseSenseBase
+// class PhaseVoltSense : public PhaseSenseBase
 //{
 //
-//};
+// };
 
 class TempSense
 {
-
 };
 
 class VoltBusSense
 {
-
 };
 
 class Svpwm
@@ -89,18 +88,23 @@ class Svpwm
 public:
     [[maybe_unused]] explicit Svpwm(float _volt_vbus, float _pwm_cnt)
     {
-        volt_bus_ = _volt_vbus;
-        tn_       = _pwm_cnt;
+        volt_bus_  = _volt_vbus;
+        pwm_count_ = _pwm_cnt;
     }
 
     [[nodiscard]] inline const Sector     &GetSvpwmSector() const { return sector_; }
+
+    /**
+     * @brief:      Get the pwm out duty of Svpwm
+     * @param[in]:  alpha_beta  the result of InvPark transform witch is the volt of alpha-beta asix
+     */
     [[nodiscard]] inline const Vector3D_t &GetSvpwmDuty(Vector2Df_t alpha_beta)
     {
         /* Clarke */
-        float U1 = alpha_beta.s.beta;
-        float U2 = (SQRT3 * alpha_beta.s.alpha - alpha_beta.s.beta) * 0.5f;
-        float U3 = -(SQRT3 * alpha_beta.s.alpha + alpha_beta.s.beta) * 0.5f;
-
+        float   U1 = alpha_beta.s.beta;
+        float   U2 = (SQRT3 * alpha_beta.s.alpha - alpha_beta.s.beta) * 0.5f;
+        float   U3 = -(SQRT3 * alpha_beta.s.alpha + alpha_beta.s.beta) * 0.5f;
+        float   k  = (pwm_count_ * SQRT3) / volt_bus_;
         uint8_t A, B, C;
         uint8_t N;
 
@@ -123,8 +127,7 @@ public:
         }
         // clang-format on
 
-        float k = (tn_ * SQRT3) / volt_bus_;
-        float T1, T2;
+        float T1 = 0.0f, T2 = 0.0f;
         switch (sector_) {
         case Sector::S1:
             T1 = U2 * k;
@@ -151,19 +154,19 @@ public:
             T2 = -U1 * k;
             break;
         default:
-            duty_.uhU = duty_.uhV = duty_.uhW = 0.5f * tn_;
+            duty_.uhU = duty_.uhV = duty_.uhW = 0.5f * pwm_count_;
             return duty_;
             break;
         }
 
         /* Overmodulation clamp */
         float S = T1 + T2;
-        if (S > tn_) {
-            T1 = T1 / S * tn_;
-            T2 = T2 / S * tn_;
+        if (S > pwm_count_) {
+            T1 = T1 / S * pwm_count_;
+            T2 = T2 / S * pwm_count_;
         }
 
-        float T0 = (tn_ - T1 - T2) * 0.5f;
+        float T0 = (pwm_count_ - T1 - T2) * 0.5f;
         float Ta = T0 + T1 + T2;
         float Tb = T0 + T2;
         float Tc = T0;
@@ -203,8 +206,8 @@ public:
             break;
         }
 
-        if (duty_.uhU > tn_ || duty_.uhV > tn_ || duty_.uhW > tn_) {
-            duty_.uhU = duty_.uhV = duty_.uhW = 0.5f * tn_;
+        if (duty_.uhU > pwm_count_ || duty_.uhV > pwm_count_ || duty_.uhW > pwm_count_) {
+            duty_.uhU = duty_.uhV = duty_.uhW = 0.5f * pwm_count_;
             return duty_;
         }
         return duty_;
@@ -216,7 +219,7 @@ private:
     Sector     sector_;
     Vector3D_t duty_{};
     float      volt_bus_;
-    float      tn_ = 0;
+    float      pwm_count_ = 0;
 };
 
 #endif // DRIVE_CMAKE_CURRENT_SENSE_H
