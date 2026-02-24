@@ -103,6 +103,16 @@ typedef struct {
     float delta; // 阻尼系数
 } MotorCfg_t;
 
+typedef struct
+{
+    float rs;    // 相电阻
+    float ls;    // 相电感
+    float flux;  // 磁链
+    float jx;    // 转动惯量
+    float pn;    // 极对数
+    float delta; // 阻尼系数
+}MotorParam_t;
+
 typedef struct {
     bool  foc_init;
     float epos_acc;  // 电角加速度

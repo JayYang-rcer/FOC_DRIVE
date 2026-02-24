@@ -9,11 +9,6 @@ float AbsLimit(float a, float abs_max) {
     return a;
 }
 
-
-float IpCtrl() {
-    return 0;
-}
-
 float IncreatParallePidCtrl(pid_para_t *pid, float target_value, float fdback_value) {
 
     pid->target_value = target_value;

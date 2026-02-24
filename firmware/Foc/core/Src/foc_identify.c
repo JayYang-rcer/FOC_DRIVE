@@ -20,7 +20,7 @@ bool FocIdentifyRes(foc_identify_t *identify, FocParam_t *foc, float Is) {
     switch (identify->ident_status_res) {
         case IDENT_SET: {
             FocPwmStart(true, true, true, true, false, false);
-            LowPassFilter(&foc->current.fU, &identify_lpf_Is); // 低通滤波处理
+            LowPassFilterHandle(&foc->current.fU, &identify_lpf_Is); // 低通滤波处理
             if (foc->current.fU > Is) {
                 identify->ident_status_res = IDENT_GET;
             } else {
@@ -36,7 +36,7 @@ bool FocIdentifyRes(foc_identify_t *identify, FocParam_t *foc, float Is) {
             static int cnt = 0;
             if (++cnt < 20000) //等待2000次采样
             {
-                LowPassFilter(&foc->current.fU, &identify_lpf_Is); // 低通滤波处理
+                LowPassFilterHandle(&foc->current.fU, &identify_lpf_Is); // 低通滤波处理
                 Is_sum += fabsf(foc->current.fU); // 累加电流值
             } else {
                 identify->ident_status_res = IDENT_SUCCESS;

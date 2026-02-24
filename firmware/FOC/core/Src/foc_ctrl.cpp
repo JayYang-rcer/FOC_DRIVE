@@ -6,12 +6,11 @@
 #include "encoder.h"
 #include "encoder_proc.h"
 #include "filter.h"
+#include "filters.h"
 #include "foc_cfg.h"
 #include "foc_math.h"
+#include "obersver.h"
 #include "tim.h"
-
-#define SPEED_WINDOW_SIZE    16 // 窗口大小
-#define CURRENT_WINDOW_SIZE  4  // 窗口大小
 
 #define USE_SPD_PLL          1 // 使用PLL速度估算
 #define USE_SPD_DET          0 // 使用微分速度检测
@@ -23,36 +22,63 @@
 #define USE_SLAVE_MODE       0
 // #define USE_CURRENTLOOP_FEEDBACK
 
-float           speed_buffer[SPEED_WINDOW_SIZE] = {0}; // 存储窗口内的数据
-MovingAverage_t speed_maf                       = {.buffer = speed_buffer, .size = SPEED_WINDOW_SIZE, .index = 0};
+struct AppConfig {
+    MotorParam_t motor = {
+        .rs   = 37.5333f, // mOhm
+        .ls   = 6.3f,     // uH
+        .flux = 1.221f,   // mWb
+        .jx   = 0.0001f,
+        .pn   = 7,
+    };
+    PIController::Config pll_observer = {
+        .kp           = 1000,
+        .ki           = 180000,
+        .output_max   = 11000,
+        .integral_max = 10000,
+        .dt           = 1 / 20000.f, // 20khz
+    };
+    SpeedPLLMonitor::Config spd_monitor{
+        .kp           = 10800.f / 60.f * M_2PI * 0.707f * 2.f,
+        .ki           = (10800.f / 60.f * M_2PI) * (10800.f / 60.f * M_2PI),
+        .output_max   = 12000,
+        .integral_max = 10000,
+        .dt           = 1 / 10000.0f,
+    };
+    InlineCurrentSense::SenseConfig current_sense = {
+        .addr_current_u_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR1),
+        .addr_current_v_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR2),
+        .addr_current_w_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR3),
+        .adc_trans_volt_ = 3.3f / 4096.0f,
+        .resistance      = 0.001f,
+        .gain            = 20.0f,
+    };
+    AbiEncoder::Config abi_encoder = {
+        .cpr        = 4000,
+        .pole_pairs = 7,
+        .tim_handle = TIM1,
+    };
+    As5407Encoder::Config as5047_cfg = {
+        .cpr                     = 16384,
+        .pole_pairs              = 7,
+        .As5047RawDataGettingFun = As5047pRead};
+    IncrementalPid::Config pid_spdCfg = {
+        .kp        = 0.002f,
+        .ki        = 0.003f,
+        .kd        = 0.0f,
+        .out_limit = 15.f,
+        .dt        = 1 / 2000.0f,
+    };
+} app_config;
 
-Svpwm svm(16.0f, 4250);
-
-InlineCurrentSense::SenseConfig sense_cfg = {
-    .addr_current_u_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR1),
-    .addr_current_v_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR2),
-    .addr_current_w_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR3),
-    .adc_trans_volt_ = 3.3f / 4096.0f,
-    .resistance      = 0.001f,
-    .gain            = 20.0f,
-};
-InlineCurrentSense current_sense(sense_cfg);
-
-AbiEncoder::Config abi_cfg = {
-    .cpr        = 4000,
-    .pole_pairs = 7,
-};
-AbiEncoder abiEncoder(abi_cfg);
-
-As5407Encoder::Config as5047_cfg = {
-    .cpr                     = 16384,
-    .pole_pairs              = 7,
-    .As5047RawDataGettingFun = As5047pRead};
-As5407Encoder as5047p(as5047_cfg);
-
-lpf_t lpf_iq    = {.in_last = 0.0f, .trust = 0.1f}; // iq低通滤波器
-lpf_t lpf_id    = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
-lpf_t lpf_speed = {.in_last = 0.0f, .trust = 0.05f};
+IncrementalPid     pid_spd(app_config.pid_spdCfg);
+SpeedPLLMonitor    spdMonitor(app_config.spd_monitor);
+Svpwm              svm(16.0f, 4250);
+InlineCurrentSense current_sense(app_config.current_sense);
+AbiEncoder         abiEncoder(app_config.abi_encoder);
+As5407Encoder      as5047p(app_config.as5047_cfg);
+LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
+LowPassFilter      lpf_speed(0.05f);
+NonFluxObserver    nonFluxObserver(app_config.pll_observer, app_config.motor, 10000);
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -231,10 +257,10 @@ void EncoderDataCalc(enc_para_t *enc, MotorCfg_t *motor)
     //		motor_cfg.rotor_vel = pll_smo.out_value*60.f/M_2PI/7.f;
     ////使用滑膜速度输出
     //    else
-    motor->rotor_vel = PllSpeedCtrl(&pll_spd, enc->pos_s); // 编码器速度输出
-
-    LowPassFilter(&motor->rotor_vel, &lpf_spdpll);
-    MoveAverageFilter(&speed_maf, &motor->rotor_vel);
+    //    motor->rotor_vel = PllSpeedCtrl(&pll_spd, enc->pos_s); // 编码器速度输出
+    motor->rotor_vel = spdMonitor.GetSpeed(enc->pos);
+    lpf_speed.Update(&motor->rotor_vel);
+//    MoveAverageFilter(&speed_maf, &motor->rotor_vel);
 #endif
 }
 
@@ -333,8 +359,9 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                 RefSlope = ctrl->speed_set;
             }
 #if USE_SENSERLESS
-            LowPassFilter(&nonFlux.omega, &lpf_speed);
-            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
+            //            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
+            speed_pid.out_value = pid_spd.Calculate(RefSlope, nonFlux.omega);
+//            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
 #else
             IncreatParallePidCtrl(&speed_pid, RefSlope, motor_cfg.rotor_vel);
 #endif
@@ -413,6 +440,7 @@ _RAM_FUNC void FocHandle(void)
 #endif
     Clarke(&foc_param);
     non_flux_observer();
+    nonFluxObserver.Update(foc_param.vab, foc_param.iab);
     foc_param.vbus = 4.0f * BATTERY_CELL;
 
 #if USE_POS_PID
@@ -423,6 +451,7 @@ _RAM_FUNC void FocHandle(void)
 #endif
 #else
     MotorCtrl(&motor_ctrl, &foc_param);
+    abiEncoder.Update();
     // calibrate_mt_encoder(1.0f,0);
     Vector3D_t pwm = svm.GetSvpwmDuty(foc_param.vab);
     SET_DTC_A((uint16_t)pwm.uhU);

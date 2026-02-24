@@ -3,8 +3,9 @@
 //
 
 #include "encoder.h"
+#include "pid_class.h"
 
-void AngleGetBase::EncoderDataProc(uint16_t raw_data)
+void EncoderBase::EncoderDataProc(uint16_t raw_data)
 {
     if (dir_ == 1)
         theta_ = (float)raw_data * factor_;
@@ -17,9 +18,10 @@ void AngleGetBase::EncoderDataProc(uint16_t raw_data)
     WRAP_0_2PI(theta_elect_);
 
     // count the revolution
-    if (theta_diff_ > 0.8f * M_2PI)
+    float diff = theta_ - theta_last_;
+    if (diff > 0.8f * M_2PI)
         rev_--;
-    else if (theta_diff_ < -0.8f * M_2PI)
+    else if (diff < -0.8f * M_2PI)
         rev_++;
 
     theta_last_  = theta_;

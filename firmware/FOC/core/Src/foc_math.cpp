@@ -2,6 +2,8 @@
 #include "foc_ctrl.h"
 #include "main.h"
 #include "util.h"
+#include "filters.h"
+LowPassFilter lpf_hfi(0.1f);
 
 _RAM_FUNC void SinCosVal(FocParam_t *foc)
 {
@@ -144,7 +146,6 @@ float butterworth_lpf(float input)
     return output;
 }
 
-lpf_t lpf_hfi = {.in_last = 0.0f, .trust = 0.1f}; // id低通滤波器
 /**
  * @brief 高频注入锁相环
  * @param pll
@@ -168,7 +169,8 @@ float HfiPllAngle(pll_t *pll, HfiParam_t *hfi)
     //    hfi->omega = butterworth_lpf(pll->out_value * 1.3648f);
 
     pll->angle_out += pll->out_value / pll->loop_hz;
-    LowPassFilter(&pll->out_value, &lpf_hfi);
+//    LowPassFilterHandle(&pll->out_value, &lpf_hfi);
+    lpf_hfi.Update(&pll->out_value);
     hfi->omega_e = pll->out_value;
     WRAP_0_2PI(pll->angle_out)
 
@@ -276,7 +278,6 @@ bool HfiNsIdentify(HfiParam_t *hfi, FocParam_t *foc)
 
 float FluxPllAngle(pll_t *pll, float error)
 {
-
     pll->error = error;
 
     pll->p_term = pll->error * pll->kp;
@@ -284,7 +285,7 @@ float FluxPllAngle(pll_t *pll, float error)
     pll->i_term = AbsLimit(pll->i_term, pll->i_term_limit); // 积分限幅
 
     pll->out_value = pll->p_term + pll->i_term;
-    LowPassFilter(&pll->out_value, &lpf_hfi);
+    lpf_hfi.Update(&pll->out_value);
 
     pll->angle_out += pll->out_value / pll->loop_hz;
     WRAP_0_2PI(pll->angle_out)

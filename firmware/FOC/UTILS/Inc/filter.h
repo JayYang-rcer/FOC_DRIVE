@@ -23,9 +23,8 @@ typedef struct lpf_t {
     float trust;
 } lpf_t;
 
-
 typedef struct MovingAverage_t {
-    void *buffer;
+    void   *buffer;
     uint8_t size;
     uint8_t index;
 } MovingAverage_t;
@@ -34,8 +33,8 @@ typedef struct MovingAverage_t {
 extern "C" {
 #endif
 float PllSpeedCtrl(pll_t *pll, float angle);
-void LowPassFilter(float *data, lpf_t *lpf);
-void MoveAverageFilter(MovingAverage_t *filter, float *data);
+void  LowPassFilterHandle(float *data, lpf_t *lpf);
+void  MoveAverageFilter(MovingAverage_t *filter, float *data);
 #ifdef __cplusplus
 }
 #endif

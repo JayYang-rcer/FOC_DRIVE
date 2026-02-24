@@ -54,4 +54,5 @@ void SpeedMeasure(enc_para_t *enc, MotorCfg_t *motor);
 #ifdef __cplusplus
 }
 #endif
+
 #endif

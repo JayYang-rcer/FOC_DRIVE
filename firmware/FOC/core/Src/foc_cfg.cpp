@@ -21,12 +21,13 @@ pll_t      pll_smo;
 /**********************************************************/
 
 /********************hfi param********************/
-HfiParam_t hfi_param = {.inject_U = 1.2f, .omega_e = 0.1f};
+HfiParam_t hfi_param = {.omega_e = 0.1f, .inject_U = 1.2f};
 
-pll_t pll_hfi = {.loop_hz      = 20000, // 20khz
-                 .kp           = 1200,
-                 .ki           = 250000,
-                 .i_term_limit = 1000};
+pll_t pll_hfi = {
+    .kp           = 1200,
+    .ki           = 250000,
+    .loop_hz      = 20000, // 20khz
+    .i_term_limit = 1000};
 /**********************************************************/
 
 /********************non linear flux param********************/
@@ -35,10 +36,11 @@ NonFlux_t nonFlux = {
     .Ts    = 1 / 20000.f,
 };
 
-pll_t pll_flux = {.loop_hz      = 20000, // 20khz
-                  .kp           = 1000,
-                  .ki           = 180000,
-                  .i_term_limit = 10000};
+pll_t pll_flux = {
+    .kp           = 1000,
+    .ki           = 180000,
+    .loop_hz      = 20000, // 20khz
+    .i_term_limit = 10000};
 /**********************************************************/
 /* kp = 0.00000648(H) * 5000*7(erpm/min)(带宽) / 60(s/min) * 2PI
  * ki = 0.03765 * 5000*7 / 60 * 2PI / 20000(电流环频率)

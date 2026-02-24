@@ -66,4 +66,5 @@ float AbsLimit(float a, float abs_max);
 #ifdef __cplusplus
 }
 #endif
+
 #endif
