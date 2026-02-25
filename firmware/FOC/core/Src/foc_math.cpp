@@ -1,8 +1,8 @@
 #include "foc_math.h"
+#include "filters.h"
 #include "foc_ctrl.h"
 #include "main.h"
 #include "util.h"
-#include "filters.h"
 LowPassFilter lpf_hfi(0.1f);
 
 _RAM_FUNC void SinCosVal(FocParam_t *foc)
@@ -22,6 +22,12 @@ _RAM_FUNC void Park(FocParam_t *foc)
     foc->idq.r.d = foc->iab.s.alpha * foc->cos_val + foc->iab.s.beta * foc->sin_val;
     foc->idq.r.q = -foc->iab.s.alpha * foc->sin_val + foc->iab.s.beta * foc->cos_val;
 }
+
+//_RAM_FUNC void ParkTransform(Vector2Df_t iab, e)
+//{
+//    foc->idq.r.d = iab.s.alpha * foc->cos_val + foc->iab.s.beta * foc->sin_val;
+//    foc->idq.r.q = -iab.s.alpha * foc->sin_val + foc->iab.s.beta * foc->cos_val;
+//}
 
 _RAM_FUNC void InvPark(FocParam_t *foc)
 {
@@ -169,7 +175,7 @@ float HfiPllAngle(pll_t *pll, HfiParam_t *hfi)
     //    hfi->omega = butterworth_lpf(pll->out_value * 1.3648f);
 
     pll->angle_out += pll->out_value / pll->loop_hz;
-//    LowPassFilterHandle(&pll->out_value, &lpf_hfi);
+    //    LowPassFilterHandle(&pll->out_value, &lpf_hfi);
     lpf_hfi.Update(&pll->out_value);
     hfi->omega_e = pll->out_value;
     WRAP_0_2PI(pll->angle_out)
@@ -187,8 +193,10 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi)
     // 更新数据
     Clarke(foc);
     if (hfi->sign != 0) {
-        hfi->ab_h.s.alpha = -(foc->iab.s.alpha - hfi->ab_last.s.alpha) * 0.5f * hfi->sign;
-        hfi->ab_h.s.beta  = -(foc->iab.s.beta - hfi->ab_last.s.beta) * 0.5f * hfi->sign;
+        //        hfi->ab_h.s.alpha = -(foc->iab.s.alpha - hfi->ab_last.s.alpha) * 0.5f * hfi->sign;
+        //        hfi->ab_h.s.beta  = -(foc->iab.s.beta - hfi->ab_last.s.beta) * 0.5f * hfi->sign;
+        hfi->ab_h.s.alpha = -(foc->iab.s.alpha - 2.f * hfi->ab_last.s.alpha + hfi->ab_laster.s.alpha) * 0.25f * hfi->sign;
+        hfi->ab_h.s.beta  = -(foc->iab.s.beta - 2.f * hfi->ab_last.s.beta +hfi->ab_laster.s.beta) * 0.25f * hfi->sign;
 
         hfi->ab_last.s.alpha   = foc->iab.s.alpha;
         hfi->ab_last.s.beta    = foc->iab.s.beta;
@@ -206,8 +214,8 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi)
  */
 void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi)
 {
-    hfi->idq_f.r.d = (foc->idq.r.d + 2.0f * hfi->idq_f_laster.r.d + hfi->idq_f_laster.r.d) * 0.25f;
-    hfi->idq_f.r.q = (foc->idq.r.q + 2.0f * hfi->idq_f_laster.r.q + hfi->idq_f_laster.r.q) * 0.25f;
+    hfi->idq_f.r.d = (foc->idq.r.d + 2.0f * hfi->idq_f_last.r.d + hfi->idq_f_laster.r.d) * 0.25f;
+    hfi->idq_f.r.q = (foc->idq.r.q + 2.0f * hfi->idq_f_last.r.q + hfi->idq_f_laster.r.q) * 0.25f;
 
     // update
     hfi->idq_f_laster.r.d = hfi->idq_f_last.r.d;

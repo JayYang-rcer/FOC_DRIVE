@@ -75,8 +75,8 @@ public:
     {
         float ref = sin_f32(theta) * cos_f32(velocity_);
         float fbk = sin_f32(velocity_) * cos_f32(theta);
-
-        velocity_ = Calculate(ref, fbk);
+        float error = ref - fbk;
+        velocity_ = Calculate(error);
 
         velocity_ *= RADS_TO_RPM;
         return velocity_;

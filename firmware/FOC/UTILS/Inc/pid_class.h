@@ -28,10 +28,8 @@ public:
     explicit PIController(const Config &cfg) : cfg_(cfg) {}
 
 protected:
-    float Calculate(float setpoint, float measure)
+    float Calculate(float error)
     {
-        float error = setpoint - measure;
-
         // 1. P term
         float p_term = cfg_.kp * error;
 
