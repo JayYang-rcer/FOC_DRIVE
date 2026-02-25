@@ -359,8 +359,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                 RefSlope = ctrl->speed_set;
             }
 #if USE_SENSERLESS
-            //            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
-            speed_pid.out_value = pid_spd.Calculate(RefSlope, nonFlux.omega);
+            speed_pid.out_value = pid_spd.Calculate(RefSlope, nonFluxObserver.GetVelocity());
 //            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
 #else
             IncreatParallePidCtrl(&speed_pid, RefSlope, motor_cfg.rotor_vel);
@@ -369,7 +368,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
             ctrl->spd_cnt      = 0;
         }
 #if USE_SENSERLESS
-        FocCurrent(ctrl->id_set, speed_pid.out_value, nonFlux.theta_e);
+        FocCurrent(ctrl->id_set, speed_pid.out_value, nonFluxObserver.GetElectAngle());
 #else
         FocCurrent(ctrl->id_set, speed_pid.out_value, enc_para.pos_e);
 #endif
@@ -419,7 +418,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
             }
             // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
             if (motor_ctrl.speed_set != 0)
-                HfiCurrent(5, HfiSpeed_pid.out_value, hfi_param.theta_e);
+                HfiCurrent(0, HfiSpeed_pid.out_value, hfi_param.theta_e);
             else
                 HfiCurrent(0, 0, hfi_param.theta_e);
         }
@@ -439,7 +438,7 @@ _RAM_FUNC void FocHandle(void)
     PosCalculate(&enc_para);
 #endif
     Clarke(&foc_param);
-    non_flux_observer();
+    //    non_flux_observer();
     nonFluxObserver.Update(foc_param.vab, foc_param.iab);
     foc_param.vbus = 4.0f * BATTERY_CELL;
 
