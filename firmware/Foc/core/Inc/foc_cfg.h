@@ -210,6 +210,7 @@ void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
 void FocPwmStop(void);
 void MotorParaInit(void);
 void CurrentSampInit(void);
+void ResourceInit(void);
 void MotorCtrlReset(MotorCtrl_t *motor);
 #ifdef __cplusplus
 }

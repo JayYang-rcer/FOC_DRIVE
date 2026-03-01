@@ -30,12 +30,19 @@ struct AppConfig {
         .jx   = 0.0001f,
         .pn   = 7,
     };
-    PIController::Config pll_observer = {
+    PIController::Config pll_nonFlux = {
         .kp           = 1000,
         .ki           = 180000,
         .output_max   = 11000,
         .integral_max = 10000,
         .dt           = 1 / 20000.f, // 20khz
+    };
+    PIController::Config pll_pulsating_hfi = {
+        .kp           = 1200,
+        .ki           = 250000,
+        .output_max   = 1000,
+        .integral_max = 1000,
+        .dt           = 1.0f / 20000.0f, // 20khz
     };
     SpeedPLLMonitor::Config spd_monitor{
         .kp           = 10800.f / 60.f * M_2PI * 0.707f * 2.f,
@@ -45,9 +52,9 @@ struct AppConfig {
         .dt           = 1 / 10000.0f,
     };
     InlineCurrentSense::SenseConfig current_sense = {
-        .addr_current_u_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR1),
-        .addr_current_v_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR2),
-        .addr_current_w_ = reinterpret_cast<const volatile uint32_t *>(&ADC1->JDR3),
+        .addr_current_u_ = &ADC1->JDR1,
+        .addr_current_v_ = &ADC1->JDR2,
+        .addr_current_w_ = &ADC1->JDR3,
         .adc_trans_volt_ = 3.3f / 4096.0f,
         .resistance      = 0.001f,
         .gain            = 20.0f,
@@ -60,7 +67,8 @@ struct AppConfig {
     As5407Encoder::Config as5047_cfg = {
         .cpr                     = 16384,
         .pole_pairs              = 7,
-        .As5047RawDataGettingFun = As5047pRead};
+        .As5047RawDataGettingFun = As5047pRead,
+    };
     IncrementalPid::Config pid_spdCfg = {
         .kp        = 0.002f,
         .ki        = 0.003f,
@@ -70,15 +78,26 @@ struct AppConfig {
     };
 } app_config;
 
-IncrementalPid     pid_spd(app_config.pid_spdCfg);
-SpeedPLLMonitor    spdMonitor(app_config.spd_monitor);
-Svpwm              svm(16.0f, 4250);
-InlineCurrentSense current_sense(app_config.current_sense);
-AbiEncoder         abiEncoder(app_config.abi_encoder);
-As5407Encoder      as5047p(app_config.as5047_cfg);
 LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
 LowPassFilter      lpf_speed(0.05f);
-NonFluxObserver    nonFluxObserver(app_config.pll_observer, app_config.motor, 10000);
+Svpwm              svm(16.0f, 4250);
+InlineCurrentSense current_sense(app_config.current_sense);
+IncrementalPid     pid_spd;
+SpeedPLLMonitor    spdMonitor;
+AbiEncoder         abiEncoder;
+As5407Encoder      as5047p;
+NonFluxObserver    nonFluxObserver;
+PulsatingHFI       hfiObserver;
+
+void ResourceInit(void)
+{
+    pid_spd.Init(app_config.pid_spdCfg);
+    abiEncoder.Init(app_config.abi_encoder);
+    as5047p.Init(app_config.as5047_cfg);
+    nonFluxObserver.Init(app_config.pll_nonFlux, app_config.motor, 10000);
+    spdMonitor.Init(app_config.spd_monitor);
+    hfiObserver.Init(app_config.pll_pulsating_hfi, app_config.motor, 2000);
+}
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
 {
@@ -186,7 +205,7 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
         ud_inject = HfiInjectSign(hfi_param.inject_U);
         cnt       = 0;
     } else {
-        hfi_param.sign = 0;
+        //        hfi_param.sign = 0;
     }
     //    hfi_param.sign   = SIGN(ud_inject);
 
@@ -215,6 +234,22 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     foc_param.vdq.r.d = hfi_id_pi.out_value + ud_inject;
 
     SerialPidCtrl(&hfi_iq_pi, iq_set, hfi_param.idq_f.r.q);
+    foc_param.vdq.r.q = hfi_iq_pi.out_value;
+
+    InvPark(&foc_param);
+}
+
+_RAM_FUNC void HfiCurrentClass(float id_set, float iq_set, float pos)
+{
+    foc_param.theta = pos;
+    SinCosVal(&foc_param);
+    Park(&foc_param);
+    Vector2Df_t idq_f = hfiObserver.GetDqCurrentLow(foc_param.idq);
+
+    SerialPidCtrl(&hfi_id_pi, id_set, idq_f.r.d);
+    foc_param.vdq.r.d = hfi_id_pi.out_value + hfiObserver.GetInjectVoltage(1.2f);
+
+    SerialPidCtrl(&hfi_iq_pi, iq_set, idq_f.r.q);
     foc_param.vdq.r.q = hfi_iq_pi.out_value;
 
     InvPark(&foc_param);
@@ -397,7 +432,8 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
     }
 
     case FOC_HFI: {
-        HfiAngleCalc(foc, &hfi_param);
+        //                HfiAngleCalc(foc, &hfi_param);
+        hfiObserver.Update(foc_param.iab);
         static bool hfi_init = false;
         if (!hfi_init) {
             hfi_init = HfiNsIdentify(&hfi_param, foc);
@@ -412,15 +448,19 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                     ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
                     motor_ctrl.pos_cnt = 0;
                 }
-                IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfi_param.omega_e * 60.f / M_2PI / 7.f);
+                // IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfi_param.omega_e * 60.f / M_2PI / 7.f);
+                IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfiObserver.GetVelocity());
                 //       IncreatParallePidCtrl(&HfiSpeed_pid, pos_pid.out_value, hfi_param.omega);
                 motor_ctrl.spd_cnt = 0;
             }
             // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
-            if (motor_ctrl.speed_set != 0)
-                HfiCurrent(0, HfiSpeed_pid.out_value, hfi_param.theta_e);
-            else
-                HfiCurrent(0, 0, hfi_param.theta_e);
+            if (motor_ctrl.speed_set != 0) {
+                HfiCurrentClass(5, HfiSpeed_pid.out_value, hfiObserver.GetElectAngle());
+                //                HfiCurrent(5, HfiSpeed_pid.out_value, hfi_param.theta_e);
+            } else {
+                HfiCurrentClass(0, 0, hfiObserver.GetElectAngle());
+                //                HfiCurrent(0, 0, hfi_param.theta_e);
+            }
         }
         break;
     }
@@ -437,9 +477,10 @@ _RAM_FUNC void FocHandle(void)
 #if (USE_SENSERLESS == 0)
     PosCalculate(&enc_para);
 #endif
-    Clarke(&foc_param);
+    //    Clarke(&foc_param);
     //    non_flux_observer();
     nonFluxObserver.Update(foc_param.vab, foc_param.iab);
+    foc_param.iab  = current_sense.GetAlphaBeta();
     foc_param.vbus = 4.0f * BATTERY_CELL;
 
 #if USE_POS_PID
@@ -470,6 +511,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
                 FocPwmStart(true, true, true, true, true, true);
                 pwm_start = true;
             }
+
             // as5047p.Update();
             current_sense.Update();
             foc_param.current = current_sense.GetCurrents();

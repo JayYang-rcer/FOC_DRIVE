@@ -196,7 +196,7 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi)
         //        hfi->ab_h.s.alpha = -(foc->iab.s.alpha - hfi->ab_last.s.alpha) * 0.5f * hfi->sign;
         //        hfi->ab_h.s.beta  = -(foc->iab.s.beta - hfi->ab_last.s.beta) * 0.5f * hfi->sign;
         hfi->ab_h.s.alpha = -(foc->iab.s.alpha - 2.f * hfi->ab_last.s.alpha + hfi->ab_laster.s.alpha) * 0.25f * hfi->sign;
-        hfi->ab_h.s.beta  = -(foc->iab.s.beta - 2.f * hfi->ab_last.s.beta +hfi->ab_laster.s.beta) * 0.25f * hfi->sign;
+        hfi->ab_h.s.beta  = -(foc->iab.s.beta - 2.f * hfi->ab_last.s.beta + hfi->ab_laster.s.beta) * 0.25f * hfi->sign;
 
         hfi->ab_last.s.alpha   = foc->iab.s.alpha;
         hfi->ab_last.s.beta    = foc->iab.s.beta;
@@ -214,8 +214,8 @@ void HfiAngleCalc(FocParam_t *foc, HfiParam_t *hfi)
  */
 void IdqToIdqF(FocParam_t *foc, HfiParam_t *hfi)
 {
-    hfi->idq_f.r.d = (foc->idq.r.d + 2.0f * hfi->idq_f_last.r.d + hfi->idq_f_laster.r.d) * 0.25f;
-    hfi->idq_f.r.q = (foc->idq.r.q + 2.0f * hfi->idq_f_last.r.q + hfi->idq_f_laster.r.q) * 0.25f;
+    hfi->idq_f.r.d = (foc->idq.r.d + 2.0f * hfi->idq_f_laster.r.d + hfi->idq_f_laster.r.d) * 0.25f;
+    hfi->idq_f.r.q = (foc->idq.r.q + 2.0f * hfi->idq_f_laster.r.q + hfi->idq_f_laster.r.q) * 0.25f;
 
     // update
     hfi->idq_f_laster.r.d = hfi->idq_f_last.r.d;

@@ -25,9 +25,8 @@ public:
         float dt;           // sample period (s)
     };
 
-    explicit PIController(const Config &cfg) : cfg_(cfg) {}
-
 protected:
+    void PiInit(const Config &cfg) { cfg_ = cfg; }
     float Calculate(float error)
     {
         // 1. P term
@@ -35,7 +34,7 @@ protected:
 
         // 2. I term
         integral_ += cfg_.ki * error * cfg_.dt;
-        
+
         // clang-format off
         if (integral_ > cfg_.integral_max) integral_ = cfg_.integral_max;
         if (integral_ < -cfg_.integral_max) integral_ = -cfg_.integral_max;
@@ -57,7 +56,7 @@ protected:
     }
 
 private:
-    Config cfg_;
+    Config cfg_{};
     float  integral_ = 0.0f; // 积分项
 };
 
@@ -140,7 +139,7 @@ public:
         float out_limit;
         float dt;
     };
-    explicit IncrementalPid(const Config &cfg) : cfg_(cfg) {}
+    void Init(const Config &cfg) { cfg_ = cfg; }
 
     float Calculate(float target, float measure)
     {

@@ -2,30 +2,30 @@
 
 
 Breakpoint=F:/FOC_DRIVE/firmware/Drivers/CMSIS/Include/cmsis_gcc.h:209:3, Permitted Impl.=BP_TYPE_MIXED, State=BP_STATE_DISABLED
-OpenDocument="stm32g4xx_hal_tim.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c", Line=3967
-OpenDocument="foc_math.c", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_math.c", Line=446
-OpenDocument="main.cpp", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.cpp", Line=82
+OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=89
+OpenDocument="foc_math.c", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_math.c", Line=0
+OpenDocument="main.cpp", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.cpp", Line=73
 OpenDocument="filter.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/filter.h", Line=0
 OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=151
 OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Src/vofa.c", Line=12
 OpenDocument="pid.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/pid.h", Line=0
 OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=50
 OpenDocument="stm32g4xx_hal_fdcan.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c", Line=2966
-OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=87
+OpenDocument="stm32g4xx_hal_tim.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c", Line=3967
 OpenDocument="drive_can.c", FilePath="F:/FOC_DRIVE/firmware/BSP/Src/drive_can.c", Line=108
 OpenDocument="McuDevicePort.c", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/McuDevicePort.c", Line=0
 OpenDocument="stm32g4xx_hal.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c", Line=325
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=446, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=218, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=440, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=224, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1269, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=665, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=650, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
-TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Class";"Source"], ColWidths=[744;100;100;100;0;224]
+TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Class";"Source"], ColWidths=[744;100;100;100;27;224]
 TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[356;112;128;100;168;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh";"Access"], ColWidths=[125;186;958;100]
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh";"Access"], ColWidths=[286;186;958;100]
 TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
 TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;351]
 WatchedExpression="motor_ctrl", RefreshRate=5, Window=Watched Data 1
@@ -39,3 +39,8 @@ WatchedExpression="mc_adc", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="pll_hfi", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="hfi_param", RefreshRate=5, Window=Watched Data 1
 WatchedExpression="KeyFifo", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="abiEncoder", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="pid_spd", Window=Watched Data 1
+WatchedExpression="nonFluxObserver", Window=Watched Data 1
+WatchedExpression="spdMonitor", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="abiEncoder", Window=Watched Data 1

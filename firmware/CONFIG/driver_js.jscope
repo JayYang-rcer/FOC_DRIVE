@@ -10,24 +10,11 @@
             <Scope>
                 <Options TimeResolutionUs="1000000" />
             </Scope>
-            <Trigger>
-                <Options Level="0" Symbol="theta_e" On="0" Auto="0" Rise="0" Fall="0" />
-            </Trigger>
         </Configuration>
         <Windows>
             <Graph Show="1" />
             <Watch Show="1" />
         </Windows>
-        <SelectedSymbols>
-            <Symbol>
-                <Options Name="theta_e" Address="0x2000008C" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="1.79769e+308" YMaxSampled="-1.79769e+308" YAvgSampled="0" Offset="0" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_cfg.cpp" DrawStyle="0" NameWithParents=".nonFlux.theta_e" />
-            </Symbol>
-            <Symbol>
-                <Options Name="theta_elect_" Address="0x20001304" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="1.79769e+308" YMaxSampled="-1.79769e+308" YAvgSampled="0" Offset="0" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp" DrawStyle="0" NameWithParents=".nonFluxObserver.&lt;Inherited&gt;.theta_elect_" />
-            </Symbol>
-            <Symbol>
-                <Options Name="velocity_" Address="0x20001308" Type="float" TypeID="1" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="1.79769e+308" YMaxSampled="-1.79769e+308" YAvgSampled="0" Offset="0" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="1" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp" DrawStyle="0" NameWithParents=".nonFluxObserver.&lt;Inherited&gt;.velocity_" />
-            </Symbol>
-        </SelectedSymbols>
+        <SelectedSymbols />
     </Project>
 </JScopeProject>

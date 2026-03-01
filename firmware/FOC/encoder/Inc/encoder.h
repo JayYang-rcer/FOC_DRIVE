@@ -9,6 +9,7 @@
 #include "stdint-gcc.h"
 #include "tim.h"
 #include "util.h"
+#include <cassert>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -70,13 +71,14 @@ inline const char* ToString(EncoderError err) {
 class SpeedPLLMonitor : public PIController
 {
 public:
-    explicit SpeedPLLMonitor(const Config &cfg) : PIController(cfg) {}
+    void Init(const Config &cfg) { PiInit(cfg); }
+
     float GetSpeed(float theta)
     {
-        float ref = sin_f32(theta) * cos_f32(velocity_);
-        float fbk = sin_f32(velocity_) * cos_f32(theta);
+        float ref   = sin_f32(theta) * cos_f32(velocity_);
+        float fbk   = sin_f32(velocity_) * cos_f32(theta);
         float error = ref - fbk;
-        velocity_ = Calculate(error);
+        velocity_   = Calculate(error);
 
         velocity_ *= RADS_TO_RPM;
         return velocity_;
@@ -84,6 +86,7 @@ public:
 
 private:
     float velocity_ = 0.0f;
+    bool  is_ready_ = false;
 };
 
 class AngleProvider
@@ -142,7 +145,9 @@ public:
         uint8_t      pole_pairs;
         TIM_TypeDef *tim_handle;
     };
-    explicit AbiEncoder(const Config &cfg) : EncoderBase()
+    AbiEncoder() = default;
+
+    void Init(const Config &cfg)
     {
         this->pole_pairs_      = cfg.pole_pairs;
         this->cpr_             = cfg.cpr;
@@ -151,11 +156,10 @@ public:
         this->tim_handle_->ARR = cfg.cpr - 1;
     }
 
-    //    inline void Update(uint16_t raw_data) { EncoderDataProc(raw_data); }
-    void Update() { EncoderDataProc(tim_handle_->CNT); }
+    inline void Update() { EncoderDataProc(tim_handle_->CNT); }
 
 private:
-    TIM_TypeDef *tim_handle_;
+    TIM_TypeDef *tim_handle_{};
 };
 
 class As5407Encoder : public EncoderBase
@@ -167,16 +171,14 @@ public:
         SpiTransferFunc As5047RawDataGettingFun;
     };
 
-    explicit As5407Encoder(const Config &cfg) : EncoderBase()
+    void Init(const Config &cfg)
     {
         this->pole_pairs_     = cfg.pole_pairs;
         this->cpr_            = cfg.cpr;
         this->factor_         = M_2PI / (float)(cfg.cpr);
         this->RawDataGetting_ = cfg.As5047RawDataGettingFun;
     }
-
-    //    inline void Update()
-    void Update()
+    inline void Update()
     {
         uint16_t received_data = RawDataGetting_((uint16_t)(As5047pAddress::ANGLECOM));
         EncoderDataProc(received_data);
@@ -195,7 +197,7 @@ public:
     }
 
 private:
-    SpiTransferFunc RawDataGetting_;
+    SpiTransferFunc RawDataGetting_{};
 };
 
 class HallEncoder : public AngleProvider
