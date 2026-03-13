@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "foc_ctrl.h"
-#include "key.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -245,9 +244,9 @@ void TIM1_UP_TIM16_IRQHandler(void)
 
   /* USER CODE END TIM1_UP_TIM16_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
+
   HAL_TIM_IRQHandler(&htim16);
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 1 */
-  KEY_ProcessHandle();
   /* USER CODE END TIM1_UP_TIM16_IRQn 1 */
 }
 

@@ -33,7 +33,7 @@ struct AppConfig {
     PIController::Config pll_nonFlux = {
         .kp           = 1000,
         .ki           = 180000,
-        .output_max   = 11000,
+        .output_max   = 30000,
         .integral_max = 10000,
         .dt           = 1 / 20000.f, // 20khz
     };
@@ -43,6 +43,18 @@ struct AppConfig {
         .output_max   = 1000,
         .integral_max = 1000,
         .dt           = 1.0f / 20000.0f, // 20khz
+    };
+    PIController::Config pll_sildemove = {
+        .kp           = 1000,
+        .ki           = 180000,
+        .output_max   = 30000,
+        .integral_max = 10000,
+        .dt           = 1 / 20000.f, // 20khz
+    };
+    SlideMoveObserver::Config cfg_smo{
+        .A   = 0.551139891f,
+        .B   = 11.9589844,
+        .ksw = 16.83f,
     };
     SpeedPLLMonitor::Config spd_monitor{
         .kp           = 10800.f / 60.f * M_2PI * 0.707f * 2.f,
@@ -76,7 +88,7 @@ struct AppConfig {
         .out_limit = 15.f,
         .dt        = 1 / 2000.0f,
     };
-} app_config;
+    } app_config;
 
 LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
 LowPassFilter      lpf_speed(0.05f);
@@ -88,6 +100,7 @@ AbiEncoder         abiEncoder;
 As5407Encoder      as5047p;
 NonFluxObserver    nonFluxObserver;
 PulsatingHFI       hfiObserver;
+SlideMoveObserver  smoObserver;
 
 void ResourceInit(void)
 {
@@ -97,6 +110,7 @@ void ResourceInit(void)
     nonFluxObserver.Init(app_config.pll_nonFlux, app_config.motor, 10000);
     spdMonitor.Init(app_config.spd_monitor);
     hfiObserver.Init(app_config.pll_pulsating_hfi, app_config.motor, 2000);
+    smoObserver.Init(app_config.pll_sildemove, app_config.cfg_smo);
 }
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
@@ -199,47 +213,13 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos)
     foc_param.theta = pos;
     SinCosVal(&foc_param);
 
-    static float ud_inject;
-    static int   cnt = 0;
-    if (++cnt == 5) {
-        ud_inject = HfiInjectSign(hfi_param.inject_U);
-        cnt       = 0;
-    } else {
-        //        hfi_param.sign = 0;
-    }
-    //    hfi_param.sign   = SIGN(ud_inject);
-
-    foc_param.vdq.r.d = vd + ud_inject;
+    foc_param.vdq.r.d = vd + +hfiObserver.GetInjectVoltage(1.2f);
     foc_param.vdq.r.q = vq;
 
     InvPark(&foc_param);
 }
 
 _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
-{
-    foc_param.theta = pos;
-    SinCosVal(&foc_param);
-    Park(&foc_param);
-    IdqToIdqF(&foc_param, &hfi_param);
-
-    static float ud_inject;
-    static int   cnt = 0;
-    if (++cnt == 5) {
-        ud_inject = HfiInjectSign(hfi_param.inject_U);
-        cnt       = 0;
-    } else {
-        hfi_param.sign = 0;
-    }
-    SerialPidCtrl(&hfi_id_pi, id_set, hfi_param.idq_f.r.d);
-    foc_param.vdq.r.d = hfi_id_pi.out_value + ud_inject;
-
-    SerialPidCtrl(&hfi_iq_pi, iq_set, hfi_param.idq_f.r.q);
-    foc_param.vdq.r.q = hfi_iq_pi.out_value;
-
-    InvPark(&foc_param);
-}
-
-_RAM_FUNC void HfiCurrentClass(float id_set, float iq_set, float pos)
 {
     foc_param.theta = pos;
     SinCosVal(&foc_param);
@@ -299,12 +279,17 @@ void EncoderDataCalc(enc_para_t *enc, MotorCfg_t *motor)
 #endif
 }
 
-volatile int    spd_cnt = 0, pos_cnt = 0;
-int             change_flag = 0;
-extern uint16_t can_recieveFlag;
-__RAM_FUNC void Encoder_Idle(void)
+volatile int      spd_cnt = 0, pos_cnt = 0;
+uint16_t          ms_cnt      = 0;
+volatile uint16_t mstick_flag = 0;
+extern uint16_t   can_recieveFlag;
+__RAM_FUNC void   Encoder_Idle(void)
 {
     __HAL_TIM_CLEAR_FLAG(&htim2, TIM_FLAG_CC1);
+    if (++ms_cnt == 200) {
+        ms_cnt      = 0;
+        mstick_flag = 1;
+    }
     static float pos_last, pos_now = 0.0f;
     static float flag = 0;
     if (flag == 0) {
@@ -369,7 +354,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
 
     case FOC_CURRENT_CTRL: {
 #if USE_SENSERLESS
-        FocCurrent(ctrl->id_set, ctrl->iq_set, nonFlux.theta_e);
+        FocCurrent(ctrl->id_set, ctrl->iq_set, nonFluxObserver.GetElectAngle());
 #else
         FocCurrent(ctrl->id_set, ctrl->iq_set, enc_para.pos_e);
 #endif
@@ -394,7 +379,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
                 RefSlope = ctrl->speed_set;
             }
 #if USE_SENSERLESS
-            speed_pid.out_value = pid_spd.Calculate(RefSlope, nonFluxObserver.GetVelocity());
+            speed_pid.out_value = pid_spd.Calculate(RefSlope, smoObserver.GetVelocity());
 //            IncreatParallePidCtrl(&speed_pid, RefSlope, nonFlux.omega);
 #else
             IncreatParallePidCtrl(&speed_pid, RefSlope, motor_cfg.rotor_vel);
@@ -403,7 +388,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
             ctrl->spd_cnt      = 0;
         }
 #if USE_SENSERLESS
-        FocCurrent(ctrl->id_set, speed_pid.out_value, nonFluxObserver.GetElectAngle());
+        FocCurrent(ctrl->id_set, speed_pid.out_value, smoObserver.GetElectAngle());
 #else
         FocCurrent(ctrl->id_set, speed_pid.out_value, enc_para.pos_e);
 #endif
@@ -432,34 +417,27 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
     }
 
     case FOC_HFI: {
-        //                HfiAngleCalc(foc, &hfi_param);
         hfiObserver.Update(foc_param.iab);
         static bool hfi_init = false;
         if (!hfi_init) {
             hfi_init = HfiNsIdentify(&hfi_param, foc);
         } else {
-            // foc->theta += ctrl->epos_acc;
-            // HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, foc->theta);
-            // HfiVolt(motor_ctrl.vd_set, motor_ctrl.vq_set, hfi_param.theta_e);
-
             if (++motor_ctrl.spd_cnt == 10) {
                 static int pos = 0;
                 if (++motor_ctrl.pos_cnt == 2) {
                     ParallelPidCtrl(&pos_pid, ctrl->pos_set, enc_para.pos_m / M_2PI * 360);
                     motor_ctrl.pos_cnt = 0;
                 }
-                // IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfi_param.omega_e * 60.f / M_2PI / 7.f);
                 IncreatParallePidCtrl(&HfiSpeed_pid, ctrl->speed_set, hfiObserver.GetVelocity());
-                //       IncreatParallePidCtrl(&HfiSpeed_pid, pos_pid.out_value, hfi_param.omega);
                 motor_ctrl.spd_cnt = 0;
             }
             // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
+            if (motor_ctrl.speed_set > 3000)
+                ctrl->mode = FOC_SPEED_CTRL;
             if (motor_ctrl.speed_set != 0) {
-                HfiCurrentClass(5, HfiSpeed_pid.out_value, hfiObserver.GetElectAngle());
-                //                HfiCurrent(5, HfiSpeed_pid.out_value, hfi_param.theta_e);
+                HfiCurrent(5, HfiSpeed_pid.out_value, hfiObserver.GetElectAngle());
             } else {
-                HfiCurrentClass(0, 0, hfiObserver.GetElectAngle());
-                //                HfiCurrent(0, 0, hfi_param.theta_e);
+                HfiCurrent(0, 0, hfiObserver.GetElectAngle());
             }
         }
         break;
@@ -480,6 +458,7 @@ _RAM_FUNC void FocHandle(void)
     //    Clarke(&foc_param);
     //    non_flux_observer();
     nonFluxObserver.Update(foc_param.vab, foc_param.iab);
+    smoObserver.Update(foc_param.vab, foc_param.iab);
     foc_param.iab  = current_sense.GetAlphaBeta();
     foc_param.vbus = 4.0f * BATTERY_CELL;
 

@@ -17,5 +17,5 @@ void FocCurrent(float id_set, float iq_set, float pos);
 #ifdef __cplusplus
 }
 #endif
-
+extern volatile uint16_t mstick_flag;
 #endif

@@ -4,7 +4,6 @@
 
 #include "McuDevicePort.h"
 #include "foc_cfg.h"
-#include "oled_iic_cfg.h"
 
 // #define DEVICE_ENABLE_ID 0x100
 // #define DEVICE_CAN_ID    0x101

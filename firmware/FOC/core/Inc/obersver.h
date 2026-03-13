@@ -83,10 +83,7 @@ public:
     void Init(const Config &cfg, const MotorParam_t &motor, uint16_t inject_freq)
     {
         PiInit(cfg);
-        motor_      = motor;
-        motor_.ls   = motor.ls / 1000000.0f; // H
-        motor_.flux = motor.flux / 1000.0f;  // Wb
-        motor_.rs   = motor.rs / 1000.0f;
+        pn_         = motor.pn;
         change_cnt_ = 20000 / inject_freq / 2;
         ts_         = cfg.dt;
     }
@@ -123,7 +120,7 @@ public:
             WRAP_0_2PI(theta_elect_);
 
             // 7. 计算速度 (rad/s -> rpm)
-            velocity_ = lpf_.Update(pll_output) / motor_.pn * RADS_TO_RPM;
+            velocity_ = lpf_.Update(pll_output) / pn_ * RADS_TO_RPM;
         }
     }
 
@@ -160,11 +157,11 @@ public:
 private:
     LowPassFilter lpf_ = LowPassFilter(0.1f);
     float         ts_;
-    MotorParam_t  motor_;
+    float         pn_;
 
     // 注入控制
     int8_t  sign_{1}; // 当前注入符号 (+1/-1)
-    uint8_t cnt_{};    // 计数器
+    uint8_t cnt_{};   // 计数器
     uint8_t change_cnt_;
 
     // 电流历史
@@ -175,4 +172,72 @@ private:
     Vector2Df_t idq_laster_{}; // 上上次d-q电流
 };
 
+class SlideMoveObserver : public AngleProvider, PIController
+{
+public:
+    struct Config {
+        float A;
+        float B;
+        float ksw;
+    };
+    void Init(const PIController::Config &pi_cfg, const Config ob_cfg)
+    {
+        ts_  = pi_cfg.dt;
+        cfg_ = ob_cfg;
+        PiInit(pi_cfg);
+    }
+
+    void Update(const Vector2Df_t &voltage_ab, const Vector2Df_t &current_ab)
+    {
+        iab_view_.s.alpha = cfg_.A * iab_view_last_.s.alpha + cfg_.B * (voltage_ab.s.alpha - Eab_.s.alpha);
+        iab_view_.s.beta  = cfg_.A * iab_view_last_.s.beta + cfg_.B * (voltage_ab.s.beta - Eab_.s.beta);
+
+        Eab_.s.alpha = cfg_.ksw * sat(iab_view_.s.alpha - current_ab.s.alpha, 0.1);
+        Eab_.s.beta  = cfg_.ksw * sat(iab_view_.s.beta - current_ab.s.beta, 0.1);
+
+        Eab_.s.alpha = lpf_alpha_.Update(Eab_.s.alpha);
+        Eab_.s.beta  = lpf_beta_.Update(Eab_.s.beta);
+
+        iab_view_last_ = iab_view_;
+
+        float error = -Eab_.s.alpha * cos_f32(theta_elect_) - sin_f32(theta_elect_) * Eab_.s.beta;
+        if (velocity_ < 0)
+            error = -error;
+        float pll_output = Calculate(error);
+        velocity_        = spd_lpf.Update(pll_output * RADS_TO_RPM) / 7.0f;
+
+        theta_raw_ += pll_output * ts_;
+        WRAP_0_2PI(theta_raw_);
+
+        float phi_lpf = atan2f(pll_output, 2000.0f);
+
+        // B. 传输/计算延迟补偿 (1.5倍采样周期)
+        float phi_delay = pll_output * ts_ * 1.5f;
+
+        float theta_final = theta_raw_ + phi_lpf + phi_delay;
+        WRAP_0_2PI(theta_final);
+
+        // 将最终角度存入变量供外界（如 Park 变换）使用
+        theta_elect_ = theta_final;
+    }
+
+private:
+    static float sat(float val, float limit)
+    {
+        // clang-format off
+        if (val > limit) return limit;
+        else if (val < -limit) return -limit;
+        else return val;
+        // clang-format on
+    }
+    Config        cfg_;
+    LowPassFilter lpf_alpha_ = LowPassFilter(0.1f);
+    LowPassFilter lpf_beta_  = LowPassFilter(0.1f);
+    LowPassFilter spd_lpf    = LowPassFilter(0.1f);
+    Vector2Df_t   iab_view_{};
+    Vector2Df_t   iab_view_last_{};
+    Vector2Df_t   Eab_{};
+    float         ts_{};
+    float         theta_raw_;
+};
 #endif // DRIVE_CMAKE_OBERSVER_H

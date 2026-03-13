@@ -32,9 +32,10 @@
 #include "encoder_proc.h"
 #include "foc_cfg.h"
 #include "foc_ctrl.h"
-#include "oled_iic_show.h"
+#include "obersver.h"
 #include "util.h"
 #include "vofa.h"
+#include "oled_iic.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,7 +73,26 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern NonFluxObserver nonFluxObserver;
+//void OLED_PrintFixed(int x, int y, const char* head, int32_t val_100) {
+//    char b[16];
+//    b[0] = head[0]; b[1] = head[1]; b[2] = head[2]; // 假设头是3位
+//
+//    // 简易手动格式化
+//    int32_t v = val_100;
+//    if(v < 0) { b[3]='-'; v=-v; } else { b[3]=' '; }
+//
+//    b[4] = (v / 1000) % 10 + '0';
+//    b[5] = (v / 100) % 10 + '0';
+//    b[6] = '.';
+//    b[7] = (v / 10) % 10 + '0';
+//    b[8] = (v % 10) + '0';
+//    b[9] = '\0';
+//
+//    OLED_ShowStr(x, y, b, 1);
+//}
+unsigned char oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
+OLED oled(&hi2c1, (unsigned char*)(oled_buffer));
 /* USER CODE END 0 */
 
 /**
@@ -129,17 +149,19 @@ int main(void)
     HAL_SPI_Init(&hspi1);
     HAL_TIM_Base_Start_IT(&htim16);
     CanResourceInit();
-    OLED_Init(); // OLED Init
-    //    OLED_ShowStr(0,0,"OLED-TEXT",1);
-    //    OLED_ShowStr(0,16,"OLED-TEXT",2);
+    oled.Init();
     //    HAL_TIM_Base_Start(&htim1);
     /* USER CODE END 2 */
-
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1) {
         /* USER CODE END WHILE */
-
+        if (mstick_flag==1) {
+            mstick_flag = 0;
+//            float speed = nonFluxObserver.GetVelocity();
+//            DisplayFast((int)(speed*100));
+            oled.OLED_ShowStr(0,0,"hello world", 2);
+        }
         /* USER CODE BEGIN 3 */
     }
     /* USER CODE END 3 */
