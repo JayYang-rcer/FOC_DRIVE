@@ -5,7 +5,7 @@
 #ifndef DRIVE_CMAKE_ENCODER_H
 #define DRIVE_CMAKE_ENCODER_H
 #include "foc_cfg.h"
-#include "pid_class.h"
+#include "pid.h"
 #include "stdint-gcc.h"
 #include "tim.h"
 #include "util.h"
@@ -150,7 +150,7 @@ public:
     void Init(const Config &cfg)
     {
         this->pole_pairs_      = cfg.pole_pairs;
-        this->cpr_             = cfg.cpr;
+        this->cpr_             = cfg.cpr - 1;
         this->factor_          = M_2PI / (float)(cfg.cpr);
         this->tim_handle_      = cfg.tim_handle;
         this->tim_handle_->ARR = cfg.cpr - 1;

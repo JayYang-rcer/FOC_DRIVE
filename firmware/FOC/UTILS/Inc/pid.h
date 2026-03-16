@@ -1,70 +1,108 @@
-#ifndef __PID_H
-#define __PID_H
+//
+// Created by 28076 on 26-2-21.
+//
 
-typedef struct pid_para_t {
-    volatile float kp;       // 比例
-    volatile float ki;       // 积分
-    volatile float kd;       // 微分
-    volatile float lpf_d;    // 微分低通滤波频率
-    volatile float lpf_error;// 误差低通滤波频率
-    volatile float p_term;   // 比例项
-    volatile float i_term;   // 积分项
-    volatile float d_term;   // 微分项
-
-    volatile float i_term_max;// 积分累加限幅
-    volatile float i_term_min;// 积分累加限幅
-
-    volatile float ctrl_period;// 控制周期
-
-    volatile float target_value;// 目标值
-    volatile float fback_value; // 实际值
-
-    float error;             // 误差
-    volatile float pre_error;// 上一次误差
-    volatile float d_error;  // 误差变化率
-
-    volatile float out_min; // 输出限幅
-    volatile float out_max; // 输出限幅
-    volatile float deadband;// 死区
-
-    volatile float out_value;
-} pid_para_t;
-
-typedef struct pi_para_t {
-    volatile float kp;    // 比例
-    volatile float ki;    // 积分
-    volatile float p_term;// 比例项
-    volatile float i_term;// 积分项
-    volatile float kAnti; // 抗积分饱和系数
-
-    volatile float i_term_max;// 积分累加限幅
-    volatile float i_term_min;// 积分累加限幅
-    volatile float anti_term; // 抗积分饱和
-
-    volatile float ctrl_period;// 控制周期
-
-    volatile float target_value;// 目标值
-    volatile float fback_value; // 实际值
-
-    float error;// 误差
-
-    volatile float out_min;// 输出限幅
-    volatile float out_max;// 输出限幅
-
-    volatile float out_raw;
-    volatile float out_value;
-} pi_para_t;
+#ifndef DRIVE_CMAKE_PID_H
+#define DRIVE_CMAKE_PID_H
+#include "util.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-void  pid_para_init(pid_para_t *pid_config);
-float SerialPidCtrl(pi_para_t *pi, float target_value, float fdback_value);
-float ParallelPidCtrl(pid_para_t *pid, float target_value, float fdback_value);
-float IncreatParallePidCtrl(pid_para_t *pid, float target_value, float fdback_value);
-float AbsLimit(float a, float abs_max);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+class PIController
+{
+public:
+    struct Config {
+        float kp;
+        float ki;           // gain 0f integral
+        float output_max;   // output limit (rad/s)
+        float integral_max; // integral limit
+        float dt;           // sample period (s)
+    };
+
+protected:
+    void PiInit(const Config &cfg) { cfg_ = cfg; }
+    float Calculate(float error);
+
+    /**
+     * @brief 复位
+     */
+    void Reset()
+    {
+        integral_ = 0.0f;
+    }
+
+private:
+    Config cfg_{};
+    float  integral_ = 0.0f; // 积分项
+};
+
+// 串联型位置式PID
+class PositionalPid
+{
+public:
+    struct Config {
+        float kp, ki, kd;
+        float output_min, output_max;
+        float d_term_filter_coeff; // D项滤波系数 (0~1, 1表示无滤波)
+        float integral_max;
+        float anti_coeff;
+        float dt = 0.0f;
+    };
+
+    void Init(const Config &cfg) { cfg_ = cfg; }
+
+    /**
+     * @brief Position PID calculate
+     * @param setpoint
+     * @param measure
+     * @param dt    // the period of Pid loops
+     */
+    float Calculate(float error);
+
+    void Reset()
+    {
+        integral_     = 0.0f;
+        last_error_   = 0.0f;
+        last_d_error_ = 0.0f;
+    }
+
+private:
+    Config cfg_;
+    float  integral_     = 0.0f;
+    float  last_error_   = 0.0f;
+    float  last_d_error_ = 0.0f;
+    float  anti_term_    = 0.0f;
+};
+
+class IncrementalPid
+{
+public:
+    struct Config {
+        float kp, ki, kd;
+        float out_limit;
+        float dt;
+    };
+    void Init(const Config &cfg) { cfg_ = cfg; }
+
+    float Calculate(float error);
+
+    void Reset()
+    {
+        output_     = 0.0f;
+        err_last_   = 0.0f;
+        err_laster_ = 0.0f;
+    }
+
+private:
+    Config cfg_{};
+    float  output_   = 0.0f;
+    float  err_last_ = 0.0f, err_laster_ = 0.0f;
+};
+
+#endif // DRIVE_CMAKE_PID_H

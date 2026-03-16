@@ -3,7 +3,6 @@
 #include "tim.h"
 #include "util.h"
 #include "as5047p.h"
-#include "foc_ctrl.h"
 
 #define PWM_ARR() __HAL_TIM_GET_AUTORELOAD(&htim8)
 #define MAX_BUFFER_SIZE 128
@@ -20,28 +19,6 @@ volatile uint16_t cnt = 0;
 **/
 void VofaStart(void) {
 //	 VofaSendData(1,pll_hfi.error);
-//    VofaSendData(2,foc_param.i_alpha);
-//    VofaSendData(1,foc_param.i_beta);
-//	 VofaSendData(2,hfi_param.ab_h.alpha);
-//     VofaSendData(1,hfi_param.ab_h.beta);
-
-//    VofaSendData(1, foc_param.i_alpha);
-//    VofaSendData(2, foc_param.i_beta);
-
-//    VofaSendData(2, foc_param.i_a);
-//    VofaSendData(2, foc_param.i_b);
-//    VofaSendData(2, foc_param.i_c);
-    VofaSendData(1, motor_cfg.rotor_vel);
-//    VofaSendData(1, pll_hfi.out_value);
-    VofaSendData(1, hfi_param.omega_e);
-    VofaSendData(2, enc_para.pos_e);
-    VofaSendData(2, hfi_param.theta_e);
-
-    VofaSendData(2, hfi_param.idq_f.r.q);
-    VofaSendData(2, hfi_param.idq_f.r.d);
-//	VofaSendData(3,enc_para.pos_e);
-//	VofaSendData(3,smo_angle);
-
 //	VofaSendData(1,PWM_ARR());
     VofaSendframetail();
 }

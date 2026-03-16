@@ -3,7 +3,6 @@
 //
 
 #include "encoder_proc.h"
-#include "filter.h"
 #include "spi.h"
 #include "tim.h"
 #include "util.h"

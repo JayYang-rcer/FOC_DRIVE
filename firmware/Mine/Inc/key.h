@@ -4,7 +4,7 @@
 #include "gpio.h"
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 void KEY_ProcessHandle(void);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ public:
         bool          active_low;    // 是否低电平有效（通常上拉按键为true）
         uint16_t      long_press_ms; // 长按判定的毫秒数
     };
-    explicit KEY(const Config &cfg) : cfg_(cfg) {}
+    explicit KEY(const Config &cfg) : cfg_(cfg) { cfg_.long_press_ms = cfg.long_press_ms / 5; }
     // 在5ms循环中调用
     void Tick(bool raw_state)
     {
@@ -84,11 +84,11 @@ private:
         last_stable_pressed_ = is_stable_pressed_;
     }
 
-    uint16_t fifo_;
-    uint16_t press_timer_;
-    bool     is_stable_pressed_;
-    bool     last_stable_pressed_;
-    bool     long_press_triggered_;
+    uint16_t fifo_{};
+    uint16_t press_timer_{};
+    bool     is_stable_pressed_{};
+    bool     last_stable_pressed_{};
+    bool     long_press_triggered_{};
     Event    last_event_;
     Config   cfg_;
 };

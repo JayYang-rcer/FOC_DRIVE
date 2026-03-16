@@ -29,7 +29,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 84,
+				"line" : 86,
 				"parent" : 0
 			},
 			{
@@ -306,22 +306,19 @@
 				125,
 				126,
 				127,
-				137,
-				143,
+				142,
 				144,
-				146,
-				154,
-				155,
-				156,
+				150,
+				151,
+				153,
 				158,
-				163,
-				164,
+				159,
+				160,
 				165,
+				168,
 				170,
-				173,
-				175,
-				177,
-				179
+				172,
+				174
 			]
 		},
 		{
@@ -480,11 +477,11 @@
 				134,
 				135,
 				136,
-				138,
-				145,
-				153,
-				171,
-				172
+				137,
+				143,
+				149,
+				166,
+				167
 			]
 		},
 		{
@@ -801,29 +798,27 @@
 				131,
 				132,
 				133,
+				138,
 				139,
 				140,
 				141,
-				142,
+				145,
+				146,
 				147,
 				148,
-				149,
-				150,
-				151,
 				152,
+				154,
+				155,
+				156,
 				157,
-				159,
-				160,
 				161,
 				162,
-				166,
-				167,
-				168,
+				163,
+				164,
 				169,
-				174,
-				176,
-				178,
-				180
+				171,
+				173,
+				175
 			]
 		},
 		{
@@ -875,26 +870,23 @@
 				135,
 				136,
 				137,
-				138,
+				142,
 				143,
 				144,
-				145,
-				146,
+				149,
+				150,
+				151,
 				153,
-				154,
-				155,
-				156,
 				158,
-				163,
-				164,
+				159,
+				160,
 				165,
+				166,
+				167,
+				168,
 				170,
-				171,
 				172,
-				173,
-				175,
-				177,
-				179
+				174
 			]
 		},
 		{
@@ -905,7 +897,7 @@
 				32,
 				57,
 				101,
-				181
+				176
 			]
 		}
 	],
@@ -1595,7 +1587,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Foc/core/Inc/current_sense.h",
+			"path" : "Foc/core/Inc/analog_sense.h",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -1626,7 +1618,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "Foc/core/Src/current_sense.cpp",
+			"path" : "Foc/core/Src/analog_sense.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1639,12 +1631,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
 			"path" : "Foc/core/Src/foc_ctrl.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Foc/core/Src/foc_identify.c",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -1681,12 +1667,6 @@
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Foc/encoder/Src/calibration.c",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
 			"compileGroupIndex" : 1,
 			"path" : "Foc/encoder/Src/encoder.cpp",
 			"sourceGroupIndex" : 1
@@ -1699,22 +1679,12 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Foc/utils/Inc/filter.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
 			"path" : "Foc/utils/Inc/filters.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"path" : "Foc/utils/Inc/pid.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Foc/utils/Inc/pid_class.h",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -1730,13 +1700,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "Foc/utils/Src/filters.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Foc/utils/Src/pid.c",
+			"path" : "Foc/utils/Src/pid.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{

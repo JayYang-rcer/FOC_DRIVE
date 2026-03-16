@@ -204,7 +204,7 @@ public:
         if (velocity_ < 0)
             error = -error;
         float pll_output = Calculate(error);
-        velocity_        = spd_lpf.Update(pll_output * RADS_TO_RPM) / 7.0f;
+        velocity_        = spd_lpf.Update(pll_output) * RADS_TO_RPM / 7.0f;
 
         theta_raw_ += pll_output * ts_;
         WRAP_0_2PI(theta_raw_);

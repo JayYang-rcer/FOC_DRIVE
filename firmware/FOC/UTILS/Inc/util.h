@@ -5,6 +5,41 @@
 #include <math.h>
 #include <stdint.h>
 
+
+typedef union {
+    struct {
+        float x;
+        float y;
+    } xy;
+
+    struct {
+        float alpha;
+        float beta;
+    } s;
+
+    struct {
+        float d;
+        float q;
+    } r;
+
+    struct {
+        float sin;
+        float cos;
+    } f;
+} Vector2Df_t;
+
+typedef struct {
+    uint16_t uhU;
+    uint16_t uhV;
+    uint16_t uhW;
+} Vector3D_t;
+
+typedef struct {
+    float fU;
+    float fV;
+    float fW;
+} Vector3S_t;
+
 // Return the sign of the argument. -1.0 if negative, 1.0 if zero or positive.
 #define SIGN(x)       (((x) < 0.0) ? -1.0 : 1.0)
 // Two-norm of 2D vector
@@ -37,36 +72,22 @@
 extern "C" {
 #endif
 float sat1_datf(float val, float up, float low);
-
 float fast_atan2(float y, float x);
-
 float sin_f32(float x);
-
 float cos_f32(float x);
-
 uint8_t crc8(const uint8_t *data, const uint32_t size);
-
 uint32_t crc32(const uint8_t *data, uint32_t size);
-
 int uint32_to_data(uint32_t val, uint8_t *data);
-
 int int32_to_data(int32_t val, uint8_t *data);
-
 int uint16_to_data(uint16_t val, uint8_t *data);
-
 int int16_to_data(int16_t val, uint8_t *data);
-
 int float_to_data(float val, uint8_t *data);
-
 uint32_t data_to_uint32(uint8_t *data);
-
 int32_t data_to_int32(uint8_t *data);
-
 uint16_t data_to_uint16(uint8_t *data);
-
 int16_t data_to_int16(uint8_t *data);
-
 float data_to_float(uint8_t *data);
+float AbsLimit(float a, float abs_max);
 #ifdef __cplusplus
 }
 #endif

@@ -10,11 +10,21 @@
             <Scope>
                 <Options TimeResolutionUs="1000000" />
             </Scope>
+            <Trigger>
+                <Options Level="0" Symbol="theta_elect_" On="0" Auto="0" Rise="0" Fall="0" />
+            </Trigger>
         </Configuration>
         <Windows>
             <Graph Show="1" />
             <Watch Show="1" />
         </Windows>
-        <SelectedSymbols />
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="theta_elect_" Address="0x20001400" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="0" GraphColorBlue="0" YMinSampled="0" YMaxSampled="2.36936e-38" YAvgSampled="5.59353e-43" Offset="4" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="2" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp" DrawStyle="0" NameWithParents=".hfiObserver.&lt;Inherited&gt;.theta_elect_" />
+            </Symbol>
+            <Symbol>
+                <Options Name="theta_elect_" Address="0x20000014" Type="float" TypeID="1" Size="4" GraphColorRed="255" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="0" YMaxSampled="0" YAvgSampled="0" Offset="8" ShowInGraph="1" YOffset="0" IsAutoConfig="0" YResolution="2" MaxValue="-2147483648" File="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp" DrawStyle="0" NameWithParents=".abiEncoder.&lt;Inherited&gt;.&lt;Inherited&gt;.theta_elect_" />
+            </Symbol>
+        </SelectedSymbols>
     </Project>
 </JScopeProject>

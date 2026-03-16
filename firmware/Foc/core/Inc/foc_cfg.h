@@ -1,9 +1,9 @@
 #ifndef __FOC_CFG_H
 #define __FOC_CFG_H
 
-#include "filter.h"
-#include "pid.h"
 #include "stdbool.h"
+#include "stdint.h"
+#include "util.h"
 
 #define SET_DTC_A(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, value)
 #define SET_DTC_B(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
@@ -13,6 +13,7 @@
 #define IOP               20.f                            // 电流采样电阻放大倍数
 #define IRATIO            (3.3f / 4096.f) / R_SENSE / IOP // 电流采样,电压转换为电流值的系数
 #define VBUS_RATIO        (6.1f * 3.3f) / 4096.0f         // 母线电压采样电压转换为电压值的系数
+//#define VBUS_RATIO        (5.92f * 3.3f) / 4096.0f         // 电阻不对，不是1%精度导致误差为4.7%，在此手动调整
 #define BATTERY_CELL      4.0f
 
 // #define VBUS_RATIO 0.0084723f //母线电压采样电压转换为电压值的系数
@@ -31,60 +32,6 @@ typedef enum {
     FOC_HFI             = 7, // 高频注入测试
     FOC_IF_CTRL         = 8, // IF强拖
 } FocCtrlMode_e;
-
-typedef union {
-    struct {
-        float x;
-        float y;
-    } xy;
-
-    struct {
-        float alpha;
-        float beta;
-    } s;
-
-    struct {
-        float d;
-        float q;
-    } r;
-} Vector2Df_t;
-
-typedef struct {
-    uint16_t uhU;
-    uint16_t uhV;
-    uint16_t uhW;
-}Vector3D_t;
-
-typedef struct {
-    float fU;
-    float fV;
-    float fW;
-} Vector3S_t;
-
-typedef struct {
-    Vector2Df_t Is;
-    Vector2Df_t Vs;
-    Vector2Df_t state;
-    float      Gamma; // Non-linear observer gain
-    float      Ts;    // Sampling period
-    float      theta_e;
-    float       omega;
-} NonFlux_t;
-
-typedef struct {
-    float A;
-    float B;
-    float ksw;              // 滑膜系数
-    float ialpha_view;      // alpha轴电流观测值
-    float ibeta_view;       // beta轴电流观测值
-    float ialpha_view_last; // 上次观测值
-    float ibeta_view_last;  // 上次观测值
-    float valpah;           // 观测值
-    float vbeta;
-
-    float Ealpha; // alpha轴拓展反电动势
-    float Ebeta;  // beta轴拓展反电动势
-} SmoParam_t;
 
 typedef struct {
     float   rotor_pos;  // 转子位置
@@ -111,7 +58,7 @@ typedef struct
     float jx;    // 转动惯量
     float pn;    // 极对数
     float delta; // 阻尼系数
-}MotorParam_t;
+} MotorParam_t;
 
 typedef struct {
     bool  foc_init;
@@ -132,17 +79,14 @@ typedef struct {
 typedef struct {
     Vector3S_t current_raw;
     Vector3S_t offset;
-    float vbus;      // 母线电压
-    float temp;      // 温度
+    float      vbus; // 母线电压
+    float      temp; // 温度
 } FocAdcValue_t;
 
 typedef struct foc_param_t {
-    float  vbus;
-
+    float vbus;
     float i_bus;
-    float theta;   // 角度
-    float sin_val; // 此角度对应的正弦值
-    float cos_val; // 此角度对应的余弦值
+    float theta; // 角度
 
     Vector3S_t current;
     Vector3S_t vphase;
@@ -153,57 +97,15 @@ typedef struct foc_param_t {
     Vector2Df_t iab;
     Vector2Df_t vab;
 
-    float dtc_a; // A 相 PWM 占空比
-    float dtc_b; // B 相 PWM 占空比
-    float dtc_c; // C 相 PWM 占空比
 } FocParam_t;
-
-typedef struct hfi_param_t {
-    float theta_e;  // 预测电角度
-    float omega_e;  // 预测电角速度
-    float inject_U; // 注入电压
-    int   sign;
-
-    uint16_t nsd_count;
-    float    isum_positive;
-    float    isum_negetive;
-
-    Vector2Df_t ab_last;
-    Vector2Df_t ab_laster;
-
-    Vector2Df_t ab_h;
-
-    Vector2Df_t idq_h;
-    Vector2Df_t idq_h_last; // 上次的dq轴高频电流
-
-    Vector2Df_t idq_f;
-    Vector2Df_t idq_f_last; // 上次的dq轴高频电流
-    Vector2Df_t idq_f_laster; // 上次的dq轴高频电流
-} HfiParam_t;
 
 extern FocAdcValue_t mc_adc;
 extern FocParam_t    foc_param;
 extern MotorCfg_t    motor_cfg;
 extern MotorCtrl_t   motor_ctrl;
-extern pi_para_t     id_pi, iq_pi;
-extern pi_para_t     hfi_id_pi, hfi_iq_pi;
-extern pid_para_t    speed_pid, HfiSpeed_pid;
-extern pid_para_t    pos_pid;
-extern pll_t         pll_spd;
-extern NonFlux_t     nonFlux;
-extern pll_t         pll_flux;
-/********************smo param********************/
-extern pll_t      pll_smo;
-extern SmoParam_t smo_param;
-/*************************************************/
-
-/******************** hfi param ********************/
-extern pll_t      pll_hfi; // 高频注入的PLL
-extern HfiParam_t hfi_param;
-/*************************************************/
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 void FocPwmStart(bool A, bool AN, bool B, bool BN, bool C, bool CN);
@@ -215,5 +117,47 @@ void MotorCtrlReset(MotorCtrl_t *motor);
 #ifdef __cplusplus
 }
 #endif
-
+//class FocController
+//{
+//public:
+//    // 运行FOC控制
+//    void Run();
+//
+//    // 设置控制模式
+//    void SetMode(FocCtrlMode_e mode);
+//
+//    // 获取电流/电压/角度等
+//    Vector2Df_t GetCurrentAb() const { return current_ab_; }
+//    Vector2Df_t GetCurrentDq() const { return current_dq_; }
+//    Vector2Df_t GetVoltageAb() const { return voltage_ab_; }
+//    float GetAngle() const { return angle_; }
+//    float GetVelocity() const { return velocity_; }
+//
+//    // 设定值设置
+//    void SetVoltage(float vd, float vq);
+//    void SetCurrent(float id, float iq);
+//    void SetSpeed(float rpm);
+//    void SetPosition(float pos);
+//
+//private:
+//    // 内部状态（替代foc_param）
+//    Vector2Df_t current_ab_;
+//    Vector2Df_t current_dq_;
+//    Vector2Df_t voltage_ab_;
+//    Vector2Df_t voltage_dq_;
+//    float angle_;
+//    float velocity_;
+//    float vbus_;
+//
+//    // 组件（现有类的组合）
+////    NonFluxObserver observer_;
+////    SlideMoveObserver smo_;
+////    PulsatingHFI hfi_;
+////    IncrementalPid pid_spd_;
+////    IncrementalPid pid_pos_;
+////    PIController pid_id_;
+////    PIController pid_iq_;
+//
+//    FocCtrlMode_e mode_;
+//};
 #endif

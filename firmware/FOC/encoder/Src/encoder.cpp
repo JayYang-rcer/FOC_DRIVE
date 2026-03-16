@@ -3,7 +3,7 @@
 //
 
 #include "encoder.h"
-#include "pid_class.h"
+#include "pid.h"
 
 void EncoderBase::EncoderDataProc(uint16_t raw_data)
 {

@@ -10,12 +10,18 @@ _RAM_FUNC void HfiVolt(float vd, float vq, float pos);
 _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos);
 
 void FocVolt(float vd_ref, float vq_ref, float pos);
-void Encoder_Idle(void);
-void FocHandle(void);
 void FocCurrent(float id_set, float iq_set, float pos);
 
 #ifdef __cplusplus
 }
 #endif
 extern volatile uint16_t mstick_flag;
+
+class FocController{
+public:
+
+private:
+
+};
+
 #endif
