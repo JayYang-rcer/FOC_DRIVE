@@ -11,16 +11,17 @@ void KEY_ProcessHandle(void);
 }
 #endif
 
+// 按键事件定义
+enum class Event :uint8_t {
+    NONE = 0,
+    CLICK,        // 单击（按下并快速抬起）
+    DOUBLE_CLICK, // 双击（预留）
+    LONG_PRESS,   // 长按（按下超过阈值）
+};
+
 class KEY
 {
 public:
-    // 按键事件定义
-    enum Event {
-        NONE = 0,
-        CLICK,        // 单击（按下并快速抬起）
-        DOUBLE_CLICK, // 双击（预留）
-        LONG_PRESS,   // 长按（按下超过阈值）
-    };
     struct Config {
         GPIO_TypeDef *port;
         uint32_t      pin;
@@ -50,7 +51,7 @@ public:
     Event GetEvent()
     {
         Event e     = last_event_;
-        last_event_ = NONE;
+        last_event_ = Event::NONE;
         return e;
     }
 
@@ -68,7 +69,7 @@ private:
 
             // 判定长按
             if (!long_press_triggered_ && press_timer_ >= cfg_.long_press_ms) {
-                last_event_           = LONG_PRESS;
+                last_event_           = Event::LONG_PRESS;
                 long_press_triggered_ = true;
             }
         }
@@ -76,7 +77,7 @@ private:
         else if (last_stable_pressed_) {
             // 如果抬起时还没有触发长按，则判定为单击
             if (!long_press_triggered_) {
-                last_event_ = CLICK;
+                last_event_ = Event::CLICK;
             }
             press_timer_ = 0;
         }

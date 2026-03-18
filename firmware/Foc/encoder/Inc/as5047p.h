@@ -2,7 +2,7 @@
 #define __AS5047P_H__
 
 #include "spi.h"
-#include "foc_cfg.h"
+#include "stdbool.h"
 
 typedef enum AS5047P_ENUM {
     NOP = 0x0000,       //No operation
@@ -50,7 +50,6 @@ uint16_t SpiReadWriteOneByte(uint16_t addr);
 
 uint16_t As5047pRead(uint16_t addr);
 
-void SpeedMeasure(enc_para_t *enc, MotorCfg_t *motor);
 #ifdef __cplusplus
 }
 #endif

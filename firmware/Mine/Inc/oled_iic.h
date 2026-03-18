@@ -55,7 +55,7 @@ public:
     void OLED_SetPixel(int16_t x, int16_t y, uint8_t set_pixel);
 
     // 显示字符串：TextSize 1(6x8), 2(8x16)
-    void OLED_ShowStr(int16_t x, int16_t y, const char *str, uint8_t TextSize);
+    void OLED_ShowStr(int16_t x, int16_t y, const char *str, uint8_t TextSize, bool is_invert);
     
     // 显示中文：传入中文字符串索引
     void OLED_ShowChinese(int16_t x, int16_t y, uchar *ch);

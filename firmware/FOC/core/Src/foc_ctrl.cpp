@@ -32,8 +32,8 @@ struct AppConfig {
         .pn   = 7,
     };
     PositionalPid::Config pi_current = {
-        .kp           = motor.ls / 1000000.0f * 11000.0f * motor.pn * RPM_TO_RADS * 0.8f,
-        .ki           = motor.rs / 1000.0f * 11000.0f * motor.pn * RPM_TO_RADS * 1.2f,
+        .kp           = motor.ls / 1000000.0f * 11000.0f * motor.pn * RPM_TO_RADS * 3.f,
+        .ki           = motor.rs / 1000.0f * 11000.0f * motor.pn * RPM_TO_RADS,
         .output_min   = -(BATTERY_CELL * 4.0f) * ONE_BY_SQRT3,
         .output_max   = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3,
         .integral_max = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3,
@@ -87,6 +87,10 @@ struct AppConfig {
         .R_fixed    = 3.3f,
         .B          = 3380.0f,
     };
+    VoltBusSense::SenseConfig vbus_sense = {
+        .addr_bus_ = &ADC2->JDR1,
+        .fcc_      = (6.1f * 3.3f) / 4096.0f,
+    };
     AbiEncoder::Config abi_encoder = {
         .cpr        = 4000,
         .pole_pairs = 7,
@@ -104,13 +108,6 @@ struct AppConfig {
         .out_limit = 15.f,
         .dt        = 1 / 2000.0f,
     };
-    IncrementalPid::Config pid_hfiSpdCfg = {
-        .kp        = 0.0045f,
-        .ki        = 0.0035f,
-        .kd        = 0.0f,
-        .out_limit = 15.f,
-        .dt        = 1 / 2000.0f,
-    };
 } app_config;
 
 LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
@@ -118,7 +115,8 @@ LowPassFilter      lpf_speed(0.05f);
 Svpwm              svm(16.0f, 4250);
 InlineCurrentSense current_sense(app_config.current_sense);
 TempSense          temp_sense(app_config.temp_sense);
-IncrementalPid     pid_spd, pid_hfi_spd;
+VoltBusSense       vbus_sense(app_config.vbus_sense);
+IncrementalPid     pid_spd;
 PositionalPid      pi_id, pi_iq;
 SpeedPLLMonitor    spdMonitor;
 AbiEncoder         abiEncoder;
@@ -126,11 +124,11 @@ As5407Encoder      as5047p;
 NonFluxObserver    nonFluxObserver;
 PulsatingHFI       hfiObserver;
 SlideMoveObserver  smoObserver;
+FocController      focController;
 
 void ResourceInit(void)
 {
     pid_spd.Init(app_config.pid_spdCfg);
-    pid_hfi_spd.Init((app_config.pid_hfiSpdCfg));
     abiEncoder.Init(app_config.abi_encoder);
     as5047p.Init(app_config.as5047_cfg);
     nonFluxObserver.Init(app_config.pll_nonFlux, app_config.motor, 10000);
@@ -139,6 +137,7 @@ void ResourceInit(void)
     smoObserver.Init(app_config.pll_sildemove, app_config.cfg_smo);
     pi_id.Init(app_config.pi_current);
     pi_iq.Init(app_config.pi_current);
+    focController.SetCurrentSense(&current_sense);
 }
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
@@ -258,6 +257,8 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
     SinCosVal(&SinCos, foc_param.theta);
     Park(&foc_param.idq, &foc_param.iab, &SinCos);
     Vector2Df_t idq_f = hfiObserver.GetDqCurrentLow(foc_param.idq);
+    lpf_id.Update(&idq_f.r.d);
+    lpf_iq.Update(&idq_f.r.q);
 
     float error_id    = id_set - idq_f.r.d;
     foc_param.vdq.r.d = pi_id.Calculate(error_id) + hfiObserver.GetInjectVoltage(1.2f);
@@ -270,11 +271,10 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
 
 volatile float vbus;
 
-void AnalogSampleUpdate(FocAdcValue_t *adc, FocParam_t *foc)
+void AnalogSampleUpdate(FocParam_t *foc)
 {
-    adc->vbus = ADC2->JDR1;
-    vbus      = ((float)adc->vbus) * VBUS_RATIO;
-    foc->vbus = ((float)adc->vbus) * VBUS_RATIO;
+    vbus      = vbus_sense.GetBusVolt();
+    foc->vbus = vbus;
 }
 
 volatile float speed_hz = 10000;
@@ -303,7 +303,6 @@ void           EncoderDataCalc(enc_para_t *enc, MotorCfg_t *motor)
 }
 
 uint16_t          ms_cnt      = 0;
-volatile uint16_t mstick_flag = 0;
 extern uint16_t   can_recieveFlag;
 float             temp;
 __RAM_FUNC void   Encoder_Idle(void)
@@ -311,7 +310,6 @@ __RAM_FUNC void   Encoder_Idle(void)
     __HAL_TIM_CLEAR_FLAG(&htim2, TIM_FLAG_CC1);
     if (++ms_cnt == 200) {
         ms_cnt      = 0;
-        mstick_flag = 1;
     }
     temp = temp_sense.Get_Temperature();
 #if USE_SLAVE_MODE
@@ -441,7 +439,7 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
         if (++motor_ctrl.spd_cnt == 10) {
             static int pos     = 0;
             float      error   = ctrl->speed_set - hfiObserver.GetVelocity();
-            i_out              = pid_hfi_spd.Calculate(error);
+            i_out              = pid_spd.Calculate(error);
             motor_ctrl.spd_cnt = 0;
         }
         // 高频注入Id偏置，防止电机在速度为0时的观测角度发散
@@ -461,12 +459,10 @@ void MotorCtrl(MotorCtrl_t *ctrl, FocParam_t *foc)
 
 _RAM_FUNC void FocHandle(void)
 {
-    AnalogSampleUpdate(&mc_adc, &foc_param);
+    AnalogSampleUpdate(&foc_param);
 #if (USE_SENSERLESS == 0)
     PosCalculate(&enc_para);
 #endif
-    //    Clarke(&foc_param);
-    //    non_flux_observer();
     nonFluxObserver.Update(foc_param.vab, foc_param.iab);
     smoObserver.Update(foc_param.vab, foc_param.iab);
     foc_param.iab  = current_sense.GetAlphaBeta();
@@ -503,8 +499,18 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 
             // as5047p.Update();
             current_sense.Update();
-            foc_param.current = current_sense.GetCurrents();
+            // foc_param.current = current_sense.GetCurrents();
+            foc_param.current = focController.sense_->GetCurrents();
             FocHandle();
         }
     }
+}
+
+void FocController::SetCurrentSense(PhaseSenseBase *sense)
+{
+    sense_ = sense;
+}
+
+void FocController::Run()
+{
 }

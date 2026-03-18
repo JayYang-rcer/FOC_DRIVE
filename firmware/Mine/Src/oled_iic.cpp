@@ -169,54 +169,73 @@ void OLED::OLED_HorizontalShift(uint8_t start_page, uint8_t end_page, uint8_t di
 /**
  * @brief 显示字符串
  */
-void OLED::OLED_ShowStr(int16_t x, int16_t y, const char *str, uint8_t TextSize)
+void OLED::OLED_ShowStr(int16_t x, int16_t y, const char *str, uint8_t TextSize, bool is_invert)
 {
-    if (x < 0 || y < 0) return;
+    if (x < 0 || x >= SCREEN_COLUMN || y < 0 || y >= SCREEN_ROW || str == nullptr)
+    {
+        return;
+    }
 
     int32_t c = 0;
-    uint8_t j = 0;
+    unsigned char j = 0;
+    unsigned char char_w = (TextSize == 1) ? 6 : 8;
+    unsigned char char_h = (TextSize == 1) ? 8 : 16;
 
     while (str[j] != '\0')
     {
-        c = str[j] - 32;
-        if (c < 0) break;
+        c = (unsigned char)str[j] - 32;
+        if (c < 0 || c > 95) // 仅处理标准ASCII可见字符范围
+        {
+            j++;
+            continue;
+        }
+
+        // 自动换行逻辑
+        if (x + char_w > SCREEN_COLUMN)
+        {
+            x = 0;
+            y += char_h;
+        }
+
+        // 垂直越界检查
+        if (y + char_h > SCREEN_ROW)
+        {
+            break;
+        }
 
         if (TextSize == 1) // 6x8 字体
         {
-            if (x > (SCREEN_COLUMN - 6)) { x = 0; y += 8; }
-            if (y > (SCREEN_ROW - 8)) break;
-
-            for (uint8_t m = 0; m < 6; m++)
+            for (unsigned char m = 0; m < 6; m++)
             {
-                for (uint8_t n = 0; n < 8; n++)
+                unsigned char byte = F6x8[c][m];
+                for (unsigned char n = 0; n < 8; n++)
                 {
-                    OLED_SetPixel(x + m, y + n, (F6x8[c][m] >> n) & 0x01);
+                    bool pixel = (byte >> n) & 0x01;
+                    OLED_SetPixel(x + m, y + n, is_invert == !pixel);
                 }
             }
-            x += 6;
         }
         else if (TextSize == 2) // 8x16 字体
         {
-            if (x > (SCREEN_COLUMN - 8)) { x = 0; y += 16; }
-            if (y > (SCREEN_ROW - 16)) break;
-
-            for (uint8_t m = 0; m < 2; m++)
+            for (unsigned char m = 0; m < 2; m++) // 两个Page
             {
-                for (uint8_t n = 0; n < 8; n++)
+                for (unsigned char n = 0; n < 8; n++) // 宽度8
                 {
-                    for (uint8_t i = 0; i < 8; i++)
+                    unsigned char byte = F8X16[c][n + m * 8];
+                    for (unsigned char i = 0; i < 8; i++) // 高度8
                     {
-                        OLED_SetPixel(x + n, y + i + m * 8, (F8X16[c][n + m * 8] >> i) & 0x01);
+                        bool pixel = (byte >> i) & 0x01;
+                        OLED_SetPixel(x + n, y + i + m * 8, is_invert == !pixel);
                     }
                 }
             }
-            x += 8;
         }
+
+        x += char_w;
         j++;
     }
     OLED_RefreshRAM();
 }
-
 /**
  * @brief 显示中文（GB2312）
  */

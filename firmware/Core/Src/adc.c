@@ -254,7 +254,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     PC1     ------> ADC2_IN7
     PC2     ------> ADC2_IN8
     */
-    GPIO_InitStruct.Pin = TEPM_Pin|VBAT_Pin;
+    GPIO_InitStruct.Pin = VBAT_Pin|TEMP_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -317,7 +317,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PC1     ------> ADC2_IN7
     PC2     ------> ADC2_IN8
     */
-    HAL_GPIO_DeInit(GPIOC, TEPM_Pin|VBAT_Pin);
+    HAL_GPIO_DeInit(GPIOC, VBAT_Pin|TEMP_Pin);
 
     /* ADC2 interrupt Deinit */
   /* USER CODE BEGIN ADC2:ADC1_2_IRQn disable */

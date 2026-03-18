@@ -2,7 +2,6 @@
 #include "adc.h"
 #include "tim.h"
 
-FocAdcValue_t mc_adc;
 FocParam_t    foc_param;
 MotorCfg_t    motor_cfg;
 MotorCtrl_t   motor_ctrl = {0};
@@ -25,11 +24,6 @@ void MotorPidInit(void)
 
 void MotorParaInit(void)
 {
-    motor_cfg.flux = 1.221f; // mWb
-    motor_cfg.pn   = 7;
-    motor_cfg.rs   = 37.5333f; // mOhm
-    motor_cfg.ls   = 6.3f;     // uH
-
     MotorPidInit();
 }
 

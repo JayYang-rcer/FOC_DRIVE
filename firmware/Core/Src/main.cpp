@@ -33,9 +33,10 @@
 #include "foc_cfg.h"
 #include "foc_ctrl.h"
 #include "obersver.h"
+#include "oled_iic.h"
 #include "util.h"
 #include "vofa.h"
-#include "oled_iic.h"
+#include "menu_manager.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,25 +75,9 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 extern NonFluxObserver nonFluxObserver;
-//void OLED_PrintFixed(int x, int y, const char* head, int32_t val_100) {
-//    char b[16];
-//    b[0] = head[0]; b[1] = head[1]; b[2] = head[2]; // 假设头是3位
-//
-//    // 简易手动格式化
-//    int32_t v = val_100;
-//    if(v < 0) { b[3]='-'; v=-v; } else { b[3]=' '; }
-//
-//    b[4] = (v / 1000) % 10 + '0';
-//    b[5] = (v / 100) % 10 + '0';
-//    b[6] = '.';
-//    b[7] = (v / 10) % 10 + '0';
-//    b[8] = (v % 10) + '0';
-//    b[9] = '\0';
-//
-//    OLED_ShowStr(x, y, b, 1);
-//}
 unsigned char oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
-OLED oled(&hi2c1, (unsigned char*)(oled_buffer));
+OLED          oled(&hi2c1, (unsigned char *)(oled_buffer));
+extern volatile uint8_t flag_5ms,flag_50ms;
 /* USER CODE END 0 */
 
 /**
@@ -135,20 +120,20 @@ int main(void)
     MX_I2C1_Init();
     MX_TIM16_Init();
     /* USER CODE BEGIN 2 */
-    ResourceInit();
-    CurrentSampInit();
-
-    EncoderInit();
-    MotorParaInit();
+//    ResourceInit();
+//    CurrentSampInit();
+//
+//    EncoderInit();
+//    MotorParaInit();
     //    FocPwmStart(true, true, true, true, true, true);
-    HAL_TIM_Base_Start_IT(&htim2);
-    HAL_TIM_Base_Start_IT(&htim8);
+//    HAL_TIM_Base_Start_IT(&htim2);
+//    HAL_TIM_Base_Start_IT(&htim8);
 
-    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
-    hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
-    HAL_SPI_Init(&hspi1);
+//    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
+//    hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
+//    HAL_SPI_Init(&hspi1);
     HAL_TIM_Base_Start_IT(&htim16);
-    CanResourceInit();
+//    CanResourceInit();
     oled.Init();
     //    HAL_TIM_Base_Start(&htim1);
     /* USER CODE END 2 */
@@ -156,11 +141,15 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1) {
         /* USER CODE END WHILE */
-        if (mstick_flag==1) {
-            mstick_flag = 0;
-//            float speed = nonFluxObserver.GetVelocity();
-//            DisplayFast((int)(speed*100));
-            oled.OLED_ShowStr(0,0,"hello world", 2);
+        if(flag_5ms)
+        {
+            flag_5ms = 0;
+            task_5ms();
+        }
+        if(flag_50ms)
+        {
+            flag_50ms = 0;
+            task_50ms();
         }
         /* USER CODE BEGIN 3 */
     }

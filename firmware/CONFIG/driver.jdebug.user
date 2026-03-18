@@ -2,9 +2,9 @@
 
 
 Breakpoint=F:/FOC_DRIVE/firmware/Foc/encoder/Src/as5047p.c:57, State=BP_STATE_DISABLED
-Breakpoint=F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp:483, State=BP_STATE_DISABLED
+Breakpoint=F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp:492:5, State=BP_STATE_DISABLED
 Breakpoint=F:/FOC_DRIVE/firmware/Drivers/CMSIS/Include/cmsis_gcc.h:209:3, Permitted Impl.=BP_TYPE_MIXED, State=BP_STATE_DISABLED
-OpenDocument="as5047p.c", FilePath="F:/FOC_DRIVE/firmware/Foc/encoder/Src/as5047p.c", Line=18
+OpenDocument="as5047p.c", FilePath="F:/FOC_DRIVE/firmware/Foc/encoder/Src/as5047p.c", Line=4
 OpenDocument="main.cpp", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.cpp", Line=100
 OpenDocument="oled_iic.h", FilePath="F:/FOC_DRIVE/firmware/Mine/Inc/oled_iic.h", Line=48
 OpenDocument="encoder.h", FilePath="F:/FOC_DRIVE/firmware/Foc/encoder/Inc/encoder.h", Line=97
@@ -21,10 +21,10 @@ OpenDocument="stm32g4xx_hal_fdcan.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/ST
 OpenDocument="stm32g4xx_hal_tim.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c", Line=3967
 OpenDocument="drive_can.c", FilePath="F:/FOC_DRIVE/firmware/BSP/Src/drive_can.c", Line=108
 OpenDocument="McuDevicePort.c", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/McuDevicePort.c", Line=0
-OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=104
+OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=60
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=428, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=246, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=1, w=711, h=424, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=0, w=711, h=250, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1269, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=675, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=650, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0

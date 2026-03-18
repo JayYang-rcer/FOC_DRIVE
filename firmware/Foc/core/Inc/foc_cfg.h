@@ -13,10 +13,7 @@
 #define IOP               20.f                            // 电流采样电阻放大倍数
 #define IRATIO            (3.3f / 4096.f) / R_SENSE / IOP // 电流采样,电压转换为电流值的系数
 #define VBUS_RATIO        (6.1f * 3.3f) / 4096.0f         // 母线电压采样电压转换为电压值的系数
-//#define VBUS_RATIO        (5.92f * 3.3f) / 4096.0f         // 电阻不对，不是1%精度导致误差为4.7%，在此手动调整
 #define BATTERY_CELL      4.0f
-
-// #define VBUS_RATIO 0.0084723f //母线电压采样电压转换为电压值的系数
 
 // Speed PID parameters
 #define SPEED_PID_TIME_HZ 2000
@@ -41,13 +38,6 @@ typedef struct {
     float   rotor_evel; // 转子电速度
     float   fRefSlope;
     int16_t RefSlope;
-
-    float rs;    // 相电阻
-    float ls;    // 相电感
-    float flux;  // 磁链
-    float jx;    // 转动惯量
-    float pn;    // 极对数
-    float delta; // 阻尼系数
 } MotorCfg_t;
 
 typedef struct
@@ -76,13 +66,6 @@ typedef struct {
     FocCtrlMode_e mode; // 控制模式
 } MotorCtrl_t;
 
-typedef struct {
-    Vector3S_t current_raw;
-    Vector3S_t offset;
-    float      vbus; // 母线电压
-    float      temp; // 温度
-} FocAdcValue_t;
-
 typedef struct foc_param_t {
     float vbus;
     float i_bus;
@@ -96,10 +79,8 @@ typedef struct foc_param_t {
 
     Vector2Df_t iab;
     Vector2Df_t vab;
-
 } FocParam_t;
 
-extern FocAdcValue_t mc_adc;
 extern FocParam_t    foc_param;
 extern MotorCfg_t    motor_cfg;
 extern MotorCtrl_t   motor_ctrl;
@@ -117,47 +98,5 @@ void MotorCtrlReset(MotorCtrl_t *motor);
 #ifdef __cplusplus
 }
 #endif
-//class FocController
-//{
-//public:
-//    // 运行FOC控制
-//    void Run();
-//
-//    // 设置控制模式
-//    void SetMode(FocCtrlMode_e mode);
-//
-//    // 获取电流/电压/角度等
-//    Vector2Df_t GetCurrentAb() const { return current_ab_; }
-//    Vector2Df_t GetCurrentDq() const { return current_dq_; }
-//    Vector2Df_t GetVoltageAb() const { return voltage_ab_; }
-//    float GetAngle() const { return angle_; }
-//    float GetVelocity() const { return velocity_; }
-//
-//    // 设定值设置
-//    void SetVoltage(float vd, float vq);
-//    void SetCurrent(float id, float iq);
-//    void SetSpeed(float rpm);
-//    void SetPosition(float pos);
-//
-//private:
-//    // 内部状态（替代foc_param）
-//    Vector2Df_t current_ab_;
-//    Vector2Df_t current_dq_;
-//    Vector2Df_t voltage_ab_;
-//    Vector2Df_t voltage_dq_;
-//    float angle_;
-//    float velocity_;
-//    float vbus_;
-//
-//    // 组件（现有类的组合）
-////    NonFluxObserver observer_;
-////    SlideMoveObserver smo_;
-////    PulsatingHFI hfi_;
-////    IncrementalPid pid_spd_;
-////    IncrementalPid pid_pos_;
-////    PIController pid_id_;
-////    PIController pid_iq_;
-//
-//    FocCtrlMode_e mode_;
-//};
+
 #endif
