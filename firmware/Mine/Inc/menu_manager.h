@@ -12,7 +12,8 @@
 enum class ItemType : uint8_t {
     MENU,     // 下一级菜单
     FUNCTION, // 执行函数
-    VARIABLE  // 修改变量 (如 PID 参数)
+    VARIABLE, // 修改变量 (如 PID 参数)
+    DISPLAY   // 显示设定值和当前值
 };
 
 struct MenuItem {
@@ -21,13 +22,15 @@ struct MenuItem {
     union {
         void (*callback)(void);  // 函数指针 (TYPE_FUNCTION)
         const MenuItem *child;   // 子菜单首地址 (TYPE_MENU)
-        float          *var_ptr; // 变量指针 (TYPE_VARIABLE)
+        float          *var_ptr; // 变量指针 (TYPE_VARIABLE/DISPLAY)
     };
     union {
         int   child_count; // 子菜单条目数 (TYPE_MENU)
-        float var_step;    // 修改步长 (TYPE_VARIABLE)
+        float var_step;    // 修改步长 (TYPE_VARIABLE/DISPLAY)
     };
+    float *var_ptr2; // 当前值指针 (TYPE_DISPLAY专用)
 };
+
 class MenuManager
 {
 public:
@@ -63,13 +66,28 @@ public:
             cursor_ = old_cursor;
         }
         // 新光标行
-        if (current_[cursor_].type == ItemType::VARIABLE && current_[cursor_].var_ptr != nullptr) {
+        if (current_[cursor_].type == ItemType::DISPLAY && current_[cursor_].var_ptr != nullptr) {
+            if (current_[cursor_].var_ptr2 != nullptr) {
+                DrawDisplayValue(*current_[cursor_].var_ptr, *current_[cursor_].var_ptr2, 2, true); // 双指针
+            } else {
+                DrawDisplayValue(*current_[cursor_].var_ptr, 2, true); // 单指针（NOW:XX）
+            }
+        } else if (current_[cursor_].type == ItemType::VARIABLE && current_[cursor_].var_ptr != nullptr) {
             DrawVariableValue(*current_[cursor_].var_ptr, 2, true);
         } else {
             cfg_.oled.OLED_ShowStr(32, 16 * cursor_, current_[cursor_].label, 2, true);
         }
         // 原光标行
-        if (current_[last_cursor_].type == ItemType::VARIABLE && current_[last_cursor_].var_ptr != nullptr) {
+        if (current_[last_cursor_].type == ItemType::DISPLAY && current_[last_cursor_].var_ptr != nullptr) {
+            int old_cursor = cursor_;
+            cursor_        = last_cursor_;
+            if (current_[last_cursor_].var_ptr2 != nullptr) {
+                DrawDisplayValue(*current_[last_cursor_].var_ptr, *current_[last_cursor_].var_ptr2, 2, false);
+            } else {
+                DrawDisplayValue(*current_[last_cursor_].var_ptr, 2, false);
+            }
+            cursor_ = old_cursor;
+        } else if (current_[last_cursor_].type == ItemType::VARIABLE && current_[last_cursor_].var_ptr != nullptr) {
             int old_cursor = cursor_;
             cursor_        = last_cursor_;
             DrawVariableValue(*current_[last_cursor_].var_ptr, 2, false);
@@ -77,7 +95,6 @@ public:
         } else {
             cfg_.oled.OLED_ShowStr(32, 16 * last_cursor_, current_[last_cursor_].label, 2, false);
         }
-        cfg_.oled.OLED_RefreshRAM();
         last_cursor_ = cursor_;
     }
 
@@ -85,15 +102,31 @@ public:
     {
         cfg_.oled.OLED_CLS();
         // 第一行（光标行）
-        if (current_[0].type == ItemType::VARIABLE && current_[0].var_ptr != nullptr) {
+        if (current_[0].type == ItemType::DISPLAY && current_[0].var_ptr != nullptr) {
+            cursor_ = 0;
+            if (current_[0].var_ptr2 != nullptr) {
+                DrawDisplayValue(*current_[0].var_ptr, *current_[0].var_ptr2, 2, true);
+            } else {
+                DrawDisplayValue(*current_[0].var_ptr, 2, true);
+            }
+        } else if (current_[0].type == ItemType::VARIABLE && current_[0].var_ptr != nullptr) {
+            cursor_ = 0;
             DrawVariableValue(*current_[0].var_ptr, 2, true);
         } else {
             cfg_.oled.OLED_ShowStr(32, 0, current_[0].label, 2, true);
         }
         // 其他行
         for (int i = 1; i < size_; i++) {
-            if (current_[i].type == ItemType::VARIABLE && current_[i].var_ptr != nullptr) {
-                // 保存当前cursor，调用DrawVariableValue
+            if (current_[i].type == ItemType::DISPLAY && current_[i].var_ptr != nullptr) {
+                int old_cursor = cursor_;
+                cursor_        = i;
+                if (current_[i].var_ptr2 != nullptr) {
+                    DrawDisplayValue(*current_[i].var_ptr, *current_[i].var_ptr2, 2, false);
+                } else {
+                    DrawDisplayValue(*current_[i].var_ptr, 2, false);
+                }
+                cursor_ = old_cursor;
+            } else if (current_[i].type == ItemType::VARIABLE && current_[i].var_ptr != nullptr) {
                 int old_cursor = cursor_;
                 cursor_        = i;
                 DrawVariableValue(*current_[i].var_ptr, 2, false);
@@ -105,7 +138,6 @@ public:
         for (int i = size_; i < 4; i++) {
             cfg_.oled.OLED_ShowStr(32, 16 * i, "           ", 2, false);
         }
-        cfg_.oled.OLED_RefreshRAM();
         cursor_      = 0;
         last_cursor_ = 0;
     }
@@ -116,12 +148,14 @@ public:
         for (int i = 0; i < 11; i++)
             buffer[i] = ' ';
         // clang-format off
-        buffer[0] = 'S'; buffer[1] = 'E'; buffer[2] = 'T'; buffer[3] = ':';
+    buffer[0] = 'S'; buffer[1] = 'E'; buffer[2] = 'T'; buffer[3] = ':';
         // clang-format on
-        FloatToBuffer(val, num, &buffer[4]);
+        if (val > 199)
+            IntegerToBuffer(val, &buffer[4]);
+        else
+            FloatToBuffer(val, num, &buffer[4]);
         cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
         DrawEditMark(true); // 显示编辑标记
-        cfg_.oled.OLED_RefreshRAM();
     }
 
     // 显示变量值（用于非编辑状态）
@@ -130,14 +164,52 @@ public:
         for (int i = 0; i < 11; i++)
             buffer[i] = ' ';
         // clang-format off
-        buffer[0] = 'S'; buffer[1] = 'E'; buffer[2] = 'T'; buffer[3] = ':';
+    buffer[0] = 'S'; buffer[1] = 'E'; buffer[2] = 'T'; buffer[3] = ':';
         // clang-format on
-        FloatToBuffer(val, num, &buffer[4]);
+        if (val > 199)
+            IntegerToBuffer(val, &buffer[4]);
+        else
+            FloatToBuffer(val, num, &buffer[4]);
         cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
         if (is_editing_) {
             DrawEditMark(true); // 编辑状态下显示标记
         }
-        cfg_.oled.OLED_RefreshRAM();
+    }
+
+    // 显示设定值和当前值（DISPLAY类型，双指针）
+    void DrawDisplayValue(float set_val, float cur_val, uint8_t num, bool is_highlight)
+    {
+        // 格式: "SET:XX C:YY" - 2号字体约11字符=88像素，适配128屏幕
+        char buf1[16] = "SET:";
+        char buf2[16] = "C:";
+        FloatToBuffer(set_val, num, &buf1[4]);
+        FloatToBuffer(cur_val, num, &buf2[2]);
+        // 合并显示到buffer(11字节)
+        for (int i = 0; i < 11; i++) buffer[i] = ' ';
+        int idx = 0;
+        // SET:XX
+        for (int i = 0; buf1[i] != '\0' && idx < 7; i++) buffer[idx++] = buf1[i];
+        // 空格
+        buffer[idx++] = ' ';
+        // C:YY
+        for (int i = 0; buf2[i] != '\0' && idx < 10; i++) buffer[idx++] = buf2[i];
+        buffer[idx] = '\0';
+        cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
+    }
+
+    // 显示单值（NOW: XX，DISPLAY类型单指针）
+    void DrawDisplayValue(float val, uint8_t num, bool is_highlight)
+    {
+        // 格式: "NOW:XX"
+        for (int i = 0; i < 11; i++) buffer[i] = ' ';
+        // clang-format off
+        buffer[0] = 'N'; buffer[1] = 'O'; buffer[2] = 'W'; buffer[3] = ':';
+        // clang-format on
+        if (val > 199)
+            IntegerToBuffer(val, &buffer[4]);
+        else
+            FloatToBuffer(val, num, &buffer[4]);
+        cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
     }
 
     // 绘制/清除编辑标记 "*"（1号字体，不占用2号字体位置）
@@ -211,14 +283,14 @@ public:
             offset++;
         }
 
-        for (int i = offset + digits; i > offset + digits - precision; i--) {
+        for (int i = offset + digits + 1; i > offset + digits - precision + 1; i--) {
             buffer[i] = (temp % 10) + '0';
             temp /= 10;
         }
 
-        buffer[offset + digits - precision] = '.';
+        buffer[offset + digits - precision + 1] = '.';
 
-        for (int i = offset + digits - precision - 1; i >= offset; i--) {
+        for (int i = offset + digits - precision; i >= offset + 1; i--) {
             buffer[i] = (temp % 10) + '0';
             temp /= 10;
         }
@@ -249,51 +321,89 @@ public:
             }
             is_editing_ = false;
             DrawMenu();
+            cfg_.oled.OLED_RefreshRAM();
         }
 
         // 向下键：移动光标或增加变量值
         if (key_next == Event::CLICK) {
-            if (!is_editing_ || current_[cursor_].type != ItemType::VARIABLE) {
+            if (!is_editing_ || (current_[cursor_].type != ItemType::VARIABLE && current_[cursor_].type != ItemType::DISPLAY)) {
                 DrawLine();
+                cfg_.oled.OLED_RefreshRAM();
             } else {
                 *(current_[cursor_].var_ptr) += current_[cursor_].var_step;
                 DrawValue(*(current_[cursor_].var_ptr), 2);
+                cfg_.oled.OLED_RefreshRAM();
             }
         }
 
         // 确认键：进入菜单/编辑变量/执行函数
         if (key_enter == Event::CLICK || key_enter == Event::LONG_PRESS) {
             auto &item = current_[cursor_];
-            switch (item.type) {
-            case ItemType::MENU:
-                if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
-                    menu_stack_top_++;
-                    menu_stack_[menu_stack_top_] = {current_, size_};
-                }
-                current_ = item.child;
-                size_    = item.child_count;
-                DrawMenu();
-                break;
-
-            case ItemType::VARIABLE:
-                is_editing_ = !is_editing_;
-                if (is_editing_) {
-                    DrawValue(*item.var_ptr, 2); // 进入编辑，显示*号
-                } else {
-                    DrawEditMark(false); // 退出编辑，清除*号
+            if (item.child != nullptr) {
+                switch (item.type) {
+                case ItemType::MENU:
+                    if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
+                        menu_stack_top_++;
+                        menu_stack_[menu_stack_top_] = {current_, size_};
+                    }
+                    current_ = item.child;
+                    size_    = item.child_count;
+                    DrawMenu();
                     cfg_.oled.OLED_RefreshRAM();
-                }
-                break;
+                    break;
 
-            case ItemType::FUNCTION:
-                if (key_enter == Event::LONG_PRESS) {
-                    item.callback();
+                case ItemType::VARIABLE:
+                case ItemType::DISPLAY:
+                    is_editing_ = !is_editing_;
+                    if (is_editing_) {
+                        DrawValue(*item.var_ptr, 2); // 进入编辑，显示*号
+                        cfg_.oled.OLED_RefreshRAM();
+                    } else {
+                        DrawEditMark(false); // 退出编辑，清除*号
+                        // 刷新显示当前值
+                        if (item.type == ItemType::DISPLAY) {
+                            if (item.var_ptr2 != nullptr) {
+                                DrawDisplayValue(*item.var_ptr, *item.var_ptr2, 2, true);
+                            } else {
+                                DrawDisplayValue(*item.var_ptr, 2, true);
+                            }
+                        }
+                        cfg_.oled.OLED_RefreshRAM();
+                    }
+                    break;
+
+                case ItemType::FUNCTION:
+                    if (key_enter == Event::LONG_PRESS) {
+                        item.callback();
+                    }
+                    break;
+                default:
+                    break;
                 }
-                break;
-            default:
-                break;
             }
         }
+    }
+
+    // 单独刷新NOW行的函数，由外部定时调用
+    void RefreshNowRow()
+    {
+        if (is_editing_) return;
+        for (int i = 0; i < size_; i++) {
+            if (current_[i].type == ItemType::DISPLAY && current_[i].var_ptr != nullptr && current_[i].var_ptr2 == nullptr) {
+                int old_cursor = cursor_;
+                cursor_ = i;
+                for (int j = 0; j < 11; j++) buffer[j] = ' ';
+                buffer[0] = 'N'; buffer[1] = 'O'; buffer[2] = 'W'; buffer[3] = ':';
+                float val = *current_[i].var_ptr;
+                if (val > 199)
+                    IntegerToBuffer(val, &buffer[4]);
+                else
+                    FloatToBuffer(val, 2, &buffer[4]);
+                cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
+                cursor_ = old_cursor;
+            }
+        }
+        cfg_.oled.OLED_RefreshRAM();
     }
 
 private:

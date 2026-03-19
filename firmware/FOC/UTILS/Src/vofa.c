@@ -7,7 +7,7 @@
 #define PWM_ARR() __HAL_TIM_GET_AUTORELOAD(&htim8)
 #define MAX_BUFFER_SIZE 128
 volatile uint8_t send_buf[MAX_BUFFER_SIZE];
-volatile uint16_t cnt = 0;
+volatile uint16_t vofa_cnt = 0;
 
 /**
 ***********************************************************************
@@ -47,10 +47,10 @@ void VofaTransmit(uint8_t *buf, uint16_t len) {
 ***********************************************************************
 **/
 void VofaSendData(uint8_t num, float data) {
-    send_buf[cnt++] = byte0(data);
-    send_buf[cnt++] = byte1(data);
-    send_buf[cnt++] = byte2(data);
-    send_buf[cnt++] = byte3(data);
+    send_buf[vofa_cnt++] = byte0(data);
+    send_buf[vofa_cnt++] = byte1(data);
+    send_buf[vofa_cnt++] = byte2(data);
+    send_buf[vofa_cnt++] = byte3(data);
 }
 
 /**
@@ -62,14 +62,14 @@ void VofaSendData(uint8_t num, float data) {
 ***********************************************************************
 **/
 void VofaSendframetail(void) {
-    send_buf[cnt++] = 0x00;
-    send_buf[cnt++] = 0x00;
-    send_buf[cnt++] = 0x80;
-    send_buf[cnt++] = 0x7f;
+    send_buf[vofa_cnt++] = 0x00;
+    send_buf[vofa_cnt++] = 0x00;
+    send_buf[vofa_cnt++] = 0x80;
+    send_buf[vofa_cnt++] = 0x7f;
 
     /* 将数据和帧尾打包发送 */
-    VofaTransmit((uint8_t *) send_buf, cnt);
-    cnt = 0;// 每次发送完帧尾都需要清零
+    VofaTransmit((uint8_t *) send_buf, vofa_cnt);
+    vofa_cnt = 0;// 每次发送完帧尾都需要清零
 }
 
 
