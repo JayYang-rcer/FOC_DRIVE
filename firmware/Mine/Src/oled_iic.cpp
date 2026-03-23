@@ -234,7 +234,6 @@ void OLED::OLED_ShowStr(int16_t x, int16_t y, const char *str, uint8_t TextSize,
         x += char_w;
         j++;
     }
-    OLED_RefreshRAM();
 }
 /**
  * @brief 显示中文（GB2312）

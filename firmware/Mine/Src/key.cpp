@@ -29,16 +29,4 @@ KEY menu(KeyConfig.menu);
 KEY enter(KeyConfig.enter);
 KEY next(KeyConfig.next);
 
-volatile uint8_t flag_5ms = 0, flag_50ms = 0, cnt = 0;
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    if (htim->Instance == TIM16) {
-        flag_5ms = 1;
-        if (++cnt == 10)
-        {
-            cnt = 0;
-            flag_50ms = 1;
-        }
-    }
-}

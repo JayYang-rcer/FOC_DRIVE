@@ -58,6 +58,9 @@ include_directories(Core/Inc USB_Device/App
         Drivers/STM32G4xx_HAL_Driver/Inc/Legacy
         Middlewares/ST/STM32_USB_Device_Library/Core/Inc
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        Middlewares/Third_Party/FreeRTOS/Source/include
+        Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
         Drivers/CMSIS/Device/ST/STM32G4xx/Include
         Drivers/CMSIS/Include
         Foc/encoder/Inc

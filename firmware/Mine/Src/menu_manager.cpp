@@ -3,312 +3,114 @@
 //
 
 #include "menu_manager.h"
+#include "FreeRTOS.h"
+#include "cmsis_os.h"
 #include "foc_cfg.h"
 
-void MotorStart() {}
-void MotorStop() {}
+void  MotorStart() {}
+void  MotorStop() {}
 float iq_set = 0, iq_now = 0;
 float speed_set = 0, speed_now = 0;
 float pos_set = 0, pos_now = 0;
 float current_lim = 0.0f;
-float bat_cell = 0;
-float can_id = 1;
+float bat_cell    = 0;
+float can_id      = 1;
 
 // 状态变量 (0=ERR, 1=OK)
-int encoder_status = 0;
+int encoder_status  = 0;
 int identify_status = 0;
 
 //========================== MOTOR CONTROL ===========================
 MenuItem current_control[] = {
-    {
-        .label    = "SET:       ",
-        .type     = ItemType::VARIABLE,
-        .var_ptr  = &iq_set,
-        .var_step = 0.2f,
-    },
-    {
-        .label    = "NOW:       ",
-        .type     = ItemType::DISPLAY,
-        .var_ptr  = &iq_now,
-    },
-    {
-        .label    = "START     A",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label    = "STOP       ",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStop,
-    },
+    MenuItem("SET:       ", ItemType::VARIABLE, &iq_set, 0.2f),
+    MenuItem("NOW:       ", ItemType::DISPLAY, &iq_now),
+    MenuItem("START     A", ItemType::FUNCTION, MotorStart),
+    MenuItem("STOP       ", ItemType::FUNCTION, MotorStop),
 };
 
 MenuItem speed_control[] = {
-    {
-        .label    = "SET:       ",
-        .type     = ItemType::VARIABLE,
-        .var_ptr  = &speed_set,
-        .var_step = 200.0f,
-    },
-    {
-        .label    = "NOW:       ",
-        .type     = ItemType::DISPLAY,
-        .var_ptr  = &speed_now,
-    },
-    {
-        .label    = "START   RPM",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label    = "STOP       ",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStop,
-    },
+    MenuItem("SET:       ", ItemType::VARIABLE, &speed_set, 200.0f),
+    MenuItem("NOW:       ", ItemType::DISPLAY, &speed_now),
+    MenuItem("START   RPM", ItemType::FUNCTION, MotorStart),
+    MenuItem("STOP       ", ItemType::FUNCTION, MotorStop),
 };
 
 MenuItem pos_control[] = {
-    {
-        .label    = "SET:       ",
-        .type     = ItemType::VARIABLE,
-        .var_ptr  = &pos_set,
-        .var_step = 15.0f,
-    },
-    {
-        .label    = "NOW:       ",
-        .type     = ItemType::DISPLAY,
-        .var_ptr  = &pos_now,
-    },
-    {
-        .label    = "START   DEG",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label    = "STOP       ",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStop,
-    },
+    MenuItem("SET:       ", ItemType::VARIABLE, &pos_set, 15.0f),
+    MenuItem("NOW:       ", ItemType::DISPLAY, &pos_now),
+    MenuItem("START   DEG", ItemType::FUNCTION, MotorStart),
+    MenuItem("STOP       ", ItemType::FUNCTION, MotorStop),
 };
 
 MenuItem motor_control[] = {
-    {
-        .label       = "currentLoop",
-        .type        = ItemType::MENU,
-        .child       = current_control,
-        .child_count = 4,
-    },
-    {
-        .label       = "speedLoop  ",
-        .type        = ItemType::MENU,
-        .child       = speed_control,
-        .child_count = 4,
-    },
-    {
-        .label       = "posLoop    ",
-        .type        = ItemType::MENU,
-        .child       = pos_control,
-        .child_count = 4,
-    },
+    MenuItem("currentLoop", ItemType::MENU, current_control, 4),
+    MenuItem("speedLoop  ", ItemType::MENU, speed_control, 4),
+    MenuItem("posLoop    ", ItemType::MENU, pos_control, 4),
 };
 
 MenuItem menu_ctrl_mode[] = {
-    {
-        .label       = "sensor     ",
-        .type        = ItemType::MENU,
-        .child       = motor_control,
-        .child_count = 3,
-    },
-    {
-        .label       = "senseless  ",
-        .type        = ItemType::MENU,
-        .child       = motor_control,
-        .child_count = 4,
-    },
+    MenuItem("sensor     ", ItemType::MENU, motor_control, 3),
+    MenuItem("senseless  ", ItemType::MENU, motor_control, 4),
 };
 //========================== MOTOR CONTROL ===========================
 
 //========================== MOTOR PARAM ==============================
 MenuItem current_limit[] = {
-    {
-        .label    = "SET:       ",
-        .type     = ItemType::VARIABLE,
-        .var_ptr  = &current_lim,
-        .var_step = 1.5f,
-    },
-    {
-        .label    = "SAVE CHANGE",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label       = "UINT: A    ",
-        .type        = ItemType::MENU,
-        .child       = nullptr,
-        .child_count = 0,
-    },
+    MenuItem("SET:       ", ItemType::VARIABLE, &current_lim, 1.5f),
+    MenuItem("SAVE CHANGE", ItemType::FUNCTION, MotorStart),
+    MenuItem("UINT: A    ", ItemType::MENU, nullptr, 0),
 };
 
 MenuItem battery_cell[] = {
-    {
-        .label       = "SET:       ",
-        .type        = ItemType::VARIABLE,
-        .var_ptr     = &bat_cell,
-        .var_step    = 1,
-    },
-    {
-        .label    = "SAVE CHANGE",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label       = "UINT: S    ",
-        .type        = ItemType::MENU,
-        .child       = nullptr,
-        .child_count = 0,
-    },
+    MenuItem("SET:       ", ItemType::VARIABLE, &bat_cell, 1.0f),
+    MenuItem("SAVE CHANGE", ItemType::FUNCTION, MotorStart),
+    MenuItem("UINT: S    ", ItemType::MENU, nullptr, 0),
 };
 
 MenuItem motor_identify[] = {
-    {
-        .label    = "START      ",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label    = "SAVE CHANGE",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label       = "STATUS:    ",
-        .type        = ItemType::STATUS,
-        .status_ptr  = &identify_status,
-    },
+    MenuItem("START      ", ItemType::FUNCTION, MotorStart),
+    MenuItem("SAVE CHANGE", ItemType::FUNCTION, MotorStart),
+    MenuItem("STATUS:    ", ItemType::STATUS, &identify_status),
 };
 
 MenuItem menu_param[] = {
-    {
-        .label       = "CurrLimit  ",
-        .type        = ItemType::MENU,
-        .child       = current_limit,
-        .child_count = 3,
-    },
-    {
-        .label       = "Bat cells  ",
-        .type        = ItemType::MENU,
-        .child       = battery_cell,
-        .child_count = 3,
-    },
-    {
-        .label       = "MOTOR IDENT",
-        .type        = ItemType::MENU,
-        .child       = motor_identify,
-        .child_count = 3,
-    },
+    MenuItem("CurrLimit  ", ItemType::MENU, current_limit, 3),
+    MenuItem("Bat cells  ", ItemType::MENU, battery_cell, 3),
+    MenuItem("MOTOR IDENT", ItemType::MENU, motor_identify, 3),
 };
 //========================== MOTOR PARAM ==============================
 
 //========================== ENCODER ==================================
 MenuItem encoder_init[] = {
-    {
-        .label    = "START      ",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label    = "SAVE CHANGE",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label       = "Pole Pairs ",
-        .type        = ItemType::DISPLAY,
-        .var_ptr     = &pos_set,
-    },
-    {
-        .label       = "STATUS:    ",
-        .type        = ItemType::STATUS,
-        .status_ptr  = &encoder_status,
-    },
+    MenuItem("START      ", ItemType::FUNCTION, MotorStart),
+    MenuItem("SAVE CHANGE", ItemType::FUNCTION, MotorStart),
+    MenuItem("Pole Pairs ", ItemType::DISPLAY, &pos_set),
+    MenuItem("STATUS:    ", ItemType::STATUS, &encoder_status),
 };
 
 MenuItem menu_encoder[] = {
-    {
-        .label       = "AS5047P    ",
-        .type        = ItemType::MENU,
-        .child       = encoder_init,
-        .child_count = 4,
-    },
-    {
-        .label       = "ABI        ",
-        .type        = ItemType::MENU,
-        .child       = encoder_init,
-        .child_count = 4,
-    },
-    {
-        .label       = "HALL       ",
-        .type        = ItemType::MENU,
-        .child       = encoder_init,
-        .child_count = 4,
-    },
+    MenuItem("AS5047P    ", ItemType::MENU, encoder_init, 4),
+    MenuItem("ABI        ", ItemType::MENU, encoder_init, 4),
+    MenuItem("HALL       ", ItemType::MENU, encoder_init, 4),
 };
 //========================== ENCODER ==================================
 
 //========================== CAN ID ===================================
 MenuItem menu_canid[] = {
-    {
-        .label    = "SET CAN ID ",
-        .type     = ItemType::VARIABLE,
-        .var_ptr  = &can_id,
-        .var_step = 1,
-    },
-    {
-        .label    = "SAVE CHANGE",
-        .type     = ItemType::FUNCTION,
-        .callback = MotorStart,
-    },
-    {
-        .label       = "STATUS     ",
-        .type        = ItemType::DISPLAY,
-        .var_ptr     = &can_id,
-    },
+    MenuItem("SET CAN ID ", ItemType::VARIABLE, &can_id, 1.0f),
+    MenuItem("SAVE CHANGE", ItemType::FUNCTION, MotorStart),
+    MenuItem("STATUS     ", ItemType::DISPLAY, &can_id),
 };
 //========================== CAN ID ===================================
 
 MenuItem menu_main_tree[] = {
-    {
-        .label       = "CONTROL    ",
-        .type        = ItemType::MENU,
-        .child       = menu_ctrl_mode,
-        .child_count = 2,
-    },
-    {
-        .label       = "MOTOR PARAM",
-        .type        = ItemType::MENU,
-        .child       = menu_param,
-        .child_count = 3,
-    },
-    {
-        .label       = "ENCODER    ",
-        .type        = ItemType::MENU,
-        .child       = menu_encoder,
-        .child_count = 3,
-    },
-    {
-        .label       = "CAN ID     ",
-        .type        = ItemType::MENU,
-        .child       = menu_canid,
-        .child_count = 3,
-    },
+    MenuItem("CONTROL    ", ItemType::MENU, menu_ctrl_mode, 2),
+    MenuItem("MOTOR PARAM", ItemType::MENU, menu_param, 3),
+    MenuItem("ENCODER    ", ItemType::MENU, menu_encoder, 3),
+    MenuItem("CAN ID     ", ItemType::MENU, menu_canid, 3),
 };
 
-MenuItem root = {
-    .label       = "root",
-    .type        = ItemType::MENU,
-    .child       = menu_main_tree,
-    .child_count = 4,
-};
+MenuItem root = MenuItem("root", ItemType::MENU, menu_main_tree, 4);
 
 extern OLED oled;
 extern KEY  menu;
@@ -317,15 +119,15 @@ extern KEY  next;
 
 MenuManager::Config config_manager = {
     .main_menu = &root,
-    .key_menu  = menu,
-    .key_next  = next,
-    .key_enter = enter,
-    .oled      = oled,
+    .key_menu  = &menu,
+    .key_next  = &next,
+    .key_enter = &enter,
+    .oled      = &oled,
     .pin_menu  = {KEY_MEAU_GPIO_Port, KEY_MEAU_Pin},
     .pin_next  = {KEY_NEXT_GPIO_Port, KEY_NEXT_Pin},
     .pin_enter = {KEY_ENTER_GPIO_Port, KEY_ENTER_Pin},
 };
-MenuManager menuManager(config_manager);
+MenuManager menuManager;
 
 void task_5ms()
 {
@@ -335,4 +137,20 @@ void task_5ms()
 void task_50ms()
 {
     menuManager.ManagerUpdate();
+}
+
+void KeyScanTask(void *argument)
+{
+    while (1) {
+        task_50ms();
+        osDelay(50);
+    }
+}
+
+void oledReflashTask(void *argument)
+{
+    for (;;) {
+        task_5ms();
+        osDelay(5);
+    }
 }

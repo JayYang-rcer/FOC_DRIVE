@@ -18,19 +18,49 @@ enum class ItemType : uint8_t {
 };
 
 struct MenuItem {
-    const char *label; // 显示名称
-    ItemType    type;  // 类型
+    const char *label;
+    ItemType type;
     union {
-        void (*callback)(void);  // 函数指针 (TYPE_FUNCTION)
-        const MenuItem *child;   // 子菜单首地址 (TYPE_MENU)
-        float          *var_ptr; // 变量指针 (TYPE_VARIABLE/DISPLAY)
+        void (*callback)(void);
+        const MenuItem *child;
+        float *var_ptr;
     };
     union {
-        int   child_count; // 子菜单条目数 (TYPE_MENU)
-        float var_step;    // 修改步长 (TYPE_VARIABLE/DISPLAY)
+        int child_count;
+        float var_step;
     };
-    float *var_ptr2;   // 当前值指针 (TYPE_DISPLAY专用)
-    int   *status_ptr; // 状态指针 (TYPE_STATUS专用, 0=ERR, 1=OK)
+    float *var_ptr2 = nullptr;
+    int *status_ptr = nullptr;
+
+    // 构造函数 - VARIABLE类型 (label, type, ptr, step)
+    MenuItem(const char *l, ItemType t, float *ptr, float step) {
+        label = l; type = t; var_ptr = ptr; var_step = step; var_ptr2 = nullptr; status_ptr = nullptr;
+    }
+
+    // 构造函数 - DISPLAY类型 (label, type, ptr)
+    MenuItem(const char *l, ItemType t, float *ptr) {
+        label = l; type = t; var_ptr = ptr; var_step = 0; var_ptr2 = nullptr; status_ptr = nullptr;
+    }
+
+    // 构造函数 - FUNCTION类型 (label, type, callback)
+    MenuItem(const char *l, ItemType t, void (*cb)(void)) {
+        label = l; type = t; callback = cb; var_ptr2 = nullptr; status_ptr = nullptr;
+    }
+
+    // 构造函数 - MENU类型 (label, type, child, count)
+    MenuItem(const char *l, ItemType t, const MenuItem *c, int count) {
+        label = l; type = t; child = c; child_count = count; var_ptr2 = nullptr; status_ptr = nullptr;
+    }
+
+    // 默认构造函数，支持 designated initializers
+    MenuItem() {
+        label = nullptr; type = ItemType::MENU; callback = nullptr; child_count = 0; var_ptr2 = nullptr; status_ptr = nullptr;
+    }
+
+    // STATUS类型 (label, type, status_ptr)
+    MenuItem(const char *l, ItemType t, int *status) {
+        label = l; type = t; status_ptr = status;
+    }
 };
 
 class MenuManager
@@ -42,20 +72,27 @@ public:
     };
     struct Config {
         const MenuItem *main_menu;
-        KEY            &key_menu;
-        KEY            &key_next;
-        KEY            &key_enter;
-        OLED           &oled;
+        KEY            *key_menu;
+        KEY            *key_next;
+        KEY            *key_enter;
+        OLED           *oled;
         GPIO_Pin        pin_menu;  // 菜单/返回键引脚
         GPIO_Pin        pin_next;  // 向下/增加键引脚
         GPIO_Pin        pin_enter; // 确认键引脚
     };
-    explicit MenuManager(const Config &cfg) : cfg_(cfg)
+    void Init(const Config *cfg)
     {
-        root_    = cfg.main_menu->child;
+        cfg_     = *cfg;
+        root_    = (*cfg).main_menu->child;
         current_ = root_;
-        size_    = cfg.main_menu->child_count;
+        size_    = (*cfg).main_menu->child_count;
     }
+    //    explicit MenuManager(const Config &cfg) : cfg_(cfg)
+    //    {
+    //        root_    = cfg.main_menu->child;
+    //        current_ = root_;
+    //        size_    = cfg.main_menu->child_count;
+    //    }
 
     void DrawLine()
     {
@@ -72,7 +109,7 @@ public:
             (current_[cursor_].type == ItemType::VARIABLE) && current_[cursor_].var_ptr != nullptr) {
             DrawDisplayValue(*current_[cursor_].var_ptr, 2, true);
         } else {
-            cfg_.oled.OLED_ShowStr(32, 16 * cursor_, current_[cursor_].label, 2, true);
+            cfg_.oled->OLED_ShowStr(32, 16 * cursor_, current_[cursor_].label, 2, true);
         }
 
         // 原光标行
@@ -83,20 +120,20 @@ public:
             DrawDisplayValue(*current_[last_cursor_].var_ptr, 2, false);
             cursor_ = old_cursor;
         } else {
-            cfg_.oled.OLED_ShowStr(32, 16 * last_cursor_, current_[last_cursor_].label, 2, false);
+            cfg_.oled->OLED_ShowStr(32, 16 * last_cursor_, current_[last_cursor_].label, 2, false);
         }
         last_cursor_ = cursor_;
     }
 
     void DrawMenu()
     {
-        cfg_.oled.OLED_CLS();
+        cfg_.oled->OLED_CLS();
         // 第一行（光标行）
         if ((current_[0].type == ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS) || (current_[0].type == ItemType::VARIABLE) && current_[0].var_ptr != nullptr) {
             cursor_ = 0;
             DrawDisplayValue(*current_[0].var_ptr, 2, true);
         } else {
-            cfg_.oled.OLED_ShowStr(32, 0, current_[0].label, 2, true);
+            cfg_.oled->OLED_ShowStr(32, 0, current_[0].label, 2, true);
         }
         // 其他行
         for (int i = 1; i < size_; i++) {
@@ -106,11 +143,11 @@ public:
                 DrawDisplayValue(*current_[i].var_ptr, 2, false);
                 cursor_ = old_cursor;
             } else {
-                cfg_.oled.OLED_ShowStr(32, 16 * i, current_[i].label, 2, false);
+                cfg_.oled->OLED_ShowStr(32, 16 * i, current_[i].label, 2, false);
             }
         }
         for (int i = size_; i < 4; i++) {
-            cfg_.oled.OLED_ShowStr(32, 16 * i, "           ", 2, false);
+            cfg_.oled->OLED_ShowStr(32, 16 * i, "           ", 2, false);
         }
         cursor_      = 0;
         last_cursor_ = 0;
@@ -141,7 +178,7 @@ public:
             p = FloatToStr(val, p);
     }
         // clang-format on
-        cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
+        cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
         if (is_editing_) {
             DrawEditMark(true); // 编辑状态下显示标记
         }
@@ -153,9 +190,9 @@ public:
         // 2号字体每个字符8像素宽，"SET: XX.XX"约8字符=64像素
         // 屏幕128像素宽，在第100列位置用1号字体(6x8)显示"*"
         if (show) {
-            cfg_.oled.OLED_ShowStr(120, cursor_ * 16, "*", 1, false);
+            cfg_.oled->OLED_ShowStr(120, cursor_ * 16, "*", 1, false);
         } else {
-            cfg_.oled.OLED_ShowStr(120, cursor_ * 16, " ", 1, false);
+            cfg_.oled->OLED_ShowStr(120, cursor_ * 16, " ", 1, false);
         }
     }
 
@@ -206,16 +243,16 @@ public:
 
     void KeyScanUpdate()
     {
-        cfg_.key_menu.Tick(HAL_GPIO_ReadPin(cfg_.pin_menu.port, cfg_.pin_menu.pin));
-        cfg_.key_next.Tick(HAL_GPIO_ReadPin(cfg_.pin_next.port, cfg_.pin_next.pin));
-        cfg_.key_enter.Tick(HAL_GPIO_ReadPin(cfg_.pin_enter.port, cfg_.pin_enter.pin));
+        cfg_.key_menu->Tick(HAL_GPIO_ReadPin(cfg_.pin_menu.port, cfg_.pin_menu.pin));
+        cfg_.key_next->Tick(HAL_GPIO_ReadPin(cfg_.pin_next.port, cfg_.pin_next.pin));
+        cfg_.key_enter->Tick(HAL_GPIO_ReadPin(cfg_.pin_enter.port, cfg_.pin_enter.pin));
     }
 
     void ManagerUpdate()
     {
-        Event key_menu  = cfg_.key_menu.GetEvent();
-        Event key_next  = cfg_.key_next.GetEvent();
-        Event key_enter = cfg_.key_enter.GetEvent();
+        Event key_menu  = cfg_.key_menu->GetEvent();
+        Event key_next  = cfg_.key_next->GetEvent();
+        Event key_enter = cfg_.key_enter->GetEvent();
 
         // 菜单键：返回上级菜单或回到根菜单
         if (key_menu == Event::CLICK) {
@@ -230,68 +267,68 @@ public:
                 }
                 is_editing_ = false;
                 DrawMenu();
-                cfg_.oled.OLED_RefreshRAM();
+                cfg_.oled->OLED_RefreshRAM();
             } else {
                 step_dir_ *= -1;
             }
         }
-
-        // 向下键：移动光标或增加变量值
-        if (key_next == Event::CLICK) {
-            if (!is_editing_ || (current_[cursor_].type != ItemType::VARIABLE && current_[cursor_].type != ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS)) {
-                DrawLine();
-                cfg_.oled.OLED_RefreshRAM();
-            } else {
-                *(current_[cursor_].var_ptr) += current_[cursor_].var_step * step_dir_;
-                DrawDisplayValue(*(current_[cursor_].var_ptr), 2, true);
-                cfg_.oled.OLED_RefreshRAM();
-            }
-        }
-
-        // 确认键：进入菜单/编辑变量/执行函数
-        if (key_enter == Event::CLICK || key_enter == Event::LONG_PRESS) {
-            auto &item = current_[cursor_];
-            if (item.child != nullptr) {
-                switch (item.type) {
-                case ItemType::MENU:
-                    if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
-                        menu_stack_top_++;
-                        menu_stack_[menu_stack_top_] = {current_, size_};
-                    }
-                    current_ = item.child;
-                    size_    = item.child_count;
-                    DrawMenu();
-                    cfg_.oled.OLED_RefreshRAM();
-                    break;
-
-                case ItemType::VARIABLE:
-                    is_editing_ = !is_editing_;
-                    if (is_editing_) {
-                        DrawDisplayValue(*item.var_ptr, 2, true); // 进入编辑，显示*号
-                        cfg_.oled.OLED_RefreshRAM();
-                    } else {
-                        DrawEditMark(false); // 退出编辑，清除*号
-                        // 刷新显示当前值
-                        if (item.type == ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS) {
-                            DrawDisplayValue(*item.var_ptr, 2, true);
-                        }
-                        cfg_.oled.OLED_RefreshRAM();
-                    }
-                    break;
-
-                case ItemType::FUNCTION:
-                    if (key_enter == Event::LONG_PRESS) {
-                        item.callback();
-                    }
-                    break;
-                default:
-                    break;
-                }
-            }
-        }
+//
+//        // 向下键：移动光标或增加变量值
+//        if (key_next == Event::CLICK) {
+//            if (!is_editing_ || (current_[cursor_].type != ItemType::VARIABLE && current_[cursor_].type != ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS)) {
+//                DrawLine();
+//                cfg_.oled->OLED_RefreshRAM();
+//            } else {
+//                *(current_[cursor_].var_ptr) += current_[cursor_].var_step * step_dir_;
+//                DrawDisplayValue(*(current_[cursor_].var_ptr), 2, true);
+//                cfg_.oled->OLED_RefreshRAM();
+//            }
+//        }
+//
+//        // 确认键：进入菜单/编辑变量/执行函数
+//        if (key_enter == Event::CLICK || key_enter == Event::LONG_PRESS) {
+//            auto &item = current_[cursor_];
+//            if (item.child != nullptr) {
+//                switch (item.type) {
+//                case ItemType::MENU:
+//                    if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
+//                        menu_stack_top_++;
+//                        menu_stack_[menu_stack_top_] = {current_, size_};
+//                    }
+//                    current_ = item.child;
+//                    size_    = item.child_count;
+//                    DrawMenu();
+//                    cfg_.oled->OLED_RefreshRAM();
+//                    break;
+//
+//                case ItemType::VARIABLE:
+//                    is_editing_ = !is_editing_;
+//                    if (is_editing_) {
+//                        DrawDisplayValue(*item.var_ptr, 2, true); // 进入编辑，显示*号
+//                        cfg_.oled->OLED_RefreshRAM();
+//                    } else {
+//                        DrawEditMark(false); // 退出编辑，清除*号
+//                        // 刷新显示当前值
+//                        if (item.type == ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS) {
+//                            DrawDisplayValue(*item.var_ptr, 2, true);
+//                        }
+//                        cfg_.oled->OLED_RefreshRAM();
+//                    }
+//                    break;
+//
+//                case ItemType::FUNCTION:
+//                    if (key_enter == Event::LONG_PRESS) {
+//                        item.callback();
+//                    }
+//                    break;
+//                default:
+//                    break;
+//                }
+//            }
+//        }
 
         if (++now_cnt == 4) {
-            RefreshNowRow();
+//            RefreshNowRow();
             now_cnt = 0;
         }
     }
@@ -319,9 +356,9 @@ public:
                 else
                     p = FloatToStr(val, p);
                 if (i == old_cursor)
-                    cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
                 else
-                    cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
                 cursor_ = old_cursor;
             }
             // 刷新STATUS类型（实时显示ERR/OK）
@@ -338,13 +375,13 @@ public:
                 while (*status)
                     *p++ = *status++;
                 if (i == old_cursor)
-                    cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
                 else
-                    cfg_.oled.OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
                 cursor_ = old_cursor;
             }
         }
-        cfg_.oled.OLED_RefreshRAM();
+        cfg_.oled->OLED_RefreshRAM();
     }
 
 private:

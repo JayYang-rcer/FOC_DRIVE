@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 void KEY_ProcessHandle(void);
+void KeyScanTask(void *argument);
+void oledReflashTask(void *argument);
 #ifdef __cplusplus
 }
 #endif
