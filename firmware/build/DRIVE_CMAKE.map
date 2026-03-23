@@ -1918,14 +1918,13 @@ Discarded input sections
  .group         0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .group         0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .group         0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .group         0x00000000       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .text          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .data          0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .bss           0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._Z10MotorStartv
                 0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._Z9MotorStopv
-                0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .ARM.extab.text._ZN11MenuManager16DrawDisplayValueEfhb.isra.0
                 0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._Z8task_5msv
                 0x00000000        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
@@ -2417,7 +2416,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x08000000                g_pfnVectors
                 0x080001d8                . = ALIGN (0x4)
 
-.text           0x080001e0     0xbd1c
+.text           0x080001e0     0xd1bc
                 0x080001e0                . = ALIGN (0x4)
  *(.text)
  .text          0x080001e0       0x40 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -3238,755 +3237,757 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .text._Z9MotorStopv
                 0x080096d0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
                 0x080096d0                MotorStop()
- .text._ZN11MenuManager16DrawDisplayValueEfhb.isra.0
-                0x080096d4      0x2d8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .text._ZN11MenuManager16DrawDisplayValueEffhb
+                0x080096d4      0x36c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x080096d4                MenuManager::DrawDisplayValue(float, float, unsigned char, bool)
+ .text._ZN11MenuManager16DrawDisplayValueEfhb
+                0x08009a40      0x214 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x08009a40                MenuManager::DrawDisplayValue(float, unsigned char, bool)
  .text._ZN11MenuManager8DrawLineEv
-                0x080099ac      0x100 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x080099ac                MenuManager::DrawLine()
+                0x08009c54      0x5a8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x08009c54                MenuManager::DrawLine()
  .text._ZN11MenuManager8DrawMenuEv
-                0x08009aac      0x120 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x08009aac                MenuManager::DrawMenu()
- .text._ZN11MenuManager13RefreshNowRowEv
-                0x08009bcc      0x338 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x08009bcc                MenuManager::RefreshNowRow()
+                0x0800a1fc      0xb30 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800a1fc                MenuManager::DrawMenu()
  .text._ZN11MenuManager13ManagerUpdateEv
-                0x08009f04      0x1b0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x08009f04                MenuManager::ManagerUpdate()
+                0x0800ad2c      0x5a0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800ad2c                MenuManager::ManagerUpdate()
  .text._Z8task_5msv
-                0x0800a0b4      0x1b8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x0800a0b4                task_5ms()
+                0x0800b2cc      0x1b8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800b2cc                task_5ms()
  .text._Z9task_50msv
-                0x0800a26c       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x0800a26c                task_50ms()
+                0x0800b484      0x2a0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800b484                task_50ms()
  .text.startup._GLOBAL__sub_I__Z10MotorStartv
-                0x0800a27c       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800b724       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .text._ZN4OLED8OLED_CLSEv
-                0x0800a2e4       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
-                0x0800a2e4                OLED::OLED_CLS()
+                0x0800b784       0x98 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800b784                OLED::OLED_CLS()
  .text._ZN4OLED15OLED_RefreshRAMEv
-                0x0800a37c       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
-                0x0800a37c                OLED::OLED_RefreshRAM()
+                0x0800b81c       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800b81c                OLED::OLED_RefreshRAM()
  .text._ZN4OLED4InitEv
-                0x0800a428      0x2f4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
-                0x0800a428                OLED::Init()
+                0x0800b8c8      0x2f4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800b8c8                OLED::Init()
  .text._ZN4OLED13OLED_SetPixelEssh
-                0x0800a71c       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
-                0x0800a71c                OLED::OLED_SetPixel(short, short, unsigned char)
+                0x0800bbbc       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800bbbc                OLED::OLED_SetPixel(short, short, unsigned char)
  .text._ZN4OLED12OLED_ShowStrEssPKchb
-                0x0800a770      0x1c0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
-                0x0800a770                OLED::OLED_ShowStr(short, short, char const*, unsigned char, bool)
+                0x0800bc10      0x1c0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800bc10                OLED::OLED_ShowStr(short, short, char const*, unsigned char, bool)
  .text.MX_USB_Device_Init
-                0x0800a930       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
-                0x0800a930                MX_USB_Device_Init
+                0x0800bdd0       0x74 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+                0x0800bdd0                MX_USB_Device_Init
  .text.CDC_DeInit_FS
-                0x0800a9a4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800be44        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Control_FS
-                0x0800a9a8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800be48        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_TransmitCplt_FS
-                0x0800a9ac        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800be4c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Receive_FS
-                0x0800a9b0       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800be50       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.CDC_Init_FS
-                0x0800a9cc       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x0800be6c       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
  .text.USBD_CDC_DeviceDescriptor
-                0x0800a9f4        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800a9f4                USBD_CDC_DeviceDescriptor
+                0x0800be94        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800be94                USBD_CDC_DeviceDescriptor
  .text.USBD_CDC_LangIDStrDescriptor
-                0x0800aa00        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa00                USBD_CDC_LangIDStrDescriptor
+                0x0800bea0        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800bea0                USBD_CDC_LangIDStrDescriptor
  .text.USBD_CDC_ManufacturerStrDescriptor
-                0x0800aa0c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa0c                USBD_CDC_ManufacturerStrDescriptor
+                0x0800beac       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800beac                USBD_CDC_ManufacturerStrDescriptor
  .text.USBD_CDC_ProductStrDescriptor
-                0x0800aa28       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa28                USBD_CDC_ProductStrDescriptor
+                0x0800bec8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800bec8                USBD_CDC_ProductStrDescriptor
  .text.USBD_CDC_ConfigStrDescriptor
-                0x0800aa44       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa44                USBD_CDC_ConfigStrDescriptor
+                0x0800bee4       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800bee4                USBD_CDC_ConfigStrDescriptor
  .text.USBD_CDC_InterfaceStrDescriptor
-                0x0800aa60       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa60                USBD_CDC_InterfaceStrDescriptor
+                0x0800bf00       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800bf00                USBD_CDC_InterfaceStrDescriptor
  .text.USBD_CDC_SerialStrDescriptor
-                0x0800aa7c       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x0800aa7c                USBD_CDC_SerialStrDescriptor
+                0x0800bf1c       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x0800bf1c                USBD_CDC_SerialStrDescriptor
  .text.HAL_PCD_MspInit
-                0x0800ab08       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ab08                HAL_PCD_MspInit
+                0x0800bfa8       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800bfa8                HAL_PCD_MspInit
  .text.HAL_PCD_SetupStageCallback
-                0x0800ab68        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ab68                HAL_PCD_SetupStageCallback
+                0x0800c008        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c008                HAL_PCD_SetupStageCallback
  .text.HAL_PCD_DataOutStageCallback
-                0x0800ab74       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ab74                HAL_PCD_DataOutStageCallback
+                0x0800c014       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c014                HAL_PCD_DataOutStageCallback
  .text.HAL_PCD_DataInStageCallback
-                0x0800ab88       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ab88                HAL_PCD_DataInStageCallback
+                0x0800c028       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c028                HAL_PCD_DataInStageCallback
  .text.HAL_PCD_SOFCallback
-                0x0800ab9c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ab9c                HAL_PCD_SOFCallback
+                0x0800c03c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c03c                HAL_PCD_SOFCallback
  .text.HAL_PCD_ResetCallback
-                0x0800aba4       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800aba4                HAL_PCD_ResetCallback
+                0x0800c044       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c044                HAL_PCD_ResetCallback
  .text.HAL_PCD_SuspendCallback
-                0x0800abc8       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800abc8                HAL_PCD_SuspendCallback
+                0x0800c068       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c068                HAL_PCD_SuspendCallback
  .text.HAL_PCD_ResumeCallback
-                0x0800abe8       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800abe8                HAL_PCD_ResumeCallback
+                0x0800c088       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c088                HAL_PCD_ResumeCallback
  .text.USBD_LL_Init
-                0x0800ac1c       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ac1c                USBD_LL_Init
+                0x0800c0bc       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c0bc                USBD_LL_Init
  .text.USBD_LL_Start
-                0x0800aca0       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800aca0                USBD_LL_Start
+                0x0800c140       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c140                USBD_LL_Start
  .text.USBD_LL_OpenEP
-                0x0800acbc       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800acbc                USBD_LL_OpenEP
+                0x0800c15c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c15c                USBD_LL_OpenEP
  .text.USBD_LL_CloseEP
-                0x0800acdc       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800acdc                USBD_LL_CloseEP
+                0x0800c17c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c17c                USBD_LL_CloseEP
  .text.USBD_LL_StallEP
-                0x0800acf8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800acf8                USBD_LL_StallEP
+                0x0800c198       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c198                USBD_LL_StallEP
  .text.USBD_LL_ClearStallEP
-                0x0800ad14       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ad14                USBD_LL_ClearStallEP
+                0x0800c1b4       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c1b4                USBD_LL_ClearStallEP
  .text.USBD_LL_IsStallEP
-                0x0800ad30       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ad30                USBD_LL_IsStallEP
+                0x0800c1d0       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c1d0                USBD_LL_IsStallEP
  .text.USBD_LL_SetUSBAddress
-                0x0800ad58       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ad58                USBD_LL_SetUSBAddress
+                0x0800c1f8       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c1f8                USBD_LL_SetUSBAddress
  .text.USBD_LL_Transmit
-                0x0800ad74       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ad74                USBD_LL_Transmit
+                0x0800c214       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c214                USBD_LL_Transmit
  .text.USBD_LL_PrepareReceive
-                0x0800ad90       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ad90                USBD_LL_PrepareReceive
+                0x0800c230       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c230                USBD_LL_PrepareReceive
  .text.USBD_LL_GetRxDataSize
-                0x0800adac        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800adac                USBD_LL_GetRxDataSize
+                0x0800c24c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c24c                USBD_LL_GetRxDataSize
  .text.HAL_PCDEx_LPM_Callback
-                0x0800adb4       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800adb4                HAL_PCDEx_LPM_Callback
+                0x0800c254       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c254                HAL_PCDEx_LPM_Callback
  .text.USBD_static_malloc
-                0x0800ae04        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ae04                USBD_static_malloc
+                0x0800c2a4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c2a4                USBD_static_malloc
  .text.USBD_static_free
-                0x0800ae0c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x0800ae0c                USBD_static_free
+                0x0800c2ac        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800c2ac                USBD_static_free
  .text.__aeabi_atexit
-                0x0800ae10        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
-                0x0800ae10                __aeabi_atexit
+                0x0800c2b0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
+                0x0800c2b0                __aeabi_atexit
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x0800ae1c       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800ae1c                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void**) const
+                0x0800c2bc       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c2bc                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void**) const
  .text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcEiPKvPKS0_S2_
-                0x0800ae50        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800ae50                __cxxabiv1::__class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0800c2f0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c2f0                __cxxabiv1::__class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0800ae5c       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800ae5c                __cxxabiv1::__class_type_info::~__class_type_info()
-                0x0800ae5c                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0800c2fc       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c2fc                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0800c2fc                __cxxabiv1::__class_type_info::~__class_type_info()
  .text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x0800ae70       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800ae70                __cxxabiv1::__class_type_info::~__class_type_info()
+                0x0800c310       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c310                __cxxabiv1::__class_type_info::~__class_type_info()
  .text._ZNK10__cxxabiv117__class_type_info12__do_dyncastEiNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x0800ae8c       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800ae8c                __cxxabiv1::__class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+                0x0800c32c       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c32c                __cxxabiv1::__class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
  .text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x0800aed0       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800aed0                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+                0x0800c370       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c370                __cxxabiv1::__class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
  .text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x0800aeec       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800aeec                __cxxabiv1::__class_type_info::__do_catch(std::type_info const*, void**, unsigned int) const
- .text._ZdlPvj  0x0800af18        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
-                0x0800af18                operator delete(void*, unsigned int)
+                0x0800c38c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800c38c                __cxxabiv1::__class_type_info::__do_catch(std::type_info const*, void**, unsigned int) const
+ .text._ZdlPvj  0x0800c3b8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
+                0x0800c3b8                operator delete(void*, unsigned int)
  .text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x0800af1c       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800af1c                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
-                0x0800af1c                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0800c3bc       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800c3bc                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0800c3bc                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
  .text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x0800af30       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800af30                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                0x0800c3d0       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800c3d0                __cxxabiv1::__si_class_type_info::~__si_class_type_info()
  .text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0800af4c       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800af4c                __cxxabiv1::__si_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0800c3ec       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800c3ec                __cxxabiv1::__si_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0800af88       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800af88                __cxxabiv1::__si_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+                0x0800c428       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800c428                __cxxabiv1::__si_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
  .text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0800b008       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800b008                __cxxabiv1::__si_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+                0x0800c4a8       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800c4a8                __cxxabiv1::__si_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
  .text._ZNSt9type_infoD2Ev
-                0x0800b034        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
-                0x0800b034                std::type_info::~type_info()
-                0x0800b034                std::type_info::~type_info()
+                0x0800c4d4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800c4d4                std::type_info::~type_info()
+                0x0800c4d4                std::type_info::~type_info()
  .text._ZNKSt9type_info14__is_pointer_pEv
-                0x0800b038        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
-                0x0800b038                std::type_info::__is_pointer_p() const
-                0x0800b038                std::type_info::__is_function_p() const
+                0x0800c4d8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800c4d8                std::type_info::__is_pointer_p() const
+                0x0800c4d8                std::type_info::__is_function_p() const
  .text._ZNKSt9type_infoeqERKS_
-                0x0800b03c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
-                0x0800b03c                std::type_info::operator==(std::type_info const&) const
+                0x0800c4dc       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800c4dc                std::type_info::operator==(std::type_info const&) const
  .text._ZN10__cxxabiv121__vmi_class_type_infoD2Ev
-                0x0800b068       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800b068                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
-                0x0800b068                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0800c508       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800c508                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0800c508                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
  .text._ZN10__cxxabiv121__vmi_class_type_infoD0Ev
-                0x0800b07c       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800b07c                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
+                0x0800c51c       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800c51c                __cxxabiv1::__vmi_class_type_info::~__vmi_class_type_info()
  .text._ZNK10__cxxabiv121__vmi_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0800b098       0x88 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800b098                __cxxabiv1::__vmi_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
+                0x0800c538       0x88 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800c538                __cxxabiv1::__vmi_class_type_info::__do_find_public_src(int, void const*, __cxxabiv1::__class_type_info const*, void const*) const
  .text._ZNK10__cxxabiv121__vmi_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0800b120      0x3d0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800b120                __cxxabiv1::__vmi_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+                0x0800c5c0      0x3d0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800c5c0                __cxxabiv1::__vmi_class_type_info::__do_dyncast(int, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
  .text._ZNK10__cxxabiv121__vmi_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0800b4f0      0x160 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800b4f0                __cxxabiv1::__vmi_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
- .text._ZdlPv   0x0800b650        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
-                0x0800b650                operator delete(void*)
- .text.atan2f   0x0800b654        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
-                0x0800b654                atan2f
+                0x0800c990      0x160 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800c990                __cxxabiv1::__vmi_class_type_info::__do_upcast(__cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__upcast_result&) const
+ .text._ZdlPv   0x0800caf0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
+                0x0800caf0                operator delete(void*)
+ .text.atan2f   0x0800caf4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+                0x0800caf4                atan2f
  .text.__ieee754_atan2f
-                0x0800b658      0x150 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
-                0x0800b658                __ieee754_atan2f
- .text.atanf    0x0800b7a8      0x1b4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
-                0x0800b7a8                atanf
- .text.fabsf    0x0800b95c       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
-                0x0800b95c                fabsf
- .text.abort    0x0800b96c       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-abort.o)
-                0x0800b96c                abort
+                0x0800caf8      0x150 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800caf8                __ieee754_atan2f
+ .text.atanf    0x0800cc48      0x1b4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800cc48                atanf
+ .text.fabsf    0x0800cdfc       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+                0x0800cdfc                fabsf
+ .text.abort    0x0800ce0c       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-abort.o)
+                0x0800ce0c                abort
  .text.__cxa_atexit
-                0x0800b97c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-cxa_atexit.o)
-                0x0800b97c                __cxa_atexit
- .text.__errno  0x0800b988        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
-                0x0800b988                __errno
+                0x0800ce1c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-cxa_atexit.o)
+                0x0800ce1c                __cxa_atexit
+ .text.__errno  0x0800ce28        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+                0x0800ce28                __errno
  .text.__libc_init_array
-                0x0800b994       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
-                0x0800b994                __libc_init_array
- .text.free     0x0800b9dc       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-malloc.o)
-                0x0800b9dc                free
- .text.memset   0x0800b9ec       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
-                0x0800b9ec                memset
+                0x0800ce34       0x48 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+                0x0800ce34                __libc_init_array
+ .text.free     0x0800ce7c       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-malloc.o)
+                0x0800ce7c                free
+ .text.memset   0x0800ce8c       0xa4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+                0x0800ce8c                memset
  .text.__malloc_lock
-                0x0800ba90        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
-                0x0800ba90                __malloc_lock
+                0x0800cf30        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
+                0x0800cf30                __malloc_lock
  .text.__malloc_unlock
-                0x0800ba9c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
-                0x0800ba9c                __malloc_unlock
- .text._sbrk_r  0x0800baa8       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-sbrkr.o)
-                0x0800baa8                _sbrk_r
- .text.raise    0x0800bacc       0x5c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signal.o)
-                0x0800bacc                raise
- .text._kill_r  0x0800bb28       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
-                0x0800bb28                _kill_r
+                0x0800cf3c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
+                0x0800cf3c                __malloc_unlock
+ .text._sbrk_r  0x0800cf48       0x24 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-sbrkr.o)
+                0x0800cf48                _sbrk_r
+ .text.raise    0x0800cf6c       0x5c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signal.o)
+                0x0800cf6c                raise
+ .text._kill_r  0x0800cfc8       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
+                0x0800cfc8                _kill_r
  .text._getpid_r
-                0x0800bb54        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
-                0x0800bb54                _getpid_r
+                0x0800cff4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
+                0x0800cff4                _getpid_r
  .text.__register_exitproc
-                0x0800bb58       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
-                0x0800bb58                __register_exitproc
+                0x0800cff8       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+                0x0800cff8                __register_exitproc
  .text.startup.register_fini
-                0x0800bbe4       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x0800bbf8        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
-                0x0800bbf8                atexit
+                0x0800d084       0x14 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0800d098        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+                0x0800d098                atexit
  .text.__libc_fini_array
-                0x0800bc04       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
-                0x0800bc04                __libc_fini_array
+                0x0800d0a4       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+                0x0800d0a4                __libc_fini_array
  .text._malloc_trim_r
-                0x0800bc30       0xa0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
-                0x0800bc30                _malloc_trim_r
- .text._free_r  0x0800bcd0      0x20c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
-                0x0800bcd0                _free_r
+                0x0800d0d0       0xa0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
+                0x0800d0d0                _malloc_trim_r
+ .text._free_r  0x0800d170      0x20c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
+                0x0800d170                _free_r
  .text.__retarget_lock_acquire_recursive
-                0x0800bedc        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x0800bedc                __retarget_lock_acquire_recursive
+                0x0800d37c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x0800d37c                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x0800bee0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x0800bee0                __retarget_lock_release_recursive
+                0x0800d380        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x0800d380                __retarget_lock_release_recursive
  *(.glue_7)
- .glue_7        0x0800bee4        0x0 linker stubs
+ .glue_7        0x0800d384        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800bee4        0x0 linker stubs
+ .glue_7t       0x0800d384        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800bee4        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x0800d384        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0800bee4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800bee4                _init
- .init          0x0800bee8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x0800d384        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800d384                _init
+ .init          0x0800d388        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x0800bef0        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x0800bef0                _fini
- .fini          0x0800bef4        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0800befc                . = ALIGN (0x4)
-                0x0800befc                _etext = .
+ .fini          0x0800d390        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x0800d390                _fini
+ .fini          0x0800d394        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0800d39c                . = ALIGN (0x4)
+                0x0800d39c                _etext = .
 
-.vfp11_veneer   0x0800befc        0x0
- .vfp11_veneer  0x0800befc        0x0 linker stubs
+.vfp11_veneer   0x0800d39c        0x0
+ .vfp11_veneer  0x0800d39c        0x0 linker stubs
 
-.v4_bx          0x0800befc        0x0
- .v4_bx         0x0800befc        0x0 linker stubs
+.v4_bx          0x0800d39c        0x0
+ .v4_bx         0x0800d39c        0x0 linker stubs
 
-.iplt           0x0800befc        0x0
- .iplt          0x0800befc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x0800d39c        0x0
+ .iplt          0x0800d39c        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ramfunc        0x0800befc      0xa5c
- .ramfunc       0x0800befc      0x6e4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800befc                HfiVolt
-                0x0800bf60                HfiCurrent
-                0x0800c080                FocVolt
-                0x0800c0fc                FocIFVolt(float, float)
-                0x0800c184                FocCurrent
-                0x0800c228                FocHandle()
- .ramfunc       0x0800c5e0       0xec CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
-                0x0800c5e0                SinCosVal
-                0x0800c60c                Clarke
-                0x0800c630                Park
-                0x0800c664                InvPark
-                0x0800c698                InvClarke
- .ramfunc       0x0800c6cc       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
-                0x0800c6cc                ParityBitCalculate
-                0x0800c6dc                SpiReadWriteOneByte
-                0x0800c72c                As5047pRead
- .ramfunc       0x0800c774      0x1e4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
-                0x0800c774                PIController::Calculate(float)
-                0x0800c7ec                PositionalPid::Calculate(float)
-                0x0800c8c8                IncrementalPid::Calculate(float)
+.ramfunc        0x0800d39c      0xa5c
+ .ramfunc       0x0800d39c      0x6e4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800d39c                HfiVolt
+                0x0800d400                HfiCurrent
+                0x0800d520                FocVolt
+                0x0800d59c                FocIFVolt(float, float)
+                0x0800d624                FocCurrent
+                0x0800d6c8                FocHandle()
+ .ramfunc       0x0800da80       0xec CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
+                0x0800da80                SinCosVal
+                0x0800daac                Clarke
+                0x0800dad0                Park
+                0x0800db04                InvPark
+                0x0800db38                InvClarke
+ .ramfunc       0x0800db6c       0xa8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
+                0x0800db6c                ParityBitCalculate
+                0x0800db7c                SpiReadWriteOneByte
+                0x0800dbcc                As5047pRead
+ .ramfunc       0x0800dc14      0x1e4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
+                0x0800dc14                PIController::Calculate(float)
+                0x0800dc8c                PositionalPid::Calculate(float)
+                0x0800dd68                IncrementalPid::Calculate(float)
 
-.rodata         0x0800c958     0x1574
-                0x0800c958                . = ALIGN (0x4)
+.rodata         0x0800ddf8     0x14f8
+                0x0800ddf8                . = ALIGN (0x4)
  *(.rodata)
+ .rodata        0x0800ddf8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x0800c958       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
-                0x0800c958                AHBPrescTable
+                0x0800de08       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/system_stm32g4xx.c.obj
+                0x0800de08                AHBPrescTable
  .rodata.DLCtoBytes
-                0x0800c968       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c.obj
+                0x0800de18       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c.obj
  .rodata._ZTS18InlineCurrentSense
-                0x0800c978       0x15 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
-                0x0800c978                typeinfo name for InlineCurrentSense
- *fill*         0x0800c98d        0x3 
+                0x0800de28       0x15 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800de28                typeinfo name for InlineCurrentSense
+ *fill*         0x0800de3d        0x3 
  .rodata._ZTI18InlineCurrentSense
-                0x0800c990        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
-                0x0800c990                typeinfo for InlineCurrentSense
+                0x0800de40        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800de40                typeinfo for InlineCurrentSense
  .rodata._ZTV18InlineCurrentSense
-                0x0800c99c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
-                0x0800c99c                vtable for InlineCurrentSense
+                0x0800de4c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800de4c                vtable for InlineCurrentSense
  .rodata._ZTI14PhaseSenseBase
-                0x0800c9a8        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
-                0x0800c9a8                typeinfo for PhaseSenseBase
+                0x0800de58        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800de58                typeinfo for PhaseSenseBase
  .rodata._ZTS14PhaseSenseBase
-                0x0800c9b0       0x11 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
-                0x0800c9b0                typeinfo name for PhaseSenseBase
- *fill*         0x0800c9c1        0x3 
+                0x0800de60       0x11 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800de60                typeinfo name for PhaseSenseBase
+ *fill*         0x0800de71        0x3 
  .rodata._ZTS12PIController
-                0x0800c9c4        0xf CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800c9c4                typeinfo name for PIController
- *fill*         0x0800c9d3        0x1 
+                0x0800de74        0xf CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800de74                typeinfo name for PIController
+ *fill*         0x0800de83        0x1 
  .rodata._ZTI12PIController
-                0x0800c9d4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800c9d4                typeinfo for PIController
+                0x0800de84        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800de84                typeinfo for PIController
  .rodata._ZTS13AngleProvider
-                0x0800c9dc       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800c9dc                typeinfo name for AngleProvider
+                0x0800de8c       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800de8c                typeinfo name for AngleProvider
  .rodata._ZTI13AngleProvider
-                0x0800c9ec        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800c9ec                typeinfo for AngleProvider
+                0x0800de9c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800de9c                typeinfo for AngleProvider
  .rodata._ZTS11EncoderBase
-                0x0800c9f4        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800c9f4                typeinfo name for EncoderBase
- *fill*         0x0800ca02        0x2 
+                0x0800dea4        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dea4                typeinfo name for EncoderBase
+ *fill*         0x0800deb2        0x2 
  .rodata._ZTI11EncoderBase
-                0x0800ca04        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca04                typeinfo for EncoderBase
+                0x0800deb4        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800deb4                typeinfo for EncoderBase
  .rodata._ZTS10AbiEncoder
-                0x0800ca10        0xd CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca10                typeinfo name for AbiEncoder
- *fill*         0x0800ca1d        0x3 
+                0x0800dec0        0xd CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dec0                typeinfo name for AbiEncoder
+ *fill*         0x0800decd        0x3 
  .rodata._ZTI10AbiEncoder
-                0x0800ca20        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca20                typeinfo for AbiEncoder
+                0x0800ded0        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800ded0                typeinfo for AbiEncoder
  .rodata._ZTS13As5407Encoder
-                0x0800ca2c       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca2c                typeinfo name for As5407Encoder
+                0x0800dedc       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dedc                typeinfo name for As5407Encoder
  .rodata._ZTI13As5407Encoder
-                0x0800ca3c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca3c                typeinfo for As5407Encoder
+                0x0800deec        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800deec                typeinfo for As5407Encoder
  .rodata._ZTS15NonFluxObserver
-                0x0800ca48       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca48                typeinfo name for NonFluxObserver
- *fill*         0x0800ca5a        0x2 
+                0x0800def8       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800def8                typeinfo name for NonFluxObserver
+ *fill*         0x0800df0a        0x2 
  .rodata._ZTI15NonFluxObserver
-                0x0800ca5c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca5c                typeinfo for NonFluxObserver
+                0x0800df0c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df0c                typeinfo for NonFluxObserver
  .rodata._ZTS12PulsatingHFI
-                0x0800ca7c        0xf CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca7c                typeinfo name for PulsatingHFI
- *fill*         0x0800ca8b        0x1 
+                0x0800df2c        0xf CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df2c                typeinfo name for PulsatingHFI
+ *fill*         0x0800df3b        0x1 
  .rodata._ZTI12PulsatingHFI
-                0x0800ca8c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800ca8c                typeinfo for PulsatingHFI
+                0x0800df3c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df3c                typeinfo for PulsatingHFI
  .rodata._ZTS17SlideMoveObserver
-                0x0800caac       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800caac                typeinfo name for SlideMoveObserver
+                0x0800df5c       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df5c                typeinfo name for SlideMoveObserver
  .rodata._ZTI17SlideMoveObserver
-                0x0800cac0       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800cac0                typeinfo for SlideMoveObserver
+                0x0800df70       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df70                typeinfo for SlideMoveObserver
  .rodata._ZTV10AbiEncoder
-                0x0800cae0       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800cae0                vtable for AbiEncoder
+                0x0800df90       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800df90                vtable for AbiEncoder
  .rodata._ZTV13As5407Encoder
-                0x0800caf4       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800caf4                vtable for As5407Encoder
+                0x0800dfa4       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dfa4                vtable for As5407Encoder
  .rodata._ZTV15NonFluxObserver
-                0x0800cb08       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800cb08                vtable for NonFluxObserver
+                0x0800dfb8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dfb8                vtable for NonFluxObserver
  .rodata._ZTV12PulsatingHFI
-                0x0800cb18       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800cb18                vtable for PulsatingHFI
+                0x0800dfc8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dfc8                vtable for PulsatingHFI
  .rodata._ZTV17SlideMoveObserver
-                0x0800cb28       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x0800cb28                vtable for SlideMoveObserver
+                0x0800dfd8       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800dfd8                vtable for SlideMoveObserver
  .rodata.sinTable_f32
-                0x0800cb38      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
+                0x0800dfe8      0x804 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
  .rodata.KeyConfig
-                0x0800d33c       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .rodata._ZN11MenuManager16DrawDisplayValueEfhb.isra.0.str1.4
-                0x0800d360       0x22 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- *fill*         0x0800d382        0x2 
+                0x0800e7ec       0x24 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
  .rodata._ZN11MenuManager8DrawLineEv.str1.4
-                0x0800d384        0x2 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- *fill*         0x0800d386        0x2 
+                0x0800e810        0x6 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ *fill*         0x0800e816        0x2 
  .rodata._ZN11MenuManager8DrawMenuEv.str1.4
-                0x0800d388        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800e818        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .rodata.str1.4
-                0x0800d394      0x164 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800e824       0xf8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .rodata._ZL4F6x8
-                0x0800d4f8      0x228 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800e91c      0x228 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .rodata._ZL5F8X16
-                0x0800d720      0x5f0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800eb44      0x5f0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .rodata.USBD_CDC_ManufacturerStrDescriptor.str1.4
-                0x0800dd10       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800dd23        0x1 
+                0x0800f134       0x13 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800f147        0x1 
  .rodata.USBD_CDC_ProductStrDescriptor.str1.4
-                0x0800dd24       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800dd3a        0x2 
+                0x0800f148       0x16 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800f15e        0x2 
  .rodata.USBD_CDC_ConfigStrDescriptor.str1.4
-                0x0800dd3c        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800dd47        0x1 
+                0x0800f160        0xb CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800f16b        0x1 
  .rodata.USBD_CDC_InterfaceStrDescriptor.str1.4
-                0x0800dd48        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- *fill*         0x0800dd56        0x2 
+                0x0800f16c        0xe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ *fill*         0x0800f17a        0x2 
  .rodata.CSWTCH.3
-                0x0800dd58        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x0800f17c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .rodata._ZTIN10__cxxabiv117__class_type_infoE
-                0x0800dd5c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800dd5c                typeinfo for __cxxabiv1::__class_type_info
+                0x0800f180        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f180                typeinfo for __cxxabiv1::__class_type_info
  .rodata._ZTSN10__cxxabiv117__class_type_infoE
-                0x0800dd68       0x22 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800dd68                typeinfo name for __cxxabiv1::__class_type_info
- *fill*         0x0800dd8a        0x2 
+                0x0800f18c       0x22 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f18c                typeinfo name for __cxxabiv1::__class_type_info
+ *fill*         0x0800f1ae        0x2 
  .rodata._ZTVN10__cxxabiv117__class_type_infoE
-                0x0800dd8c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
-                0x0800dd8c                vtable for __cxxabiv1::__class_type_info
+                0x0800f1b0       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f1b0                vtable for __cxxabiv1::__class_type_info
  .rodata._ZTIN10__cxxabiv120__si_class_type_infoE
-                0x0800ddb8        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800ddb8                typeinfo for __cxxabiv1::__si_class_type_info
+                0x0800f1dc        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f1dc                typeinfo for __cxxabiv1::__si_class_type_info
  .rodata._ZTSN10__cxxabiv120__si_class_type_infoE
-                0x0800ddc4       0x25 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800ddc4                typeinfo name for __cxxabiv1::__si_class_type_info
- *fill*         0x0800dde9        0x3 
+                0x0800f1e8       0x25 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f1e8                typeinfo name for __cxxabiv1::__si_class_type_info
+ *fill*         0x0800f20d        0x3 
  .rodata._ZTVN10__cxxabiv120__si_class_type_infoE
-                0x0800ddec       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
-                0x0800ddec                vtable for __cxxabiv1::__si_class_type_info
+                0x0800f210       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f210                vtable for __cxxabiv1::__si_class_type_info
  .rodata._ZTISt9type_info
-                0x0800de18        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
-                0x0800de18                typeinfo for std::type_info
+                0x0800f23c        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800f23c                typeinfo for std::type_info
  .rodata._ZTSSt9type_info
-                0x0800de20        0xd g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
-                0x0800de20                typeinfo name for std::type_info
- *fill*         0x0800de2d        0x3 
+                0x0800f244        0xd g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800f244                typeinfo name for std::type_info
+ *fill*         0x0800f251        0x3 
  .rodata._ZTIN10__cxxabiv121__vmi_class_type_infoE
-                0x0800de30        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800de30                typeinfo for __cxxabiv1::__vmi_class_type_info
+                0x0800f254        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f254                typeinfo for __cxxabiv1::__vmi_class_type_info
  .rodata._ZTSN10__cxxabiv121__vmi_class_type_infoE
-                0x0800de3c       0x26 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800de3c                typeinfo name for __cxxabiv1::__vmi_class_type_info
- *fill*         0x0800de62        0x2 
+                0x0800f260       0x26 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f260                typeinfo name for __cxxabiv1::__vmi_class_type_info
+ *fill*         0x0800f286        0x2 
  .rodata._ZTVN10__cxxabiv121__vmi_class_type_infoE
-                0x0800de64       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
-                0x0800de64                vtable for __cxxabiv1::__vmi_class_type_info
+                0x0800f288       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f288                vtable for __cxxabiv1::__vmi_class_type_info
  .rodata.CSWTCH.8
-                0x0800de90        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800f2b4        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
  .rodata.CSWTCH.9
-                0x0800de9c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+                0x0800f2c0        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
  .rodata.atanhi
-                0x0800dea8       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800f2cc       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .rodata.atanlo
-                0x0800deb8       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+                0x0800f2dc       0x10 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
  .rodata._global_impure_ptr
-                0x0800dec8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x0800dec8                _global_impure_ptr
-                0x0800decc                . = ALIGN (0x4)
+                0x0800f2ec        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x0800f2ec                _global_impure_ptr
+                0x0800f2f0                . = ALIGN (0x4)
 
-.ARM.extab      0x0800decc       0x84
+.ARM.extab      0x0800f2f0       0x84
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  .ARM.extab.text._ZN11EncoderBase17ElectAngleWritingEf
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN17SlideMoveObserverD2Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN12PulsatingHFID2Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN15NonFluxObserverD2Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN13As5407EncoderD2Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN10AbiEncoderD2Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN10AbiEncoderD0Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN13As5407EncoderD0Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN17SlideMoveObserverD0Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN12PulsatingHFID0Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN15NonFluxObserverD0Ev
-                0x0800decc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.ramfunc
-                0x0800decc       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f2f0       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._ZN5Svpwm12GetSvpwmDutyE11Vector2Df_t
-                0x0800df08        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f32c        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.extab.text._Z9MotorCtrlP11MotorCtrl_tP11foc_param_t
-                0x0800df08        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f32c        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+ .ARM.extab.text._ZN11MenuManager16DrawDisplayValueEffhb
+                0x0800f338        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .ARM.extab.text._ZN11MenuManager16DrawDisplayValueEfhb
+                0x0800f338        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._ZN11MenuManager8DrawLineEv
-                0x0800df14        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f338        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._ZN11MenuManager8DrawMenuEv
-                0x0800df14        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .ARM.extab.text._ZN11MenuManager13RefreshNowRowEv
-                0x0800df14        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f338        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._ZN11MenuManager13ManagerUpdateEv
-                0x0800df20        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f344        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._Z9task_50msv
-                0x0800df20        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f344        0xc CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.extab.text._ZNK10__cxxabiv121__vmi_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0800df2c        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
- .ARM.extab     0x0800df38       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
+                0x0800f350        0xc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+ .ARM.extab     0x0800f35c       0x18 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
 
-.ARM            0x0800df50      0x1e0
-                0x0800df50                __exidx_start = .
+.ARM            0x0800f374      0x1d8
+                0x0800f374                __exidx_start = .
  *(.ARM.exidx*)
  .ARM.exidx.text.SystemClock_Config
-                0x0800e008        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x0800f42c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
  .ARM.exidx.text.startup.main
-                0x0800e010        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x0800f434        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
  .ARM.exidx.text.Error_Handler
-                0x0800e018        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x0800f43c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I_oled_buffer
-                0x0800e020        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x0800f444        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN14PhaseSenseBase15OffsetCalibrateEv
-                0x0800e020        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800f444        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN18InlineCurrentSenseC2ERKN14PhaseSenseBase11SenseConfigE
-                0x0800e020        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800f444        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN18InlineCurrentSense6UpdateEv
-                0x0800e020        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
+                0x0800f444        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/analog_sense.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text.FocPwmStart
-                0x0800e020        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
+                0x0800f444        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
  .ARM.exidx.text.MotorCtrlReset
-                0x0800e028        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
+                0x0800f44c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
  .ARM.exidx.text._ZN11EncoderBase17ElectAngleWritingEf
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN17SlideMoveObserverD2Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN12PulsatingHFID2Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN15NonFluxObserverD2Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN13As5407EncoderD2Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10AbiEncoderD2Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10AbiEncoderD0Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN13As5407EncoderD0Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN17SlideMoveObserverD0Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN12PulsatingHFID0Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN15NonFluxObserverD0Ev
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.ramfunc
-                0x0800e0f0       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f50c       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.exidx.text._ZN5Svpwm12GetSvpwmDutyE11Vector2Df_t
-                0x0800e030        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z9MotorCtrlP11MotorCtrl_tP11foc_param_t
-                0x0800e030        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f454        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I_app_config
-                0x0800e038        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f45c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.exidx.text.HAL_ADCEx_InjectedConvCpltCallback
-                0x0800e040        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x0800f464        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .ARM.exidx.ramfunc
-                0x0800e120       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
+                0x0800f53c       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
                                  0x28 (size before relaxing)
  .ARM.exidx.text._ZN11EncoderBase15EncoderDataProcEt
-                0x0800e048        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder.cpp.obj
+                0x0800f46c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder.cpp.obj
  .ARM.exidx.ramfunc
-                0x0800e130        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
+                0x0800f54c        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
                                  0x18 (size before relaxing)
  .ARM.exidx.text.HAL_TIM_PeriodElapsedCallback
-                0x0800e050        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x0800f474        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I_menu
-                0x0800e050        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x0800f474        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z10MotorStartv
-                0x0800e050        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f474        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text._Z9MotorStopv
-                0x0800e050        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f474        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
                                   0x8 (size before relaxing)
- .ARM.exidx.text._ZN11MenuManager16DrawDisplayValueEfhb.isra.0
-                0x0800e050        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .ARM.exidx.text._ZN11MenuManager16DrawDisplayValueEffhb
+                0x0800f474        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .ARM.exidx.text._ZN11MenuManager16DrawDisplayValueEfhb
+                0x0800f47c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text._ZN11MenuManager8DrawLineEv
-                0x0800e058        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f484        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                                  0x8 (size before relaxing)
  .ARM.exidx.text._ZN11MenuManager8DrawMenuEv
-                0x0800e060        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .ARM.exidx.text._ZN11MenuManager13RefreshNowRowEv
-                0x0800e068        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f484        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text._ZN11MenuManager13ManagerUpdateEv
-                0x0800e070        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f48c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text._Z8task_5msv
-                0x0800e078        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f494        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text._Z9task_50msv
-                0x0800e080        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f49c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__Z10MotorStartv
-                0x0800e088        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f4a4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
  .ARM.exidx.text._ZN4OLED8OLED_CLSEv
-                0x0800e090        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800f4ac        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .ARM.exidx.text._ZN4OLED15OLED_RefreshRAMEv
-                0x0800e098        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800f4b4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .ARM.exidx.text._ZN4OLED4InitEv
-                0x0800e0a0        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800f4bc        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .ARM.exidx.text._ZN4OLED13OLED_SetPixelEssh
-                0x0800e0a8        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800f4c4        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
  .ARM.exidx.text._ZN4OLED12OLED_ShowStrEssPKchb
-                0x0800e0b0        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+                0x0800f4cc        0x0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
                                   0x8 (size before relaxing)
  .ARM.exidx.text.__aeabi_atexit
-                0x0800e0b0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
+                0x0800f4cc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x0800e0b0        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4cc        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcEiPKvPKS0_S2_
-                0x0800e0b8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4d4        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info12__do_dyncastEiNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZdlPvj
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0800e0c0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f4dc        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0800e0c0        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+                0x0800f4dc        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
  .ARM.exidx.text._ZNSt9type_infoD2Ev
-                0x0800e0c8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800f4e4        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
  .ARM.exidx.text._ZNKSt9type_info14__is_pointer_pEv
-                0x0800e0d0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800f4ec        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt9type_infoeqERKS_
-                0x0800e0d0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+                0x0800f4ec        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv121__vmi_class_type_infoD2Ev
-                0x0800e0d0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f4ec        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv121__vmi_class_type_infoD0Ev
-                0x0800e0d0        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f4ec        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv121__vmi_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x0800e0d0        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f4ec        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv121__vmi_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x0800e0d8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f4f4        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv121__vmi_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x0800e0e0        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+                0x0800f4fc        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
  .ARM.exidx.text._ZdlPv
-                0x0800e0e8        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
- .ARM.exidx     0x0800df50       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
+                0x0800f504        0x8 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
+ .ARM.exidx     0x0800f374       0x80 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
                                  0xd8 (size before relaxing)
- .ARM.exidx     0x0800dfd0       0x38 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
-                0x0800e130                __exidx_end = .
+ .ARM.exidx     0x0800f3f4       0x38 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
+                0x0800f54c                __exidx_end = .
 
-.rel.dyn        0x0800e130        0x0
- .rel.iplt      0x0800e130        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x0800f54c        0x0
+ .rel.iplt      0x0800f54c        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x0800e130        0x0
-                0x0800e130                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800f54c        0x0
+                0x0800f54c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800e130                PROVIDE (__preinit_array_end = .)
+                0x0800f54c                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0800e130       0x18
-                0x0800e130                PROVIDE (__init_array_start = .)
+.init_array     0x0800f54c       0x18
+                0x0800f54c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x0800e130        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x0800f54c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x0800e134        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
- .init_array    0x0800e138        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
- .init_array    0x0800e13c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
- .init_array    0x0800e140        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .init_array    0x0800e144        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x0800e148                PROVIDE (__init_array_end = .)
+ .init_array    0x0800f550        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .init_array    0x0800f554        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+ .init_array    0x0800f558        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+ .init_array    0x0800f55c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+ .init_array    0x0800f560        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x0800f564                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0800e148        0x4
-                0x0800e148                PROVIDE (__fini_array_start = .)
+.fini_array     0x0800f564        0x4
+                0x0800f564                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800e148        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x0800e14c                PROVIDE (__fini_array_end = .)
-                0x0800e14c                _sidata = LOADADDR (.data)
+ .fini_array    0x0800f564        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800f568                PROVIDE (__fini_array_end = .)
+                0x0800f568                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0xf7c load address 0x0800e14c
+.data           0x20000000      0xe04 load address 0x0800f568
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -4026,283 +4027,269 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                 0x20000240       0x43 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
  *fill*         0x20000283        0x1 
  .data.battery_cell
-                0x20000284       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20000284       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
                 0x20000284                battery_cell
- .data.can_id   0x200002cc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200002cc                can_id
  .data.config_manager
-                0x200002d0       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200002d0                config_manager
+                0x200002c0       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200002c0                config_manager
  .data.current_control
-                0x200002fc       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200002fc                current_control
+                0x200002ec       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200002ec                current_control
  .data.current_limit
-                0x2000035c       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x2000035c                current_limit
- .data.encoder_init
-                0x200003a4       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200003a4                encoder_init
- .data.menu_canid
-                0x20000404       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20000404                menu_canid
+                0x2000033c       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x2000033c                current_limit
+ .data.iq_now   0x20000378        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20000378                iq_now
  .data.menu_ctrl_mode
-                0x2000044c       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x2000044c                menu_ctrl_mode
- .data.menu_encoder
-                0x2000047c       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x2000047c                menu_encoder
+                0x2000037c       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x2000037c                menu_ctrl_mode
  .data.menu_main_tree
-                0x200004c4       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200004c4                menu_main_tree
+                0x200003a4       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200003a4                menu_main_tree
  .data.menu_param
-                0x20000524       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20000524                menu_param
+                0x200003f4       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200003f4                menu_param
  .data.motor_control
-                0x2000056c       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x2000056c                motor_control
+                0x20000430       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20000430                motor_control
  .data.motor_identify
-                0x200005b4       0x48 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200005b4                motor_identify
+                0x2000046c       0x3c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x2000046c                motor_identify
  .data.pos_control
-                0x200005fc       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x200005fc                pos_control
- .data.root     0x2000065c       0x18 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x2000065c                root
+                0x200004a8       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200004a8                pos_control
+ .data.root     0x200004f8       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200004f8                root
  .data.speed_control
-                0x20000674       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20000674                speed_control
+                0x2000050c       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x2000050c                speed_control
  .data.USBD_Interface_fops_FS
-                0x200006d4       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x200006d4                USBD_Interface_fops_FS
+                0x2000055c       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x2000055c                USBD_Interface_fops_FS
  .data.CDC_Desc
-                0x200006e8       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x200006e8                CDC_Desc
+                0x20000570       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x20000570                CDC_Desc
  .data.USBD_CDC_DeviceDesc
-                0x20000708       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20000708                USBD_CDC_DeviceDesc
- *fill*         0x2000071a        0x2 
+                0x20000590       0x12 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x20000590                USBD_CDC_DeviceDesc
+ *fill*         0x200005a2        0x2 
  .data.USBD_LangIDDesc
-                0x2000071c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x2000071c                USBD_LangIDDesc
+                0x200005a4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x200005a4                USBD_LangIDDesc
  .data.USBD_StringSerial
-                0x20000720       0x1a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20000720                USBD_StringSerial
- *fill*         0x2000073a        0x2 
+                0x200005a8       0x1a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x200005a8                USBD_StringSerial
+ *fill*         0x200005c2        0x2 
  .data._impure_ptr
-                0x2000073c        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
-                0x2000073c                _impure_ptr
+                0x200005c4        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x200005c4                _impure_ptr
  .data.impure_data
-                0x20000740      0x428 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
+                0x200005c8      0x428 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-impure.o)
  .data.__malloc_av_
-                0x20000b68      0x408 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
-                0x20000b68                __malloc_av_
+                0x200009f0      0x408 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+                0x200009f0                __malloc_av_
  .data.__malloc_sbrk_base
-                0x20000f70        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
-                0x20000f70                __malloc_sbrk_base
+                0x20000df8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+                0x20000df8                __malloc_sbrk_base
  .data.__malloc_trim_threshold
-                0x20000f74        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
-                0x20000f74                __malloc_trim_threshold
+                0x20000dfc        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+                0x20000dfc                __malloc_trim_threshold
  .data.__atexit_recursive_mutex
-                0x20000f78        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
-                0x20000f78                __atexit_recursive_mutex
-                0x20000f7c                . = ALIGN (0x4)
-                0x20000f7c                _edata = .
+                0x20000e00        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+                0x20000e00                __atexit_recursive_mutex
+                0x20000e04                . = ALIGN (0x4)
+                0x20000e04                _edata = .
 
-.igot.plt       0x20000f7c        0x0 load address 0x0800f0c8
- .igot.plt      0x20000f7c        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x20000f7c                . = ALIGN (0x4)
+.igot.plt       0x20000e04        0x0 load address 0x0801036c
+ .igot.plt      0x20000e04        0x0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x20000e04                . = ALIGN (0x4)
 
-.bss            0x20000f7c     0x25f8 load address 0x0800f0c8
-                0x20000f7c                _sbss = .
-                0x20000f7c                __bss_start__ = _sbss
+.bss            0x20000e04     0x25e8 load address 0x0801036c
+                0x20000e04                _sbss = .
+                0x20000e04                __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000f7c       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .bss           0x20000e04       0x1c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
  .bss.CAN_RxBuffer.0
-                0x20000f98       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
+                0x20000e20       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .bss.CAN_RxBuffer.1
-                0x20000fc8       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
+                0x20000e50       0x30 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .bss.pCAN1_RxCpltCallback
-                0x20000ff8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
+                0x20000e80        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .bss.pCAN2_RxCpltCallback
-                0x20000ffc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
+                0x20000e84        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .bss.HAL_RCC_ADC12_CLK_ENABLED
-                0x20001000        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
- .bss.hadc1     0x20001004       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
-                0x20001004                hadc1
- .bss.hadc2     0x20001070       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
-                0x20001070                hadc2
- .bss.hfdcan2   0x200010dc       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
-                0x200010dc                hfdcan2
- .bss.hi2c1     0x20001140       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/i2c.c.obj
-                0x20001140                hi2c1
- .bss.oled      0x20001194        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
-                0x20001194                oled
+                0x20000e88        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+ .bss.hadc1     0x20000e8c       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+                0x20000e8c                hadc1
+ .bss.hadc2     0x20000ef8       0x6c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
+                0x20000ef8                hadc2
+ .bss.hfdcan2   0x20000f64       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
+                0x20000f64                hfdcan2
+ .bss.hi2c1     0x20000fc8       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/i2c.c.obj
+                0x20000fc8                hi2c1
+ .bss.oled      0x2000101c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x2000101c                oled
  .bss.oled_buffer
-                0x2000119c      0x400 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
-                0x2000119c                oled_buffer
- .bss.hspi1     0x2000159c       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj
-                0x2000159c                hspi1
+                0x20001024      0x400 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj
+                0x20001024                oled_buffer
+ .bss.hspi1     0x20001424       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/spi.c.obj
+                0x20001424                hspi1
  .bss.__sbrk_heap_end
-                0x20001600        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/sysmem.c.obj
- .bss.htim1     0x20001604       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x20001604                htim1
- .bss.htim16    0x20001650       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x20001650                htim16
- .bss.htim2     0x2000169c       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x2000169c                htim2
- .bss.htim8     0x200016e8       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
-                0x200016e8                htim8
- .bss.uwTick    0x20001734        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
-                0x20001734                uwTick
+                0x20001488        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/sysmem.c.obj
+ .bss.htim1     0x2000148c       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x2000148c                htim1
+ .bss.htim16    0x200014d8       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x200014d8                htim16
+ .bss.htim2     0x20001524       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x20001524                htim2
+ .bss.htim8     0x20001570       0x4c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj
+                0x20001570                htim8
+ .bss.uwTick    0x200015bc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c.obj
+                0x200015bc                uwTick
  .bss.foc_param
-                0x20001738       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
-                0x20001738                foc_param
+                0x200015c0       0x44 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
+                0x200015c0                foc_param
  .bss.motor_cfg
-                0x2000177c       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
-                0x2000177c                motor_cfg
+                0x20001604       0x1c CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
+                0x20001604                motor_cfg
  .bss.motor_ctrl
-                0x20001798       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
-                0x20001798                motor_ctrl
+                0x20001620       0x28 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
+                0x20001620                motor_ctrl
  .bss._ZZ34HAL_ADCEx_InjectedConvCpltCallbackE8off_init
-                0x200017c0        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001648        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .bss._ZZ34HAL_ADCEx_InjectedConvCpltCallbackE9pwm_start
-                0x200017c1        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
- *fill*         0x200017c2        0x2 
+                0x20001649        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+ *fill*         0x2000164a        0x2 
  .bss._ZZ9MotorCtrlP11MotorCtrl_tP11foc_param_tE13speedloop_out
-                0x200017c4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x2000164c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .bss._ZZ9MotorCtrlP11MotorCtrl_tP11foc_param_tE5i_out
-                0x200017c8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001650        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
  .bss.current_sense
-                0x200017cc       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x200017cc                current_sense
+                0x20001654       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001654                current_sense
  .bss.focController
-                0x20001804       0xa4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001804                focController
+                0x2000168c       0xa4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x2000168c                focController
  .bss.hfiObserver
-                0x200018a8       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x200018a8                hfiObserver
- .bss.lpf_id    0x20001900        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001900                lpf_id
- .bss.lpf_iq    0x20001908        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001908                lpf_iq
+                0x20001730       0x58 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001730                hfiObserver
+ .bss.lpf_id    0x20001788        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001788                lpf_id
+ .bss.lpf_iq    0x20001790        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001790                lpf_iq
  .bss.lpf_speed
-                0x20001910        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001910                lpf_speed
+                0x20001798        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001798                lpf_speed
  .bss.nonFluxObserver
-                0x20001918       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001918                nonFluxObserver
- .bss.pi_id     0x2000196c       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x2000196c                pi_id
- .bss.pi_iq     0x200019a0       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x200019a0                pi_iq
- .bss.pid_spd   0x200019d4       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x200019d4                pid_spd
+                0x200017a0       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x200017a0                nonFluxObserver
+ .bss.pi_id     0x200017f4       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x200017f4                pi_id
+ .bss.pi_iq     0x20001828       0x34 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001828                pi_iq
+ .bss.pid_spd   0x2000185c       0x20 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x2000185c                pid_spd
  .bss.smoObserver
-                0x200019f4       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x200019f4                smoObserver
- .bss.svm       0x20001a5c       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001a5c                svm
+                0x2000187c       0x68 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x2000187c                smoObserver
+ .bss.svm       0x200018e4       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x200018e4                svm
  .bss.temp_sense
-                0x20001a6c       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001a6c                temp_sense
- .bss.vbus      0x20001a80        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001a80                vbus
+                0x200018f4       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x200018f4                temp_sense
+ .bss.vbus      0x20001908        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x20001908                vbus
  .bss.vbus_sense
-                0x20001a84        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
-                0x20001a84                vbus_sense
- .bss.cfgidx.0  0x20001a8c        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
- .bss.cnt       0x20001a8d        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001a8d                cnt
- *fill*         0x20001a8e        0x2 
- .bss.enter     0x20001a90       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001a90                enter
+                0x2000190c        0x8 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+                0x2000190c                vbus_sense
+ .bss.cfgidx.0  0x20001914        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .bss.cnt       0x20001915        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x20001915                cnt
+ *fill*         0x20001916        0x2 
+ .bss.enter     0x20001918       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x20001918                enter
  .bss.flag_50ms
-                0x20001aa4        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001aa4                flag_50ms
- .bss.flag_5ms  0x20001aa5        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001aa5                flag_5ms
- *fill*         0x20001aa6        0x2 
- .bss.menu      0x20001aa8       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001aa8                menu
- .bss.next      0x20001abc       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
-                0x20001abc                next
- .bss.bat_cell  0x20001ad0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ad0                bat_cell
+                0x2000192c        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x2000192c                flag_50ms
+ .bss.flag_5ms  0x2000192d        0x1 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x2000192d                flag_5ms
+ *fill*         0x2000192e        0x2 
+ .bss.menu      0x20001930       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x20001930                menu
+ .bss.next      0x20001944       0x14 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+                0x20001944                next
+ .bss.bat_cell  0x20001958        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20001958                bat_cell
  .bss.current_lim
-                0x20001ad4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ad4                current_lim
- .bss.encoder_status
-                0x20001ad8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ad8                encoder_status
- .bss.identify_status
-                0x20001adc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001adc                identify_status
- .bss.iq_now    0x20001ae0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ae0                iq_now
- .bss.iq_set    0x20001ae4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ae4                iq_set
+                0x2000195c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x2000195c                current_lim
+ .bss.debug_display_cnt
+                0x20001960        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20001960                debug_display_cnt
+ .bss.iq_set    0x20001964        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20001964                iq_set
  .bss.menuManager
-                0x20001ae8       0x78 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001ae8                menuManager
- .bss.pos_now   0x20001b60        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001b60                pos_now
- .bss.pos_set   0x20001b64        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001b64                pos_set
+                0x20001968       0x70 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x20001968                menuManager
+ .bss.pos_now   0x200019d8        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200019d8                pos_now
+ .bss.pos_set   0x200019dc        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200019dc                pos_set
  .bss.speed_now
-                0x20001b68        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001b68                speed_now
+                0x200019e0        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200019e0                speed_now
  .bss.speed_set
-                0x20001b6c        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                0x20001b6c                speed_set
+                0x200019e4        0x4 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                0x200019e4                speed_set
  .bss.hUsbDeviceFS
-                0x20001b70      0x2d0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
-                0x20001b70                hUsbDeviceFS
+                0x200019e8      0x2d0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+                0x200019e8                hUsbDeviceFS
  .bss.UserRxBufferFS
-                0x20001e40      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x20001e40                UserRxBufferFS
+                0x20001cb8      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x20001cb8                UserRxBufferFS
  .bss.UserTxBufferFS
-                0x20002640      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
-                0x20002640                UserTxBufferFS
+                0x200024b8      0x800 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+                0x200024b8                UserTxBufferFS
  .bss.USBD_StrDesc
-                0x20002e40      0x200 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
-                0x20002e40                USBD_StrDesc
+                0x20002cb8      0x200 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+                0x20002cb8                USBD_StrDesc
  .bss.hpcd_USB_FS
-                0x20003040      0x2dc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
-                0x20003040                hpcd_USB_FS
- .bss.mem.0     0x2000331c      0x220 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x20002eb8      0x2dc CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+                0x20002eb8                hpcd_USB_FS
+ .bss.mem.0     0x20003194      0x220 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
  .bss.__malloc_current_mallinfo
-                0x2000353c       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
-                0x2000353c                __malloc_current_mallinfo
+                0x200033b4       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+                0x200033b4                __malloc_current_mallinfo
  .bss.__malloc_top_pad
-                0x20003564        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
-                0x20003564                __malloc_top_pad
+                0x200033dc        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+                0x200033dc                __malloc_top_pad
  .bss.__lock___atexit_recursive_mutex
-                0x20003568        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x20003568                __lock___atexit_recursive_mutex
- *fill*         0x20003569        0x3 
+                0x200033e0        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x200033e0                __lock___atexit_recursive_mutex
+ *fill*         0x200033e1        0x3 
  .bss.__lock___malloc_recursive_mutex
-                0x2000356c        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
-                0x2000356c                __lock___malloc_recursive_mutex
- *fill*         0x2000356d        0x3 
- .bss.errno     0x20003570        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-reent.o)
-                0x20003570                errno
+                0x200033e4        0x1 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+                0x200033e4                __lock___malloc_recursive_mutex
+ *fill*         0x200033e5        0x3 
+ .bss.errno     0x200033e8        0x4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-reent.o)
+                0x200033e8                errno
  *(COMMON)
-                0x20003574                . = ALIGN (0x4)
-                0x20003574                _ebss = .
-                0x20003574                __bss_end__ = _ebss
+                0x200033ec                . = ALIGN (0x4)
+                0x200033ec                _ebss = .
+                0x200033ec                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20003574      0x604 load address 0x0800f0c8
-                0x20003578                . = ALIGN (0x8)
- *fill*         0x20003574        0x4 
+                0x200033ec      0x604 load address 0x0801036c
+                0x200033f0                . = ALIGN (0x8)
+ *fill*         0x200033ec        0x4 
                 [!provide]                PROVIDE (end = .)
-                0x20003578                PROVIDE (_end = .)
-                0x20003778                . = (. + _Min_Heap_Size)
- *fill*         0x20003578      0x200 
-                0x20003b78                . = (. + _Min_Stack_Size)
- *fill*         0x20003778      0x400 
-                0x20003b78                . = ALIGN (0x8)
+                0x200033f0                PROVIDE (_end = .)
+                0x200035f0                . = (. + _Min_Heap_Size)
+ *fill*         0x200033f0      0x200 
+                0x200039f0                . = (. + _Min_Stack_Size)
+ *fill*         0x200035f0      0x400 
+                0x200039f0                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -4494,7 +4481,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x516e3
+.debug_info     0x00000000    0x5126c
  .debug_info    0x00000000      0xcbc CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_info    0x00000cbc     0x153c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_info    0x000021f8      0xf1d CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4539,14 +4526,14 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_info    0x00042c18     0x10c9 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_info    0x00043ce1      0x87f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_info    0x00044560      0xd1c CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_info    0x0004527c     0x503f CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_info    0x0004a2bb     0x3930 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_info    0x0004dbeb      0x79a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_info    0x0004e385      0x98e CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_info    0x0004ed13      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_info    0x0004f39e     0x2345 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_info    0x0004527c     0x4bc8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_info    0x00049e44     0x3930 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_info    0x0004d774      0x79a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_info    0x0004df0e      0x98e CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_info    0x0004e89c      0x68b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_info    0x0004ef27     0x2345 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_abbrev   0x00000000     0x8c89
+.debug_abbrev   0x00000000     0x8bf2
  .debug_abbrev  0x00000000      0x1cc CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_abbrev  0x000001cc      0x239 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_abbrev  0x00000405      0x1d4 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4591,14 +4578,14 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_abbrev  0x00006dd9      0x3b3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_abbrev  0x0000718c      0x1a3 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_abbrev  0x0000732f      0x33b CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_abbrev  0x0000766a      0x78f CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_abbrev  0x00007df9      0x3f5 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_abbrev  0x000081ee      0x1b5 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_abbrev  0x000083a3      0x2c1 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_abbrev  0x00008664      0x2a8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_abbrev  0x0000890c      0x37d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_abbrev  0x0000766a      0x6f8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_abbrev  0x00007d62      0x3f5 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_abbrev  0x00008157      0x1b5 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_abbrev  0x0000830c      0x2c1 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_abbrev  0x000085cd      0x2a8 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_abbrev  0x00008875      0x37d CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_loc      0x00000000    0x2c116
+.debug_loc      0x00000000    0x30e82
  .debug_loc     0x00000000      0x47b CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_loc     0x0000047b       0x9e CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_loc     0x00000519       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4639,11 +4626,11 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_loc     0x000259ae     0x1002 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_loc     0x000269b0      0x2b8 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_loc     0x00026c68       0xef CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_loc     0x00026d57     0x1a3a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_loc     0x00028791     0x26d6 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_loc     0x0002ae67      0x139 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_loc     0x0002afa0      0x378 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_loc     0x0002b318      0xdfe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_loc     0x00026d57     0x67a6 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_loc     0x0002d4fd     0x26d6 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_loc     0x0002fbd3      0x139 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_loc     0x0002fd0c      0x378 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_loc     0x00030084      0xdfe CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
 .debug_aranges  0x00000000     0x1d20
  .debug_aranges
@@ -4747,7 +4734,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_aranges
                 0x00001c10      0x110 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_ranges   0x00000000     0x5d30
+.debug_ranges   0x00000000     0x6980
  .debug_ranges  0x00000000       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_ranges  0x00000038       0x60 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_ranges  0x00000098       0x50 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4792,14 +4779,14 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_ranges  0x00004b80      0x118 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_ranges  0x00004c98       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_ranges  0x00004cd8       0xe8 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_ranges  0x00004dc0      0x618 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_ranges  0x000053d8      0x630 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_ranges  0x00005a08       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_ranges  0x00005a18       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_ranges  0x00005a50       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_ranges  0x00005b00      0x230 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_ranges  0x00004dc0     0x1268 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_ranges  0x00006028      0x630 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_ranges  0x00006658       0x10 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_ranges  0x00006668       0x38 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_ranges  0x000066a0       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_ranges  0x00006750      0x230 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_line     0x00000000    0x2c7d2
+.debug_line     0x00000000    0x2dce7
  .debug_line    0x00000000      0x492 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_line    0x00000492      0x702 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_line    0x00000b94      0x39d CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -4844,14 +4831,14 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_line    0x0002803d      0x9e6 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_line    0x00028a23      0x2a7 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_line    0x00028cca      0x29e CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_line    0x00028f68     0x1582 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_line    0x0002a4ea     0x1169 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_line    0x0002b653      0x241 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_line    0x0002b894      0x288 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_line    0x0002bb1c      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_line    0x0002be6d      0x965 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_line    0x00028f68     0x2a97 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_line    0x0002b9ff     0x1169 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_line    0x0002cb68      0x241 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_line    0x0002cda9      0x288 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_line    0x0002d031      0x351 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_line    0x0002d382      0x965 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_str      0x00000000     0xd448
+.debug_str      0x00000000     0xd49a
  .debug_str     0x00000000      0x7bb CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
                                 0x879 (size before relaxing)
  .debug_str     0x000007bb      0xfe5 CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
@@ -4918,39 +4905,39 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
                                0x10fb (size before relaxing)
  .debug_str     0x0000a2c7      0x286 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_cfg.cpp.obj
                                0x1ab2 (size before relaxing)
- .debug_str     0x0000a54d     0x1781 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
+ .debug_str     0x0000a54d     0x1786 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_ctrl.cpp.obj
                                0x346c (size before relaxing)
- .debug_str     0x0000bcce       0x42 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
+ .debug_str     0x0000bcd3       0x42 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/core/Src/foc_math.cpp.obj
                                 0xce7 (size before relaxing)
- .debug_str     0x0000bd10       0x82 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
+ .debug_str     0x0000bd15       0x82 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/as5047p.c.obj
                                 0x868 (size before relaxing)
- .debug_str     0x0000bd92       0x32 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder.cpp.obj
+ .debug_str     0x0000bd97       0x32 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/encoder/Src/encoder.cpp.obj
                                 0xcf2 (size before relaxing)
- .debug_str     0x0000bdc4       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
+ .debug_str     0x0000bdc9       0x54 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/pid.cpp.obj
                                 0xe75 (size before relaxing)
- .debug_str     0x0000be18      0x128 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
+ .debug_str     0x0000be1d      0x128 CMakeFiles/DRIVE_CMAKE.elf.dir/Foc/utils/Src/util.c.obj
                                 0x367 (size before relaxing)
- .debug_str     0x0000bf40      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
+ .debug_str     0x0000bf45      0x69f CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj
                                 0xccf (size before relaxing)
- .debug_str     0x0000c5df      0x2a1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
+ .debug_str     0x0000c5e4      0x2a1 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj
                                 0x8a3 (size before relaxing)
- .debug_str     0x0000c880      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
+ .debug_str     0x0000c885      0x15a CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
                                 0x7f5 (size before relaxing)
- .debug_str     0x0000c9da       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
+ .debug_str     0x0000c9df       0x64 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
                                 0x6ea (size before relaxing)
- .debug_str     0x0000ca3e      0x14e CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
+ .debug_str     0x0000ca43      0x14e CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
                                 0xc1b (size before relaxing)
- .debug_str     0x0000cb8c      0x50d CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
-                               0x2226 (size before relaxing)
- .debug_str     0x0000d099       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_str     0x0000cb91      0x55a CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+                               0x1827 (size before relaxing)
+ .debug_str     0x0000d0eb       0x84 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
                                 0xd1c (size before relaxing)
- .debug_str     0x0000d11d       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_str     0x0000d16f       0x5f CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
                                 0x6c6 (size before relaxing)
- .debug_str     0x0000d17c       0xad CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_str     0x0000d1ce       0xad CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
                                 0x7a6 (size before relaxing)
- .debug_str     0x0000d229      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_str     0x0000d27b      0x18b CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
                                 0x49d (size before relaxing)
- .debug_str     0x0000d3b4       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_str     0x0000d406       0x94 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
                                0x1895 (size before relaxing)
 
 .comment        0x00000000       0x49
@@ -5005,7 +4992,7 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
  .comment       0x00000049       0x4a CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
 
-.debug_frame    0x00000000     0x68b8
+.debug_frame    0x00000000     0x68e0
  .debug_frame   0x00000000       0xf4 CMakeFiles/DRIVE_CMAKE.elf.dir/BSP/Src/drive_can.c.obj
  .debug_frame   0x000000f4       0x9c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/adc.c.obj
  .debug_frame   0x00000190       0x7c CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/fdcan.c.obj
@@ -5049,41 +5036,41 @@ LOAD g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e
  .debug_frame   0x000050c4       0xe0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj
  .debug_frame   0x000051a4       0xb0 CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj
  .debug_frame   0x00005254       0x40 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj
- .debug_frame   0x00005294      0x198 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
- .debug_frame   0x0000542c      0x258 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
- .debug_frame   0x00005684       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
- .debug_frame   0x000056b0       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
- .debug_frame   0x0000573c       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
- .debug_frame   0x000057e8      0x2b4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
- .debug_frame   0x00005a9c       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
- .debug_frame   0x00005abc       0xdc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
- .debug_frame   0x00005b98       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
- .debug_frame   0x00005bb8       0xdc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
- .debug_frame   0x00005c94       0x90 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
- .debug_frame   0x00005d24      0x10c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
- .debug_frame   0x00005e30       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
- .debug_frame   0x00005e50       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
- .debug_frame   0x00005e70       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
- .debug_frame   0x00005eb4       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
- .debug_frame   0x00005ee0       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
- .debug_frame   0x00005f00      0x2d4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
- .debug_frame   0x000061d4      0x104 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
- .debug_frame   0x000062d8       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-abort.o)
- .debug_frame   0x00006300       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-cxa_atexit.o)
- .debug_frame   0x00006320       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
- .debug_frame   0x00006340       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
- .debug_frame   0x0000636c       0x30 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-malloc.o)
- .debug_frame   0x0000639c       0x4c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
- .debug_frame   0x000063e8       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
- .debug_frame   0x00006414       0x30 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
- .debug_frame   0x00006444       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00006470      0x114 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signal.o)
- .debug_frame   0x00006584       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
- .debug_frame   0x000065c0       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-strcmp.o)
- .debug_frame   0x00006628       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
- .debug_frame   0x0000665c       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x000066c4       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
- .debug_frame   0x000066e4       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
- .debug_frame   0x00006718       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
- .debug_frame   0x000067a4       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
- .debug_frame   0x00006854       0x64 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-reent.o)
+ .debug_frame   0x00005294      0x1c0 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj
+ .debug_frame   0x00005454      0x258 CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj
+ .debug_frame   0x000056ac       0x2c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usb_device.c.obj
+ .debug_frame   0x000056d8       0x8c CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj
+ .debug_frame   0x00005764       0xac CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_desc.c.obj
+ .debug_frame   0x00005810      0x2b4 CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/Target/usbd_conf.c.obj
+ .debug_frame   0x00005ac4       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(atexit_arm.o)
+ .debug_frame   0x00005ae4       0xdc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(class_type_info.o)
+ .debug_frame   0x00005bc0       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_ops.o)
+ .debug_frame   0x00005be0       0xdc g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(si_class_type_info.o)
+ .debug_frame   0x00005cbc       0x90 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(tinfo.o)
+ .debug_frame   0x00005d4c      0x10c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(vmi_class_type_info.o)
+ .debug_frame   0x00005e58       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++.a(del_op.o)
+ .debug_frame   0x00005e78       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-wf_atan2.o)
+ .debug_frame   0x00005e98       0x44 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-ef_atan2.o)
+ .debug_frame   0x00005edc       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_atan.o)
+ .debug_frame   0x00005f08       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(lib_a-sf_fabs.o)
+ .debug_frame   0x00005f28      0x2d4 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
+ .debug_frame   0x000061fc      0x104 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
+ .debug_frame   0x00006300       0x28 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-abort.o)
+ .debug_frame   0x00006328       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-cxa_atexit.o)
+ .debug_frame   0x00006348       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-errno.o)
+ .debug_frame   0x00006368       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-init.o)
+ .debug_frame   0x00006394       0x30 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-malloc.o)
+ .debug_frame   0x000063c4       0x4c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mallocr.o)
+ .debug_frame   0x00006410       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-memset.o)
+ .debug_frame   0x0000643c       0x30 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-mlock.o)
+ .debug_frame   0x0000646c       0x2c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x00006498      0x114 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signal.o)
+ .debug_frame   0x000065ac       0x3c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-signalr.o)
+ .debug_frame   0x000065e8       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-strcmp.o)
+ .debug_frame   0x00006650       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__atexit.o)
+ .debug_frame   0x00006684       0x68 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x000066ec       0x20 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-atexit.o)
+ .debug_frame   0x0000670c       0x34 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-fini.o)
+ .debug_frame   0x00006740       0x8c g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-freer.o)
+ .debug_frame   0x000067cc       0xb0 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-lock.o)
+ .debug_frame   0x0000687c       0x64 g:/embedded_config/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg.a(lib_a-reent.o)
