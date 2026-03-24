@@ -6,7 +6,7 @@
  ******************************************************************************
  * @attention
  *
- * Copyright (c) 2025 STMicroelectronics.
+ * Copyright (c) 2026 STMicroelectronics.
  * All rights reserved.
  *
  * This software is licensed under terms that can be found in the LICENSE file
@@ -19,6 +19,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "cmsis_os.h"
+#include "dma.h"
 #include "fdcan.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -32,11 +34,11 @@
 #include "encoder_proc.h"
 #include "foc_cfg.h"
 #include "foc_ctrl.h"
+#include "menu_manager.h"
 #include "obersver.h"
 #include "oled_iic.h"
 #include "util.h"
 #include "vofa.h"
-#include "menu_manager.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,10 +63,13 @@
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 #ifdef __cplusplus
 }
 #endif
@@ -74,10 +79,11 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern NonFluxObserver nonFluxObserver;
-unsigned char oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
-OLED          oled(&hi2c1, (unsigned char *)(oled_buffer));
-extern volatile uint8_t flag_5ms,flag_50ms;
+extern NonFluxObserver     nonFluxObserver;
+unsigned char              oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
+OLED                       oled(&hi2c1, (unsigned char *)(oled_buffer));
+extern MenuManager         menuManager;
+extern MenuManager::Config config_manager;
 /* USER CODE END 0 */
 
 /**
@@ -104,53 +110,53 @@ int main(void)
     SystemClock_Config();
 
     /* USER CODE BEGIN SysInit */
-    HAL_Delay(100);
+
     /* USER CODE END SysInit */
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
+    MX_DMA_Init();
     MX_ADC1_Init();
     MX_ADC2_Init();
     MX_FDCAN2_Init();
     MX_SPI1_Init();
     MX_TIM2_Init();
     MX_TIM8_Init();
-    MX_USB_Device_Init();
     MX_TIM1_Init();
     MX_I2C1_Init();
     MX_TIM16_Init();
     /* USER CODE BEGIN 2 */
-//    ResourceInit();
-//    CurrentSampInit();
-//
-//    EncoderInit();
-//    MotorParaInit();
-    //    FocPwmStart(true, true, true, true, true, true);
-//    HAL_TIM_Base_Start_IT(&htim2);
-//    HAL_TIM_Base_Start_IT(&htim8);
+    ResourceInit();
+    CurrentSampInit();
 
-//    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
-//    hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
-//    HAL_SPI_Init(&hspi1);
+    EncoderInit();
+    FocPwmStart(true, true, true, true, true, true);
+    HAL_TIM_Base_Start_IT(&htim2);
+    HAL_TIM_Base_Start_IT(&htim8);
+
+    HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
+    hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
+    HAL_SPI_Init(&hspi1);
     HAL_TIM_Base_Start_IT(&htim16);
-//    CanResourceInit();
+    CanResourceInit();
     oled.Init();
-    //    HAL_TIM_Base_Start(&htim1);
+    menuManager.Init(&config_manager);
+
     /* USER CODE END 2 */
+
+    /* Init scheduler */
+    MX_FREERTOS_Init();
+
+    /* Start scheduler */
+    osKernelStart();
+
+    /* We should never get here as control is now taken by the scheduler */
+
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
+
     while (1) {
         /* USER CODE END WHILE */
-        if(flag_5ms)
-        {
-            flag_5ms = 0;
-            task_5ms();
-        }
-        if(flag_50ms)
-        {
-            flag_50ms = 0;
-            task_50ms();
-        }
         /* USER CODE BEGIN 3 */
     }
     /* USER CODE END 3 */
@@ -204,8 +210,35 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+volatile uint8_t flag_5ms = 0, flag_50ms = 0, cnt = 0;
 /* USER CODE END 4 */
+
+/**
+ * @brief  Period elapsed callback in non blocking mode
+ * @note   This function is called  when TIM3 interrupt took place, inside
+ * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ * a global variable "uwTick" used as application time base.
+ * @param  htim : TIM handle
+ * @retval None
+ */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    /* USER CODE BEGIN Callback 0 */
+
+    /* USER CODE END Callback 0 */
+    if (htim->Instance == TIM3) {
+        HAL_IncTick();
+    }
+    /* USER CODE BEGIN Callback 1 */
+    if (htim->Instance == TIM16) {
+        flag_5ms = 1;
+        if (++cnt == 10) {
+            cnt       = 0;
+            flag_50ms = 1;
+        }
+    }
+    /* USER CODE END Callback 1 */
+}
 
 /**
  * @brief  This function is executed in case of error occurrence.
@@ -214,8 +247,7 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
-    /* User can add his own implementation to report the HAL error return state
-     */
+    /* User can add his own implementation to report the HAL error return state */
     __disable_irq();
     while (1) {
     }
@@ -233,9 +265,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
     /* USER CODE BEGIN 6 */
-    /* User can add his own implementation to report the file name and line
-       number, ex: printf("Wrong parameters value: file %s on line %d\r\n",
-       file, line) */
+    /* User can add his own implementation to report the file name and line number,
+       ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
     /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

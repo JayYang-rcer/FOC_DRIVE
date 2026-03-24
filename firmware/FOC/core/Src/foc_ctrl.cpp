@@ -110,21 +110,21 @@ struct AppConfig {
     };
 } app_config;
 
-LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
-LowPassFilter      lpf_speed(0.05f);
-Svpwm              svm(16.0f, 4250);
-InlineCurrentSense current_sense(app_config.current_sense);
-TempSense          temp_sense(app_config.temp_sense);
-VoltBusSense       vbus_sense(app_config.vbus_sense);
-IncrementalPid     pid_spd;
-PositionalPid      pi_id, pi_iq;
-SpeedPLLMonitor    spdMonitor;
-AbiEncoder         abiEncoder;
-As5407Encoder      as5047p;
-NonFluxObserver    nonFluxObserver;
-PulsatingHFI       hfiObserver;
-SlideMoveObserver  smoObserver;
-FocController      focController;
+ LowPassFilter      lpf_id(0.1f), lpf_iq(0.1f);
+ LowPassFilter      lpf_speed(0.05f);
+ Svpwm              svm(16.0f, 4250);
+ InlineCurrentSense current_sense(app_config.current_sense);
+ TempSense          temp_sense(app_config.temp_sense);
+ VoltBusSense       vbus_sense(app_config.vbus_sense);
+ IncrementalPid     pid_spd;
+ PositionalPid      pi_id, pi_iq;
+ SpeedPLLMonitor    spdMonitor;
+ AbiEncoder         abiEncoder;
+ As5407Encoder      as5047p;
+ NonFluxObserver    nonFluxObserver;
+ PulsatingHFI       hfiObserver;
+ SlideMoveObserver  smoObserver;
+ FocController      focController;
 
 void ResourceInit(void)
 {

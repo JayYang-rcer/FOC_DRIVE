@@ -19,14 +19,14 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
-#include "cmsis_os.h"
-#include "main.h"
 #include "task.h"
-#include "usb_device.h"
+#include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "foc_cfg.h"
+#include "usb_device.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,28 +48,20 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for KeyScan */
-osThreadId_t KeyScanHandle;
-const osThreadAttr_t KeyScan_attributes = {
-  .name = "KeyScan",
-  .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
-};
-/* Definitions for oledReflash */
-osThreadId_t oledReflashHandle;
-const osThreadAttr_t oledReflash_attributes = {
-  .name = "oledReflash",
-  .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 128 * 4
-};
+osThreadId KeyScanHandle;
+uint32_t KeyScanBuffer[ 128 ];
+osThreadDef_t KeyScanControlBlock;
+osThreadId oledReflashHandle;
+uint32_t oledReflashBuffer[ 256 ];
+osThreadDef_t oledReflashControlBlock;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
 
-void KeyScanTask(void *argument);
-extern void oledReflashTask(void *argument);
+void KeyScanTask(void const * argument);
+extern void oledReflashTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -100,19 +92,17 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of KeyScan */
-  KeyScanHandle = osThreadNew(KeyScanTask, NULL, &KeyScan_attributes);
+  /* definition and creation of KeyScan */
+  osThreadDef(KeyScan, KeyScanTask, osPriorityNormal, 0, 128);
+  KeyScanHandle = osThreadCreate(osThread(KeyScan), NULL);
 
-  /* creation of oledReflash */
-  oledReflashHandle = osThreadNew(oledReflashTask, NULL, &oledReflash_attributes);
+  /* definition and creation of oledReflash */
+  osThreadDef(oledReflash, oledReflashTask, osPriorityLow, 0, 128);
+  oledReflashHandle = osThreadCreate(osThread(oledReflash), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
-  /* USER CODE END RTOS_EVENTS */
 
 }
 
@@ -123,10 +113,10 @@ void MX_FREERTOS_Init(void) {
   * @retval None
   */
 /* USER CODE END Header_KeyScanTask */
-__weak void KeyScanTask(void *argument)
+__weak void KeyScanTask(void const * argument)
 {
   /* init code for USB_Device */
-//  MX_USB_Device_Init();
+  MX_USB_Device_Init();
   /* USER CODE BEGIN KeyScanTask */
   /* Infinite loop */
   for(;;)

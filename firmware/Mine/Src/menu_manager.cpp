@@ -5,7 +5,6 @@
 #include "menu_manager.h"
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
-#include "foc_cfg.h"
 
 void  MotorStart() {}
 void  MotorStop() {}
@@ -129,28 +128,19 @@ MenuManager::Config config_manager = {
 };
 MenuManager menuManager;
 
-void task_5ms()
-{
-    menuManager.KeyScanUpdate();
-}
-
-void task_50ms()
-{
-    menuManager.ManagerUpdate();
-}
-
+#include "foc_cfg.h"
 void KeyScanTask(void *argument)
 {
-    while (1) {
-        task_50ms();
-        osDelay(50);
+    for (;;) {
+        menuManager.KeyScanUpdate();
+        osDelay(5);
     }
 }
 
 void oledReflashTask(void *argument)
 {
     for (;;) {
-        task_5ms();
-        osDelay(5);
+        menuManager.ManagerUpdate();
+        osDelay(50);
     }
 }

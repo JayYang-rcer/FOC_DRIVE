@@ -58,7 +58,7 @@ include_directories(Core/Inc USB_Device/App
         Drivers/STM32G4xx_HAL_Driver/Inc/Legacy
         Middlewares/ST/STM32_USB_Device_Library/Core/Inc
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
         Middlewares/Third_Party/FreeRTOS/Source/include
         Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
         Drivers/CMSIS/Device/ST/STM32G4xx/Include
@@ -83,6 +83,7 @@ set(FILES_TO_EXCLUDE
         "${CMAKE_SOURCE_DIR}/BSP/Src/drive_uart.c"
         "${CMAKE_SOURCE_DIR}/Foc/encoder/Src/calibration.c"
         "${CMAKE_SOURCE_DIR}/Foc/core/Src/foc_identify.c"
+#        "${CMAKE_SOURCE_DIR}/Core/Src/dma.c"
 )
 
 list(REMOVE_ITEM SOURCES ${FILES_TO_EXCLUDE})
