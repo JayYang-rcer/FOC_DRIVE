@@ -4,7 +4,6 @@
 #include "util.h"
 #include "as5047p.h"
 
-#define PWM_ARR() __HAL_TIM_GET_AUTORELOAD(&htim8)
 #define MAX_BUFFER_SIZE 128
 volatile uint8_t send_buf[MAX_BUFFER_SIZE];
 volatile uint16_t vofa_cnt = 0;

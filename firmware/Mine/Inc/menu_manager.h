@@ -19,47 +19,79 @@ enum class ItemType : uint8_t {
 
 struct MenuItem {
     const char *label;
-    ItemType type;
+    ItemType    type;
     union {
         void (*callback)(void);
         const MenuItem *child;
-        float *var_ptr;
+        float          *var_ptr;
     };
     union {
-        int child_count;
+        int   child_count;
         float var_step;
     };
-    float *var_ptr2 = nullptr;
-    int *status_ptr = nullptr;
+    float *var_ptr2   = nullptr;
+    int   *status_ptr = nullptr;
 
     // 构造函数 - VARIABLE类型 (label, type, ptr, step)
-    MenuItem(const char *l, ItemType t, float *ptr, float step) {
-        label = l; type = t; var_ptr = ptr; var_step = step; var_ptr2 = nullptr; status_ptr = nullptr;
+    MenuItem(const char *l, ItemType t, float *ptr, float step)
+    {
+        label      = l;
+        type       = t;
+        var_ptr    = ptr;
+        var_step   = step;
+        var_ptr2   = nullptr;
+        status_ptr = nullptr;
     }
 
     // 构造函数 - DISPLAY类型 (label, type, ptr)
-    MenuItem(const char *l, ItemType t, float *ptr) {
-        label = l; type = t; var_ptr = ptr; var_step = 0; var_ptr2 = nullptr; status_ptr = nullptr;
+    MenuItem(const char *l, ItemType t, float *ptr)
+    {
+        label      = l;
+        type       = t;
+        var_ptr    = ptr;
+        var_step   = 0;
+        var_ptr2   = nullptr;
+        status_ptr = nullptr;
     }
 
     // 构造函数 - FUNCTION类型 (label, type, callback)
-    MenuItem(const char *l, ItemType t, void (*cb)(void)) {
-        label = l; type = t; callback = cb; var_ptr2 = nullptr; status_ptr = nullptr;
+    MenuItem(const char *l, ItemType t, void (*cb)(void))
+    {
+        label      = l;
+        type       = t;
+        callback   = cb;
+        var_ptr2   = nullptr;
+        status_ptr = nullptr;
     }
 
     // 构造函数 - MENU类型 (label, type, child, count)
-    MenuItem(const char *l, ItemType t, const MenuItem *c, int count) {
-        label = l; type = t; child = c; child_count = count; var_ptr2 = nullptr; status_ptr = nullptr;
+    MenuItem(const char *l, ItemType t, const MenuItem *c, int count)
+    {
+        label       = l;
+        type        = t;
+        child       = c;
+        child_count = count;
+        var_ptr2    = nullptr;
+        status_ptr  = nullptr;
     }
 
     // 默认构造函数，支持 designated initializers
-    MenuItem() {
-        label = nullptr; type = ItemType::MENU; callback = nullptr; child_count = 0; var_ptr2 = nullptr; status_ptr = nullptr;
+    MenuItem()
+    {
+        label       = nullptr;
+        type        = ItemType::MENU;
+        callback    = nullptr;
+        child_count = 0;
+        var_ptr2    = nullptr;
+        status_ptr  = nullptr;
     }
 
     // STATUS类型 (label, type, status_ptr)
-    MenuItem(const char *l, ItemType t, int *status) {
-        label = l; type = t; status_ptr = status;
+    MenuItem(const char *l, ItemType t, int *status)
+    {
+        label      = l;
+        type       = t;
+        status_ptr = status;
     }
 };
 
@@ -80,13 +112,15 @@ public:
         GPIO_Pin        pin_next;  // 向下/增加键引脚
         GPIO_Pin        pin_enter; // 确认键引脚
     };
+    // 静态显示缓冲区，避免栈分配
+    static char display_buffer[12];
     void Init(const Config *cfg)
     {
         cfg_     = *cfg;
         root_    = (*cfg).main_menu->child;
         current_ = root_;
         size_    = (*cfg).main_menu->child_count;
-        DrawMenu();
+//        DrawMenu();
     }
 
     void DrawLine()
@@ -153,14 +187,14 @@ public:
     {
         // 清空buffer
         const auto &item = current_[cursor_];
-        char       *p    = buffer;
+        char       *p    = display_buffer;
         // clang-format off
-    for (int i = 0; i < 11; i++) buffer[i] = ' ';
+    for (int i = 0; i < 11; i++) display_buffer[i] = ' ';
 
     // 根据类型决定显示内容
     if (item.type == ItemType::STATUS && item.status_ptr != nullptr) {
         // STATUS类型：显示 "STATUS: ERR" 或 "STATUS: OK"
-        const char* pre = "STATUS:";
+        const char *pre = "STATUS:";
         while (*pre) *p++ = *pre++;
         const char* status = (*item.status_ptr != 0) ? "OK" : "ERR";
         while (*status) *p++ = *status++;
@@ -173,14 +207,14 @@ public:
             p = FloatToStr(val, p);
     }
         // clang-format on
-        cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, is_highlight);
+        cfg_.oled->OLED_ShowStr(32, cursor_ * 16, display_buffer, 2, is_highlight);
         if (is_editing_) {
             DrawEditMark(true); // 编辑状态下显示标记
         }
     }
 
     // 绘制/清除编辑标记 "*"（1号字体，不占用2号字体位置）
-    void DrawEditMark(bool show)
+    void DrawEditMark(bool show) const
     {
         // 2号字体每个字符8像素宽，"SET: XX.XX"约8字符=64像素
         // 屏幕128像素宽，在第100列位置用1号字体(6x8)显示"*"
@@ -191,7 +225,7 @@ public:
         }
     }
 
-    char *IntToStr(long n, char *s)
+    static char *IntToStr(long n, char *s)
     {
         if (n < 0) {
             *s++ = '-';
@@ -212,13 +246,13 @@ public:
         return s; // 返回结束符指针
     }
 
-    char *FloatToStr(float f, char *s, int precision = 2)
+    static char *FloatToStr(float f, char *s, int precision = 2)
     {
-        long p = 1;
+        int16_t p = 1;
         for (int i = 0; i < precision; i++)
             p *= 10;
-        long whole = (long)f;
-        long part  = (long)((f > 0 ? f - whole : whole - f) * p + 0.5f); // 取小数部分
+        int16_t whole = (int16_t)f;
+        int16_t part  = (int16_t)((f > 0 ? f - whole : whole - f) * p + 0.5f); // 取小数部分
         if (whole == 0 && f < 0.0f)
             *s++ = '-';
         s                = IntToStr(whole, s);
@@ -272,60 +306,64 @@ public:
         if (key_next == Event::CLICK) {
             if (!is_editing_ || (current_[cursor_].type != ItemType::VARIABLE && current_[cursor_].type != ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS)) {
                 DrawLine();
-                cfg_.oled->OLED_RefreshRAM();
             } else {
                 *(current_[cursor_].var_ptr) += current_[cursor_].var_step * step_dir_;
                 DrawDisplayValue(*(current_[cursor_].var_ptr), 2, true);
-                cfg_.oled->OLED_RefreshRAM();
             }
+            cfg_.oled->OLED_RefreshRAM();
         }
-
         // 确认键：进入菜单/编辑变量/执行函数
         if (key_enter == Event::CLICK || key_enter == Event::LONG_PRESS) {
+            // 防御性检查：确保 current_ 有效
+            if (current_ == nullptr) {
+                return;
+            }
             auto &item = current_[cursor_];
-            if (item.child != nullptr) {
-                switch (item.type) {
-                case ItemType::MENU:
-                    if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
-                        menu_stack_top_++;
-                        menu_stack_[menu_stack_top_] = {current_, size_};
-                    }
-                    current_ = item.child;
-                    size_    = item.child_count;
-                    DrawMenu();
-                    cfg_.oled->OLED_RefreshRAM();
-                    break;
-
-                case ItemType::VARIABLE:
-                    is_editing_ = !is_editing_;
-                    if (is_editing_) {
-                        DrawDisplayValue(*item.var_ptr, 2, true); // 进入编辑，显示*号
-                        cfg_.oled->OLED_RefreshRAM();
-                    } else {
-                        DrawEditMark(false); // 退出编辑，清除*号
-                        // 刷新显示当前值
-                        if (item.type == ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS) {
-                            DrawDisplayValue(*item.var_ptr, 2, true);
-                        }
-                        cfg_.oled->OLED_RefreshRAM();
-                    }
-                    break;
-
-                case ItemType::FUNCTION:
-                    if (key_enter == Event::LONG_PRESS) {
-                        item.callback();
-                    }
-                    break;
-                default:
-                    break;
+            // 防御性检查：确保指针有效
+            if (item.child == nullptr) {
+                return;
+            }
+            switch (item.type) {
+            case ItemType::MENU:
+                if (menu_stack_top_ < MAX_MENU_DEPTH - 1) {
+                    menu_stack_top_++;
+                    menu_stack_[menu_stack_top_] = {current_, size_};
                 }
+                current_ = item.child;
+                size_    = item.child_count;
+                DrawMenu();
+                cfg_.oled->OLED_RefreshRAM();
+                break;
+
+            case ItemType::VARIABLE:
+                is_editing_ = !is_editing_;
+                if (is_editing_) {
+                    DrawDisplayValue(*item.var_ptr, 2, true); // 进入编辑，显示*号
+                    cfg_.oled->OLED_RefreshRAM();
+                } else {
+                    DrawEditMark(false); // 退出编辑，清除*号
+                    // 刷新显示当前值
+                    if (item.type == ItemType::DISPLAY || current_[cursor_].type == ItemType::STATUS) {
+                        DrawDisplayValue(*item.var_ptr, 2, true);
+                    }
+                    cfg_.oled->OLED_RefreshRAM();
+                }
+                break;
+
+            case ItemType::FUNCTION:
+                if (key_enter == Event::LONG_PRESS && item.callback != nullptr) {
+                    item.callback();
+                }
+                break;
+            default:
+                break;
             }
         }
 
-        if (++now_cnt == 4) {
-            RefreshNowRow();
-            now_cnt = 0;
-        }
+//        if (++now_cnt == 4) {
+//            RefreshNowRow();
+//            now_cnt = 0;
+//        }
     }
 
     // 单独刷新NOW行和STATUS行的函数，由外部定时调用
@@ -339,8 +377,8 @@ public:
                 int old_cursor = cursor_;
                 cursor_        = i;
                 // clang-format off
-            for (int j = 0; j < 11; j++) buffer[j] = ' ';
-            char *p = buffer;
+            for (int j = 0; j < 11; j++) display_buffer[j] = ' ';
+            char *p = display_buffer;
             const char *pre = "NOW:";
             while(*pre) *p++ = *pre++;
                 // clang-format on
@@ -351,9 +389,9 @@ public:
                 else
                     p = FloatToStr(val, p);
                 if (i == old_cursor)
-                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, display_buffer, 2, true);
                 else
-                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, display_buffer, 2, false);
                 cursor_ = old_cursor;
             }
             // 刷新STATUS类型（实时显示ERR/OK）
@@ -361,8 +399,8 @@ public:
                 int old_cursor = cursor_;
                 cursor_        = i;
                 for (int j = 0; j < 11; j++)
-                    buffer[j] = ' ';
-                char       *p   = buffer;
+                    display_buffer[j] = ' ';
+                char       *p   = display_buffer;
                 const char *pre = "STATUS:";
                 while (*pre)
                     *p++ = *pre++;
@@ -370,30 +408,29 @@ public:
                 while (*status)
                     *p++ = *status++;
                 if (i == old_cursor)
-                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, true);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, display_buffer, 2, true);
                 else
-                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, buffer, 2, false);
+                    cfg_.oled->OLED_ShowStr(32, cursor_ * 16, display_buffer, 2, false);
                 cursor_ = old_cursor;
             }
         }
         cfg_.oled->OLED_RefreshRAM();
     }
 
-private:
+    // 外部声明的显示缓冲区
     static constexpr int MAX_MENU_DEPTH = 4;
     struct MenuFrame {
         const MenuItem *menu;
         int             size;
     };
     Config          cfg_{};
-    const MenuItem *root_ = nullptr;    // 顶层菜单（主页）
-    const MenuItem *current_ = nullptr; // 当前显示的菜单数组
-    uint8_t         now_cnt = 0;
-    int             size_ = 0;            // 当前菜单有多少行
+    const MenuItem *root_        = nullptr; // 顶层菜单（主页）
+    const MenuItem *current_     = nullptr; // 当前显示的菜单数组
+    uint8_t         now_cnt      = 0;
+    int             size_        = 0; // 当前菜单有多少行
     int             cursor_      = 0; // 光标指向第几行
     int             last_cursor_ = 0;
     bool            is_editing_  = false; // 核心状态：是否正在改参数
-    char            buffer[12]{};
     int             menu_stack_top_ = -1;
     MenuFrame       menu_stack_[MAX_MENU_DEPTH]{0}; // 菜单栈，支持返回上级
     int8_t          step_dir_ = 1;

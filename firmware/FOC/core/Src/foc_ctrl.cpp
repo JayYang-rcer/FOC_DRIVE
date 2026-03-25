@@ -10,11 +10,12 @@
 #include "foc_math.h"
 #include "obersver.h"
 #include "tim.h"
+#include "menu_manager.h"
+#include "oled_iic.h"
 
 #define USE_SPD_PLL          1 // 使用PLL速度估算
 #define USE_SPD_DET          0 // 使用微分速度检测
 #define USE_POS_PID          0 // 使用位置环
-#define USE_ENCODER          1
 #define USE_SENSERLESS       1
 #define SENSERLESS_MIN_SPEED 500
 #define SENSERLESS_MAX_SPEED 10000
@@ -22,6 +23,10 @@
 #define CURRENT_LOOP_FREQ    20000.0f // 电流环频率
 
 // #define USE_CURRENTLOOP_FEEDBACK
+unsigned char              oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
+OLED                       oled(&hi2c1, (unsigned char *)(oled_buffer));
+extern MenuManager         menuManager;
+extern MenuManager::Config config_manager;
 
 struct AppConfig {
     MotorParam_t motor = {
@@ -38,28 +43,28 @@ struct AppConfig {
         .output_max   = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3,
         .integral_max = (BATTERY_CELL * 4.0f) * ONE_BY_SQRT3,
         .anti_coeff   = 0.5f,
-        .dt           = 1.0f / 20000.0f,
+        .dt           = 1.0f / CURRENT_LOOP_FREQ,
     };
     PIController::Config pll_nonFlux = {
         .kp           = 1000,
         .ki           = 180000,
         .output_max   = 30000,
         .integral_max = 10000,
-        .dt           = 1 / 20000.f, // 20khz
+        .dt           = 1 / CURRENT_LOOP_FREQ, // 20khz
     };
     PIController::Config pll_pulsating_hfi = {
         .kp           = 1200,
         .ki           = 250000,
         .output_max   = 1000,
         .integral_max = 1000,
-        .dt           = 1.0f / 20000.0f, // 20khz
+        .dt           = 1.0f / CURRENT_LOOP_FREQ, // 20khz
     };
     PIController::Config pll_sildemove = {
         .kp           = 1000,
         .ki           = 180000,
         .output_max   = 30000,
         .integral_max = 10000,
-        .dt           = 1 / 20000.f, // 20khz
+        .dt           = 1 / CURRENT_LOOP_FREQ, // 20khz
     };
     SlideMoveObserver::Config cfg_smo{
         .A   = 0.551139891f,
@@ -138,6 +143,8 @@ void ResourceInit(void)
     pi_id.Init(app_config.pi_current);
     pi_iq.Init(app_config.pi_current);
     focController.SetCurrentSense(&current_sense);
+    oled.Init();
+    menuManager.Init(&config_manager);
 }
 
 _RAM_FUNC void FocVolt(float vd_ref, float vq_ref, float pos)
@@ -270,7 +277,6 @@ _RAM_FUNC void HfiCurrent(float id_set, float iq_set, float pos)
 }
 
 volatile float vbus;
-
 void AnalogSampleUpdate(FocParam_t *foc)
 {
     vbus      = vbus_sense.GetBusVolt();
@@ -464,7 +470,7 @@ _RAM_FUNC void FocHandle(void)
     PosCalculate(&enc_para);
 #endif
     nonFluxObserver.Update(foc_param.vab, foc_param.iab);
-    smoObserver.Update(foc_param.vab, foc_param.iab);
+//    smoObserver.Update(foc_param.vab, foc_param.iab);
     foc_param.iab  = current_sense.GetAlphaBeta();
     foc_param.vbus = 4.0f * BATTERY_CELL;
 

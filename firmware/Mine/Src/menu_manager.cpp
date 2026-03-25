@@ -5,6 +5,10 @@
 #include "menu_manager.h"
 #include "FreeRTOS.h"
 #include "cmsis_os.h"
+#include <cstring>
+
+// 静态成员定义
+char MenuManager::display_buffer[12] = {0};
 
 void  MotorStart() {}
 void  MotorStop() {}
@@ -128,8 +132,7 @@ MenuManager::Config config_manager = {
 };
 MenuManager menuManager;
 
-#include "foc_cfg.h"
-void KeyScanTask(void *argument)
+[[noreturn]] void KeyScanTask(void *argument)
 {
     for (;;) {
         menuManager.KeyScanUpdate();
@@ -137,7 +140,7 @@ void KeyScanTask(void *argument)
     }
 }
 
-void oledReflashTask(void *argument)
+[[noreturn]] [[maybe_unused]] void oledReflashTask(void *argument)
 {
     for (;;) {
         menuManager.ManagerUpdate();

@@ -34,9 +34,7 @@
 #include "encoder_proc.h"
 #include "foc_cfg.h"
 #include "foc_ctrl.h"
-#include "menu_manager.h"
 #include "obersver.h"
-#include "oled_iic.h"
 #include "util.h"
 #include "vofa.h"
 /* USER CODE END Includes */
@@ -79,11 +77,7 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern NonFluxObserver     nonFluxObserver;
-unsigned char              oled_buffer[SCREEN_PAGE_NUM][SCREEN_COLUMN];
-OLED                       oled(&hi2c1, (unsigned char *)(oled_buffer));
-extern MenuManager         menuManager;
-extern MenuManager::Config config_manager;
+
 /* USER CODE END 0 */
 
 /**
@@ -115,7 +109,7 @@ int main(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
-    MX_DMA_Init();
+//    MX_DMA_Init();
     MX_ADC1_Init();
     MX_ADC2_Init();
     MX_FDCAN2_Init();
@@ -137,10 +131,8 @@ int main(void)
     HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
     hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
     HAL_SPI_Init(&hspi1);
-    HAL_TIM_Base_Start_IT(&htim16);
+//    HAL_TIM_Base_Start_IT(&htim16);
     CanResourceInit();
-    oled.Init();
-    menuManager.Init(&config_manager);
 
     /* USER CODE END 2 */
 

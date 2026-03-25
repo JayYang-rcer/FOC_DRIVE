@@ -48,22 +48,40 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId KeyScanHandle;
-uint32_t KeyScanBuffer[ 128 ];
-osThreadDef_t KeyScanControlBlock;
+osThreadId StartHandle;
+uint32_t StartBuffer[ 2048 ];
+osStaticThreadDef_t StartControlBlock;
 osThreadId oledReflashHandle;
-uint32_t oledReflashBuffer[ 256 ];
-osThreadDef_t oledReflashControlBlock;
+uint32_t oledReflashBuffer[ 2048 ];
+osStaticThreadDef_t oledReflashControlBlock;
+osThreadId KeyScanHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */
 
-void KeyScanTask(void const * argument);
+void StartTask(void const * argument);
 extern void oledReflashTask(void const * argument);
+void KeyScanTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+/* GetIdleTaskMemory prototype (linked to static allocation support) */
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+
+/* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+static StaticTask_t xIdleTaskTCBBuffer;
+static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
+{
+  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  /* place for user code */
+}
+/* USER CODE END GET_IDLE_TASK_MEMORY */
 
 /**
   * @brief  FreeRTOS initialization
@@ -92,18 +110,44 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of KeyScan */
-  osThreadDef(KeyScan, KeyScanTask, osPriorityNormal, 0, 128);
-  KeyScanHandle = osThreadCreate(osThread(KeyScan), NULL);
+  /* definition and creation of Start */
+  osThreadStaticDef(Start, StartTask, osPriorityNormal, 0, 2048, StartBuffer, &StartControlBlock);
+  StartHandle = osThreadCreate(osThread(Start), NULL);
 
   /* definition and creation of oledReflash */
-  osThreadDef(oledReflash, oledReflashTask, osPriorityLow, 0, 128);
+  osThreadStaticDef(oledReflash, oledReflashTask, osPriorityLow, 0, 2048, oledReflashBuffer, &oledReflashControlBlock);
   oledReflashHandle = osThreadCreate(osThread(oledReflash), NULL);
+
+  /* definition and creation of KeyScan */
+  osThreadDef(KeyScan, KeyScanTask, osPriorityIdle, 0, 128);
+  KeyScanHandle = osThreadCreate(osThread(KeyScan), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
+}
+
+/* USER CODE BEGIN Header_StartTask */
+/**
+  * @brief  Function implementing the Start thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartTask */
+
+__weak void StartTask(void const * argument)
+{
+  /* init code for USB_Device */
+  MX_USB_Device_Init();
+  /* USER CODE BEGIN StartTask */
+  vTaskDelete(StartHandle);
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartTask */
 }
 
 /* USER CODE BEGIN Header_KeyScanTask */
@@ -115,8 +159,6 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_KeyScanTask */
 __weak void KeyScanTask(void const * argument)
 {
-  /* init code for USB_Device */
-  MX_USB_Device_Init();
   /* USER CODE BEGIN KeyScanTask */
   /* Infinite loop */
   for(;;)
