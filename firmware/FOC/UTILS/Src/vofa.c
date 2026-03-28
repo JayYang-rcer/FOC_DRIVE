@@ -18,7 +18,7 @@ volatile uint16_t vofa_cnt = 0;
 **/
 void VofaStart(void) {
 //	 VofaSendData(1,pll_hfi.error);
-//	VofaSendData(1,PWM_ARR());
+	VofaSendData(1,0.5f);
     VofaSendframetail();
 }
 

@@ -12,6 +12,7 @@
 #include "tim.h"
 #include "menu_manager.h"
 #include "oled_iic.h"
+#include "stm32g4xx_it.h"
 
 #define USE_SPD_PLL          1 // 使用PLL速度估算
 #define USE_SPD_DET          0 // 使用微分速度检测
@@ -310,14 +311,12 @@ void           EncoderDataCalc(enc_para_t *enc, MotorCfg_t *motor)
 
 uint16_t          ms_cnt      = 0;
 extern uint16_t   can_recieveFlag;
-float             temp;
 __RAM_FUNC void   Encoder_Idle(void)
 {
     __HAL_TIM_CLEAR_FLAG(&htim2, TIM_FLAG_CC1);
     if (++ms_cnt == 200) {
         ms_cnt      = 0;
     }
-    temp = temp_sense.Get_Temperature();
 #if USE_SLAVE_MODE
     if (++can_recieveFlag > 10000) {
         motor_ctrl.speed_set = 0;
