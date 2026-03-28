@@ -33,6 +33,7 @@ void OnProjectLoad (void) {
   //
   // User settings
   //
+  Project.SetOSPlugin ("FreeRTOSPlugin_CM4");
   File.Open ("F:/FOC_DRIVE/firmware/build/DRIVE_CMAKE.elf");
 }
 

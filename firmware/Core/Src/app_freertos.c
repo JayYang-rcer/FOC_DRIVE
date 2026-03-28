@@ -49,21 +49,22 @@
 
 /* USER CODE END Variables */
 osThreadId StartHandle;
-uint32_t StartBuffer[ 2048 ];
+uint32_t StartBuffer[ 1280 ];
 osStaticThreadDef_t StartControlBlock;
 osThreadId oledReflashHandle;
-uint32_t oledReflashBuffer[ 2048 ];
+uint32_t oledReflashBuffer[ 256 ];
 osStaticThreadDef_t oledReflashControlBlock;
 osThreadId KeyScanHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+osThreadId TempSenseHandle;
 /* USER CODE END FunctionPrototypes */
 
 void StartTask(void const * argument);
 extern void oledReflashTask(void const * argument);
 void KeyScanTask(void const * argument);
+extern void TempSenseTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -111,11 +112,11 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of Start */
-  osThreadStaticDef(Start, StartTask, osPriorityNormal, 0, 2048, StartBuffer, &StartControlBlock);
+  osThreadStaticDef(Start, StartTask, osPriorityNormal, 0, 1280, StartBuffer, &StartControlBlock);
   StartHandle = osThreadCreate(osThread(Start), NULL);
 
   /* definition and creation of oledReflash */
-  osThreadStaticDef(oledReflash, oledReflashTask, osPriorityLow, 0, 2048, oledReflashBuffer, &oledReflashControlBlock);
+  osThreadStaticDef(oledReflash, oledReflashTask, osPriorityLow, 0, 256, oledReflashBuffer, &oledReflashControlBlock);
   oledReflashHandle = osThreadCreate(osThread(oledReflash), NULL);
 
   /* definition and creation of KeyScan */
@@ -124,6 +125,8 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  osThreadDef(TempSense, TempSenseTask, osPriorityIdle, 0, 128);
+  TempSenseHandle = osThreadCreate(osThread(TempSense), NULL);
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -135,17 +138,18 @@ void MX_FREERTOS_Init(void) {
   * @retval None
   */
 /* USER CODE END Header_StartTask */
-
+#include "vofa.h"
 __weak void StartTask(void const * argument)
 {
   /* init code for USB_Device */
   MX_USB_Device_Init();
   /* USER CODE BEGIN StartTask */
-  vTaskDelete(StartHandle);
+//  vTaskDelete(StartHandle);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+      VofaStart();
+      osDelay(1);
   }
   /* USER CODE END StartTask */
 }

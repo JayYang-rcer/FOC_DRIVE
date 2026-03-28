@@ -29,7 +29,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 90,
+				"line" : 95,
 				"parent" : 0
 			},
 			{
@@ -41,19 +41,19 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 78,
+				"line" : 83,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 79,
+				"line" : 84,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 80,
+				"line" : 85,
 				"parent" : 0
 			},
 			{
@@ -71,25 +71,25 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 31,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 32,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 38,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 46,
+				"line" : 51,
 				"parent" : 0
 			},
 			{
@@ -101,13 +101,19 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 72,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 55,
+				"line" : 60,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 27,
 				"parent" : 0
 			}
 		]
@@ -363,6 +369,22 @@
 				{
 					"backtrace" : 7,
 					"fragment" : "-mfpu=fpv4-sp-d16"
+				},
+				{
+					"backtrace" : 15,
+					"fragment" : "-fno-use-cxa-atexit"
+				},
+				{
+					"backtrace" : 15,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 15,
+					"fragment" : "-fno-exceptions"
+				},
+				{
+					"backtrace" : 15,
+					"fragment" : "-fno-threadsafe-statics"
 				},
 				{
 					"backtrace" : 8,

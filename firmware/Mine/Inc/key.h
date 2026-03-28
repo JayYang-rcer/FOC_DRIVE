@@ -9,6 +9,7 @@ extern "C" {
 void KEY_ProcessHandle(void);
 [[noreturn]] void KeyScanTask(void *argument);
 [[noreturn]] [[maybe_unused]] void oledReflashTask(void *argument);
+[[noreturn]] [[maybe_unused]] void TempSenseTask(void *argument);
 #ifdef __cplusplus
 }
 #endif

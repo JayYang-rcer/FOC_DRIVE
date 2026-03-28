@@ -147,3 +147,15 @@ MenuManager menuManager;
         osDelay(50);
     }
 }
+
+#include "analog_sense.h"
+extern TempSense temp_sense;
+float             temp;
+[[noreturn]] [[maybe_unused]] void TempSenseTask(void *argument)
+{
+    for(;;)
+    {
+        temp = temp_sense.Get_Temperature();
+        osDelay(500);
+    }
+}
