@@ -148,7 +148,7 @@ __weak void StartTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      VofaStart();
+//      VofaStart();
       osDelay(1);
   }
   /* USER CODE END StartTask */

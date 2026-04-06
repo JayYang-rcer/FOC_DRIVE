@@ -32,7 +32,7 @@ protected:
     /**
      * @brief 复位
      */
-    void Reset()
+    void PiReset()
     {
         integral_ = 0.0f;
     }

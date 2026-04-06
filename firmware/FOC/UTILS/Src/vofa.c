@@ -1,11 +1,11 @@
 #include "vofa.h"
+#include "as5047p.h"
 #include "foc_cfg.h"
 #include "tim.h"
 #include "util.h"
-#include "as5047p.h"
 
 #define MAX_BUFFER_SIZE 128
-volatile uint8_t send_buf[MAX_BUFFER_SIZE];
+volatile uint8_t  send_buf[MAX_BUFFER_SIZE];
 volatile uint16_t vofa_cnt = 0;
 
 /**
@@ -16,12 +16,18 @@ volatile uint16_t vofa_cnt = 0;
 * @details:    发送数据给上位机
 ***********************************************************************
 **/
-void VofaStart(void) {
-//	 VofaSendData(1,pll_hfi.error);
-	VofaSendData(1,0.5f);
+void VofaStart(void)
+{
+    //	 VofaSendData(1,pll_hfi.error);
+    VofaSendData(1, 0.5f);
+    VofaSendData(1, 1.0f);
+    VofaSendData(1, 1.5f);
+    VofaSendData(1, 2.0f);
+    VofaSendData(1, 2.5f);
+    VofaSendData(1, 3.0f);
+    VofaSendData(1, 3.5f);
     VofaSendframetail();
 }
-
 
 /**
 ***********************************************************************
@@ -31,21 +37,22 @@ void VofaStart(void) {
 * @details:    修改通信工具，USART或者USB
 ***********************************************************************
 **/
-void VofaTransmit(uint8_t *buf, uint16_t len) {
-//	HAL_UART_Transmit(&huart3, (uint8_t *)buf, len, 0xFFFF);
-    CDC_Transmit_FS((uint8_t *) buf, len);
+void VofaTransmit(uint8_t *buf, uint16_t len)
+{
+    //	HAL_UART_Transmit(&huart3, (uint8_t *)buf, len, 0xFFFF);
+    CDC_Transmit_FS((uint8_t *)buf, len);
 }
-
 
 /**
 ***********************************************************************
 * @brief:      vofa_send_data(float data)
-* @param[in]:  num: 数据编号 data: 数据 
+* @param[in]:  num: 数据编号 data: 数据
 * @retval:     void
 * @details:    将浮点数据拆分成单字节
 ***********************************************************************
 **/
-void VofaSendData(uint8_t num, float data) {
+void VofaSendData(uint8_t num, float data)
+{
     send_buf[vofa_cnt++] = byte0(data);
     send_buf[vofa_cnt++] = byte1(data);
     send_buf[vofa_cnt++] = byte2(data);
@@ -55,29 +62,19 @@ void VofaSendData(uint8_t num, float data) {
 /**
 ***********************************************************************
 * @brief      vofa_sendframetail(void)
-* @param      NULL 
+* @param      NULL
 * @retval     void
 * @details:   给数据包发送帧尾
 ***********************************************************************
 **/
-void VofaSendframetail(void) {
+void VofaSendframetail(void)
+{
     send_buf[vofa_cnt++] = 0x00;
     send_buf[vofa_cnt++] = 0x00;
     send_buf[vofa_cnt++] = 0x80;
     send_buf[vofa_cnt++] = 0x7f;
 
     /* 将数据和帧尾打包发送 */
-    VofaTransmit((uint8_t *) send_buf, vofa_cnt);
-    vofa_cnt = 0;// 每次发送完帧尾都需要清零
+    VofaTransmit((uint8_t *)send_buf, vofa_cnt);
+    vofa_cnt = 0; // 每次发送完帧尾都需要清零
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -87,7 +87,7 @@ add_link_options(-T ${LINKER_SCRIPT})
 set(FILES_TO_EXCLUDE
         "${CMAKE_SOURCE_DIR}/BSP/Src/drive_uart.c"
         "${CMAKE_SOURCE_DIR}/Foc/encoder/Src/calibration.c"
-        "${CMAKE_SOURCE_DIR}/Foc/core/Src/foc_identify.c"
+#        "${CMAKE_SOURCE_DIR}/Foc/core/Src/foc_identify.c"
 #        "${CMAKE_SOURCE_DIR}/Core/Src/dma.c"
 )
 

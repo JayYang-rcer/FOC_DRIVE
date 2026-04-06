@@ -4,6 +4,7 @@
 #include "stdbool.h"
 #include "stdint.h"
 #include "util.h"
+#include "tim.h"
 
 #define SET_DTC_A(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, value)
 #define SET_DTC_B(value)  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, value)
@@ -28,6 +29,7 @@ typedef enum {
     FOC_SENSORLESS_CTRL = 6, // 无传感器控制
     FOC_HFI             = 7, // 高频注入测试
     FOC_IF_CTRL         = 8, // IF强拖
+    FOC_IDENTIFY,
 } FocCtrlMode_e;
 
 typedef struct {
@@ -81,9 +83,9 @@ typedef struct foc_param_t {
     Vector2Df_t vab;
 } FocParam_t;
 
-extern FocParam_t    foc_param;
-extern MotorCfg_t    motor_cfg;
-extern MotorCtrl_t   motor_ctrl;
+extern FocParam_t  foc_param;
+extern MotorCfg_t  motor_cfg;
+extern MotorCtrl_t motor_ctrl;
 
 #ifdef __cplusplus
 extern "C" {

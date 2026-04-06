@@ -70,6 +70,11 @@ public:
         velocity_ = lpf_.Update(output) / (float)motor_.pn * RADS_TO_RPM;
     }
 
+    void Reset()
+    {
+        PiReset();
+    }
+
 private:
     LowPassFilter lpf_ = LowPassFilter(0.1f);
     MotorParam_t  motor_;
@@ -154,6 +159,11 @@ public:
         return idq_f;
     }
 
+    void Reset()
+    {
+        PiReset();
+    }
+
 private:
     LowPassFilter lpf_ = LowPassFilter(0.1f);
     float         ts_;
@@ -187,7 +197,7 @@ public:
         PiInit(pi_cfg);
     }
 
-    void Update(const Vector2Df_t &voltage_ab, const Vector2Df_t &current_ab)
+    void Update(const Vector2Df_t &voltage_ab, const Vector2Df_t &current_ab, int8_t sign)
     {
         iab_view_.s.alpha = cfg_.A * iab_view_last_.s.alpha + cfg_.B * (voltage_ab.s.alpha - Eab_.s.alpha);
         iab_view_.s.beta  = cfg_.A * iab_view_last_.s.beta + cfg_.B * (voltage_ab.s.beta - Eab_.s.beta);
@@ -200,11 +210,11 @@ public:
 
         iab_view_last_ = iab_view_;
 
-        float error = -Eab_.s.alpha * cos_f32(theta_elect_) - sin_f32(theta_elect_) * Eab_.s.beta;
-        if (velocity_ < 0)
+        float error      = -Eab_.s.alpha * cos_f32(theta_elect_) - sin_f32(theta_elect_) * Eab_.s.beta;
+        if(sign < 0)
             error = -error;
         float pll_output = Calculate(error);
-        velocity_        = spd_lpf.Update(pll_output) * RADS_TO_RPM / 7.0f;
+        velocity_        = spd_lpf.Update(pll_output) * RADS_TO_RPM * 0.14285f;
 
         theta_raw_ += pll_output * ts_;
         WRAP_0_2PI(theta_raw_);
@@ -221,6 +231,11 @@ public:
         theta_elect_ = theta_final;
     }
 
+    void Reset()
+    {
+        PiReset();
+    }
+
 private:
     static float sat(float val, float limit)
     {
@@ -230,7 +245,7 @@ private:
         else return val;
         // clang-format on
     }
-    Config        cfg_;
+    Config        cfg_{};
     LowPassFilter lpf_alpha_ = LowPassFilter(0.1f);
     LowPassFilter lpf_beta_  = LowPassFilter(0.1f);
     LowPassFilter spd_lpf    = LowPassFilter(0.1f);
@@ -238,6 +253,6 @@ private:
     Vector2Df_t   iab_view_last_{};
     Vector2Df_t   Eab_{};
     float         ts_{};
-    float         theta_raw_;
+    float         theta_raw_{};
 };
 #endif // DRIVE_CMAKE_OBERSVER_H

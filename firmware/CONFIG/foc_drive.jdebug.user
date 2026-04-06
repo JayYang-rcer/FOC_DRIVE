@@ -35,7 +35,7 @@ WatchedExpression="iq_pid", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Win
 WatchedExpression="time", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="Is_sum", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="motor_ctrl", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
-WatchedExpression="identify_res", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
+WatchedExpression="identify", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="pll_hfi", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="pll_smo", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1
 WatchedExpression="hfi_param", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_DEC, Window=Watched Data 1

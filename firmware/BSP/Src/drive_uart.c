@@ -25,6 +25,7 @@
 usart_manager_t usart1_manager = {.call_back_fun = NULL};
 usart_manager_t usart2_manager = {.call_back_fun = NULL};
 usart_manager_t usart3_manager = {.call_back_fun = NULL};
+usart_manager_t usart6_manager = {.call_back_fun = NULL};
 
 
 static void Uart_Rx_Idle_Callback(usart_manager_t *manager);

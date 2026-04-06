@@ -37,41 +37,80 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.3.24&#10;把rtos换成V1版本，解决了爆栈的问题">
+    <list default="true" id="315a0b48-83b5-4229-b88a-2ad118ce9eb5" name="更改" comment="26.3.28&#10;在cmakelist中添加了关闭c++全局初始化和运行过程中不必要的栈申请,避免栈溢出严重">
+      <change afterPath="$PROJECT_DIR$/../DriverApp/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DriverApp/DriverApp.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DriverApp/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DriverApp/widget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DriverApp/widget.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DriverApp/widget.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BSP/Inc/drive_flash.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BSP/Src/drive_flash.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FOC/core/Src/foc_identify.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DriverApp/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DriverApp/Main.qml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/DriverApp/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/DriverApp/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/DriverApp/Main.qml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/DriverApp/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/___1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/___3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/___4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/DRIVE_CMAKE.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/DRIVE_CMAKE.elf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/menu_manager.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/DRIVE_CMAKE.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/DRIVE_CMAKE.elf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/menu_manager.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在还原之前未提交的更改_[更改]2/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BSP/Src/drive_uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/BSP/Src/drive_uart.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/driver.jdebug.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" beforeDir="false" afterPath="$PROJECT_DIR$/CONFIG/foc_drive.jdebug.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/app_freertos.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/app_freertos.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Inc/key.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Inc/key.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mine/Src/menu_manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Mine/Src/menu_manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-fdf7bcc87c290c07665b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-DRIVE_CMAKE.elf-RelWithDebInfo-6355a970daad42c074d2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Inc/pid.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/UTILS/Src/vofa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Inc/obersver.h" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Inc/obersver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FOC/core/Src/foc_ctrl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_ctrl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" beforeDir="false" afterPath="$PROJECT_DIR$/Foc/core/Inc/foc_identify.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foc/core/Src/foc_identify.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/USB_Device/App/usbd_cdc_if.c" beforeDir="false" afterPath="$PROJECT_DIR$/USB_Device/App/usbd_cdc_if.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/codemodel-v2-228535f821ca3b5faf1c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/index-2026-03-28T05-50-32-0415.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/.cmake/api/v1/reply/target-DRIVE_CMAKE.elf-RelWithDebInfo-6e33abef8ae124df6b7a.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/build/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.30.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/app_freertos.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/app_freertos.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/analog_sense.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/analog_sense.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_cfg.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_ctrl.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/core/Src/foc_math.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/encoder/Src/encoder.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/pid.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/key.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/menu_manager.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/oled_iic.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/FOC/utils/Src/vofa.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/Mine/Src/McuDevicePort.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/DRIVE_CMAKE.elf.dir/USB_Device/App/usbd_cdc_if.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-environment.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/DRIVE_CMAKE.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/build/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qt_test/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qt_test/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qt_test/qt_test.pro" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,11 +241,11 @@
       <recent name="F:\FOC_DRIVE\firmware\BSP\Src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\FOC_DRIVE\firmware\BSP\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Mine\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Foc\utils\Inc" />
       <recent name="F:\FOC_DRIVE\firmware\Foc\utils\Src" />
       <recent name="F:\FOC_DRIVE\firmware\Foc\encoder\Inc" />
-      <recent name="F:\FOC_DRIVE\firmware\Foc\core\Inc" />
     </key>
   </component>
   <component name="RunManager">
@@ -216,11 +255,6 @@
       </method>
     </configuration>
     <configuration name="DRIVE_CMAKE.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DRIVE_CMAKE" TARGET_NAME="DRIVE_CMAKE.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DRIVE_CMAKE" RUN_TARGET_NAME="DRIVE_CMAKE.elf">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -398,6 +432,10 @@
       <workItem from="1773575647701" duration="21088000" />
       <workItem from="1773761480472" duration="21652000" />
       <workItem from="1774373597829" duration="12842000" />
+      <workItem from="1774679272819" duration="1000" />
+      <workItem from="1774682241192" duration="8712000" />
+      <workItem from="1775233493660" duration="32262000" />
+      <workItem from="1775494628236" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="25 4-17修改滤波">
       <option name="closed" value="true" />
@@ -671,7 +709,23 @@
       <option name="project" value="LOCAL" />
       <updated>1774374010029</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="26.3.28&#10;在cmakelist中添加了关闭c++全局初始化和运行过程中不必要的栈申请,避免栈溢出严重">
+      <option name="closed" value="true" />
+      <created>1774678069375</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1774678069375</updated>
+    </task>
+    <task id="LOCAL-00036" summary="26.3.28&#10;在cmakelist中添加了关闭c++全局初始化和运行过程中不必要的栈申请,避免栈溢出严重">
+      <option name="closed" value="true" />
+      <created>1774678094264</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1774678094264</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +768,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="25.6.25&#10;增加了高频注入算法双环,但是整体还需要进一步封装" />
     <MESSAGE value="25.6.27&#10;去除了一些比较杂碎的东西并增加了注释&#10;另外测试了巴特沃斯滤波器，发现貌似有一些bug导致无法正常使用。可能跟数据类型或者启动的时刻有关，temp一直出现inf超长度" />
     <MESSAGE value="25.7.11&#10;由于手头上没有电机，所以这个版本后仓库不再更新，以做保留" />
     <MESSAGE value="25.11.30&#10;使用2代板完成非线性磁链观测器的demo，同步模式下已验证可用" />
@@ -739,7 +792,8 @@
     <MESSAGE value="26.3.20&#10;(1)增加了菜单的显示功能和NOW的刷新逻辑,可以实时显示反馈值" />
     <MESSAGE value="26.3.24&#10;增加了Freertos" />
     <MESSAGE value="26.3.24&#10;把rtos换成V1版本，解决了爆栈的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="26.3.24&#10;把rtos换成V1版本，解决了爆栈的问题" />
+    <MESSAGE value="26.3.28&#10;在cmakelist中添加了关闭c++全局初始化和运行过程中不必要的栈申请,避免栈溢出严重" />
+    <option name="LAST_COMMIT_MESSAGE" value="26.3.28&#10;在cmakelist中添加了关闭c++全局初始化和运行过程中不必要的栈申请,避免栈溢出严重" />
     <option name="LAST_CHUNK_COMMIT_MESSAGE" value="26.1.15&#10;1.更改了ADC的采样时钟频率&#10;2.更改高频注入的方式，有原先的高频脉振-1 +1 变化改为+1 -&gt; 0 -&gt; -1 -&gt; 0。角度计算函数改为正负电流都采集完毕后才计算。&#10;3.更改了注入函数，和高频sign符号更改的地方&#10;4.目前角度是能解算出来，但是貌似急性不对，给Vq总是反转。还有待解决" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

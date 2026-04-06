@@ -3,8 +3,8 @@
 OpenDocument="main.cpp", FilePath="F:/FOC_DRIVE/firmware/Core/Src/main.cpp", Line=87
 OpenDocument="oled_iic.cpp", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/oled_iic.cpp", Line=97
 OpenDocument="menu_manager.cpp", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/menu_manager.cpp", Line=114
-OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=93
-OpenDocument="foc_ctrl.cpp", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp", Line=121
+OpenDocument="stm32g4xx_it.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/stm32g4xx_it.c", Line=195
+OpenDocument="foc_ctrl.cpp", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Src/foc_ctrl.cpp", Line=280
 OpenDocument="foc_math.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_math.h", Line=71
 OpenDocument="app_freertos.c", FilePath="F:/FOC_DRIVE/firmware/Core/Src/app_freertos.c", Line=108
 OpenDocument="stm32g4xx_hal_i2c.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_i2c.c", Line=2500
@@ -14,11 +14,11 @@ OpenDocument="oled_iic.h", FilePath="F:/FOC_DRIVE/firmware/Mine/Inc/oled_iic.h",
 OpenDocument="encoder.h", FilePath="F:/FOC_DRIVE/firmware/Foc/encoder/Inc/encoder.h", Line=97
 OpenDocument="stm32g4xx_hal.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c", Line=401
 OpenDocument="port.c", FilePath="F:/FOC_DRIVE/firmware/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c", Line=412
-OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=83
+OpenDocument="startup_stm32g474rbtx.s", FilePath="F:/FOC_DRIVE/firmware/Core/Startup/startup_stm32g474rbtx.s", Line=52
 OpenDocument="as5047p.c", FilePath="F:/FOC_DRIVE/firmware/Foc/encoder/Src/as5047p.c", Line=4
 OpenDocument="key.cpp", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/key.cpp", Line=0
 OpenDocument="stm32g4xx_hal_adc.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c", Line=2495
-OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Src/vofa.c", Line=12
+OpenDocument="vofa.c", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Src/vofa.c", Line=45
 OpenDocument="pid.h", FilePath="F:/FOC_DRIVE/firmware/Foc/utils/Inc/pid.h", Line=0
 OpenDocument="obersver.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/obersver.h", Line=137
 OpenDocument="stm32g4xx_hal_fdcan.c", FilePath="F:/FOC_DRIVE/firmware/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c", Line=2966
@@ -27,41 +27,42 @@ OpenDocument="drive_can.c", FilePath="F:/FOC_DRIVE/firmware/BSP/Src/drive_can.c"
 OpenDocument="McuDevicePort.c", FilePath="F:/FOC_DRIVE/firmware/Mine/Src/McuDevicePort.c", Line=0
 OpenDocument="foc_cfg.h", FilePath="F:/FOC_DRIVE/firmware/Foc/core/Inc/foc_cfg.h", Line=60
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=3, w=862, h=221, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=1, w=862, h=205, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=5
-OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=2, w=862, h=134, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=RIGHT, x=0, y=3, w=862, h=213, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
+OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=1, w=862, h=126, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=5
+OpenWindow="Disassembly", DockArea=RIGHT, x=0, y=2, w=862, h=141, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Watched Data 1", DockArea=BOTTOM, x=1, y=0, w=1269, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=665, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
 OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=650, h=319, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0
-OpenWindow="FreeRTOS", DockArea=RIGHT, x=0, y=0, w=862, h=102, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, Showing="Task List"
+OpenWindow="FreeRTOS", DockArea=RIGHT, x=0, y=0, w=862, h=182, FilterBarShown=0, TotalValueBarShown=0, ToolBarShown=0, Showing="Task List"
 SmartViewPlugin="", Page="", Toolbar="Hidden", Window="SmartView 1"
 TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Class";"Source"], ColWidths=[744;100;100;100;27;252]
 TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Stack Frame";"Source";"PC";"Return Address";"Stack Used"], ColWidths=[164;156;196;100;198;100]
 TableHeader="Power Sampling", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
-TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh";"Access"], ColWidths=[376;186;815;100]
-TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
-TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;351]
 TableHeader="Task List", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Name";"Run Count";"Priority";"Status";"Timeout";"Stack Info";"ID";"Mutex Count";"Notified Value";"Notify State"], ColWidths=[110;110;110;110;110;110;110;110;110;110]
 TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Description"], ColWidths=[149;105;587]
-WatchedExpression="motor_ctrl", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="foc_param", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="motor_cfg", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="pll_flux", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="temp", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="vbus", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="can_rxData", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="mc_adc", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="abiEncoder", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="pid_spd", Window=Watched Data 1
-WatchedExpression="nonFluxObserver", Window=Watched Data 1
-WatchedExpression="spdMonitor", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="abiEncoder", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="hfiObserver", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="mstick_flag", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="smoObserver", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="app_config", Window=Watched Data 1
-WatchedExpression="menu", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="menuManager", Window=Watched Data 1
-WatchedExpression="config_manager", RefreshRate=5, Window=Watched Data 1
-WatchedExpression="oled", Window=Watched Data 1
-WatchedExpression="oled_buffer", Window=Watched Data 1
+TableHeader="Watched Data 1", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Refresh";"Access"], ColWidths=[376;186;686;100]
+TableHeader="RegisterSelectionDialog", SortCol="None", SortOrder="ASCENDING", VisibleCols=[], ColWidths=[]
+TableHeader="TargetExceptionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Address";"Description"], ColWidths=[200;100;100;351]
+WatchedExpression="motor_ctrl", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="foc_param", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="motor_cfg", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="identify", RefreshRate=5, Window=Watched Data 1
+WatchedExpression="temp", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="vbus", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="can_rxData", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="mc_adc", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="abiEncoder", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="pid_spd", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="nonFluxObserver", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="spdMonitor", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="abiEncoder", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="hfiObserver", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="mstick_flag", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="smoObserver", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="app_config", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="menu", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="menuManager", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="config_manager", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="oled", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="oled_buffer", DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
+WatchedExpression="myUsbRxBuffer", RefreshRate=5, DisplayFormat=DISPLAY_FORMAT_HEX, Window=Watched Data 1
